@@ -3,6 +3,6 @@ module com.example.eljuegodelavida {
     requires javafx.fxml;
 
 
-    opens com.example.eljuegodelavida to javafx.fxml;
-    exports com.example.eljuegodelavida;
+    opens com.example.ElJuegoDeLaVida to javafx.fxml;
+    exports com.example.ElJuegoDeLaVida;
 }

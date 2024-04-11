@@ -1,4 +1,4 @@
-package com.example.eljuegodelavida;
+package com.example.ElJuegoDeLaVida;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-public class HelloController1 {
+public class ControllerMenuSecundario {
 
     @FXML
     private Button button;
@@ -23,7 +23,7 @@ public class HelloController1 {
     @FXML
     void goBack(MouseEvent event) throws IOException {
         Stage stage = (Stage) button.getScene().getWindow();
-        URL fxmlUrl = getClass().getResource("hello-view.fxml");
+        URL fxmlUrl = getClass().getResource("MenuPrincipal.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
         stage.setTitle("Stage1");
         stage.setScene(new Scene(root));
