@@ -12,9 +12,9 @@ import java.net.URL;
 public class MainApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        URL fxmlUrl = getClass().getResource("MenuPrincipal.fxml");
+        URL fxmlUrl = getClass().getResource("MenuInicial.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
-        primaryStage.setTitle("Stage1");
+        primaryStage.setTitle("¡Bienvenido!");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

@@ -6,26 +6,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 
-public class ControllerMenuSecundario {
+public class ControllerMenuInicial {
 
     @FXML
     private Button button;
 
     @FXML
-    private Text text;
-
-    @FXML
-    void goBack(MouseEvent event) throws IOException {
+    void goNewPlay(MouseEvent event) throws IOException {
         Stage stage = (Stage) button.getScene().getWindow();
-        URL fxmlUrl = getClass().getResource("MenuPrincipal.fxml");
+        URL fxmlUrl = getClass().getResource("MenuParametrosTablero.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
-        stage.setTitle("Stage1");
+        stage.setTitle("Menú Inicial");
         stage.setScene(new Scene(root));
     }
 

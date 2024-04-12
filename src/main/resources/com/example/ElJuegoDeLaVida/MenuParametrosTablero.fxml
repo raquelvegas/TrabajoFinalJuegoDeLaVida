@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ElJuegoDeLaVida.ControllerMenuParametros">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c5c9" height="97.0" layoutX="1.0" layoutY="-42.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <HBox layoutX="1.0" layoutY="7.0" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TABLERO" textAlignment="CENTER" wrappingWidth="199.7366943359375">
+               <font>
+                  <Font name="Subway Novella" size="30.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUO" textAlignment="CENTER" wrappingWidth="199.7366943359375">
+               <font>
+                  <Font name="Subway Novella" size="30.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RECURSOS" textAlignment="CENTER" wrappingWidth="199.7366943359375">
+               <font>
+                  <Font name="Subway Novella" size="30.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Line endX="499.0" endY="0.20000076293945312" layoutX="101.0" layoutY="57.0" startX="-100.0" strokeWidth="4.0" />
+      <Line endX="100.0" layoutX="98.0" layoutY="57.0" startX="99.99998474121094" startY="-56.999996185302734" strokeWidth="4.0" />
+      <Line endX="100.0" endY="-114.0" layoutX="302.0" layoutY="114.0" startX="99.99998474121094" startY="-56.999996185302734" strokeWidth="4.0" />
+      <Text layoutX="-1.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En esta nueva civilización tus ciudadanos tendrán que moverse por un tablero... " textAlignment="CENTER" wrappingWidth="604.6568603515625">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
