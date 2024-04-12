@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -19,6 +20,16 @@ public class ControllerMenuPrincipal {
 
     @FXML
     private Text text;
+
+    @FXML
+    private Slider slider;
+
+
+    @FXML
+    void getValor(MouseEvent event) {
+        int valor = (int) slider.getValue();
+        text.setText(String.valueOf(valor));
+    }
 
     @FXML
     void goNext(MouseEvent event) throws IOException {
