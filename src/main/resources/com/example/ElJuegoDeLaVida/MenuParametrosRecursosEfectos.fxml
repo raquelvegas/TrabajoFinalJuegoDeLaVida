@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ElJuegoDeLaVida.ControllerMenuParametrosRecursosVida">
+<AnchorPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ElJuegoDeLaVida.ControllerMenuParametrosRecursosEfectos">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c5c9" height="104.0" layoutX="399.0" layoutY="-44.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
       <HBox alignment="BOTTOM_CENTER" layoutY="-3.0" prefHeight="50.0" prefWidth="600.0">
@@ -34,12 +34,12 @@
       <Line endX="499.0" endY="0.20000076293945312" layoutX="101.0" layoutY="57.0" startX="-100.0" strokeWidth="4.0" />
       <Line endX="100.0" layoutX="98.0" layoutY="57.0" startX="99.99998474121094" startY="-56.999996185302734" strokeWidth="4.0" />
       <Line endX="100.0" endY="-114.0" layoutX="302.0" layoutY="114.0" startX="99.99998474121094" startY="-56.999996185302734" strokeWidth="4.0" />
-      <Text layoutX="64.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No se puede vivir sin algunos recursos fundamentales... Elige tú sus tiempos de vida" textAlignment="CENTER" wrappingWidth="503.85693645477295">
+      <Text layoutX="64.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No se puede vivir sin algunos recursos fundamentales... Elige cómo te van a afectar" textAlignment="CENTER" wrappingWidth="503.85693645477295">
          <font>
             <Font name="Storytime" size="28.0" />
          </font>
       </Text>
-      <Button fx:id="buttonSiguiente" layoutX="494.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#goNext" prefHeight="38.0" prefWidth="88.0" text="SIGUIENTE">
+      <Button fx:id="buttonJugar" layoutX="494.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#goPlay" prefHeight="38.0" prefWidth="88.0" text="JUGAR">
          <font>
             <Font name="Subway Novella" size="12.0" />
          </font>
@@ -49,7 +49,7 @@
             <Font name="Subway Novella" size="12.0" />
          </font>
       </Button>
-      <HBox alignment="CENTER" layoutY="134.0" prefHeight="50.0" prefWidth="600.0">
+      <HBox alignment="CENTER" layoutX="-2.0" layoutY="127.0" prefHeight="50.0" prefWidth="600.0">
          <children>
             <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Agua" wrappingWidth="37.834007263183594">
                <font>
@@ -89,26 +89,26 @@
             </Text>
          </children>
       </HBox>
-      <HBox alignment="TOP_CENTER" layoutY="175.0" prefHeight="122.0" prefWidth="600.0">
+      <HBox alignment="TOP_CENTER" layoutX="-2.0" layoutY="168.0" prefHeight="122.0" prefWidth="600.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   " />
-            <Slider fx:id="aguaVidaSlider" onMouseReleased="#getAguaVida" orientation="VERTICAL" prefHeight="113.0" prefWidth="41.0" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="aguaEfectoSlider" onMouseReleased="#getAguaVida" orientation="VERTICAL" prefHeight="113.0" prefWidth="41.0" showTickLabels="true" showTickMarks="true" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="             " />
-            <Slider fx:id="comidaVidaSlider" onMouseReleased="#getComidaVida" orientation="VERTICAL" prefHeight="134.0" prefWidth="41.0" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="comidaEfectoSlider" onMouseReleased="#getComidaVida" orientation="VERTICAL" prefHeight="134.0" prefWidth="41.0" showTickLabels="true" showTickMarks="true" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="                 " />
-            <Slider fx:id="montanaVidaSlider" onMouseReleased="#getMontanaVida" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="montanaEfectoSlider" max="0.0" min="-100.0" onMouseReleased="#getMontanaVida" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="                " />
-            <Slider fx:id="tesoroVidaSlider" onMouseReleased="#getTesoroVida" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="tesoroEfectoSlider" onMouseReleased="#getTesoroVida" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="                " />
-            <Slider fx:id="bibliotecaVidaSlider" onMouseReleased="#getBibliotecaVida" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="bibliotecaEfectoSlider" onMouseReleased="#getBibliotecaVida" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="                 " />
-            <Slider fx:id="pozoVidaSlider" onMouseReleased="#getPozoVida" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="pozoEfectoSlider" min="100.0" onMouseReleased="#getPozoVida" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" value="100.0" />
          </children>
       </HBox>
       <Text layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                      " />
-      <HBox layoutX="25.0" layoutY="308.0" prefHeight="38.0" prefWidth="578.0">
+      <HBox layoutX="23.0" layoutY="301.0" prefHeight="38.0" prefWidth="578.0">
          <children>
-            <Text fx:id="aguaVidaText" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+            <Text fx:id="aguaEfectoText" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                <font>
                   <Font name="Storytime" size="23.0" />
                </font>
@@ -120,7 +120,7 @@
                </font>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="    " />
-            <Text fx:id="comidaVidaText" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+            <Text fx:id="comidaEfectoText" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                <font>
                   <Font name="Storytime" size="23.0" />
                </font>
@@ -132,7 +132,7 @@
                </font>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="      " />
-            <Text fx:id="montanaVidaText" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+            <Text fx:id="montanaEfectoText" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                <font>
                   <Font name="Storytime" size="23.0" />
                </font>
@@ -144,42 +144,52 @@
                </font>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="      " />
-            <Text fx:id="tesoroVidaText" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+            <Text fx:id="tesoroEfectoText" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                <font>
                   <Font name="Storytime" size="23.0" />
                </font>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" " />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="turnos" wrappingWidth="52.59375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\% prob." wrappingWidth="52.59375">
                <font>
                   <Font name="Storytime" size="21.0" />
                </font>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     " />
-            <Text fx:id="bibliotecaVidaText" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+            <Text fx:id="bibliotecaEfectoText" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                <font>
                   <Font name="Storytime" size="23.0" />
                </font>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" " />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="turnos" wrappingWidth="52.59375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\% prob." wrappingWidth="52.59375">
                <font>
                   <Font name="Storytime" size="21.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       " />
-            <Text fx:id="pozoVidaText" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     " />
+            <Text fx:id="pozoEfectoText" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
                <font>
                   <Font name="Storytime" size="23.0" />
                </font>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" " />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="turnos" wrappingWidth="52.59375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\%muerte" wrappingWidth="64.59375">
                <font>
                   <Font name="Storytime" size="21.0" />
                </font>
             </Text>
          </children>
       </HBox>
+      <Text layoutX="301.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="reproducción" wrappingWidth="94.4000244140625">
+         <font>
+            <Font name="Storytime" size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="414.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="clonacion" wrappingWidth="79.20001220703125">
+         <font>
+            <Font name="Storytime" size="21.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

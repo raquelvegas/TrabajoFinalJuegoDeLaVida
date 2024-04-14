@@ -12,6 +12,12 @@ public class DatosCompartidos {
     private static String tesoroVida = "0";
     private static String bibliotecaVida = "0";
     private static String pozoVida = "0";
+    private static String aguaEfecto = "0";
+    private static String comidaEfecto = "0";
+    private static String montanaEfecto = "0";
+    private static String tesoroEfecto = "0";
+    private static String bibliotecaEfecto = "0";
+    private static String pozoEfecto = "100";
 
 
 
@@ -101,5 +107,53 @@ public class DatosCompartidos {
 
     public static void setPozoVida(String pozoVida) {
         DatosCompartidos.pozoVida = pozoVida;
+    }
+
+    public static String getAguaEfecto() {
+        return aguaEfecto;
+    }
+
+    public static void setAguaEfecto(String aguaEfecto) {
+        DatosCompartidos.aguaEfecto = aguaEfecto;
+    }
+
+    public static String getComidaEfecto() {
+        return comidaEfecto;
+    }
+
+    public static void setComidaEfecto(String comidaEfecto) {
+        DatosCompartidos.comidaEfecto = comidaEfecto;
+    }
+
+    public static String getMontanaEfecto() {
+        return montanaEfecto;
+    }
+
+    public static void setMontanaEfecto(String montanaEfecto) {
+        DatosCompartidos.montanaEfecto = montanaEfecto;
+    }
+
+    public static String getTesoroEfecto() {
+        return tesoroEfecto;
+    }
+
+    public static void setTesoroEfecto(String tesoroEfecto) {
+        DatosCompartidos.tesoroEfecto = tesoroEfecto;
+    }
+
+    public static String getBibliotecaEfecto() {
+        return bibliotecaEfecto;
+    }
+
+    public static void setBibliotecaEfecto(String bibliotecaEfecto) {
+        DatosCompartidos.bibliotecaEfecto = bibliotecaEfecto;
+    }
+
+    public static String getPozoEfecto() {
+        return pozoEfecto;
+    }
+
+    public static void setPozoEfecto(String pozoEfecto) {
+        DatosCompartidos.pozoEfecto = pozoEfecto;
     }
 }
