@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
@@ -7,10 +9,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ElJuegoDeLaVida.ControllerMenuParametros">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ElJuegoDeLaVida.ControllerMenuParametrosTablero">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c5c9" height="97.0" layoutX="1.0" layoutY="-42.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <HBox layoutX="1.0" layoutY="7.0" prefHeight="50.0" prefWidth="600.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c5c9" height="104.0" layoutX="-5.0" layoutY="-49.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
+      <HBox layoutX="1.0" layoutY="14.0" prefHeight="50.0" prefWidth="600.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TABLERO" textAlignment="CENTER" wrappingWidth="199.7366943359375">
                <font>
@@ -32,10 +34,47 @@
       <Line endX="499.0" endY="0.20000076293945312" layoutX="101.0" layoutY="57.0" startX="-100.0" strokeWidth="4.0" />
       <Line endX="100.0" layoutX="98.0" layoutY="57.0" startX="99.99998474121094" startY="-56.999996185302734" strokeWidth="4.0" />
       <Line endX="100.0" endY="-114.0" layoutX="302.0" layoutY="114.0" startX="99.99998474121094" startY="-56.999996185302734" strokeWidth="4.0" />
-      <Text layoutX="-1.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En esta nueva civilización tus ciudadanos tendrán que moverse por un tablero... " textAlignment="CENTER" wrappingWidth="604.6568603515625">
+      <Text layoutX="14.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En esta nueva civilización tus ciudadanos tendrán que moverse por un tablero...  ¡Elige tú sus medidas!" textAlignment="CENTER" wrappingWidth="573.4569396972656">
          <font>
-            <Font size="19.0" />
+            <Font name="Storytime" size="28.0" />
          </font>
       </Text>
+      <Text layoutX="49.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ALTO">
+         <font>
+            <Font name="Storytime" size="39.0" />
+         </font>
+      </Text>
+      <Slider fx:id="altoSlider" layoutX="172.0" layoutY="196.0" onMouseReleased="#getAlto" prefHeight="30.0" prefWidth="298.0" showTickLabels="true" showTickMarks="true" />
+      <Text fx:id="altoMatriz" layoutX="484.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+         <font>
+            <Font name="Storytime" size="39.0" />
+         </font>
+      </Text>
+      <Text layoutX="527.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
+         <font>
+            <Font name="Storytime" size="39.0" />
+         </font>
+      </Text>
+      <Text layoutX="49.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ANCHO">
+         <font>
+            <Font name="Storytime" size="39.0" />
+         </font>
+      </Text>
+      <Slider fx:id="anchoSlider" layoutX="172.0" layoutY="272.0" onMouseReleased="#getAncho" prefHeight="30.0" prefWidth="298.0" showTickLabels="true" showTickMarks="true" />
+      <Text fx:id="anchoMatriz" layoutX="484.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+         <font>
+            <Font name="Storytime" size="39.0" />
+         </font>
+      </Text>
+      <Text layoutX="527.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
+         <font>
+            <Font name="Storytime" size="39.0" />
+         </font>
+      </Text>
+      <Button fx:id="buttonSiguiente" layoutX="494.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#goNext" prefHeight="38.0" prefWidth="88.0" text="SIGUIENTE">
+         <font>
+            <Font name="Subway Novella" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

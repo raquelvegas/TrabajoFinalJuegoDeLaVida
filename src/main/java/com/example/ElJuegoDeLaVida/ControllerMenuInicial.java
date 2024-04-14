@@ -21,7 +21,7 @@ public class ControllerMenuInicial {
         Stage stage = (Stage) button.getScene().getWindow();
         URL fxmlUrl = getClass().getResource("MenuParametrosTablero.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
-        stage.setTitle("Menú Inicial");
+        stage.setTitle("Menú Parámetros");
         stage.setScene(new Scene(root));
     }
 
