@@ -16,6 +16,8 @@ public class MainApplication extends Application {
         Parent root = FXMLLoader.load(fxmlUrl);
         primaryStage.setTitle("¡Bienvenido!");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setFullScreen(false);
+        primaryStage.setFullScreenExitHint("");
         primaryStage.show();
     }
 

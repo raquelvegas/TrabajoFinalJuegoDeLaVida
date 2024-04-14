@@ -49,7 +49,8 @@ public class ControllerMenuParametrosTablero {
         URL fxmlUrl = getClass().getResource("MenuParametrosIndividuo.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
         stage.setTitle("Menú parámetros");
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     public void initialize() {

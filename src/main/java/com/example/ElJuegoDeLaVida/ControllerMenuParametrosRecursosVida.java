@@ -16,51 +16,87 @@ import java.net.URL;
 public class ControllerMenuParametrosRecursosVida {
 
     @FXML
+    private Slider aguaVidaSlider;
+
+    @FXML
+    private Text aguaVidaText;
+
+    @FXML
+    private Text bibliotecaVidaText;
+
+    @FXML
+    private Slider bibliotecaVidaSlider;
+
+    @FXML
     private Button buttonAnterior;
 
     @FXML
     private Button buttonSiguiente;
 
     @FXML
-    private Slider probClonacionSlider;
+    private Slider comidaVidaSlider;
 
     @FXML
-    private Text probClonacionText;
+    private Text comidaVidaText;
 
     @FXML
-    private Slider probReproduccionSlider;
+    private Slider montanaVidaSlider;
 
     @FXML
-    private Text probReproduccionText;
+    private Text montanaVidaText;
 
     @FXML
-    private Text vidaIncialText;
+    private Slider pozoVidaSlider;
 
     @FXML
-    private Slider vidaInicialSlider;
+    private Text pozoVidaText;
 
     @FXML
-    void getProbClonacion(MouseEvent event) {
-        probClonacionText.setText(String.valueOf((int)probClonacionSlider.getValue()));
+    private Slider tesoroVidaSlider;
+
+    @FXML
+    private Text tesoroVidaText;
+
+    @FXML
+    void getAguaVida(MouseEvent event) {
+        aguaVidaText.setText(String.valueOf((int)aguaVidaSlider.getValue()));
     }
 
     @FXML
-    void getProbReproduccion(MouseEvent event) {
-        probReproduccionText.setText(String.valueOf((int)probReproduccionSlider.getValue()));
+    void getBibliotecaVida(MouseEvent event) {
+        bibliotecaVidaText.setText(String.valueOf((int)bibliotecaVidaSlider.getValue()));
     }
 
     @FXML
-    void getVidaInicial(MouseEvent event) {
-        vidaIncialText.setText(String.valueOf((int)vidaInicialSlider.getValue()));
+    void getComidaVida(MouseEvent event) {
+        comidaVidaText.setText(String.valueOf((int)comidaVidaSlider.getValue()));
+    }
+
+    @FXML
+    void getMontanaVida(MouseEvent event) {
+        montanaVidaText.setText(String.valueOf((int)montanaVidaSlider.getValue()));
+    }
+
+    @FXML
+    void getPozoVida(MouseEvent event) {
+        pozoVidaText.setText(String.valueOf((int)pozoVidaSlider.getValue()));
+    }
+
+    @FXML
+    void getTesoroVida(MouseEvent event) {
+        tesoroVidaText.setText(String.valueOf((int)tesoroVidaSlider.getValue()));
     }
 
     @FXML
     void goBack(MouseEvent event) throws IOException {
-        DatosCompartidos.setProbReproduccion(String.valueOf((int)probReproduccionSlider.getValue()));
-        DatosCompartidos.setProbClonacion(String.valueOf((int)probClonacionSlider.getValue()));
-        DatosCompartidos.setVidaInicial(String.valueOf((int)vidaInicialSlider.getValue()));
+        DatosCompartidos.setAguaVida(String.valueOf((int)aguaVidaSlider.getValue()));
+        DatosCompartidos.setComidaVida(String.valueOf((int)comidaVidaSlider.getValue()));
+        DatosCompartidos.setMontanaVida(String.valueOf((int)montanaVidaSlider.getValue()));
+        DatosCompartidos.setTesoroVida(String.valueOf((int)tesoroVidaSlider.getValue()));
+        DatosCompartidos.setBibliotecaVida(String.valueOf((int)bibliotecaVidaSlider.getValue()));
+        DatosCompartidos.setPozoVida(String.valueOf((int)pozoVidaSlider.getValue()));
         Stage stage = (Stage) buttonAnterior.getScene().getWindow();
-        URL fxmlUrl = getClass().getResource("MenuParametrosTablero.fxml");
+        URL fxmlUrl = getClass().getResource("MenuParametrosIndividuo.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
         stage.setTitle("Menú Parámetros");
         stage.setScene(new Scene(root));
@@ -68,23 +104,31 @@ public class ControllerMenuParametrosRecursosVida {
 
     @FXML
     void goNext(MouseEvent event) throws IOException {
-        DatosCompartidos.setProbReproduccion(String.valueOf((int)probReproduccionSlider.getValue()));
-        DatosCompartidos.setProbClonacion(String.valueOf((int)probClonacionSlider.getValue()));
-        DatosCompartidos.setVidaInicial(String.valueOf((int)vidaInicialSlider.getValue()));
+        DatosCompartidos.setAguaVida(String.valueOf((int)aguaVidaSlider.getValue()));
+        DatosCompartidos.setComidaVida(String.valueOf((int)comidaVidaSlider.getValue()));
+        DatosCompartidos.setMontanaVida(String.valueOf((int)montanaVidaSlider.getValue()));
+        DatosCompartidos.setTesoroVida(String.valueOf((int)tesoroVidaSlider.getValue()));
+        DatosCompartidos.setBibliotecaVida(String.valueOf((int)bibliotecaVidaSlider.getValue()));
+        DatosCompartidos.setPozoVida(String.valueOf((int)pozoVidaSlider.getValue()));
         Stage stage = (Stage) buttonSiguiente.getScene().getWindow();
-        URL fxmlUrl = getClass().getResource("MenuParametrosIndividuo.fxml");
+        URL fxmlUrl = getClass().getResource("MenuParametrosRecursosEfectos.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
         stage.setTitle("Menú parámetros");
         stage.setScene(new Scene(root));
     }
 
     public void initialize() {
-        probReproduccionText.setText(DatosCompartidos.getProbReproduccion());
-        probReproduccionSlider.setValue(Double.parseDouble(probReproduccionText.getText()));
-        probClonacionText.setText(DatosCompartidos.getProbClonacion());
-        probClonacionSlider.setValue(Double.parseDouble(probClonacionText.getText()));
-        vidaIncialText.setText(DatosCompartidos.getVidaInicial());
-        vidaInicialSlider.setValue(Double.parseDouble(vidaIncialText.getText()));
+        aguaVidaText.setText(DatosCompartidos.getAguaVida());
+        aguaVidaSlider.setValue(Double.parseDouble(aguaVidaText.getText()));
+        comidaVidaText.setText(DatosCompartidos.getComidaVida());
+        comidaVidaSlider.setValue(Double.parseDouble(comidaVidaText.getText()));
+        montanaVidaText.setText(DatosCompartidos.getMontanaVida());
+        montanaVidaSlider.setValue(Double.parseDouble(montanaVidaText.getText()));
+        tesoroVidaText.setText(DatosCompartidos.getTesoroVida());
+        tesoroVidaSlider.setValue(Double.parseDouble(tesoroVidaText.getText()));
+        bibliotecaVidaText.setText(DatosCompartidos.getBibliotecaVida());
+        bibliotecaVidaSlider.setValue(Double.parseDouble(bibliotecaVidaText.getText()));
+        pozoVidaText.setText(DatosCompartidos.getPozoVida());
+        pozoVidaSlider.setValue(Double.parseDouble(pozoVidaText.getText()));
     }
-
 }

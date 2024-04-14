@@ -82,9 +82,9 @@
             <Font name="Storytime" size="39.0" />
          </font>
       </Text>
-      <Text layoutX="534.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
+      <Text layoutX="534.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
          <font>
-            <Font name="Storytime" size="39.0" />
+            <Font name="Storytime" size="28.0" />
          </font>
       </Text>
       <Text fontSmoothingType="LCD" layoutX="45.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de reproduccion">
