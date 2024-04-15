@@ -76,7 +76,7 @@
             <Font name="Subway Novella" size="12.0" />
          </font>
       </Button>
-      <Slider fx:id="vidaInicialSlider" layoutX="179.0" layoutY="282.0" onMouseReleased="#getVidaInicial" prefHeight="30.0" prefWidth="298.0" showTickLabels="true" showTickMarks="true" />
+      <Slider fx:id="vidaInicialSlider" layoutX="179.0" layoutY="282.0" max="50.0" onMouseReleased="#getVidaInicial" prefHeight="30.0" prefWidth="298.0" showTickLabels="true" showTickMarks="true" />
       <Text fx:id="vidaIncialText" layoutX="491.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
          <font>
             <Font name="Storytime" size="39.0" />

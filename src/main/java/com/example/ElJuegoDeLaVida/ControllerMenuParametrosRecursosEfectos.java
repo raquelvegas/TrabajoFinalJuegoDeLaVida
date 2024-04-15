@@ -103,8 +103,13 @@ public class ControllerMenuParametrosRecursosEfectos {
     }
 
     @FXML
-    void goPlay(MouseEvent event) {
-
+    void goPlay(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Chess");
+        primaryStage.setScene(new Scene(root, 800, 800));
+        primaryStage.setResizable(false);
+        primaryStage.show();
     }
 
     public void initialize() {

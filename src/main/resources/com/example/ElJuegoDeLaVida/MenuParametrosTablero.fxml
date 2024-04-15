@@ -44,13 +44,8 @@
             <Font name="Storytime" size="39.0" />
          </font>
       </Text>
-      <Slider fx:id="altoSlider" layoutX="172.0" layoutY="196.0" onMouseReleased="#getAlto" prefHeight="30.0" prefWidth="298.0" showTickLabels="true" showTickMarks="true" />
+      <Slider fx:id="altoSlider" layoutX="172.0" layoutY="196.0" max="50.0" onMouseReleased="#getAlto" prefHeight="30.0" prefWidth="298.0" showTickLabels="true" showTickMarks="true" />
       <Text fx:id="altoMatriz" layoutX="484.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
-         <font>
-            <Font name="Storytime" size="39.0" />
-         </font>
-      </Text>
-      <Text layoutX="527.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
          <font>
             <Font name="Storytime" size="39.0" />
          </font>
@@ -60,13 +55,8 @@
             <Font name="Storytime" size="39.0" />
          </font>
       </Text>
-      <Slider fx:id="anchoSlider" layoutX="172.0" layoutY="272.0" onMouseReleased="#getAncho" prefHeight="30.0" prefWidth="298.0" showTickLabels="true" showTickMarks="true" />
+      <Slider fx:id="anchoSlider" layoutX="172.0" layoutY="272.0" max="50.0" onMouseReleased="#getAncho" prefHeight="30.0" prefWidth="298.0" showTickLabels="true" showTickMarks="true" />
       <Text fx:id="anchoMatriz" layoutX="484.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
-         <font>
-            <Font name="Storytime" size="39.0" />
-         </font>
-      </Text>
-      <Text layoutX="527.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
          <font>
             <Font name="Storytime" size="39.0" />
          </font>
