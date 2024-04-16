@@ -1,5 +1,6 @@
-package com.example.Chess;
+package com.example.ElJuegoDeLaVida;
 
+import com.example.ElJuegoDeLaVida.Game;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;

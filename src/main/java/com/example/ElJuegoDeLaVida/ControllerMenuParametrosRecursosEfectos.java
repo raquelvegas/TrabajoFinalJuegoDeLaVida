@@ -104,12 +104,13 @@ public class ControllerMenuParametrosRecursosEfectos {
 
     @FXML
     void goPlay(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Stage primaryStage = new Stage();
-        primaryStage.setTitle("Chess");
-        primaryStage.setScene(new Scene(root, 800, 800));
-        primaryStage.setResizable(false);
-        primaryStage.show();
+        Stage stage = (Stage) buttonAnterior.getScene().getWindow();
+        URL fxmlUrl = getClass().getResource("TableroDeJuego.fxml");
+        Parent root = FXMLLoader.load(fxmlUrl);
+        stage.setTitle("El Juego de la Vida");
+        stage.setScene(new Scene(root));
+        stage.setFullScreen(false);
+        stage.setFullScreenExitHint("");
     }
 
     public void initialize() {

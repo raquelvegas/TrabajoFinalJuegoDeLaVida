@@ -1,5 +1,8 @@
-package com.example.Chess;
+package com.example.ElJuegoDeLaVida;
 
+import com.example.ElJuegoDeLaVida.TableroDeJuego;
+//import com.example.ElJuegoDeLaVida.Piece;
+import com.example.ElJuegoDeLaVida.Cuadrado;
 import javafx.event.EventHandler;
 import javafx.event.EventTarget;
 import javafx.scene.effect.DropShadow;
@@ -9,20 +12,20 @@ import javafx.scene.paint.Color;
 
 public class Game {
 
-    public static Piece currentPiece;
+    //public static Piece currentPiece;
     public static String currentPlayer;
     public static TableroDeJuego cb;
     private boolean game;
 
     public Game(GridPane chessBoard, String theme){
         cb = new TableroDeJuego(chessBoard, theme);
-        currentPiece = null;
+        //currentPiece = null;
         currentPlayer = "white";
         this.game = true;
-        addEventHandlers(cb.TableroDeJuego);
+        //addEventHandlers(cb.TableroDeJuego);
     }
 
-    private void addEventHandlers(GridPane chessBoard){
+    /*private void addEventHandlers(GridPane chessBoard){
         chessBoard.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -143,7 +146,7 @@ public class Game {
         currentPiece.posX = square.x;
         currentPiece.posY = square.y;
         deselectPiece(true);
-    }
+    }*/
 
 
 }

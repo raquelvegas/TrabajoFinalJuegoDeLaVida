@@ -6,27 +6,27 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
-public class ChessBoard {
+public class TableroDeJuego {
 
-    GridPane chessBoard;
+    GridPane TableroDeJuego;
     String theme;
     public ArrayList<Square> squares = new ArrayList<>();
 
-    public ChessBoard(GridPane chessBoard, String theme){
-        this.chessBoard = chessBoard;
+    public TableroDeJuego(GridPane TableroDeJuego, String theme){
+        this.TableroDeJuego = TableroDeJuego;
         this.theme = theme;
 
-        makeBoard(this.chessBoard, theme);
+        makeBoard(this.TableroDeJuego, theme);
     }
 
 
     private void makeBoard(GridPane chessBoard, String theme){
-        for(int i=0; i<8; i++){
-            for(int j=0; j<8; j++){
+        for(int i=0; i<100; i++){//Anchura
+            for(int j=0; j<100; j++){//Altura
                 Square square = new Square(i,j);
                 square.setName("Square" + i + j);
-                square.setPrefHeight(100);
-                square.setPrefWidth(100);
+                square.setPrefHeight(10);
+                square.setPrefWidth(10);
                 square.setBorder(new Border(new BorderStroke(Color.BLACK,
                         BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
                 setTheme(square, theme, i, j);
@@ -34,7 +34,7 @@ public class ChessBoard {
                 squares.add(square);
             }
         }
-        addPieces();
+        //addPieces();
     }
 
     private void setTheme(Square square, String theme, int i, int j){
@@ -76,7 +76,7 @@ public class ChessBoard {
 
     }
 
-    private void addPiece(Square square, Piece piece){
+    /*private void addPiece(Square square, Piece piece){
         square.getChildren().add(piece);
         square.occupied = true;
     }
@@ -127,7 +127,7 @@ public class ChessBoard {
 
 
         }
-    }
+    }*/
 
 
 }
