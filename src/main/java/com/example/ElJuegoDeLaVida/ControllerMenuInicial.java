@@ -17,6 +17,9 @@ import java.net.URL;
 public class ControllerMenuInicial {
 
     @FXML
+    private Button buttonCargar;
+
+    @FXML
     private Button button;
 
     @FXML

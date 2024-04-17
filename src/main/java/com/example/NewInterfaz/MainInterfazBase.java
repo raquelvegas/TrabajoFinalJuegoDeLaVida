@@ -1,4 +1,4 @@
-package com.example.ElJuegoDeLaVida;
+package com.example.NewInterfaz;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-public class MainApplication extends Application {
+public class MainInterfazBase extends Application {
     /*@Override
     public void start(Stage primaryStage) throws IOException {
         URL fxmlUrl = getClass().getResource("MenuInicial.fxml");
