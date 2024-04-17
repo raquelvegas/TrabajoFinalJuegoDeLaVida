@@ -105,7 +105,7 @@ public class ControllerMenuParametrosRecursosEfectos {
     @FXML
     void goPlay(MouseEvent event) throws IOException {
         Stage stage = (Stage) buttonAnterior.getScene().getWindow();
-        URL fxmlUrl = getClass().getResource("TableroDeJuego.fxml");
+        URL fxmlUrl = getClass().getResource("TableroJuego.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
         stage.setTitle("El Juego de la Vida");
         stage.setScene(new Scene(root));
