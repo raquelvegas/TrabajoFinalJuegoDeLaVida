@@ -27,7 +27,7 @@ public class GameOfLife extends Application {
     @Override
     public void start(Stage primaryStage) {
         VBox root = new VBox(10);
-        Scene scene = new Scene(root, width, height + 100);
+        Scene scene = new Scene(root, width, height + 50);
         final Canvas canvas = new Canvas(width, height);
 
         Button reset = new Button("Reset");
