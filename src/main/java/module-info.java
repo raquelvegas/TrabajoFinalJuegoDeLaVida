@@ -6,4 +6,5 @@ module com.example.eljuegodelavida {
     opens com.example.ElJuegoDeLaVida to javafx.fxml;
     exports com.example.ElJuegoDeLaVida;
     exports com.example.NewInterfaz;
+    opens com.example.NewInterfaz to javafx.fxml;
 }
