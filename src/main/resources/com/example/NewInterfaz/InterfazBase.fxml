@@ -19,13 +19,13 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#515151" height="865.0" layoutX="-1.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="1540.0" />
       <ImageView fx:id="imageViewFondo" fitHeight="927.0" fitWidth="1552.0" layoutX="-4.0" layoutY="-2.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/NewInterfaz/Images/fondo.png" />
+            <Image url="@../media/images/fondo.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="550.0" layoutX="467.0" layoutY="153.0" stroke="BLACK" strokeType="INSIDE" width="550.0" />
       <ImageView fx:id="imageViewLogo" fitHeight="261.0" fitWidth="347.0" layoutX="100.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/NewInterfaz/Images/IconLifeGame.png" />
+            <Image url="@../media/images/IconLifeGame.png" />
          </image>
       </ImageView>
       <Button layoutX="82.0" layoutY="362.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="300.0" text="CÓMO JUGAR">
@@ -37,7 +37,7 @@
          <children>
             <ImageView fx:id="imageViewVivos" fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../java/com/example/NewInterfaz/Images/vivos.png" />
+                  <Image url="@../media/images/vivos.png" />
                </image>
             </ImageView>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=" VIVOS: ">
@@ -57,7 +57,7 @@
             </Text>
             <ImageView fx:id="imageViewMuertos" fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../java/com/example/NewInterfaz/Images/muertos.png" />
+                  <Image url="@../media/images/muertos.png" />
                </image>
             </ImageView>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=" MUERTOS: ">
@@ -74,42 +74,37 @@
       </HBox>
       <ImageView fx:id="imageViewPackman" fitHeight="98.0" fitWidth="414.0" layoutX="57.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/NewInterfaz/Images/pacman.png" />
+            <Image url="@../media/images/pacman.png" />
          </image>
       </ImageView>
       <ImageView fx:id="buttonViewVelocidad" fitHeight="79.0" fitWidth="104.0" layoutX="491.0" layoutY="725.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/NewInterfaz/Images/Velocidad.png" />
+            <Image url="@../media/images/Velocidad.png" />
          </image>
       </ImageView>
       <ImageView fx:id="buttonViewPlay" fitHeight="79.0" fitWidth="104.0" layoutX="598.0" layoutY="724.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/NewInterfaz/Images/Play.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="buttonViewPause" fitHeight="79.0" fitWidth="104.0" layoutX="702.0" layoutY="725.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../java/com/example/NewInterfaz/Images/Pausa.png" />
+            <Image url="@../media/images/Play.png" />
          </image>
       </ImageView>
       <ImageView fx:id="buttonviewStop" fitHeight="79.0" fitWidth="104.0" layoutX="805.0" layoutY="725.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/NewInterfaz/Images/Stop.png" />
+            <Image url="@../media/images/Stop.png" />
          </image>
       </ImageView>
       <ImageView fx:id="buttonViewSonidoON" fitHeight="79.0" fitWidth="104.0" layoutX="909.0" layoutY="725.0" onMouseClicked="#playPause" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/NewInterfaz/Images/VolumenON.png" />
+            <Image url="@../media/images/VolumenON.png" />
          </image>
       </ImageView>
       <ImageView fx:id="imageViewCuadroTexto" fitHeight="278.0" fitWidth="524.0" layoutX="13.0" layoutY="578.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/NewInterfaz/Images/Cuadro%20texto.png" />
+            <Image url="@../media/images/Cuadro%20texto.png" />
          </image>
       </ImageView>
       <ImageView fx:id="buttonViewSonidoOF" fitHeight="79.0" fitWidth="104.0" layoutX="909.0" layoutY="725.0" onMouseClicked="#playPause" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../../../../java/com/example/NewInterfaz/Images/VolumenOF.png" />
+            <Image url="@../media/images/VolumenOF.png" />
          </image>
       </ImageView>
       <Text fill="WHITE" layoutX="491.0" layoutY="822.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SPEED x1.0">
@@ -137,9 +132,9 @@
             <Font size="17.0" />
          </font>
       </Text>
-      <ImageView fx:id="imageViewCuadroAjustes" fitHeight="916.0" fitWidth="528.0" layoutX="1066.0" layoutY="-56.0" opacity="0.89" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageViewCuadroAjustes" fitHeight="935.0" fitWidth="485.0" layoutX="1055.0" layoutY="-57.0" opacity="0.79" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/NewInterfaz/Images/CuadroAjustes3.png" />
+            <Image url="@../media/images/CuadroAjustes3.png" />
          </image>
       </ImageView>
       <HBox alignment="TOP_CENTER" layoutX="1123.0" layoutY="107.0" prefHeight="54.0" prefWidth="350.0">
@@ -153,7 +148,7 @@
       </HBox>
       <AnchorPane layoutX="1119.0" layoutY="172.0" prefHeight="268.0" prefWidth="359.0">
          <children>
-            <Slider fx:id="altoSlider" layoutX="102.0" layoutY="87.0" max="50.0" onSwipeLeft="#getAltoSlider" onSwipeRight="#getAltoSlider" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="altoSlider" layoutX="102.0" layoutY="87.0" max="50.0" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
             <Text layoutX="33.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alto" textAlignment="CENTER" underline="true" wrappingWidth="66.04541015625">
                <font>
                   <Font size="19.0" />
@@ -192,5 +187,10 @@
          </children>
       </AnchorPane>
       <Line endX="227.4000244140625" layoutX="1235.0" layoutY="169.0" startX="-100.0" />
+      <ImageView fx:id="buttonViewPause" fitHeight="79.0" fitWidth="104.0" layoutX="702.0" layoutY="725.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../media/images/Pausa.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

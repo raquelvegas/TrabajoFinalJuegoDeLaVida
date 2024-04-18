@@ -83,7 +83,7 @@ public class ControllerInterfazBase {
             buttonViewSonidoOF.setVisible(true);
             volText.setText("Vol. OFF");
         } else {
-            //mediaPlayer.play();
+            mediaPlayer.play();
             DatosCompartidos.setPlayreproductor(true);
             buttonViewSonidoOF.setVisible(false);
             volText.setText("Vol. ON");
@@ -91,11 +91,6 @@ public class ControllerInterfazBase {
 
     }
 
-    @FXML
-    void getAltoSlider(MouseEvent event) {
-        String alto = String.valueOf((int)altoSlider.getValue());
-        altoText.setText(alto);
-    }
 
     @FXML
     void getAnchoSlider(MouseEvent event) {
@@ -113,6 +108,16 @@ public class ControllerInterfazBase {
         imageView.setImage(image);
     }
 
+    protected void insertSong(String resourceName) {
+        String path = getClass().getClassLoader().getResource(resourceName).toExternalForm();
+        Media media = new Media(path);
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.5);
+        mediaPlayer.play();
+    }
+
+
 
     public void initialize() {
         insertImage(imageViewLogo, "IconLifeGame.png");
@@ -128,15 +133,7 @@ public class ControllerInterfazBase {
         insertImage(buttonViewSonidoOF, "VolumenOF.png");
         insertImage(imageViewCuadroTexto, "Cuadro texto.png");
         insertImage(imageViewCuadroAjustes, "CuadroAjustes3.png");
-
-        ///music
-        String path = "C:\\Users\\Raquel\\OneDrive - Universidad de Alcala\\Escritorio\\TrabajoFinal\\TrabajoFinalJuegoDeLaVida\\src\\main\\java\\com\\example\\NewInterfaz\\audio\\LaBambaReduced.mp3";
-        Media media = new Media(new File(path).toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.setVolume(0.15);
-        //mediaPlayer.play();
-
+        insertSong("LaBamba.mp3");
 
         altoSlider.valueProperty().bindBidirectional(medida);
         altoText.textProperty().bind(medida.asString());
