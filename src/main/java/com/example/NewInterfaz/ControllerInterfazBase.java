@@ -1,7 +1,12 @@
 package com.example.NewInterfaz;
 
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Slider;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
@@ -16,6 +21,9 @@ import java.io.File;
 
 public class ControllerInterfazBase {
 
+    protected IntegerProperty medida = new SimpleIntegerProperty(0);
+
+    //Imágenes y Media
     @FXML
     private ImageView imageViewFondo;
     @FXML
@@ -40,9 +48,31 @@ public class ControllerInterfazBase {
     private ImageView buttonviewStop;
     @FXML
     private ImageView buttonViewVelocidad;
+    @FXML
+    private ImageView imageViewCuadroAjustes;
     MediaPlayer mediaPlayer;
     @FXML
     private Text volText;
+
+    //TableroMenu
+    @FXML
+    private ToggleGroup TemaTablero;
+    @FXML
+    private Slider altoSlider;
+    @FXML
+    private Text altoText;
+    @FXML
+    private Slider anchoSlider;
+    @FXML
+    private Text anchoText;
+    @FXML
+    private RadioButton buttonAgua;
+    @FXML
+    private RadioButton buttonAire;
+    @FXML
+    private RadioButton buttonFuego;
+    @FXML
+    private RadioButton buttonTierra;
 
 
     @FXML
@@ -53,7 +83,7 @@ public class ControllerInterfazBase {
             buttonViewSonidoOF.setVisible(true);
             volText.setText("Vol. OFF");
         } else {
-            mediaPlayer.play();
+            //mediaPlayer.play();
             DatosCompartidos.setPlayreproductor(true);
             buttonViewSonidoOF.setVisible(false);
             volText.setText("Vol. ON");
@@ -61,31 +91,43 @@ public class ControllerInterfazBase {
 
     }
 
+    @FXML
+    void getAltoSlider(MouseEvent event) {
+        String alto = String.valueOf((int)altoSlider.getValue());
+        altoText.setText(alto);
+    }
+
+    @FXML
+    void getAnchoSlider(MouseEvent event) {
+        String ancho = String.valueOf((int)anchoSlider.getValue());
+        anchoText.setText(ancho);
+    }
+
+    @FXML
+    void updateTheme(MouseEvent event) {
+
+    }
+
+    protected void insertImage(ImageView imageView, String resourceName) {
+        Image image = new Image(getClass().getClassLoader().getResourceAsStream(resourceName));
+        imageView.setImage(image);
+    }
+
+
     public void initialize() {
-        Image imageLogo = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/IconLifeGame.png");
-        imageViewLogo.setImage(imageLogo);
-        Image imagePacman = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/pacman.png");
-        imageViewPackman.setImage(imagePacman);
-        Image imageVivos = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/vivos.png");
-        imageViewVivos.setImage(imageVivos);
-        Image imageMuertos = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/muertos.png");
-        imageViewMuertos.setImage(imageMuertos);
-        Image imageFondo = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/fondo.png");
-        imageViewFondo.setImage(imageFondo);
-        Image buttonVelocidad = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/Velocidad.png");
-        buttonViewVelocidad.setImage(buttonVelocidad);
-        Image buttonPlay = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/Play.png");
-        buttonViewPlay.setImage(buttonPlay);
-        Image buttonPause = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/Pausa.png");
-        buttonViewPause.setImage(buttonPause);
-        Image buttonStop = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/Stop.png");
-        buttonviewStop.setImage(buttonStop);
-        Image buttonSoundON = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/VolumenON.png");
-        buttonViewSonidoON.setImage(buttonSoundON);
-        Image cuadroTexto = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/Cuadro texto.png");
-        imageViewCuadroTexto.setImage(cuadroTexto);
-        Image buttonSoundOF = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/VolumenOF.png");
-        buttonViewSonidoOF.setImage(buttonSoundOF);
+        insertImage(imageViewLogo, "IconLifeGame.png");
+        insertImage(imageViewPackman, "pacman.png");
+        insertImage(imageViewVivos, "vivos.png");
+        insertImage(imageViewMuertos, "muertos.png");
+        insertImage(imageViewFondo, "fondo.png");
+        insertImage(buttonViewVelocidad, "Velocidad.png");
+        insertImage(buttonViewPlay, "Play.png");
+        insertImage(buttonViewPause, "Pausa.png");
+        insertImage(buttonviewStop, "Stop.png");
+        insertImage(buttonViewSonidoON, "VolumenON.png");
+        insertImage(buttonViewSonidoOF, "VolumenOF.png");
+        insertImage(imageViewCuadroTexto, "Cuadro texto.png");
+        insertImage(imageViewCuadroAjustes, "CuadroAjustes3.png");
 
         ///music
         String path = "C:\\Users\\Raquel\\OneDrive - Universidad de Alcala\\Escritorio\\TrabajoFinal\\TrabajoFinalJuegoDeLaVida\\src\\main\\java\\com\\example\\NewInterfaz\\audio\\LaBambaReduced.mp3";
@@ -93,8 +135,11 @@ public class ControllerInterfazBase {
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setVolume(0.15);
-        mediaPlayer.play();
-        ///
+        //mediaPlayer.play();
+
+
+        altoSlider.valueProperty().bindBidirectional(medida);
+        altoText.textProperty().bind(medida.asString());
 
     }
 

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -132,5 +137,60 @@
             <Font size="17.0" />
          </font>
       </Text>
+      <ImageView fx:id="imageViewCuadroAjustes" fitHeight="916.0" fitWidth="528.0" layoutX="1066.0" layoutY="-56.0" opacity="0.89" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../java/com/example/NewInterfaz/Images/CuadroAjustes3.png" />
+         </image>
+      </ImageView>
+      <HBox alignment="TOP_CENTER" layoutX="1123.0" layoutY="107.0" prefHeight="54.0" prefWidth="350.0">
+         <children>
+            <Circle fill="DODGERBLUE" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       " />
+            <Circle fill="DODGERBLUE" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       " textAlignment="CENTER" />
+            <Circle fill="DODGERBLUE" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <AnchorPane layoutX="1119.0" layoutY="172.0" prefHeight="268.0" prefWidth="359.0">
+         <children>
+            <Slider fx:id="altoSlider" layoutX="102.0" layoutY="87.0" max="50.0" onSwipeLeft="#getAltoSlider" onSwipeRight="#getAltoSlider" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
+            <Text layoutX="33.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alto" textAlignment="CENTER" underline="true" wrappingWidth="66.04541015625">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Text fx:id="altoText" fill="#4e4e4e" layoutX="291.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" wrappingWidth="54.0">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Text>
+            <Slider fx:id="anchoSlider" layoutX="105.0" layoutY="32.0" max="50.0" onMouseClicked="#getAnchoSlider" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
+            <Text layoutX="39.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ancho" textAlignment="CENTER" underline="true" wrappingWidth="66.04541015625">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Text fx:id="anchoText" fill="#4e4e4e" layoutX="294.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" wrappingWidth="54.0">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Text>
+            <Text layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tema del tablero" textAlignment="CENTER" underline="true" wrappingWidth="358.4000000000001">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <RadioButton fx:id="buttonAgua" layoutX="46.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#updateTheme" text="Agua">
+               <toggleGroup>
+                  <ToggleGroup fx:id="TemaTablero" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="buttonAire" layoutX="271.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#updateTheme" text="Aire" toggleGroup="$TemaTablero" />
+            <RadioButton fx:id="buttonFuego" layoutX="195.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#updateTheme" text="Fuego" toggleGroup="$TemaTablero" />
+            <RadioButton fx:id="buttonTierra" layoutX="120.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#updateTheme" text="Tierra" toggleGroup="$TemaTablero" />
+            <Button layoutX="132.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Reset" />
+         </children>
+      </AnchorPane>
+      <Line endX="227.4000244140625" layoutX="1235.0" layoutY="169.0" startX="-100.0" />
    </children>
 </AnchorPane>
