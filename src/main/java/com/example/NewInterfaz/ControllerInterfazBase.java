@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 
@@ -26,7 +27,8 @@ public class ControllerInterfazBase {
 
     //Imágenes y Media
     @FXML
-    private ImageView imageViewFondo, imageViewPackman, imageViewCuadroTexto, imageViewLogo, imageViewCuadroAjustes, buttonComoJugar, //Aspecto General
+    private ImageView buttonNuevaPartida, buttonCargarPartida, //Nueva partida o Cargar
+            imageViewFondo, imageViewPackman, imageViewCuadroTexto, imageViewLogo, imageViewCuadroAjustes, buttonComoJugar, //Aspecto General
             imageViewVivos, imageViewMuertos, //Recuento Vivos y Muertos
             buttonViewPause, buttonViewPlay, buttonViewSonidoON, buttonViewSonidoOF, buttonviewStop, buttonViewVelocidad, //Controles Juego
             imageViewRecursosPropiedades, imageViewTableroPropiedades, imageViewUserPropiedades; //Propiedades
@@ -44,7 +46,25 @@ public class ControllerInterfazBase {
     @FXML
     private RadioButton buttonAgua, buttonAire, buttonFuego, buttonTierra; //Ajustes Tablero
     @FXML
-    private AnchorPane tableroPane, initPane, playingPane, userPane;
+    private AnchorPane tableroPane, initPane, playingPane, userPane, newCargarPane;
+    @FXML
+    private Rectangle opacacityRectangle;
+
+    @FXML
+    void iniciarNuevaPartida(MouseEvent event) {
+        opacacityRectangle.setVisible(false);
+        newCargarPane.setVisible(false);
+        initializeAudio();
+        // Cargar JSON con valores predeterminados
+    }
+
+    @FXML
+    void cargarPartida(MouseEvent event) {
+        opacacityRectangle.setVisible(false);
+        newCargarPane.setVisible(false);
+        initializeAudio();
+        // Cargar JSON con partida anterior
+    }
 
     @FXML
     void getRecursosPane(MouseEvent event) {
@@ -123,6 +143,11 @@ public class ControllerInterfazBase {
         insertImage(imageViewUserPropiedades,"user.png");
         insertImage(imageViewRecursosPropiedades,"recursos.png");
         insertImage(buttonComoJugar,"ComoJugar.png");
+        insertImage(buttonCargarPartida, "cargarPartida.png");
+        insertImage(buttonNuevaPartida,"nuevaPartida.png");
+    }
+
+    protected void initializeAudio(){
         insertSong("LaBamba.mp3");
     }
 
@@ -140,6 +165,8 @@ public class ControllerInterfazBase {
 
 
     public void initialize() {
+        opacacityRectangle.setVisible(true);
+        newCargarPane.setVisible(true);
         clearPanes();
         initPane.setVisible(true);
         initializeMedia();

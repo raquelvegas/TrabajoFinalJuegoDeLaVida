@@ -261,5 +261,32 @@
             <Image url="@../../../ComoJugar.png" />
          </image>
       </ImageView>
+      <Rectangle fx:id="opacacityRectangle" arcHeight="5.0" arcWidth="5.0" height="1099.0" layoutX="-103.0" layoutY="-66.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" visible="false" width="1797.0" />
+      <AnchorPane fx:id="newCargarPane" layoutX="316.0" layoutY="205.0" prefHeight="412.0" prefWidth="804.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="433.0" layoutX="-9.0" layoutY="-9.0" stroke="BLACK" strokeType="INSIDE" width="814.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c7c7c7" height="68.0" layoutX="-10.0" layoutY="-14.0" stroke="BLACK" strokeType="INSIDE" width="816.0" />
+            <Text layoutX="24.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="El juego de la vida">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fontSmoothingType="LCD" layoutX="8.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIENVENIDO A ESTA NUEVA AVENTURA ¿ESTÁS LISTO?" textAlignment="CENTER" wrappingWidth="778.6317138671875">
+               <font>
+                  <Font size="43.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="buttonNuevaPartida" fitHeight="122.0" fitWidth="341.0" layoutX="36.0" layoutY="249.0" onMouseClicked="#iniciarNuevaPartida" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../nuevaPartida.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="buttonCargarPartida" fitHeight="122.0" fitWidth="341.0" layoutX="397.0" layoutY="250.0" onMouseClicked="#cargarPartida" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../cargarPartida.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
