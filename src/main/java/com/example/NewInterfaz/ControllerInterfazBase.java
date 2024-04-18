@@ -6,9 +6,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Circle;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
+
 
 import java.io.File;
 
@@ -38,18 +40,25 @@ public class ControllerInterfazBase {
     private ImageView buttonviewStop;
     @FXML
     private ImageView buttonViewVelocidad;
+    MediaPlayer mediaPlayer;
+    @FXML
+    private Text volText;
 
 
     @FXML
     void playPause(MouseEvent event) {
-        String fileName = "file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/La Bamba.mp3";
-        String path = getClass().getResource(fileName).getPath();
-        Media media = new Media(new File(path).toURI().toString());
-        buttonViewSonidoON = new MediaPlayer(media);
-        buttonViewSonidoON.setCycleCount(MediaPlayer.INDEFINITE);
-        buttonViewSonidoON.play();
+        if(DatosCompartidos.isPlayreproductor()){
+            mediaPlayer.pause();
+            DatosCompartidos.setPlayreproductor(false);
+            buttonViewSonidoOF.setVisible(true);
+            volText.setText("Vol. OFF");
+        } else {
+            mediaPlayer.play();
+            DatosCompartidos.setPlayreproductor(true);
+            buttonViewSonidoOF.setVisible(false);
+            volText.setText("Vol. ON");
+        }
 
-    }
     }
 
     public void initialize() {
@@ -77,6 +86,15 @@ public class ControllerInterfazBase {
         imageViewCuadroTexto.setImage(cuadroTexto);
         Image buttonSoundOF = new Image("file:///C:/Users/Raquel/OneDrive%20-%20Universidad%20de%20Alcala/Escritorio/TrabajoFinal/TrabajoFinalJuegoDeLaVida/src/main/java/com/example/NewInterfaz/Images/VolumenOF.png");
         buttonViewSonidoOF.setImage(buttonSoundOF);
+
+        ///music
+        String path = "C:\\Users\\Raquel\\OneDrive - Universidad de Alcala\\Escritorio\\TrabajoFinal\\TrabajoFinalJuegoDeLaVida\\src\\main\\java\\com\\example\\NewInterfaz\\audio\\LaBambaReduced.mp3";
+        Media media = new Media(new File(path).toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.15);
+        mediaPlayer.play();
+        ///
 
     }
 

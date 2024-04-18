@@ -92,7 +92,7 @@
             <Image url="@../../../../java/com/example/NewInterfaz/Images/Stop.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="buttonViewSonidoON" fitHeight="79.0" fitWidth="104.0" layoutX="909.0" layoutY="725.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="buttonViewSonidoON" fitHeight="79.0" fitWidth="104.0" layoutX="909.0" layoutY="725.0" onMouseClicked="#playPause" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../java/com/example/NewInterfaz/Images/VolumenON.png" />
          </image>
@@ -102,7 +102,7 @@
             <Image url="@../../../../java/com/example/NewInterfaz/Images/Cuadro%20texto.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="buttonViewSonidoOF" fitHeight="79.0" fitWidth="104.0" layoutX="909.0" layoutY="725.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="buttonViewSonidoOF" fitHeight="79.0" fitWidth="104.0" layoutX="909.0" layoutY="725.0" onMouseClicked="#playPause" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../../java/com/example/NewInterfaz/Images/VolumenOF.png" />
          </image>
@@ -127,7 +127,7 @@
             <Font size="17.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="914.0" layoutY="821.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOL. ON">
+      <Text fx:id="volText" fill="WHITE" layoutX="914.0" layoutY="821.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOL. ON">
          <font>
             <Font size="17.0" />
          </font>
