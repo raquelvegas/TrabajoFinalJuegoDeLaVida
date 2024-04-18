@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Circle;
@@ -25,58 +26,45 @@ public class ControllerInterfazBase {
 
     //Imágenes y Media
     @FXML
-    private ImageView imageViewFondo;
+    private ImageView imageViewFondo, imageViewPackman, imageViewCuadroTexto, imageViewLogo, imageViewCuadroAjustes, buttonComoJugar, //Aspecto General
+            imageViewVivos, imageViewMuertos, //Recuento Vivos y Muertos
+            buttonViewPause, buttonViewPlay, buttonViewSonidoON, buttonViewSonidoOF, buttonviewStop, buttonViewVelocidad, //Controles Juego
+            imageViewRecursosPropiedades, imageViewTableroPropiedades, imageViewUserPropiedades; //Propiedades
     @FXML
-    private ImageView imageViewPackman;
-    @FXML
-    private ImageView imageViewCuadroTexto;
-    @FXML
-    private ImageView imageViewLogo;
-    @FXML
-    private ImageView imageViewVivos;
-    @FXML
-    private ImageView imageViewMuertos;
-    @FXML
-    private ImageView buttonViewPause;
-    @FXML
-    private ImageView buttonViewPlay;
-    @FXML
-    private ImageView buttonViewSonidoON;
-    @FXML
-    private ImageView buttonViewSonidoOF;
-    @FXML
-    private ImageView buttonviewStop;
-    @FXML
-    private ImageView buttonViewVelocidad;
-    @FXML
-    private ImageView imageViewCuadroAjustes;
     MediaPlayer mediaPlayer;
     @FXML
-    private Text volText;
-
-    //TableroMenu
+    private Text volText, //Controles Juego
+            altoText, anchoText, //Ajustes Tablero
+            vidaUserText, probReproduccionText, probClonacionText; //Ajustes User
     @FXML
     private ToggleGroup TemaTablero;
     @FXML
-    private Slider altoSlider;
+    private Slider altoSlider, anchoSlider, //Ajustes Tablero
+            vidaUserSlider, probReproduccionSlider, probClonacionSlider; //Ajustes User
     @FXML
-    private Text altoText;
+    private RadioButton buttonAgua, buttonAire, buttonFuego, buttonTierra; //Ajustes Tablero
     @FXML
-    private Slider anchoSlider;
-    @FXML
-    private Text anchoText;
-    @FXML
-    private RadioButton buttonAgua;
-    @FXML
-    private RadioButton buttonAire;
-    @FXML
-    private RadioButton buttonFuego;
-    @FXML
-    private RadioButton buttonTierra;
-
+    private AnchorPane tableroPane, initPane, playingPane, userPane;
 
     @FXML
-    void playPause(MouseEvent event) {
+    void getRecursosPane(MouseEvent event) {
+
+    }
+
+    @FXML
+    void getTableroPane(MouseEvent event) {
+        clearPanes();
+        tableroPane.setVisible(true);
+    }
+
+    @FXML
+    void getUserPane(MouseEvent event) {
+        clearPanes();
+        userPane.setVisible(true);
+    }
+
+    @FXML
+    void musicPause(MouseEvent event) {
         if(DatosCompartidos.isPlayreproductor()){
             mediaPlayer.pause();
             DatosCompartidos.setPlayreproductor(false);
@@ -91,16 +79,16 @@ public class ControllerInterfazBase {
 
     }
 
-
     @FXML
-    void getAnchoSlider(MouseEvent event) {
-        String ancho = String.valueOf((int)anchoSlider.getValue());
-        anchoText.setText(ancho);
+    void playGame(MouseEvent event) {
+        clearPanes();
+        playingPane.setVisible(true);
     }
 
     @FXML
-    void updateTheme(MouseEvent event) {
-
+    void playPause(MouseEvent event){
+        clearPanes();
+        initPane.setVisible(true);
     }
 
     protected void insertImage(ImageView imageView, String resourceName) {
@@ -117,9 +105,7 @@ public class ControllerInterfazBase {
         mediaPlayer.play();
     }
 
-
-
-    public void initialize() {
+    protected void initializeMedia(){
         insertImage(imageViewLogo, "IconLifeGame.png");
         insertImage(imageViewPackman, "pacman.png");
         insertImage(imageViewVivos, "vivos.png");
@@ -133,11 +119,35 @@ public class ControllerInterfazBase {
         insertImage(buttonViewSonidoOF, "VolumenOF.png");
         insertImage(imageViewCuadroTexto, "Cuadro texto.png");
         insertImage(imageViewCuadroAjustes, "CuadroAjustes3.png");
+        insertImage(imageViewTableroPropiedades,"tablero.png");
+        insertImage(imageViewUserPropiedades,"user.png");
+        insertImage(imageViewRecursosPropiedades,"recursos.png");
+        insertImage(buttonComoJugar,"ComoJugar.png");
         insertSong("LaBamba.mp3");
+    }
 
-        altoSlider.valueProperty().bindBidirectional(medida);
-        altoText.textProperty().bind(medida.asString());
+    protected void initializeBindingSliders(Slider slider, Text text){
+        slider.valueProperty().bindBidirectional(medida);
+        text.textProperty().bind(medida.asString());
+    }
 
+    protected void clearPanes(){
+        initPane.setVisible(false);
+        playingPane.setVisible(false);
+        tableroPane.setVisible(false);
+        userPane.setVisible(false);
+    }
+
+
+    public void initialize() {
+        clearPanes();
+        initPane.setVisible(true);
+        initializeMedia();
+        initializeBindingSliders(altoSlider,altoText);
+        initializeBindingSliders(anchoSlider,anchoText);
+        initializeBindingSliders(vidaUserSlider,vidaUserText);
+        initializeBindingSliders(probReproduccionSlider,probReproduccionText);
+        initializeBindingSliders(probClonacionSlider,probClonacionText);
     }
 
 }
