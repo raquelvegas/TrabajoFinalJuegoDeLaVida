@@ -20,7 +20,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="550.0" layoutX="467.0" layoutY="153.0" stroke="BLACK" strokeType="INSIDE" width="550.0" />
       <ImageView fx:id="imageViewLogo" fitHeight="261.0" fitWidth="347.0" layoutX="100.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/IconLifeGame.png" />
+            <Image url="@../../../../java/com/example/NewInterfaz/Images/IconLifeGame.png" />
          </image>
       </ImageView>
       <Button layoutX="82.0" layoutY="362.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="300.0" text="CÓMO JUGAR">
@@ -52,7 +52,7 @@
             </Text>
             <ImageView fx:id="imageViewMuertos" fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../java/com/example/NewInterfaz/Images/muertos%20(2).png" />
+                  <Image url="@../../../../java/com/example/NewInterfaz/Images/muertos.png" />
                </image>
             </ImageView>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=" MUERTOS: ">
@@ -72,7 +72,7 @@
             <Image url="@../../../../java/com/example/NewInterfaz/Images/pacman.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="buttonViewVelocidad" fitHeight="79.0" fitWidth="104.0" layoutX="494.0" layoutY="723.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="buttonViewVelocidad" fitHeight="79.0" fitWidth="104.0" layoutX="491.0" layoutY="725.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../java/com/example/NewInterfaz/Images/Velocidad.png" />
          </image>
@@ -92,7 +92,7 @@
             <Image url="@../../../../java/com/example/NewInterfaz/Images/Stop.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="buttonViewSonido" fitHeight="79.0" fitWidth="104.0" layoutX="909.0" layoutY="725.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="buttonViewSonidoON" fitHeight="79.0" fitWidth="104.0" layoutX="909.0" layoutY="725.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../java/com/example/NewInterfaz/Images/VolumenON.png" />
          </image>
@@ -102,5 +102,35 @@
             <Image url="@../../../../java/com/example/NewInterfaz/Images/Cuadro%20texto.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="buttonViewSonidoOF" fitHeight="79.0" fitWidth="104.0" layoutX="909.0" layoutY="725.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../../java/com/example/NewInterfaz/Images/VolumenOF.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="491.0" layoutY="822.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SPEED x1.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="617.0" layoutY="821.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAY">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="715.0" layoutY="821.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PAUSE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="825.0" layoutY="821.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STOP">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="914.0" layoutY="821.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOL. ON">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

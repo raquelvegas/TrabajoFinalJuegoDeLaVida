@@ -1,6 +1,7 @@
 module com.example.eljuegodelavida {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.media;
 
 
     opens com.example.ElJuegoDeLaVida to javafx.fxml;
