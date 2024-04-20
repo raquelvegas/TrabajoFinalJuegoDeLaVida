@@ -23,13 +23,16 @@ public class MainInterfazBase extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        //URL fxmlUrl = getClass().getResource("InterfazBase.fxml");
-        URL fxmlUrl = getClass().getResource("InterfazBaseReescalada.fxml");
+        URL fxmlUrl = getClass().getResource("InterfazBase.fxml");
+        //URL fxmlUrl = getClass().getResource("InterfazBaseReescalada.fxml");
+        //URL fxmlUrl = getClass().getResource("InterfazBasePantallaCompleta.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
         primaryStage.setTitle("¡Bienvenido!");
         primaryStage.setScene(new Scene(root));
-        primaryStage.setFullScreen(true);
-        primaryStage.setFullScreenExitHint("");
+        //primaryStage.setFullScreen(true);
+        //primaryStage.setFullScreenExitHint("");
+        primaryStage.setMaximized(true); // Pantalla completa
+        primaryStage.setResizable(false); // Evitar que la ventana sea redimensionable
         primaryStage.show();
     }
 
