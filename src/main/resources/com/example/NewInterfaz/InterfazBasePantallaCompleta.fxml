@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewInterfaz.ControllerInterfazBase">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#515151" height="1089.0" layoutX="-1.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="1926.0" />
+            <ImageView fx:id="imageViewFondo" fitHeight="1165.0" fitWidth="1972.0" layoutX="-4.0" layoutY="-2.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../fondo.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="550.0" layoutX="599.0" layoutY="260.0" stroke="BLACK" strokeType="INSIDE" width="550.0" />
+            <ImageView fx:id="imageViewLogo" fitHeight="351.0" fitWidth="367.0" layoutX="97.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../IconLifeGame.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="BOTTOM_CENTER" layoutX="593.0" layoutY="129.0" prefHeight="100.0" prefWidth="550.0">
+               <children>
+                  <ImageView fx:id="imageViewVivos" fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../vivos.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=" VIVOS: ">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0000">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="  ">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="imageViewMuertos" fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../muertos.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=" MUERTOS: ">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0000">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <ImageView fx:id="imageViewPackman" fitHeight="98.0" fitWidth="414.0" layoutX="100.0" layoutY="581.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pacman.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageViewCuadroTexto" fitHeight="278.0" fitWidth="524.0" layoutX="51.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Cuadro%20texto.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="buttonViewSonidoOF" fitHeight="79.0" fitWidth="104.0" layoutX="909.0" layoutY="725.0" onMouseClicked="#musicPause" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../VolumenOF.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageViewCuadroAjustes" fitHeight="1116.0" fitWidth="660.0" layoutX="1332.0" layoutY="-66.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../CuadroAjustes3.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="TOP_CENTER" layoutX="1450.0" layoutY="134.0" prefHeight="54.0" prefWidth="350.0">
+               <children>
+                  <ImageView fx:id="imageViewTableroPropiedades" fitHeight="63.0" fitWidth="63.0" onMouseClicked="#getTableroPane" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../tablero.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       " />
+                  <ImageView fx:id="imageViewUserPropiedades" fitHeight="63.0" fitWidth="63.0" onMouseClicked="#getUserPane" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../user.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       " textAlignment="CENTER" />
+                  <ImageView fx:id="imageViewRecursosPropiedades" fitHeight="63.0" fitWidth="63.0" onMouseClicked="#getRecursosPane" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../recursos.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <AnchorPane fx:id="tableroPane" layoutX="1119.0" layoutY="172.0" prefHeight="268.0" prefWidth="359.0" visible="false">
+               <children>
+                  <Slider fx:id="altoSlider" layoutX="102.0" layoutY="87.0" max="50.0" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
+                  <Text layoutX="33.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alto" textAlignment="CENTER" underline="true" wrappingWidth="66.04541015625">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="altoText" fill="#4e4e4e" layoutX="291.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" wrappingWidth="54.0">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+                  <Slider fx:id="anchoSlider" layoutX="105.0" layoutY="32.0" max="50.0" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
+                  <Text layoutX="39.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ancho" textAlignment="CENTER" underline="true" wrappingWidth="66.04541015625">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="anchoText" fill="#4e4e4e" layoutX="294.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" wrappingWidth="54.0">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+                  <Text layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tema del tablero" textAlignment="CENTER" underline="true" wrappingWidth="358.4000000000001">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Text>
+                  <RadioButton fx:id="buttonAgua" layoutX="46.0" layoutY="170.0" mnemonicParsing="false" text="Agua">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="TemaTablero" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="buttonAire" layoutX="271.0" layoutY="170.0" mnemonicParsing="false" text="Aire" toggleGroup="$TemaTablero" />
+                  <RadioButton fx:id="buttonFuego" layoutX="195.0" layoutY="170.0" mnemonicParsing="false" text="Fuego" toggleGroup="$TemaTablero" />
+                  <RadioButton fx:id="buttonTierra" layoutX="120.0" layoutY="170.0" mnemonicParsing="false" text="Tierra" toggleGroup="$TemaTablero" />
+                  <Button layoutX="189.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Reset" />
+                  <Button layoutX="73.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Aplicar" />
+               </children>
+            </AnchorPane>
+            <Line endX="544.4000244140625" endY="34.399993896484375" layoutX="1235.0" layoutY="169.0" opacity="0.8" startX="224.4000244140625" startY="34.399993896484375" />
+            <AnchorPane fx:id="initPane" layoutX="1461.0" layoutY="223.0" prefHeight="261.0" prefWidth="328.0" visible="false">
+               <children>
+                  <Text fontSmoothingType="LCD" layoutX="28.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elige qué propiedades quieres modificar y guarda los nuevos valores." textAlignment="CENTER" wrappingWidth="271.1999267578126">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="playingPane" layoutX="1451.0" layoutY="223.0" prefHeight="261.0" prefWidth="328.0" visible="false">
+               <children>
+                  <Text fx:id="playPane" fontSmoothingType="LCD" layoutX="28.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pausa la partida cuando quieras volver a modificar las propiedades de tu civilización" textAlignment="CENTER" wrappingWidth="271.1999267578126">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="userPane" layoutX="1445.0" layoutY="208.0" prefHeight="268.0" prefWidth="359.0" visible="false">
+               <children>
+                  <Slider fx:id="probReproduccionSlider" layoutX="108.0" layoutY="90.0" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
+                  <Text layoutX="-3.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prob. reproducción" textAlignment="CENTER" underline="true" wrappingWidth="120.4454345703125">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="probReproduccionText" fill="#4e4e4e" layoutX="297.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" wrappingWidth="54.0">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+                  <Slider fx:id="vidaUserSlider" layoutX="106.0" layoutY="35.0" max="50.0" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
+                  <Text fontSmoothingType="LCD" layoutX="10.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo de vida" textAlignment="CENTER" underline="true" wrappingWidth="94.40000000000009">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="vidaUserText" fill="#4e4e4e" layoutX="295.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" wrappingWidth="54.0">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="189.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Reset" />
+                  <Button layoutX="73.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Aplicar" />
+                  <Slider fx:id="probClonacionSlider" layoutX="108.0" layoutY="154.0" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
+                  <Text layoutX="16.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prob. clonación" textAlignment="CENTER" underline="true" wrappingWidth="82.14453125">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="probClonacionText" fill="#4e4e4e" layoutX="297.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" wrappingWidth="54.0">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="buttonComoJugar" fitHeight="119.0" fitWidth="359.0" layoutX="109.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../ComoJugar.png" />
+               </image>
+            </ImageView>
+            <Rectangle fx:id="opacacityRectangle" arcHeight="5.0" arcWidth="5.0" height="1099.0" layoutX="-103.0" layoutY="-66.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" visible="false" width="1797.0" />
+            <AnchorPane fx:id="newCargarPane" layoutX="316.0" layoutY="205.0" prefHeight="412.0" prefWidth="804.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="433.0" layoutX="-9.0" layoutY="-9.0" stroke="BLACK" strokeType="INSIDE" width="814.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c7c7c7" height="68.0" layoutX="-10.0" layoutY="-14.0" stroke="BLACK" strokeType="INSIDE" width="816.0" />
+                  <Text layoutX="24.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="El juego de la vida">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fontSmoothingType="LCD" layoutX="8.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIENVENIDO A ESTA NUEVA AVENTURA ¿ESTÁS LISTO?" textAlignment="CENTER" wrappingWidth="778.6317138671875">
+                     <font>
+                        <Font size="43.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="buttonNuevaPartida" fitHeight="122.0" fitWidth="341.0" layoutX="36.0" layoutY="249.0" onMouseClicked="#iniciarNuevaPartida" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../nuevaPartida.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="buttonCargarPartida" fitHeight="122.0" fitWidth="341.0" layoutX="397.0" layoutY="250.0" onMouseClicked="#cargarPartida" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../cargarPartida.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <VBox layoutX="530.0" layoutY="846.0" prefHeight="200.0" prefWidth="670.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="buttonViewVelocidad" fitHeight="79.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Velocidad.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       " />
+                        <ImageView fx:id="buttonViewPlay" fitHeight="79.0" fitWidth="104.0" onMouseClicked="#playGame" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Play.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       " />
+                        <ImageView fx:id="buttonViewPause" fitHeight="79.0" fitWidth="104.0" onMouseClicked="#playPause" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Pausa.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       " />
+                        <ImageView fx:id="buttonviewStop" fitHeight="79.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Stop.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       " />
+                        <ImageView fx:id="buttonViewSonidoON" fitHeight="79.0" fitWidth="104.0" onMouseClicked="#musicPause" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../VolumenON.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SPEED x1.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAY">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="PAUSE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="STOP">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+                        <Text fx:id="volText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="VOL. ON" textAlignment="CENTER">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
