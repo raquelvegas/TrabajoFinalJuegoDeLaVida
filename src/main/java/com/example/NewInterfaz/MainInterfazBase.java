@@ -17,14 +17,12 @@ public class MainInterfazBase extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         URL fxmlUrl = getClass().getResource("InterfazBase.fxml");
-        //URL fxmlUrl = getClass().getResource("InterfazBaseReescalada.fxml");
+        //1URL fxmlUrl = getClass().getResource("InterfazBaseReescalada.fxml");
         //URL fxmlUrl = getClass().getResource("InterfazBasePantallaCompleta.fxml");
         //URL fxmlUrl = getClass().getResource("InterfazBase.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
         primaryStage.setTitle("¡Bienvenido!");
         primaryStage.setScene(new Scene(root,1920,1080));
-        //primaryStage.setFullScreen(true);
-        //primaryStage.setFullScreenExitHint("");
         primaryStage.setMaximized(true); // Pantalla completa
         primaryStage.setResizable(false); // Evitar que la ventana sea redimensionable
         primaryStage.show();
@@ -33,7 +31,7 @@ public class MainInterfazBase extends Application {
         primaryStage.setOnCloseRequest(event -> {
             event.consume(); // Consumir el evento para evitar que la ventana se cierre directamente
 
-            // Mostrar un diálogo de confirmación
+            // Mostrar alerta
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmar salida");
             alert.setHeaderText("¿Estás seguro de que quieres salir?");
@@ -41,12 +39,10 @@ public class MainInterfazBase extends Application {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                // Si el usuario confirma, cierra la aplicación
-                primaryStage.close();
+                primaryStage.close(); //si se acepta se cierra
             }
         });
-
-        primaryStage.show();
+        primaryStage.show(); //Sino se muestra otra vez el Stage principal
 }
 
 

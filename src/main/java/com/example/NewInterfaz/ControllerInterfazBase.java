@@ -32,9 +32,7 @@ import java.util.function.Supplier;
 
 public class ControllerInterfazBase {
 
-    protected IntegerProperty medida = new SimpleIntegerProperty(0);
-
-    //Imágenes y Media
+    ///////////////////////////////Todos los ID's//////////////////////////////////////////////////
     @FXML
     private ImageView buttonNuevaPartida, buttonCargarPartida, //Nueva partida o Cargar
             imageViewFondo, imageViewPackman, imageViewCuadroTexto, imageViewLogo, imageViewCuadroAjustes, buttonComoJugar, //Aspecto General
@@ -63,7 +61,8 @@ public class ControllerInterfazBase {
     @FXML
     private Button buttonAplicarRecursosVida, buttonResetRecursosVida, buttonAplicarUser, buttonResetUser, buttonAplicarTablero, buttonResetTablero;
 
-    //////BindingSliders/////
+
+    //////////////////////////////////////////BindingSliders/////////////////////////////////////////
     protected IntegerProperty medidaAlto = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaAncho = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaVidaUser = new SimpleIntegerProperty(0);
@@ -76,6 +75,7 @@ public class ControllerInterfazBase {
     protected IntegerProperty medidaTesoroVida = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaPozoVida = new SimpleIntegerProperty(0);
 
+    /////////////////////////////////////MouseEvents////////////////////////////////////////////////////
 
     @FXML
     void iniciarNuevaPartida(MouseEvent event) {
@@ -167,7 +167,6 @@ public class ControllerInterfazBase {
         getDatosCompartidosValue(DatosCompartidos::getProbClonacion, probClonacionSlider);
     }
 
-
     @FXML
     void aplicarRecursosVida(MouseEvent event){
         setSlidersValue(DatosCompartidos::setAguaVida, aguaVidaSlider);
@@ -188,6 +187,8 @@ public class ControllerInterfazBase {
         getDatosCompartidosValue(DatosCompartidos::getPozoVida, pozoVidaSlider);
     }
 
+
+    ///////////////////////////////////Métodos de apoyo///////////////////////////////////////////
     protected void insertImage(ImageView imageView, String resourceName) {
         Image image = new Image(getClass().getClassLoader().getResourceAsStream(resourceName));
         imageView.setImage(image);
@@ -249,6 +250,8 @@ public class ControllerInterfazBase {
         slider.setValue(Integer.parseInt(getter.get()));
     }
 
+
+    ///////////////////////////////////Initialize/////////////////////////////////////////////////
     public void initialize() {
         opacacityRectangle.setVisible(true);
         newCargarPane.setVisible(true);
