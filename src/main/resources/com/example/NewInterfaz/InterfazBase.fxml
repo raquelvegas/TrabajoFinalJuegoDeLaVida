@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="858.0" prefWidth="1538.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewInterfaz.ControllerInterfazBase">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="858.0" prefWidth="1538.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewInterfaz.ControllerInterfazBase">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#515151" height="865.0" layoutX="-1.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="1540.0" />
       <ImageView fx:id="imageViewFondo" fitHeight="927.0" fitWidth="1552.0" layoutX="-4.0" layoutY="-2.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
@@ -93,7 +93,7 @@
       </ImageView>
       <ImageView fx:id="imageViewCuadroTexto" fitHeight="278.0" fitWidth="524.0" layoutX="13.0" layoutY="578.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Cuadro%20texto.png" />
+            <Image url="@../../../Cuadro texto.png" />
          </image>
       </ImageView>
       <ImageView fx:id="buttonViewSonidoOF" fitHeight="79.0" fitWidth="104.0" layoutX="909.0" layoutY="725.0" onMouseClicked="#musicPause" pickOnBounds="true" preserveRatio="true" visible="false">
@@ -152,7 +152,7 @@
             </ImageView>
          </children>
       </HBox>
-      <AnchorPane fx:id="tableroPane" layoutX="1119.0" layoutY="172.0" prefHeight="268.0" prefWidth="359.0" visible="false">
+      <AnchorPane fx:id="tableroPane" layoutX="1119.0" layoutY="172.0" prefHeight="268.0" prefWidth="359.0">
          <children>
             <Slider fx:id="altoSlider" layoutX="102.0" layoutY="87.0" max="50.0" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
             <Text layoutX="33.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alto" textAlignment="CENTER" underline="true" wrappingWidth="66.04541015625">
@@ -189,8 +189,8 @@
             <RadioButton fx:id="buttonAire" layoutX="271.0" layoutY="170.0" mnemonicParsing="false" text="Aire" toggleGroup="$TemaTablero" />
             <RadioButton fx:id="buttonFuego" layoutX="195.0" layoutY="170.0" mnemonicParsing="false" text="Fuego" toggleGroup="$TemaTablero" />
             <RadioButton fx:id="buttonTierra" layoutX="120.0" layoutY="170.0" mnemonicParsing="false" text="Tierra" toggleGroup="$TemaTablero" />
-            <Button layoutX="189.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Reset" />
-            <Button layoutX="73.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Aplicar" />
+            <Button fx:id="buttonResetTablero" layoutX="189.0" layoutY="216.0" mnemonicParsing="false" onMouseClicked="#resetTablero" prefHeight="26.0" prefWidth="94.0" text="Reset" />
+            <Button fx:id="buttonAplicarTablero" layoutX="73.0" layoutY="216.0" mnemonicParsing="false" onMouseClicked="#aplicarTablero" prefHeight="26.0" prefWidth="94.0" text="Aplicar" />
          </children>
       </AnchorPane>
       <Line endX="227.4000244140625" layoutX="1235.0" layoutY="169.0" opacity="0.8" startX="-100.0" />
@@ -217,7 +217,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="userPane" layoutX="1118.0" layoutY="172.0" prefHeight="268.0" prefWidth="359.0">
+      <AnchorPane fx:id="userPane" layoutX="1118.0" layoutY="172.0" prefHeight="268.0" prefWidth="359.0" visible="false">
          <children>
             <Slider fx:id="probReproduccionSlider" layoutX="108.0" layoutY="90.0" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
             <Text layoutX="-3.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prob. reproducción" textAlignment="CENTER" underline="true" wrappingWidth="120.4454345703125">
@@ -241,8 +241,8 @@
                   <Font size="27.0" />
                </font>
             </Text>
-            <Button layoutX="189.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Reset" />
-            <Button layoutX="73.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Aplicar" />
+            <Button fx:id="buttonResetUser" layoutX="189.0" layoutY="216.0" mnemonicParsing="false" onMouseClicked="#resetUser" prefHeight="26.0" prefWidth="94.0" text="Reset" />
+            <Button fx:id="buttonAplicarUser" layoutX="73.0" layoutY="216.0" mnemonicParsing="false" onMouseClicked="#aplicarUser" prefHeight="26.0" prefWidth="94.0" text="Aplicar" />
             <Slider fx:id="probClonacionSlider" layoutX="108.0" layoutY="154.0" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
             <Text layoutX="16.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prob. clonación" textAlignment="CENTER" underline="true" wrappingWidth="82.14453125">
                <font>
@@ -286,6 +286,63 @@
                   <Image url="@../../../cargarPartida.png" />
                </image>
             </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="recursosPane" layoutX="1119.0" layoutY="172.0" prefHeight="268.0" prefWidth="359.0" visible="false">
+         <children>
+            <Button fx:id="buttonResetRecursosVida" layoutX="189.0" layoutY="216.0" mnemonicParsing="false" onMouseClicked="#resetRecursosVida" prefHeight="26.0" prefWidth="94.0" text="Reset" />
+            <Button fx:id="buttonAplicarRecursosVida" layoutX="73.0" layoutY="216.0" mnemonicParsing="false" onMouseClicked="#aplicarRecursosVida" prefHeight="26.0" prefWidth="94.0" text="Aplicar" />
+            <HBox alignment="CENTER_LEFT" layoutX="18.0" layoutY="47.0" prefHeight="132.0" prefWidth="341.0">
+               <children>
+                  <Slider fx:id="aguaVidaSlider" orientation="VERTICAL" prefHeight="132.0" prefWidth="39.0" showTickLabels="true" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="    " />
+                  <Slider fx:id="comidaVidaSlider" orientation="VERTICAL" prefHeight="132.0" prefWidth="39.0" showTickLabels="true" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="      " />
+                  <Slider fx:id="montanaVidaSlider" orientation="VERTICAL" prefHeight="132.0" prefWidth="39.0" showTickLabels="true" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="        " />
+                  <Slider fx:id="bibliotecaVidaSlider" orientation="VERTICAL" prefHeight="132.0" prefWidth="39.0" showTickLabels="true" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     " />
+                  <Slider fx:id="tesoroVidaSlider" orientation="VERTICAL" prefHeight="132.0" prefWidth="39.0" showTickLabels="true" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     " />
+                  <Slider fx:id="pozoVidaSlider" orientation="VERTICAL" prefHeight="132.0" prefWidth="39.0" showTickLabels="true" />
+               </children>
+            </HBox>
+            <Text fx:id="aguaVidaText" fill="#514f4f" layoutX="22.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="comidaVidaText" fill="#514f4f" layoutX="68.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="montanaVidaText" fill="#514f4f" layoutX="134.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="bibliotecaVidaText" fill="#514f4f" layoutX="193.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" wrappingWidth="35.888671875">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="tesoroVidaText" fill="#514f4f" layoutX="255.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="pozoVidaText" fill="#514f4f" layoutX="308.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="19.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agua" />
+            <Text layoutX="59.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comida" />
+            <Text layoutX="118.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monataña" />
+            <Text layoutX="185.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biblioteca" />
+            <Text layoutX="248.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesoro" />
+            <Text layoutX="306.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pozo" />
          </children>
       </AnchorPane>
    </children>

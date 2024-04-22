@@ -19,9 +19,10 @@ public class MainInterfazBase extends Application {
         URL fxmlUrl = getClass().getResource("InterfazBase.fxml");
         //URL fxmlUrl = getClass().getResource("InterfazBaseReescalada.fxml");
         //URL fxmlUrl = getClass().getResource("InterfazBasePantallaCompleta.fxml");
+        //URL fxmlUrl = getClass().getResource("InterfazBase.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
         primaryStage.setTitle("¡Bienvenido!");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,1920,1080));
         //primaryStage.setFullScreen(true);
         //primaryStage.setFullScreenExitHint("");
         primaryStage.setMaximized(true); // Pantalla completa
@@ -43,7 +44,7 @@ public class MainInterfazBase extends Application {
                 // Si el usuario confirma, cierra la aplicación
                 primaryStage.close();
             }
-    });
+        });
 
         primaryStage.show();
 }

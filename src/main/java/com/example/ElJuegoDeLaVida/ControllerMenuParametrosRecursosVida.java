@@ -16,46 +16,15 @@ import java.net.URL;
 public class ControllerMenuParametrosRecursosVida {
 
     @FXML
-    private Slider aguaVidaSlider;
+    private Slider aguaVidaSlider, bibliotecaVidaSlider, comidaVidaSlider, montanaVidaSlider,
+            pozoVidaSlider, tesoroVidaSlider;
 
     @FXML
-    private Text aguaVidaText;
+    private Text aguaVidaText, bibliotecaVidaText, comidaVidaText, montanaVidaText, pozoVidaText,
+    tesoroVidaText;
 
     @FXML
-    private Text bibliotecaVidaText;
-
-    @FXML
-    private Slider bibliotecaVidaSlider;
-
-    @FXML
-    private Button buttonAnterior;
-
-    @FXML
-    private Button buttonSiguiente;
-
-    @FXML
-    private Slider comidaVidaSlider;
-
-    @FXML
-    private Text comidaVidaText;
-
-    @FXML
-    private Slider montanaVidaSlider;
-
-    @FXML
-    private Text montanaVidaText;
-
-    @FXML
-    private Slider pozoVidaSlider;
-
-    @FXML
-    private Text pozoVidaText;
-
-    @FXML
-    private Slider tesoroVidaSlider;
-
-    @FXML
-    private Text tesoroVidaText;
+    private Button buttonAnterior, buttonSiguiente;
 
     @FXML
     void getAguaVida(MouseEvent event) {
