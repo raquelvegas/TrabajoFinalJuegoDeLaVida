@@ -61,8 +61,12 @@ public class ControllerInterfazBase {
     @FXML
     private Button buttonAplicarRecursosVida, buttonResetRecursosVida, buttonAplicarUser, buttonResetUser, buttonAplicarTablero, buttonResetTablero;
 
+    ///////////////////////////////////Variables/////////////////////////////////////////////////////
 
-    //////////////////////////////////////////BindingSliders/////////////////////////////////////////
+    private boolean gameOn = false;
+    private boolean gameStopped = true;
+
+    ///////////////////////////////////BindingSliders/////////////////////////////////////////////////
     protected IntegerProperty medidaAlto = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaAncho = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaVidaUser = new SimpleIntegerProperty(0);
@@ -95,20 +99,26 @@ public class ControllerInterfazBase {
 
     @FXML
     void getRecursosPane(MouseEvent event) {
-        clearPanes();
-        recursosPane.setVisible(true);
+        if(gameStopped) {
+            clearPanes();
+            recursosPane.setVisible(true);
+        }
     }
 
     @FXML
     void getTableroPane(MouseEvent event) {
-        clearPanes();
-        tableroPane.setVisible(true);
+        if(gameStopped) {
+            clearPanes();
+            tableroPane.setVisible(true);
+        }
     }
 
     @FXML
     void getUserPane(MouseEvent event) {
-        clearPanes();
-        userPane.setVisible(true);
+        if(gameStopped) {
+            clearPanes();
+            userPane.setVisible(true);
+        }
     }
 
     @FXML
@@ -131,12 +141,15 @@ public class ControllerInterfazBase {
     void playGame(MouseEvent event) {
         clearPanes();
         playingPane.setVisible(true);
+        gameOn=true;
+        gameStopped=false;
     }
 
     @FXML
     void playPause(MouseEvent event){
         clearPanes();
         initPane.setVisible(true);
+        gameStopped=true;
     }
 
     @FXML

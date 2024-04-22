@@ -34,7 +34,7 @@ public class MainInterfazBase extends Application {
             // Mostrar alerta
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmar salida");
-            alert.setHeaderText("¿Estás seguro de que quieres salir?");
+            alert.setHeaderText("Estás a punto de abandonar «Life Game». ¿Estás seguro?");
             alert.setContentText("Si sales, perderás todos los cambios no guardados.");
 
             Optional<ButtonType> result = alert.showAndWait();
