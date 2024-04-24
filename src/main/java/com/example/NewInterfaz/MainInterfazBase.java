@@ -16,8 +16,8 @@ public class MainInterfazBase extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        URL fxmlUrl = getClass().getResource("InterfazBase.fxml");
-        //1URL fxmlUrl = getClass().getResource("InterfazBaseReescalada.fxml");
+        //URL fxmlUrl = getClass().getResource("InterfazBase.fxml");
+        URL fxmlUrl = getClass().getResource("InterfazBaseReescalada.fxml");
         //URL fxmlUrl = getClass().getResource("InterfazBasePantallaCompleta.fxml");
         //URL fxmlUrl = getClass().getResource("InterfazBase.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
