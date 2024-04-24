@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,14 +19,16 @@ public class MainInterfazBase extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         //URL fxmlUrl = getClass().getResource("InterfazBase.fxml");
-        URL fxmlUrl = getClass().getResource("InterfazBaseReescalada.fxml");
+        //URL fxmlUrl = getClass().getResource("InterfazBaseReescalada.fxml");
         //URL fxmlUrl = getClass().getResource("InterfazBasePantallaCompleta.fxml");
-        //URL fxmlUrl = getClass().getResource("InterfazBase.fxml");
+        URL fxmlUrl = getClass().getResource("InterfazGridPane.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
         primaryStage.setTitle("¡Bienvenido!");
         primaryStage.setScene(new Scene(root,1920,1080));
         primaryStage.setMaximized(true); // Pantalla completa
         primaryStage.setResizable(false); // Evitar que la ventana sea redimensionable
+
+
         primaryStage.show();
 
 

@@ -1,29 +1,36 @@
 package com.example.borderpane;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        // Cargar la interfaz de usuario desde el archivo FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfazPrueba.fxml"));
-        Parent root = loader.load();
+    public void start(Stage primaryStage) {
+        // Crear una imagen y un ImageView
+        Image image = new Image("IconLifeGame.png"); // Reemplaza "sample.jpg" con la ruta de tu imagen
+        ImageView imageView = new ImageView(image);
 
-        // Configurar la escena
-        Scene scene = new Scene(root);
+        // Crear un GridPane
+        GridPane gridPane = new GridPane();
+        gridPane.setStyle("-fx-background-color: lightgray;"); // Color de fondo opcional para visualizar el GridPane
 
-        // Establecer el título de la ventana
-        primaryStage.setTitle("Mi Aplicación JavaFX");
+        // Ajustar la imagen al tamaño de la celda sin deformarla
+        imageView.setPreserveRatio(true);
+        imageView.fitWidthProperty().bind(gridPane.widthProperty());
+        imageView.fitHeightProperty().bind(gridPane.heightProperty());
 
-        // Establecer la escena en la ventana principal
+        // Añadir la imagen al GridPane
+        gridPane.add(imageView, 0, 0);
+
+        // Crear la escena y mostrarla
+        Scene scene = new Scene(gridPane, 400, 300); // Tamaño inicial de la ventana
         primaryStage.setScene(scene);
-
-        // Mostrar la ventana principal
+        primaryStage.setTitle("Imagen en GridPane");
         primaryStage.show();
     }
 
@@ -31,4 +38,5 @@ public class Main extends Application {
         launch(args);
     }
 }
+
 

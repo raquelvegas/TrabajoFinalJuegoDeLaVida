@@ -10,4 +10,5 @@ module com.example.eljuegodelavida {
     exports com.example.NewInterfaz;
     opens com.example.NewInterfaz to javafx.fxml;
     exports com.example.borderpane;
+    opens com.example.borderpane to javafx.fxml;
 }

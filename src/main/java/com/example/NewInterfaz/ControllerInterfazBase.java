@@ -55,7 +55,7 @@ public class ControllerInterfazBase {
     @FXML
     private RadioButton buttonAgua, buttonAire, buttonFuego, buttonTierra; //Ajustes Tablero
     @FXML
-    private AnchorPane tableroPane, initPane, playingPane, userPane, recursosPane, newCargarPane;
+    private AnchorPane tableroPane, initPane, playingPane, userPane, recursosPane, newCargarPane, rootPane;
     @FXML
     private Rectangle opacacityRectangle;
     @FXML

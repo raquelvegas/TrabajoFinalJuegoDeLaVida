@@ -12,11 +12,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -48,7 +50,8 @@ public class ControllerInterfazBaseReescaladas {
     private Rectangle opacacityRectangle;
     @FXML
     private Button buttonAplicarUser, buttonResetUser, buttonAplicarTablero, buttonResetTablero;
-
+    @FXML
+    private GridPane gridPane;
     ///////////////////////////////////Variables/////////////////////////////////////////////////////
 
     private boolean gameOn = false;
@@ -219,6 +222,28 @@ public class ControllerInterfazBaseReescaladas {
         slider.setValue(Integer.parseInt(getter.get()));
     }
 
+    private void preserveRadio(ImageView image){
+        AtomicReference<Double> maxWidth = new AtomicReference<>(Double.MAX_VALUE); // Establecemos el máximo inicialmente al máximo valor posible
+        AtomicReference<Double> maxHeight = new AtomicReference<>(Double.MAX_VALUE); // Establecemos el máximo inicialmente al máximo valor posible
+
+        // Escucha el cambio en el tamaño de la celda y ajusta el tamaño máximo
+        gridPane.widthProperty().addListener((obs, oldVal, newVal) -> {
+            double newWidth = newVal.doubleValue() - 10; // Restamos un valor para dejar espacio para el borde, margen, etc.
+            maxWidth.set(Math.min(maxWidth.get(), newWidth));
+            image.setFitWidth(Math.min(image.getFitWidth(), maxWidth.get()));
+        });
+
+        gridPane.heightProperty().addListener((obs, oldVal, newVal) -> {
+            double newHeight = newVal.doubleValue() - 10; // Restamos un valor para dejar espacio para el borde, margen, etc.
+            maxHeight.set(Math.min(maxHeight.get(), newHeight));
+            image.setFitHeight(Math.min(image.getFitHeight(), maxHeight.get()));
+        });
+
+        // Mantenemos la relación de aspecto
+        image.setPreserveRatio(true);
+    }
+
+
 
     ///////////////////////////////////Initialize/////////////////////////////////////////////////
     public void initialize() {
@@ -232,6 +257,28 @@ public class ControllerInterfazBaseReescaladas {
         initializeBindingSliders(vidaUserSlider,vidaUserText, medidaVidaUser);
         initializeBindingSliders(probReproduccionSlider,probReproduccionText, medidaReproduccion);
         initializeBindingSliders(probClonacionSlider,probClonacionText, medidaClonacion);
+
+        preserveRadio(buttonNuevaPartida);
+        preserveRadio(buttonCargarPartida);
+        preserveRadio(imageViewFondo);
+        preserveRadio(imageViewPackman);
+        preserveRadio(imageViewCuadroTexto);
+        preserveRadio(imageViewLogo);
+        preserveRadio(imageViewCuadroAjustes);
+        preserveRadio(buttonComoJugar);
+        preserveRadio(imageViewVivos);
+        preserveRadio(imageViewMuertos);
+        preserveRadio(buttonViewPause);
+        preserveRadio(buttonViewPlay);
+        preserveRadio(buttonViewSonidoON);
+        preserveRadio(buttonViewSonidoOF);
+        preserveRadio(buttonviewStop);
+        preserveRadio(buttonViewVelocidad);
+        preserveRadio(imageViewRecursosPropiedades);
+        preserveRadio(imageViewTableroPropiedades);
+        preserveRadio(imageViewUserPropiedades);
     }
+
+
 
 }
