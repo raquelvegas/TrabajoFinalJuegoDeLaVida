@@ -6,46 +6,49 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="gidPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.00001220703126" minWidth="10.0" prefWidth="258.40003662109376" />
+       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="455.99998168945314" minWidth="10.0" prefWidth="361.59996337890624" />
+       <ColumnConstraints hgrow="SOMETIMES" maxWidth="649.6000122070312" minWidth="10.0" prefWidth="281.5999816894531" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
    <children>
-      <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../IconLifeGame.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="logo" fitHeight="216.0" fitWidth="214.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-         <image>
-            <Image url="@../../../IconLifeGame.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="logo" fitHeight="200.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-         <image>
-            <Image url="@../../../IconLifeGame.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <image>
-            <Image url="@../../../IconLifeGame.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
-         <image>
-            <Image url="@../../../IconLifeGame.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="logo" fitHeight="204.0" fitWidth="359.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <image>
-            <Image url="@../../../IconLifeGame.png" />
-         </image>
-      </ImageView>
+      <GridPane fx:id="gridPaneIzda" GridPane.vgrow="ALWAYS">
+        <rowConstraints>
+          <RowConstraints maxHeight="256.8000091552734" minHeight="10.0" prefHeight="256.8000091552734" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="136.79999389648438" minHeight="10.0" prefHeight="73.40001220703124" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="151.20001220703125" minHeight="10.0" prefHeight="34.59996337890624" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="233.80003662109374" minHeight="10.0" prefHeight="233.80003662109374" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="257.6" minWidth="238.39998779296874" prefWidth="257.6" />
+             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="19.20001220703128" minWidth="0.0" prefWidth="0.0" />
+         </columnConstraints>
+         <children>
+            <ImageView fx:id="logo" fitHeight="234.0" fitWidth="257.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../IconLifeGame.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="comoJugar" fitHeight="100.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../ComoJugar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="packman" fitHeight="43.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../pacman.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="cuadroTexto" fitHeight="210.0" fitWidth="254.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@../../../Cuadro%20texto.png" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
    </children>
 </GridPane>

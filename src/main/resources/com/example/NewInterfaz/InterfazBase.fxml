@@ -152,7 +152,7 @@
             </ImageView>
          </children>
       </HBox>
-      <AnchorPane fx:id="tableroPane" layoutX="1119.0" layoutY="172.0" prefHeight="268.0" prefWidth="359.0">
+      <AnchorPane fx:id="tableroPane" layoutX="1119.0" layoutY="172.0" prefHeight="268.0" prefWidth="359.0" visible="false">
          <children>
             <Slider fx:id="altoSlider" layoutX="102.0" layoutY="87.0" max="50.0" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
             <Text layoutX="33.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alto" textAlignment="CENTER" underline="true" wrappingWidth="66.04541015625">
@@ -217,7 +217,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="userPane" layoutX="1118.0" layoutY="172.0" prefHeight="268.0" prefWidth="359.0" visible="false">
+      <AnchorPane fx:id="userPane" layoutX="1118.0" layoutY="172.0" prefHeight="268.0" prefWidth="359.0">
          <children>
             <Slider fx:id="probReproduccionSlider" layoutX="108.0" layoutY="90.0" prefHeight="14.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" />
             <Text layoutX="-3.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prob. reproducción" textAlignment="CENTER" underline="true" wrappingWidth="120.4454345703125">
