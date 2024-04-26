@@ -222,25 +222,31 @@ public class ControllerInterfazBaseReescaladas {
         slider.setValue(Integer.parseInt(getter.get()));
     }
 
-    private void preserveRadio(ImageView image){
-        AtomicReference<Double> maxWidth = new AtomicReference<>(Double.MAX_VALUE); // Establecemos el máximo inicialmente al máximo valor posible
-        AtomicReference<Double> maxHeight = new AtomicReference<>(Double.MAX_VALUE); // Establecemos el máximo inicialmente al máximo valor posible
+    private void preserveRadio(ImageView image, GridPane gridPane) {
+        AtomicReference<Double> maxWidth = new AtomicReference<>(Double.MAX_VALUE);
+        AtomicReference<Double> maxHeight = new AtomicReference<>(Double.MAX_VALUE);
 
-        // Escucha el cambio en el tamaño de la celda y ajusta el tamaño máximo
+        // Escucha el cambio en el tamaño del GridPane y ajusta el tamaño máximo de la imagen
         gridPane.widthProperty().addListener((obs, oldVal, newVal) -> {
-            double newWidth = newVal.doubleValue() - 10; // Restamos un valor para dejar espacio para el borde, margen, etc.
+            double newWidth = newVal.doubleValue() / gridPane.getColumnCount() - 10; // Restamos un valor para dejar espacio para el borde, margen, etc.
             maxWidth.set(Math.min(maxWidth.get(), newWidth));
-            image.setFitWidth(Math.min(image.getFitWidth(), maxWidth.get()));
+            image.setFitWidth(maxWidth.get());
         });
 
         gridPane.heightProperty().addListener((obs, oldVal, newVal) -> {
-            double newHeight = newVal.doubleValue() - 10; // Restamos un valor para dejar espacio para el borde, margen, etc.
+            double newHeight = newVal.doubleValue() / gridPane.getRowCount() - 10; // Restamos un valor para dejar espacio para el borde, margen, etc.
             maxHeight.set(Math.min(maxHeight.get(), newHeight));
-            image.setFitHeight(Math.min(image.getFitHeight(), maxHeight.get()));
+            image.setFitHeight(maxHeight.get());
         });
 
         // Mantenemos la relación de aspecto
         image.setPreserveRatio(true);
+    }
+
+    private void setImage (ImageView imageView, String path, GridPane gridPane){
+        Image image = new Image(getClass().getClassLoader().getResourceAsStream(path));
+        imageView.setImage(image);
+        preserveRadio(imageView, gridPane);
     }
 
 
@@ -258,25 +264,25 @@ public class ControllerInterfazBaseReescaladas {
         initializeBindingSliders(probReproduccionSlider,probReproduccionText, medidaReproduccion);
         initializeBindingSliders(probClonacionSlider,probClonacionText, medidaClonacion);
 
-        preserveRadio(buttonNuevaPartida);
-        preserveRadio(buttonCargarPartida);
-        preserveRadio(imageViewFondo);
-        preserveRadio(imageViewPackman);
-        preserveRadio(imageViewCuadroTexto);
-        preserveRadio(imageViewLogo);
-        preserveRadio(imageViewCuadroAjustes);
-        preserveRadio(buttonComoJugar);
-        preserveRadio(imageViewVivos);
-        preserveRadio(imageViewMuertos);
-        preserveRadio(buttonViewPause);
-        preserveRadio(buttonViewPlay);
-        preserveRadio(buttonViewSonidoON);
-        preserveRadio(buttonViewSonidoOF);
-        preserveRadio(buttonviewStop);
-        preserveRadio(buttonViewVelocidad);
-        preserveRadio(imageViewRecursosPropiedades);
-        preserveRadio(imageViewTableroPropiedades);
-        preserveRadio(imageViewUserPropiedades);
+        setImage(buttonNuevaPartida, "nuevaPartida.png", gridPane);
+        setImage(buttonCargarPartida, "cargarpartida.png", gridPane);
+        setImage(imageViewFondo, "fondo.png", gridPane);
+        setImage(imageViewPackman, "pacman", gridPane);
+        setImage(imageViewCuadroTexto, "Cuadro texto.png", gridPane);
+        setImage(imageViewLogo, "IconLifeGame.png", gridPane);
+        setImage(imageViewCuadroAjustes, "CuadroAjustes3.png", gridPane);
+        setImage(buttonComoJugar, "ComoJugar.png", gridPane);
+        setImage(imageViewVivos, "vivos.png", gridPane);
+        setImage(imageViewMuertos, "muertos", gridPane);
+        setImage(buttonViewPause, "Pausa.png", gridPane);
+        setImage(buttonViewPlay, "Play.png", gridPane);
+        setImage(buttonViewSonidoON, "VolumenON.png", gridPane);
+        setImage(buttonViewSonidoOF, "VolumenOF.png", gridPane);
+        setImage(buttonviewStop, "Stop.png", gridPane);
+        setImage(buttonViewVelocidad, "Velocidad.png", gridPane);
+        setImage(imageViewRecursosPropiedades, "recursos.png", gridPane);
+        setImage(imageViewTableroPropiedades, "tablero.png", gridPane);
+        setImage(imageViewUserPropiedades, "user.png", gridPane);
     }
 
 

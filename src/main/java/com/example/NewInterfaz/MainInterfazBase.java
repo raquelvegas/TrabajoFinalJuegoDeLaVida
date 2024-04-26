@@ -26,7 +26,7 @@ public class MainInterfazBase extends Application {
         primaryStage.setTitle("¡Bienvenido!");
         primaryStage.setScene(new Scene(root,1920,1080));
         primaryStage.setMaximized(true); // Pantalla completa
-        primaryStage.setResizable(false); // Evitar que la ventana sea redimensionable
+        primaryStage.setResizable(true); // Evitar que la ventana sea redimensionable
 
 
         primaryStage.show();
