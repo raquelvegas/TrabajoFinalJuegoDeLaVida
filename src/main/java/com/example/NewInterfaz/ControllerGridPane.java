@@ -3,6 +3,7 @@ package com.example.NewInterfaz;
 import com.example.ElJuegoDeLaVida.GameOfLife;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -16,6 +17,8 @@ public class ControllerGridPane {
             buttonViewVelocidad, buttonViewPlay,buttonViewPause, buttonviewStop, buttonViewSonidoON;
     @FXML
     private GridPane gridPaneBase, gridPaneIzda, gridPaneCentro;
+    @FXML
+    private TabPane tabPaneParametros;
 
     private void preserveRadio(ImageView image, GridPane gridPane) {
         AtomicReference<Double> maxWidth = new AtomicReference<>(Double.MAX_VALUE);
@@ -57,6 +60,6 @@ public class ControllerGridPane {
         setImage("Pausa.png", buttonViewPause, gridPaneCentro);
         setImage("Stop.png", buttonviewStop, gridPaneCentro);
         setImage("VolumenON.png", buttonViewSonidoON, gridPaneCentro);
-
-}
+        tabPaneParametros.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+    }
 }
