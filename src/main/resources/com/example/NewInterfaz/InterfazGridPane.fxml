@@ -146,6 +146,8 @@
                   </ImageView>
                </children>
             </HBox>
+            <GridPane fx:id="tableroJuego" GridPane.rowIndex="3">
+            </GridPane>
          </children>
       </GridPane>
       <GridPane fx:id="gridPaneDcha" GridPane.columnIndex="3">
@@ -205,6 +207,7 @@
                                           <RadioButton mnemonicParsing="false" text="RadioButton" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="        " />
                                           <RadioButton mnemonicParsing="false" text="RadioButton" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="                                                                                 " />
                                           <RadioButton mnemonicParsing="false" text="RadioButton" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="        " />
                                           <RadioButton mnemonicParsing="false" text="RadioButton" />
@@ -218,7 +221,11 @@
                 </Tab>
                 <Tab text="Individuos">
                   <content>
-                    <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox alignment="CENTER" layoutX="-2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="360.0" prefWidth="254.0" />
+                           </children>
+                        </AnchorPane>
                   </content>
                 </Tab>
                   <Tab text="Recursos Vida">

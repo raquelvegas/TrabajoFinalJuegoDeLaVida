@@ -16,9 +16,10 @@ public class ControllerGridPane {
             imageViewVivos, imageViewMuertos,
             buttonViewVelocidad, buttonViewPlay,buttonViewPause, buttonviewStop, buttonViewSonidoON;
     @FXML
-    private GridPane gridPaneBase, gridPaneIzda, gridPaneCentro;
+    private GridPane gridPaneBase, gridPaneIzda, gridPaneCentro, tableroJuego;
     @FXML
     private TabPane tabPaneParametros;
+
 
     private void preserveRadio(ImageView image, GridPane gridPane) {
         AtomicReference<Double> maxWidth = new AtomicReference<>(Double.MAX_VALUE);
@@ -47,6 +48,7 @@ public class ControllerGridPane {
         preserveRadio(imageView, gridPane);
     }
 
+
     @FXML
     public void initialize() {
         setImage("IconLifeGame.png", logo, gridPaneIzda);
@@ -61,5 +63,6 @@ public class ControllerGridPane {
         setImage("Stop.png", buttonviewStop, gridPaneCentro);
         setImage("VolumenON.png", buttonViewSonidoON, gridPaneCentro);
         tabPaneParametros.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        Game game = new Game(tableroJuego, "Coral");
     }
 }
