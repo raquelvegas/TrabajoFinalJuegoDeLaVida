@@ -95,7 +95,6 @@ public class ControllerMenuParametrosRecursosEfectos {
         DatosCompartidos.setMontanaEfecto(String.valueOf((int)montanaEfectoSlider.getValue()));
         DatosCompartidos.setTesoroEfecto(String.valueOf((int)tesoroEfectoSlider.getValue()));
         DatosCompartidos.setBibliotecaEfecto(String.valueOf((int)bibliotecaEfectoSlider.getValue()));
-        DatosCompartidos.setPozoEfecto(String.valueOf((int)pozoEfectoSlider.getValue()));
         Stage stage = (Stage) buttonAnterior.getScene().getWindow();
         URL fxmlUrl = getClass().getResource("MenuParametrosRecursosVida.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
@@ -125,7 +124,6 @@ public class ControllerMenuParametrosRecursosEfectos {
         tesoroEfectoSlider.setValue(Double.parseDouble(tesoroEfectoText.getText()));
         bibliotecaEfectoText.setText(DatosCompartidos.getBibliotecaEfecto());
         bibliotecaEfectoSlider.setValue(Double.parseDouble(bibliotecaEfectoText.getText()));
-        pozoEfectoText.setText(DatosCompartidos.getPozoEfecto());
         pozoEfectoSlider.setValue(Double.parseDouble(pozoEfectoText.getText()));
     }
 }

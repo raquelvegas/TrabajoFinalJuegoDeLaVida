@@ -38,8 +38,9 @@
 
             primaryStage.setTitle("¡Bienvenido!");
             primaryStage.setScene(new Scene(rootGroup));
-            primaryStage.setMaximized(true); // Pantalla completa
-            primaryStage.setResizable(true); // Evitar que la ventana sea redimensionable
+            //primaryStage.setMaximized(true); // Pantalla completa
+            primaryStage.setFullScreen(true);
+            primaryStage.setResizable(false); // Evitar que la ventana sea redimensionable
 
 
 //            URL fxmlUrl2 = getClass().getResource("InterfazInicioJuego.fxml");

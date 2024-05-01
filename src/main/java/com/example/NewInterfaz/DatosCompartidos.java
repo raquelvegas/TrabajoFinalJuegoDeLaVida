@@ -17,7 +17,6 @@ public class DatosCompartidos {
     private static String montanaEfecto = "0";
     private static String tesoroEfecto = "0";
     private static String bibliotecaEfecto = "0";
-    private static String pozoEfecto = "100";
     private static boolean playreproductor = true;
 
 
@@ -148,14 +147,6 @@ public class DatosCompartidos {
 
     public static void setBibliotecaEfecto(String bibliotecaEfecto) {
         DatosCompartidos.bibliotecaEfecto = bibliotecaEfecto;
-    }
-
-    public static String getPozoEfecto() {
-        return pozoEfecto;
-    }
-
-    public static void setPozoEfecto(String pozoEfecto) {
-        DatosCompartidos.pozoEfecto = pozoEfecto;
     }
 
     public static boolean isPlayreproductor() {
