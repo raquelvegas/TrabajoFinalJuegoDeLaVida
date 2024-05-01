@@ -180,7 +180,10 @@
                                        <children>
                                           <Slider max="25.0" showTickLabels="true" showTickMarks="true" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     " />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="00" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font></Text>
                                        </children>
                                     </HBox>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" " />
@@ -204,13 +207,13 @@
                                     </Text>
                                     <FlowPane alignment="CENTER" prefHeight="67.0" prefWidth="246.0">
                                        <children>
-                                          <RadioButton mnemonicParsing="false" text="RadioButton" />
+                                          <RadioButton mnemonicParsing="false" text="⏸" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="        " />
-                                          <RadioButton mnemonicParsing="false" text="RadioButton" />
+                                          <RadioButton mnemonicParsing="false" text="⏹" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="                                                                                 " />
-                                          <RadioButton mnemonicParsing="false" text="RadioButton" />
+                                          <RadioButton mnemonicParsing="false" text="▶    🎨" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="        " />
-                                          <RadioButton mnemonicParsing="false" text="RadioButton" />
+                                          <RadioButton mnemonicParsing="false" text="⏩  🔊" />
                                        </children>
                                     </FlowPane>
                                  </children>

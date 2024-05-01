@@ -1,55 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.borderpane.Controller">
-   <center>
-      <GridPane BorderPane.alignment="CENTER">
-        <columnConstraints>
-            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="400.8" minHeight="10.0" prefHeight="400.8" vgrow="ALWAYS" />
-          <RowConstraints maxHeight="266.80000000000007" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="127.00000610351566" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-               <children>
-                  <ImageView fx:id="imageViewLogo" fitHeight="184.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-                     <image>
-                        <Image url="@../../../IconLifeGame.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="buttonComoJugar" fitHeight="46.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../ComoJugar.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-               <children>
-                  <ImageView fx:id="imageViewLogo2" fitHeight="184.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../IconLifeGame.png" />
-                     </image>
-                  </ImageView>
-               </children></VBox>
-            <ImageView fx:id="imageViewLogo1" fitHeight="184.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-               <image>
-                  <Image url="@../../../IconLifeGame.png" />
-               </image>
-            </ImageView>
-         </children>
-      </GridPane>
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewInterfaz.ControllerPrueba">
+    <top>
+        <VBox BorderPane.alignment="CENTER" VBox.vgrow="NEVER">
+            <children>
+                <MenuBar VBox.vgrow="NEVER">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Como Jugar">
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Tema del tablero 🎨">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Agua" />
+                                <MenuItem mnemonicParsing="false" text="Aire" />
+                                <MenuItem mnemonicParsing="false" text="Tierra" />
+                                <MenuItem mnemonicParsing="false" text="Fuego" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Música">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Play" />
+                                <MenuItem mnemonicParsing="false" text="Pause" />
+                            </items>
+                        </Menu>
+                    </menus>
+                    <contextMenu>
+                        <ContextMenu>
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                            </items>
+                        </ContextMenu>
+                    </contextMenu>
+                </MenuBar>
+                <ButtonBar prefHeight="40.0" prefWidth="200.0" />
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <GridPane fx:id="centralGridPane" prefHeight="661.0" prefWidth="1198.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <GridPane fx:id="tableroJuego">
+                </GridPane>
+            </children>
+        </GridPane>
+    </center>
+    <bottom>
+        <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+    </bottom>
+    <right>
+        <ButtonBar prefHeight="734.0" prefWidth="51.0" BorderPane.alignment="CENTER" />
+    </right>
+    <left>
+        <ButtonBar prefHeight="734.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+    </left>
 </BorderPane>

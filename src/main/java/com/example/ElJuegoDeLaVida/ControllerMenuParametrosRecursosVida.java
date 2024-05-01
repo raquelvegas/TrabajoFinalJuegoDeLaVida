@@ -1,5 +1,6 @@
 package com.example.ElJuegoDeLaVida;
 
+import com.example.NewInterfaz.DatosCompartidos;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
