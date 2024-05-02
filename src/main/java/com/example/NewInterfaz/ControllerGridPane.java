@@ -1,6 +1,5 @@
 package com.example.NewInterfaz;
 
-import com.example.ElJuegoDeLaVida.GameOfLife;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TabPane;

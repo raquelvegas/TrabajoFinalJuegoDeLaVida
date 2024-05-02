@@ -74,4 +74,13 @@ public class Tablero {
         }
 
     }
+
+    public void updateTheme(String newTheme) {
+        this.theme = newTheme;
+        for (Square square : squares) {
+            int i = square.getX();
+            int j = square.getY();
+            setTheme(square, newTheme, i, j);
+        }
+    }
 }

@@ -1,3 +1,7 @@
 .tab-pane {
     -fx-background-color: lightblue; /* Cambiar el color de fondo aquí */
 }
+
+#infoVBox {
+    -fx-background-color: lightblue; /* Cambiar el color de fondo aquí */
+}
