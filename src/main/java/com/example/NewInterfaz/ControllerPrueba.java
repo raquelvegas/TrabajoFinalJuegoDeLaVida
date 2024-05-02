@@ -174,6 +174,8 @@ public class ControllerPrueba {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
+    ////////////////////////////////////////Initialize////////////////////////////////////////////
     @FXML
     public void initialize() {
         Game game = new Game(tableroJuego, "Coral");
@@ -194,4 +196,5 @@ public class ControllerPrueba {
         tabPaneParametros.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         infoVBox.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
     }
+
 }

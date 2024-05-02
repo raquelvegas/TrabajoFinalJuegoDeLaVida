@@ -38,27 +38,26 @@
             Group rootGroup = new Group(backgroundImageView, root1);
 
             primaryStage.setScene(new Scene(rootGroup));
-            //primaryStage.setMaximized(true); // Pantalla completa
-            primaryStage.setFullScreen(true);
+            primaryStage.setMaximized(true); // Pantalla completa
+            //primaryStage.setFullScreen(true);
             primaryStage.setResizable(false); // Evitar que la ventana sea redimensionable
 
+            //Para el EXIT
             ControllerPrueba controller = loader.getController();
             controller.setStage(primaryStage);
 
 
+            URL fxmlUrl2 = getClass().getResource("InterfazInicioJuego.fxml");
+            Parent root2 = FXMLLoader.load(fxmlUrl2);
 
+            Stage optionStage = new Stage();
+            optionStage.setScene(new Scene(root2));
+            optionStage.setResizable(true); // Evitar que la ventana sea redimensionable
+            optionStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
+            optionStage.initOwner(primaryStage);
 
-//            URL fxmlUrl2 = getClass().getResource("InterfazInicioJuego.fxml");
-//            Parent root2 = FXMLLoader.load(fxmlUrl2);
-//
-//            Stage optionStage = new Stage();
-//            optionStage.setScene(new Scene(root2));
-//            optionStage.setResizable(true); // Evitar que la ventana sea redimensionable
-//            optionStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
-//            optionStage.initOwner(primaryStage);
-//
-//            optionStage.initStyle(StageStyle.UNDECORATED);
-//            optionStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
+            optionStage.initStyle(StageStyle.UNDECORATED);
+            optionStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
 
 
 //            primaryStage.setOnCloseRequest(event -> {
@@ -78,7 +77,7 @@
 //            });
 
             primaryStage.show();
-//            optionStage.show();
+            optionStage.show();
     }
 
 
