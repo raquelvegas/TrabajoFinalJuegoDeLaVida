@@ -5,8 +5,6 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-
 public class Tablero {
     GridPane tableroJuego;
     String theme;
@@ -22,10 +20,11 @@ public class Tablero {
     void makeBoard(GridPane tableroJuego, String theme) {
         int alto = Integer.parseInt(DatosCompartidos.getAltoMatriz());
         int ancho = Integer.parseInt(DatosCompartidos.getAnchoMatriz());
+        int identificador=1;
         for (int i = 0; i < ancho; i++) {
             for (int j = 0; j < alto; j++) {
                 Square square = new Square(i, j);
-                square.setName("Square" + i + j);
+                square.setID(identificador);
                 square.setPrefHeight(100);
                 square.setPrefWidth(100);
                 square.setBorder(new Border(new BorderStroke(Color.BLACK,
@@ -35,6 +34,7 @@ public class Tablero {
                 // Modifica la llamada al método add para agregar el tablero en la celda (0,2)
                 tableroJuego.add(square, i, j); // Aquí solo agrega el square, no necesitas especificar el rowspan y colspan
                 squares.add(square);
+                identificador++;
             }
         }
     }

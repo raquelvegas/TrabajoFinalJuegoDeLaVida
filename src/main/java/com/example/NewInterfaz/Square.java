@@ -1,14 +1,19 @@
 package com.example.NewInterfaz;
 
+import com.example.EstructurasDeDatos.ListaSimple;
 import javafx.scene.layout.StackPane;
 
 public class Square extends StackPane {
 
     int x,y;
     boolean occupied;
-    String name;
+    int ID;
+    ListaSimple<Individuo> individuos;
+    ListaSimple<Recurso> recursos;
 
     public Square(int x, int y){
+        this.individuos = new ListaSimple<>();
+        this.recursos = new ListaSimple<>();
         this.x = x;
         this.y = y;
         this.occupied = false;
@@ -23,8 +28,8 @@ public class Square extends StackPane {
         return "Square";
     }
 
-    public void setName(String name){
-        this.name = name;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public int getX() {
