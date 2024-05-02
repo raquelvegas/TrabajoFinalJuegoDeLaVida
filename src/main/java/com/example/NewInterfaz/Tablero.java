@@ -1,5 +1,6 @@
 package com.example.NewInterfaz;
 
+import com.example.EstructurasDeDatos.ListaSimple;
 import javafx.geometry.Insets;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -9,18 +10,20 @@ import java.util.ArrayList;
 public class Tablero {
     GridPane tableroJuego;
     String theme;
-    public ArrayList<Square> squares = new ArrayList<>();
+    public ListaSimple<Square> squares = new ListaSimple<>();
 
-    public Tablero(GridPane tableroJuego, String theme){
-        this.tableroJuego=tableroJuego;
-        this.theme=theme;
+    public Tablero(GridPane tableroJuego, String theme) {
+        this.tableroJuego = tableroJuego;
+        this.theme = theme;
 
         makeBoard(this.tableroJuego, theme);
     }
 
-    private void makeBoard(GridPane tableroJuego, String theme){
-        for(int i = 0; i < 20; i++) {
-            for (int j = 0; j < 10; j++) {
+    void makeBoard(GridPane tableroJuego, String theme) {
+        int alto = Integer.parseInt(DatosCompartidos.getAltoMatriz());
+        int ancho = Integer.parseInt(DatosCompartidos.getAnchoMatriz());
+        for (int i = 0; i < ancho; i++) {
+            for (int j = 0; j < alto; j++) {
                 Square square = new Square(i, j);
                 square.setName("Square" + i + j);
                 square.setPrefHeight(100);
@@ -36,7 +39,7 @@ public class Tablero {
         }
     }
 
-    private void setTheme(Square square, String theme, int i, int j){
+    private void setTheme(Square square, String theme, int i, int j) {
         Color color1 = Color.web("#ffffff00");
         Color color2 = Color.web("#ffffff00");
 
@@ -67,9 +70,9 @@ public class Tablero {
             }
         }
 
-        if((i+j)%2==0){
+        if ((i + j) % 2 == 0) {
             square.setBackground(new Background(new BackgroundFill(color1, CornerRadii.EMPTY, Insets.EMPTY)));
-        }else{
+        } else {
             square.setBackground(new Background(new BackgroundFill(color2, CornerRadii.EMPTY, Insets.EMPTY)));
         }
 
@@ -77,10 +80,12 @@ public class Tablero {
 
     public void updateTheme(String newTheme) {
         this.theme = newTheme;
-        for (Square square : squares) {
-            int i = square.getX();
-            int j = square.getY();
-            setTheme(square, newTheme, i, j);
+        int contador = 0;
+        while (contador < squares.getNumeroElementos()){
+            int i= squares.getDato(contador).getX();
+            int j = squares.getDato(contador).getY();
+            setTheme(squares.getDato(contador),newTheme,i,j);
+            contador++;
         }
     }
 }

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewInterfaz.ControllerRecursosVida">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b4b4b4" height="47.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="600.0" />
+      <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIFE GAME" wrappingWidth="128.53668212890625">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Text>
+      <Text fontSmoothingType="LCD" layoutX="11.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ESPECIFICA EL TIEMPO DE VIDA DE TUS RECURSOS" textAlignment="CENTER" wrappingWidth="577.4732055664062">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <HBox alignment="CENTER" layoutY="339.0" prefHeight="47.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="buttonSiguiente" mnemonicParsing="false" onMouseClicked="#next" prefHeight="100.0" prefWidth="170.0" text="SIGUIENTE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <AnchorPane layoutX="11.0" layoutY="104.0" prefHeight="58.0" prefWidth="600.0">
+         <children>
+            <Text layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AGUA">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="88.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COMIDA">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="183.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTAÑA">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="306.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIBLIOTECA">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="429.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TESORO">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="514.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="POZO">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="3.0" layoutY="145.0" prefHeight="154.0" prefWidth="594.0">
+         <children>
+            <Slider fx:id="aguaVidaSlider" layoutX="47.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="montanaVidaSlider" layoutX="232.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="comidaVidaSlider" layoutX="136.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <AnchorPane layoutY="139.0" prefHeight="57.0" prefWidth="594.0">
+               <children>
+                  <Text fx:id="comidaVidaText" fill="#666565" layoutX="133.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="aguaVidaText" fill="#666565" layoutX="42.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="montanaVidaText" fill="#666565" layoutX="230.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="tesoroVidaText" fill="#666565" layoutX="462.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="bibliotecaVidaText" fill="#666565" layoutX="355.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="pozoVidaText" fill="#666565" layoutX="532.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <Slider fx:id="bibliotecaVidaSlider" layoutX="359.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="pozoVidaSlider" layoutX="536.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="tesoroVidaSlider" layoutX="466.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

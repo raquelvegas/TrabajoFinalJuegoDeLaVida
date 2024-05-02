@@ -31,18 +31,10 @@ public class ControllerInicioJuego {
 
     @FXML
     void cargarPartida(MouseEvent event) throws IOException {
-        URL fxmlUrl = getClass().getResource("InterfazTableroPropiedades.fxml");
-        Parent root = FXMLLoader.load(fxmlUrl);
-
-        Stage optionStage = new Stage();
-        optionStage.setScene(new Scene(root));
-        optionStage.setResizable(true); // Evitar que la ventana sea redimensionable
-        optionStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
-        optionStage.initOwner(primaryStage);
-
-        optionStage.initStyle(StageStyle.UNDECORATED);
-        optionStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
-        optionStage.show();
+        // Cerrar la ventana actual
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -54,13 +46,17 @@ public class ControllerInicioJuego {
 
         // Cargar y mostrar la ventana de configuración de propiedades del tablero
         URL fxmlUrl = getClass().getResource("InterfazTableroPropiedades.fxml");
-        FXMLLoader loader = new FXMLLoader(fxmlUrl);
-        Parent root = loader.load();
+        Parent root = FXMLLoader.load(fxmlUrl);
 
         Stage configStage = new Stage();
         configStage.setScene(new Scene(root));
-        configStage.initModality(Modality.APPLICATION_MODAL);
+        configStage.setResizable(true); // Evitar que la ventana sea redimensionable
+        configStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
         configStage.initOwner(primaryStage);
+
+        configStage.initStyle(StageStyle.UNDECORATED);
+        configStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
+
         configStage.show();
     }
 }

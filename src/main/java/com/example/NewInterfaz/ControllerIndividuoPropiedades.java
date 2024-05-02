@@ -1,6 +1,5 @@
 package com.example.NewInterfaz;
 
-import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
@@ -18,39 +17,25 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.function.Consumer;
 
-import static com.example.NewInterfaz.Game.tablero;
-
-public class ControllerTableroPropiedades {
+public class ControllerIndividuoPropiedades {
 
     @FXML
-    private Slider altoSlider;
-
+    private Button buttonAnterior, buttonSiguiente1;
     @FXML
-    private Text altoText;
-
+    private Slider vidaUserSlider, probReproduccionSlider, probClonacionSlider;
     @FXML
-    private Slider anchoSlider;
-
-    @FXML
-    private Text anchoText;
-
-    @FXML
-    private Button buttonSiguiente;
+    private Text vidaUserText, probReproduccionText, probClonacionText;
     private Stage primaryStage; // Referencia al Stage principal
-    protected IntegerProperty medidaAncho = new SimpleIntegerProperty(0);
-    protected IntegerProperty medidaAlto = new SimpleIntegerProperty(0);
-
-    public void setStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
+    protected IntegerProperty medidaVida = new SimpleIntegerProperty(0);
+    protected IntegerProperty medidaProbReproduccion = new SimpleIntegerProperty(0);
+    protected IntegerProperty medidaProbClonacion = new SimpleIntegerProperty(0);
 
     @FXML
     void next(MouseEvent event) throws IOException {
-        DatosCompartidos.setAltoMatriz(String.valueOf((int)altoSlider.getValue()));
-        DatosCompartidos.setAnchoMatriz(String.valueOf((int)anchoSlider.getValue()));
-        tablero.makeBoard(tablero.tableroJuego, tablero.theme);
+        DatosCompartidos.setVidaInicial(String.valueOf((int)vidaUserSlider.getValue()));
+        DatosCompartidos.setProbReproduccion(String.valueOf((int)probReproduccionSlider.getValue()));
+        DatosCompartidos.setProbClonacion(String.valueOf((int)probClonacionSlider.getValue()));
 
         // Cerrar la ventana actual
         Node source = (Node) event.getSource();
@@ -58,7 +43,7 @@ public class ControllerTableroPropiedades {
         stage.close();
 
         // Cargar y mostrar la ventana de configuración de propiedades del tablero
-        URL fxmlUrl = getClass().getResource("InterfazIndividuoPropiedades.fxml");
+        URL fxmlUrl = getClass().getResource("InterfazRecursosVida.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
 
         Stage configStage = new Stage();
@@ -71,6 +56,7 @@ public class ControllerTableroPropiedades {
         configStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
 
         configStage.show();
+
     }
 
     protected void initializeBindingSliders(Slider slider, Text text, IntegerProperty medida){
@@ -80,8 +66,9 @@ public class ControllerTableroPropiedades {
 
     @FXML
     public void initialize(){
-        initializeBindingSliders(anchoSlider,anchoText, medidaAncho);
-        initializeBindingSliders(altoSlider,altoText, medidaAlto);
+        initializeBindingSliders(vidaUserSlider,vidaUserText, medidaVida);
+        initializeBindingSliders(probReproduccionSlider,probReproduccionText, medidaProbReproduccion);
+        initializeBindingSliders(probClonacionSlider,probClonacionText, medidaProbClonacion);
     }
 
 }

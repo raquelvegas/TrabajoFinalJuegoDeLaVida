@@ -16,14 +16,14 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <Text fontSmoothingType="LCD" layoutX="11.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ESPECIFICA EL TAMAÑO DE TU TABLERO Y EL TEMA QUE QUIERES APLICARLE" textAlignment="CENTER" wrappingWidth="577.4732055664062">
+      <Text fontSmoothingType="LCD" layoutX="11.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ESPECIFICA EL TAMAÑO DE TU TABLERO" textAlignment="CENTER" wrappingWidth="577.4732055664062">
          <font>
             <Font size="29.0" />
          </font>
       </Text>
       <HBox alignment="CENTER" layoutY="339.0" prefHeight="47.0" prefWidth="600.0">
          <children>
-            <Button fx:id="buttonIniciarPartida" mnemonicParsing="false" onMouseClicked="#iniciarPartida" prefHeight="100.0" prefWidth="170.0" text="INICIAR PARTIDA">
+            <Button fx:id="buttonSiguiente" mnemonicParsing="false" onMouseClicked="#next" prefHeight="100.0" prefWidth="170.0" text="SIGUIENTE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -37,7 +37,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Slider fx:id="altoSlider" layoutX="158.0" layoutY="25.0" max="25.0" prefHeight="27.0" prefWidth="278.0" showTickLabels="true" />
+            <Slider fx:id="altoSlider" layoutX="158.0" layoutY="25.0" max="20.0" min="1.0" prefHeight="27.0" prefWidth="278.0" showTickLabels="true" />
             <Text fx:id="altoText" fill="#666565" layoutX="446.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                <font>
                   <Font name="System Bold" size="20.0" />
@@ -52,7 +52,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Slider fx:id="anchoSlider" layoutX="158.0" layoutY="25.0" max="25.0" prefHeight="27.0" prefWidth="278.0" showTickLabels="true" />
+            <Slider fx:id="anchoSlider" layoutX="158.0" layoutY="25.0" max="20.0" min="1.0" prefHeight="27.0" prefWidth="278.0" showTickLabels="true" />
             <Text fx:id="anchoText" fill="#666565" layoutX="446.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                <font>
                   <Font name="System Bold" size="20.0" />

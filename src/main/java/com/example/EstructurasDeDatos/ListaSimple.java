@@ -6,7 +6,7 @@ import java.util.Objects;
 public class ListaSimple<Tipodato> {
     private ElementoLS<Tipodato>[] datos;
 
-    private Integer maximo = 100;
+    private Integer maximo = 500;
 
     //////////////
 
