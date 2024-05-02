@@ -391,9 +391,9 @@
               <rowConstraints>
                   <RowConstraints maxHeight="601.3999389648437" minHeight="10.0" prefHeight="103.4000015258789" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="605.6000244140625" minHeight="10.0" prefHeight="35.600001525878895" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="605.6000244140625" minHeight="10.0" prefHeight="521.999998474121" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="601.3999389648437" minHeight="10.0" prefHeight="24.000012207031205" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="324.6000122070312" minHeight="10.0" prefHeight="64.46662597656245" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="605.6000244140625" minHeight="10.0" prefHeight="408.6000122070312" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="601.3999389648437" minHeight="8.799999999999955" prefHeight="28.599987792968705" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="324.6000122070312" minHeight="10.0" prefHeight="52.799999999999955" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <GridPane fx:id="tableroJuego" GridPane.rowIndex="2">
