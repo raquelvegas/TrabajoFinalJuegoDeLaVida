@@ -19,8 +19,8 @@ public class Tablero {
     }
 
     private void makeBoard(GridPane tableroJuego, String theme){
-        for(int i = 0; i < 25; i++) {
-            for (int j = 0; j < 25; j++) {
+        for(int i = 0; i < 20; i++) {
+            for (int j = 0; j < 10; j++) {
                 Square square = new Square(i, j);
                 square.setName("Square" + i + j);
                 square.setPrefHeight(100);
