@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewInterfaz.ControllerRecursosVida">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewInterfaz.ControllerRecursosEfectos">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b4b4b4" height="47.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="600.0" />
       <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIFE GAME" wrappingWidth="128.53668212890625">
@@ -30,7 +30,7 @@
             </Button>
          </children>
       </HBox>
-      <AnchorPane layoutX="11.0" layoutY="104.0" prefHeight="58.0" prefWidth="600.0">
+      <AnchorPane layoutX="35.0" layoutY="104.0" prefHeight="58.0" prefWidth="577.0">
          <children>
             <Text layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AGUA">
                <font>
@@ -57,55 +57,44 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Text layoutX="514.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="POZO">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Text>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="3.0" layoutY="145.0" prefHeight="154.0" prefWidth="594.0">
+      <AnchorPane layoutX="22.0" layoutY="145.0" prefHeight="198.0" prefWidth="609.0">
          <children>
             <Slider fx:id="aguaEfectoSlider" layoutX="47.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
-            <Slider fx:id="montanaVidaSlider" layoutX="232.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
-            <Slider fx:id="comidaVidaSlider" layoutX="136.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="montanaEfectoSlider" layoutX="232.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="comidaEfectoSlider" layoutX="136.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
             <AnchorPane layoutY="139.0" prefHeight="57.0" prefWidth="594.0">
                <children>
-                  <Text fx:id="comidaVidaText" fill="#666565" layoutX="133.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="comidaEfectoText" fill="#666565" layoutX="133.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="aguaVidaText" fill="#666565" layoutX="42.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="aguaEfectoText" fill="#666565" layoutX="42.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="montanaVidaText" fill="#666565" layoutX="230.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="montanaEfectoText" fill="#666565" layoutX="230.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="tesoroVidaText" fill="#666565" layoutX="462.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="tesoroEfectoText" fill="#666565" layoutX="462.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="bibliotecaVidaText" fill="#666565" layoutX="355.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="pozoVidaText" fill="#666565" layoutX="532.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="bibliotecaEfectoText" fill="#666565" layoutX="355.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <Slider fx:id="bibliotecaVidaSlider" layoutX="359.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
-            <Slider fx:id="pozoVidaSlider" layoutX="536.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
-            <Slider fx:id="tesoroVidaSlider" layoutX="466.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="bibliotecaEfectoSlider" layoutX="359.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="tesoroEfectoSlider" layoutX="466.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
          </children>
       </AnchorPane>
    </children>

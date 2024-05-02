@@ -175,6 +175,25 @@ public class ControllerPrueba {
         this.stage = stage;
     }
 
+    public void updateAllSliders (){
+        vidaUserSlider.setValue(Double.parseDouble(DatosCompartidos.getVidaInicial()));
+        probReproduccionSlider.setValue(Double.parseDouble(DatosCompartidos.getProbReproduccion()));
+        probClonacionSlider.setValue(Double.parseDouble(DatosCompartidos.getProbClonacion()));
+
+        aguaVidaSlider.setValue(Double.parseDouble(DatosCompartidos.getAguaVida()));
+        comidaVidaSlider.setValue(Double.parseDouble(DatosCompartidos.getComidaVida()));
+        montanaVidaSlider.setValue(Double.parseDouble(DatosCompartidos.getMontanaVida()));
+        bibliotecaVidaSlider.setValue(Double.parseDouble(DatosCompartidos.getBibliotecaVida()));
+        tesoroVidaSlider.setValue(Double.parseDouble(DatosCompartidos.getTesoroVida()));
+        pozoVidaSlider.setValue(Double.parseDouble(DatosCompartidos.getPozoVida()));
+
+        aguaEfectoSlider.setValue(Double.parseDouble(DatosCompartidos.getAguaEfecto()));
+        comidaEfectoSlider.setValue(Double.parseDouble(DatosCompartidos.getComidaEfecto()));
+        montanaEfectoSlider.setValue(Double.parseDouble(DatosCompartidos.getMontanaEfecto()));
+        bibliotecaEfectoSlider.setValue(Double.parseDouble(DatosCompartidos.getBibliotecaEfecto()));
+        tesoroEfectoSlider.setValue(Double.parseDouble(DatosCompartidos.getTesoroEfecto()));
+    }
+
     ////////////////////////////////////////Initialize////////////////////////////////////////////
     @FXML
     public void initialize() {
