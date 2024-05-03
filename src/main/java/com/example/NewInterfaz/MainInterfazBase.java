@@ -60,21 +60,21 @@
             optionStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
 
 
-//            primaryStage.setOnCloseRequest(event -> {
-//                // Mostrar alerta
-//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//                alert.setTitle("Confirmar salida");
-//                alert.setHeaderText("Estás a punto de abandonar «Life Game». ¿Estás seguro?");
-//                alert.setContentText("Si sales, perderás todos los cambios no guardados.");
-//
-//                Optional<ButtonType> result = alert.showAndWait();
-//                if (result.isPresent() && result.get() == ButtonType.OK) {
-//                    primaryStage.close(); //si se acepta se cierra
-//                } else {
-//                    // Si el usuario cancela, se consume el evento para evitar que la ventana se cierre
-//                    event.consume();
-//                }
-//            });
+            primaryStage.setOnCloseRequest(event -> {
+                // Mostrar alerta
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmar salida");
+                alert.setHeaderText("Estás a punto de abandonar «Life Game». ¿Estás seguro?");
+                alert.setContentText("Si sales, perderás todos los cambios no guardados.");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    primaryStage.close(); //si se acepta se cierra
+                } else {
+                    // Si el usuario cancela, se consume el evento para evitar que la ventana se cierre
+                    event.consume();
+                }
+            });
 
             primaryStage.show();
             optionStage.show();

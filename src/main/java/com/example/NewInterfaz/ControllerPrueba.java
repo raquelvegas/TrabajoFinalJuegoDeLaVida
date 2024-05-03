@@ -44,7 +44,8 @@ public class ControllerPrueba {
     @FXML
     private Menu exit;
     protected boolean gameStopped = true;
-    private Tab pauseTab;
+    @FXML
+    private Tab pauseTab, individuoTab, recursosParametrosTab, anadirTab;
     private List<Tab> originalTabs;
 
     ///////////////////////////////////BindingSliders////////////////////////////////////////////////////////////////////////////////
@@ -64,6 +65,65 @@ public class ControllerPrueba {
     protected IntegerProperty medidaTesoroEfecto = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaPozoEfecto = new SimpleIntegerProperty(0);
 
+    //////////////////////////////////////setters///////////////////////////////////////////////////////
+
+
+    public void setVidaUserSlider(Slider vidaUserSlider) {
+        this.vidaUserSlider = vidaUserSlider;
+    }
+
+    public void setProbReproduccionSlider(Slider probReproduccionSlider) {
+        this.probReproduccionSlider = probReproduccionSlider;
+    }
+
+    public void setProbClonacionSlider(Slider probClonacionSlider) {
+        this.probClonacionSlider = probClonacionSlider;
+    }
+
+    public void setAguaVidaSlider(Slider aguaVidaSlider) {
+        this.aguaVidaSlider = aguaVidaSlider;
+    }
+
+    public void setBibliotecaVidaSlider(Slider bibliotecaVidaSlider) {
+        this.bibliotecaVidaSlider = bibliotecaVidaSlider;
+    }
+
+    public void setComidaVidaSlider(Slider comidaVidaSlider) {
+        this.comidaVidaSlider = comidaVidaSlider;
+    }
+
+    public void setMontanaVidaSlider(Slider montanaVidaSlider) {
+        this.montanaVidaSlider = montanaVidaSlider;
+    }
+
+    public void setPozoVidaSlider(Slider pozoVidaSlider) {
+        this.pozoVidaSlider = pozoVidaSlider;
+    }
+
+    public void setTesoroVidaSlider(Slider tesoroVidaSlider) {
+        this.tesoroVidaSlider = tesoroVidaSlider;
+    }
+
+    public void setAguaEfectoSlider(Slider aguaEfectoSlider) {
+        this.aguaEfectoSlider = aguaEfectoSlider;
+    }
+
+    public void setBibliotecaEfectoSlider(Slider bibliotecaEfectoSlider) {
+        this.bibliotecaEfectoSlider = bibliotecaEfectoSlider;
+    }
+
+    public void setComidaEfectoSlider(Slider comidaEfectoSlider) {
+        this.comidaEfectoSlider = comidaEfectoSlider;
+    }
+
+    public void setMontanaEfectoSlider(Slider montanaEfectoSlider) {
+        this.montanaEfectoSlider = montanaEfectoSlider;
+    }
+
+    public void setTesoroEfectoSlider(Slider tesoroEfectoSlider) {
+        this.tesoroEfectoSlider = tesoroEfectoSlider;
+    }
+
     /////////////////////////////////////MouseEvents////////////////////////////////////////////////////
     @FXML
     void speedGame(MouseEvent event) {
@@ -73,8 +133,14 @@ public class ControllerPrueba {
     void playGame(MouseEvent event) {
         if (gameStopped) {
             gameStopped = false;
-            originalTabs = new ArrayList<>(tabPaneParametros.getTabs());
-            tabPaneParametros.getTabs().clear();
+
+            this.individuoTab.setDisable(true);
+            this.recursosParametrosTab.setDisable(true);
+            this.anadirTab.setDisable(true);
+
+
+//            originalTabs = new ArrayList<>(tabPaneParametros.getTabs());
+//            tabPaneParametros.getTabs().clear();
             Text pauseText = new Text("Para acceder a estos atributos, pause el juego");
             pauseTab = new Tab("Pause", pauseText);
             tabPaneParametros.getTabs().add(pauseTab);
@@ -84,8 +150,13 @@ public class ControllerPrueba {
     void pauseGame(MouseEvent event) {
         if (!gameStopped) {
             gameStopped = true;
+
+            this.individuoTab.setDisable(false);
+            this.recursosParametrosTab.setDisable(false);
+            this.anadirTab.setDisable(false);
+
             tabPaneParametros.getTabs().remove(pauseTab);
-            tabPaneParametros.getTabs().addAll(originalTabs);
+//            tabPaneParametros.getTabs().addAll(originalTabs);
         }
     }
     @FXML

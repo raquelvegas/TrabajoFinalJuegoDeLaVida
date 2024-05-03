@@ -79,7 +79,7 @@
                <children>
                   <TabPane fx:id="tabPaneParametros" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                      <Tab text="Parámetros Individuo">
+                      <Tab fx:id="individuoTab" text="Parámetros Individuo">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -150,7 +150,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab text="Parámetros recursos">
+                      <Tab fx:id="recursosParametrosTab" text="Parámetros recursos">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -375,7 +375,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab text="Añadir elementos">
+                        <Tab fx:id="anadirTab" text="Añadir elementos">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                           </content>

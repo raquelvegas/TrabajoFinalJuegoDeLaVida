@@ -10,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.function.Consumer;
+
 public class ControllerRecursosEfectos {
 
     @FXML
@@ -34,6 +36,7 @@ public class ControllerRecursosEfectos {
     }
 
 
+
     @FXML
     void next(MouseEvent event) {
         DatosCompartidos.setAguaEfecto(String.valueOf((int)aguaEfectoSlider.getValue()));
@@ -41,6 +44,7 @@ public class ControllerRecursosEfectos {
         DatosCompartidos.setMontanaEfecto(String.valueOf((int)montanaEfectoSlider.getValue()));
         DatosCompartidos.setBibliotecaEfecto(String.valueOf((int)bibliotecaEfectoSlider.getValue()));
         DatosCompartidos.setTesoroEfecto(String.valueOf((int)tesoroEfectoSlider.getValue()));
+
 
 
         // Cerrar la ventana actual
