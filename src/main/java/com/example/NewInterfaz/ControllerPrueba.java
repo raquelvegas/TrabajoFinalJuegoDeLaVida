@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.beans.binding.Bindings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.function.Supplier;
 
 public class ControllerPrueba {
     @FXML
-    private Text vivosText, muertosText, //Información juego
+    private Text vivosText, muertosText, playText, pauseText, //Información juego
             vidaUserText, probReproduccionText, probClonacionText, //Ajustes User
             aguaVidaText, bibliotecaVidaText, comidaVidaText, montanaVidaText, pozoVidaText, tesoroVidaText, // Vida Recursos
             aguaEfectoText, bibliotecaEfectoText, comidaEfectoText, montanaEfectoText, pozoEfectoText, tesoroEfectoText; // Efecto Recursos
@@ -41,12 +42,9 @@ public class ControllerPrueba {
     private VBox infoVBox;
     @FXML
     private Stage stage;
-    @FXML
-    private Menu exit;
     protected boolean gameStopped = true;
     @FXML
     private Tab pauseTab, individuoTab, recursosParametrosTab, anadirTab;
-    private List<Tab> originalTabs;
 
     ///////////////////////////////////BindingSliders////////////////////////////////////////////////////////////////////////////////
     protected IntegerProperty medidaVidaUser = new SimpleIntegerProperty(0);
@@ -63,66 +61,6 @@ public class ControllerPrueba {
     protected IntegerProperty medidaMontanaEfecto = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaBibliotecaEfecto = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaTesoroEfecto = new SimpleIntegerProperty(0);
-    protected IntegerProperty medidaPozoEfecto = new SimpleIntegerProperty(0);
-
-    //////////////////////////////////////setters///////////////////////////////////////////////////////
-
-
-    public void setVidaUserSlider(Slider vidaUserSlider) {
-        this.vidaUserSlider = vidaUserSlider;
-    }
-
-    public void setProbReproduccionSlider(Slider probReproduccionSlider) {
-        this.probReproduccionSlider = probReproduccionSlider;
-    }
-
-    public void setProbClonacionSlider(Slider probClonacionSlider) {
-        this.probClonacionSlider = probClonacionSlider;
-    }
-
-    public void setAguaVidaSlider(Slider aguaVidaSlider) {
-        this.aguaVidaSlider = aguaVidaSlider;
-    }
-
-    public void setBibliotecaVidaSlider(Slider bibliotecaVidaSlider) {
-        this.bibliotecaVidaSlider = bibliotecaVidaSlider;
-    }
-
-    public void setComidaVidaSlider(Slider comidaVidaSlider) {
-        this.comidaVidaSlider = comidaVidaSlider;
-    }
-
-    public void setMontanaVidaSlider(Slider montanaVidaSlider) {
-        this.montanaVidaSlider = montanaVidaSlider;
-    }
-
-    public void setPozoVidaSlider(Slider pozoVidaSlider) {
-        this.pozoVidaSlider = pozoVidaSlider;
-    }
-
-    public void setTesoroVidaSlider(Slider tesoroVidaSlider) {
-        this.tesoroVidaSlider = tesoroVidaSlider;
-    }
-
-    public void setAguaEfectoSlider(Slider aguaEfectoSlider) {
-        this.aguaEfectoSlider = aguaEfectoSlider;
-    }
-
-    public void setBibliotecaEfectoSlider(Slider bibliotecaEfectoSlider) {
-        this.bibliotecaEfectoSlider = bibliotecaEfectoSlider;
-    }
-
-    public void setComidaEfectoSlider(Slider comidaEfectoSlider) {
-        this.comidaEfectoSlider = comidaEfectoSlider;
-    }
-
-    public void setMontanaEfectoSlider(Slider montanaEfectoSlider) {
-        this.montanaEfectoSlider = montanaEfectoSlider;
-    }
-
-    public void setTesoroEfectoSlider(Slider tesoroEfectoSlider) {
-        this.tesoroEfectoSlider = tesoroEfectoSlider;
-    }
 
     /////////////////////////////////////MouseEvents////////////////////////////////////////////////////
     @FXML
@@ -134,16 +72,13 @@ public class ControllerPrueba {
         if (gameStopped) {
             gameStopped = false;
 
+            tabPaneParametros.getSelectionModel().select(pauseTab);
             this.individuoTab.setDisable(true);
             this.recursosParametrosTab.setDisable(true);
             this.anadirTab.setDisable(true);
-
-
-//            originalTabs = new ArrayList<>(tabPaneParametros.getTabs());
-//            tabPaneParametros.getTabs().clear();
-            Text pauseText = new Text("Para acceder a estos atributos, pause el juego");
-            pauseTab = new Tab("Pause", pauseText);
-            tabPaneParametros.getTabs().add(pauseTab);
+            this.pauseTab.setDisable(false);
+            this.pauseText.setVisible(true);
+            this.playText.setVisible(false);
         }
     }
     @FXML
@@ -154,9 +89,9 @@ public class ControllerPrueba {
             this.individuoTab.setDisable(false);
             this.recursosParametrosTab.setDisable(false);
             this.anadirTab.setDisable(false);
-
-            tabPaneParametros.getTabs().remove(pauseTab);
-//            tabPaneParametros.getTabs().addAll(originalTabs);
+            this.pauseTab.setDisable(true);
+            this.pauseText.setVisible(false);
+            this.playText.setVisible(true);
         }
     }
     @FXML
@@ -214,23 +149,6 @@ public class ControllerPrueba {
 //        tableroJuego.updateTheme(newTheme);
 //    }
 
-    @FXML
-    void exitHandle(ActionEvent event) {
-        System.out.println("Funciona");
-//        // Mostrar alerta de confirmación de salida
-//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//        alert.setTitle("Confirmar salida");
-//        alert.setHeaderText("Estás a punto de abandonar «Life Game». ¿Estás seguro?");
-//        alert.setContentText("Si sales, perderás todos los cambios no guardados.");
-//
-//        // Mostrar la alerta y esperar la respuesta del usuario
-//        Optional<ButtonType> result = alert.showAndWait();
-//        if (result.isPresent() && result.get() == ButtonType.OK) {
-//            // Si se acepta, cerrar la aplicación
-//            Platform.exit();
-//        }
-    }
-
     ///////////////////////////////////Métodos de apoyo///////////////////////////////////////////
     protected void initializeBindingSliders(Slider slider, Text text, IntegerProperty medida){
         slider.valueProperty().bindBidirectional(medida);
@@ -247,28 +165,33 @@ public class ControllerPrueba {
     }
 
     public void updateAllSliders (){
-        vidaUserSlider.setValue(Double.parseDouble(DatosCompartidos.getVidaInicial()));
-        probReproduccionSlider.setValue(Double.parseDouble(DatosCompartidos.getProbReproduccion()));
-        probClonacionSlider.setValue(Double.parseDouble(DatosCompartidos.getProbClonacion()));
+        getDatosCompartidosValue(DatosCompartidos::getVidaInicial, vidaUserSlider);
+        getDatosCompartidosValue(DatosCompartidos::getProbReproduccion, probReproduccionSlider);
+        getDatosCompartidosValue(DatosCompartidos::getProbClonacion, probClonacionSlider);
 
-        aguaVidaSlider.setValue(Double.parseDouble(DatosCompartidos.getAguaVida()));
-        comidaVidaSlider.setValue(Double.parseDouble(DatosCompartidos.getComidaVida()));
-        montanaVidaSlider.setValue(Double.parseDouble(DatosCompartidos.getMontanaVida()));
-        bibliotecaVidaSlider.setValue(Double.parseDouble(DatosCompartidos.getBibliotecaVida()));
-        tesoroVidaSlider.setValue(Double.parseDouble(DatosCompartidos.getTesoroVida()));
-        pozoVidaSlider.setValue(Double.parseDouble(DatosCompartidos.getPozoVida()));
+        getDatosCompartidosValue(DatosCompartidos::getAguaVida, aguaVidaSlider);
+        getDatosCompartidosValue(DatosCompartidos::getComidaVida, comidaVidaSlider);
+        getDatosCompartidosValue(DatosCompartidos::getMontanaVida, montanaVidaSlider);
+        getDatosCompartidosValue(DatosCompartidos::getBibliotecaVida, bibliotecaVidaSlider);
+        getDatosCompartidosValue(DatosCompartidos::getTesoroVida, tesoroVidaSlider);
+        getDatosCompartidosValue(DatosCompartidos::getPozoVida, pozoVidaSlider);
 
-        aguaEfectoSlider.setValue(Double.parseDouble(DatosCompartidos.getAguaEfecto()));
-        comidaEfectoSlider.setValue(Double.parseDouble(DatosCompartidos.getComidaEfecto()));
-        montanaEfectoSlider.setValue(Double.parseDouble(DatosCompartidos.getMontanaEfecto()));
-        bibliotecaEfectoSlider.setValue(Double.parseDouble(DatosCompartidos.getBibliotecaEfecto()));
-        tesoroEfectoSlider.setValue(Double.parseDouble(DatosCompartidos.getTesoroEfecto()));
+        getDatosCompartidosValue(DatosCompartidos::getAguaEfecto, aguaEfectoSlider);
+        getDatosCompartidosValue(DatosCompartidos::getComidaEfecto, comidaEfectoSlider);
+        getDatosCompartidosValue(DatosCompartidos::getMontanaEfecto, montanaEfectoSlider);
+        getDatosCompartidosValue(DatosCompartidos::getBibliotecaEfecto, bibliotecaEfectoSlider);
+        getDatosCompartidosValue(DatosCompartidos::getTesoroEfecto, tesoroEfectoSlider);
     }
 
     ////////////////////////////////////////Initialize////////////////////////////////////////////
     @FXML
     public void initialize() {
         Game game = new Game(tableroJuego, "Coral");
+
+        pauseTab.setDisable(true);
+        this.pauseText.setVisible(false);
+        this.playText.setVisible(true);
+
         initializeBindingSliders(vidaUserSlider,vidaUserText, medidaVidaUser);
         initializeBindingSliders(probReproduccionSlider,probReproduccionText, medidaReproduccion);
         initializeBindingSliders(probClonacionSlider,probClonacionText, medidaClonacion);
@@ -283,8 +206,17 @@ public class ControllerPrueba {
         initializeBindingSliders(montanaEfectoSlider, montanaEfectoText, medidaMontanaEfecto);
         initializeBindingSliders(bibliotecaEfectoSlider, bibliotecaEfectoText, medidaBibliotecaEfecto);
         initializeBindingSliders(tesoroEfectoSlider, tesoroEfectoText, medidaTesoroEfecto);
+
+
         tabPaneParametros.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         infoVBox.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+
+        tabPaneParametros.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
+            if (newTab != null) {
+                // Actualizar los sliders al cambiar de pestaña
+                updateAllSliders();
+            }
+        });
     }
 
 }

@@ -41,9 +41,6 @@
                                 <MenuItem mnemonicParsing="false" text="Pause" />
                             </items>
                         </Menu>
-                        <Menu disable="true" mnemonicParsing="false" text="                                                                                                                                                                                                                                                                                           " />
-
-                        <Menu fx:id="exit" mnemonicParsing="false" onAction="#exitHandle" onMenuValidation="#exitHandle" text="EXIT" />
                     </menus>
                     <contextMenu>
                         <ContextMenu>
@@ -79,6 +76,24 @@
                <children>
                   <TabPane fx:id="tabPaneParametros" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
+                        <Tab fx:id="pauseTab" text="INFO">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Text fx:id="pauseText" fontSmoothingType="LCD" layoutX="2.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PARA PODER MODIFICAR LOS ATRIBUTOS, PAUSE LA PARTIDA" textAlignment="CENTER" visible="false" wrappingWidth="530.5856800079346">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="playText" fontSmoothingType="LCD" layoutX="2.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MODIFICA LOS ATRIBUTOS QUE DESEES ¿CONSEGUIRÁS ENCONTRAR EL EQUILIBRIO?" textAlignment="CENTER" wrappingWidth="530.5856800079346">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
                       <Tab fx:id="individuoTab" text="Parámetros Individuo">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
