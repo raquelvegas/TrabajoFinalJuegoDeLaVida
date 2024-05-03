@@ -66,46 +66,76 @@
       </AnchorPane>
       <AnchorPane layoutX="3.0" layoutY="145.0" prefHeight="154.0" prefWidth="594.0">
          <children>
-            <Slider fx:id="aguaVidaSlider" layoutX="47.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
-            <Slider fx:id="montanaVidaSlider" layoutX="232.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
-            <Slider fx:id="comidaVidaSlider" layoutX="136.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="aguaVidaSlider" layoutX="47.0" layoutY="7.0" max="25.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="montanaVidaSlider" layoutX="232.0" layoutY="7.0" max="25.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="comidaVidaSlider" layoutX="136.0" layoutY="7.0" max="25.0" orientation="VERTICAL" showTickLabels="true" />
             <AnchorPane layoutY="139.0" prefHeight="57.0" prefWidth="594.0">
                <children>
-                  <Text fx:id="comidaVidaText" fill="#666565" layoutX="133.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="comidaVidaText" fill="#666565" layoutX="131.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="aguaVidaText" fill="#666565" layoutX="42.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="aguaVidaText" fill="#666565" layoutX="41.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="montanaVidaText" fill="#666565" layoutX="230.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="montanaVidaText" fill="#666565" layoutX="227.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="tesoroVidaText" fill="#666565" layoutX="462.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="tesoroVidaText" fill="#666565" layoutX="463.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="bibliotecaVidaText" fill="#666565" layoutX="355.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="bibliotecaVidaText" fill="#666565" layoutX="355.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="pozoVidaText" fill="#666565" layoutX="532.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="pozoVidaText" fill="#666565" layoutX="531.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                      <font>
                         <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="29.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="217.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="119.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="343.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="452.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="518.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <Slider fx:id="bibliotecaVidaSlider" layoutX="359.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
-            <Slider fx:id="pozoVidaSlider" layoutX="536.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
-            <Slider fx:id="tesoroVidaSlider" layoutX="466.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="bibliotecaVidaSlider" layoutX="359.0" layoutY="7.0" max="25.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="pozoVidaSlider" layoutX="536.0" layoutY="7.0" max="25.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="tesoroVidaSlider" layoutX="466.0" layoutY="7.0" max="25.0" orientation="VERTICAL" showTickLabels="true" />
          </children>
       </AnchorPane>
    </children>

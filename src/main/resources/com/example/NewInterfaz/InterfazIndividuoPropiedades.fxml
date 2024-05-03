@@ -43,6 +43,11 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
+            <Text fill="#666565" layoutX="527.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="3.0" layoutY="200.0" prefHeight="57.0" prefWidth="594.0">
@@ -52,8 +57,13 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Slider fx:id="probReproduccionSlider" layoutX="244.0" layoutY="26.0" max="20.0" min="1.0" prefHeight="33.0" prefWidth="246.0" showTickLabels="true" />
-            <Text fx:id="probReproduccionText" fill="#666565" layoutX="502.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+            <Slider fx:id="probReproduccionSlider" layoutX="244.0" layoutY="26.0" prefHeight="33.0" prefWidth="246.0" showTickLabels="true" />
+            <Text fx:id="probReproduccionText" fill="#666565" layoutX="498.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.20782470703125">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text fill="#666565" layoutX="537.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -67,8 +77,13 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Slider fx:id="probClonacionSlider" layoutX="244.0" layoutY="26.0" max="20.0" min="1.0" prefHeight="34.0" prefWidth="246.0" showTickLabels="true" />
-            <Text fx:id="probClonacionText" fill="#666565" layoutX="502.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+            <Slider fx:id="probClonacionSlider" layoutX="244.0" layoutY="26.0" prefHeight="34.0" prefWidth="246.0" showTickLabels="true" />
+            <Text fx:id="probClonacionText" fill="#666565" layoutX="502.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.20782470703125">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text fill="#666565" layoutX="540.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

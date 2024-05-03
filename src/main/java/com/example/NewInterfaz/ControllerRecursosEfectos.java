@@ -3,9 +3,7 @@ package com.example.NewInterfaz;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
@@ -13,7 +11,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.function.Consumer;
 
 public class ControllerRecursosEfectos {
 
@@ -52,6 +49,7 @@ public class ControllerRecursosEfectos {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+        ControllerMainStage.initializeAudio();
     }
 
     @FXML

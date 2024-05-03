@@ -61,40 +61,100 @@
       </AnchorPane>
       <AnchorPane layoutX="22.0" layoutY="145.0" prefHeight="198.0" prefWidth="609.0">
          <children>
-            <Slider fx:id="aguaEfectoSlider" layoutX="47.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
-            <Slider fx:id="montanaEfectoSlider" layoutX="232.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
-            <Slider fx:id="comidaEfectoSlider" layoutX="136.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="aguaEfectoSlider" layoutX="47.0" layoutY="7.0" max="10.0" orientation="VERTICAL" prefHeight="137.0" prefWidth="30.0" showTickLabels="true" />
+            <Slider fx:id="montanaEfectoSlider" layoutX="232.0" layoutY="7.0" max="10.0" orientation="VERTICAL" prefHeight="138.0" prefWidth="30.0" showTickLabels="true" />
+            <Slider fx:id="comidaEfectoSlider" layoutX="136.0" layoutY="7.0" max="10.0" orientation="VERTICAL" prefHeight="138.0" prefWidth="30.0" showTickLabels="true" />
             <AnchorPane layoutY="139.0" prefHeight="57.0" prefWidth="594.0">
                <children>
-                  <Text fx:id="comidaEfectoText" fill="#666565" layoutX="133.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="comidaEfectoText" fill="#666565" layoutX="133.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="aguaEfectoText" fill="#666565" layoutX="42.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="aguaEfectoText" fill="#666565" layoutX="43.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="montanaEfectoText" fill="#666565" layoutX="230.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="montanaEfectoText" fill="#666565" layoutX="230.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="tesoroEfectoText" fill="#666565" layoutX="462.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="tesoroEfectoText" fill="#666565" layoutX="455.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="bibliotecaEfectoText" fill="#666565" layoutX="355.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                  <Text fx:id="bibliotecaEfectoText" fill="#666565" layoutX="348.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="34.6875">
                      <font>
                         <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="30.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="442.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="334.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="216.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="123.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="490.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="383.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="30.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="215.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="117.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="327.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prob. reproducción" textAlignment="CENTER" wrappingWidth="76.41326904296875">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#666565" layoutX="445.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prob. clonación" textAlignment="CENTER" wrappingWidth="60.799999999999955">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <Slider fx:id="bibliotecaEfectoSlider" layoutX="359.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
-            <Slider fx:id="tesoroEfectoSlider" layoutX="466.0" layoutY="7.0" max="50.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="bibliotecaEfectoSlider" layoutX="359.0" layoutY="7.0" orientation="VERTICAL" showTickLabels="true" />
+            <Slider fx:id="tesoroEfectoSlider" layoutX="466.0" layoutY="7.0" orientation="VERTICAL" showTickLabels="true" />
          </children>
       </AnchorPane>
    </children>
