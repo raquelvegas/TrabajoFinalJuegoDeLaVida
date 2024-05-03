@@ -5,11 +5,11 @@ import javafx.scene.layout.StackPane;
 
 public class Square extends StackPane {
 
-    int x,y;
-    boolean occupied;
-    int ID;
-    ListaSimple<Individuo> individuos;
-    ListaSimple<Recurso> recursos;
+    private int x,y;
+    private boolean occupied;
+    private int ID;
+    private ListaSimple<Individuo> individuos;
+    private ListaSimple<Recurso> recursos;
 
     public Square(int x, int y){
         this.individuos = new ListaSimple<>();
@@ -38,6 +38,9 @@ public class Square extends StackPane {
 
     public int getY() {
         return y;
+    }
+    public ListaSimple<Individuo> getIndividuos() {
+        return individuos;
     }
 
 

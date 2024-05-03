@@ -88,4 +88,8 @@ public class Tablero {
             contador++;
         }
     }
+
+    public ListaSimple<Square> getSquares() {
+        return squares;
+    }
 }

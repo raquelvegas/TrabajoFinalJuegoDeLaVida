@@ -4,21 +4,21 @@ import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.Cola;
 
 public class Individuo {
-    int ID;
+    private int ID;
 
-    int Generacion;
+    private int Generacion;
 
-    int TurnosVida;
+    private int TurnosVida;
 
-    int ProbRepr;
+    private int ProbRepr;
 
-    int ProbClon;
+    private int ProbClon;
 
-    int Tipo;
+    private int Tipo;
 
-    Cola<Integer> acciones;
+    private Cola<Integer> acciones;
 
-    ArbolBinario<Individuo> arbolGenealogico;
+    private ArbolBinario<Individuo> arbolGenealogico;
 
     public Individuo(int ID, int generacion, int turnosVida, int probRepr, int probClon, int tipo, Cola<Integer> acciones, ArbolBinario<Individuo> arbolGenealogico) {
         this.ID = ID;
