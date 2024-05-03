@@ -23,17 +23,29 @@ Códigos numéricos de los individuos:
 
 Codigos numéricos de Game:
 
-* Código cuadradoEnElBorde():
+* Código posicionCuadrado():
 
   0- El cuadrado no está en el borde (8 posibilidades de movimiento)
 
-  1- El cuadrado está en el borde, no en una esquina (5 posibilidades de movimiento)
+  1- Esquina superior izquierda (3 posibilidades de movimiento)
 
-  2- El cuadrado está en una esquina (3 posibilidades de movimiento)
+  2- Fila superior, excepto las esquinas (5 posibilidades de movimiento)
+
+  3- Esquina superior derecha (3 posibilidades de movimiento)
+
+  4- Columna de la derecha, excepto las esquinas (5 posibilidades de movimiento)
+
+  5- Esquina inferior derecha (3 posibilidades de movimiento)
+
+  6- Fila inferior excepto las esquinas (5 posibilidades de movimiento)
+
+  7- Esquina inferior izquierda (3 posibilidades de movimiento)
+
+  8- Columna izquierda, excepto las esquinas (5 posibilidades de movimiento)
 
 
 
-* Codigo numérico de movimiento en un cuadrado NO exterior:
+* Codigo numérico de movimiento en un cuadrado interior:
 
   1- Arriba-Izquierda
 
@@ -50,3 +62,26 @@ Codigos numéricos de Game:
   7- Abajo-Izquierda
 
   8- Izquierda
+
+
+* Codigo numérico de movimiento en un cuadrado en una esquina:
+
+  1- Movimiento en el eje X (izquierda-derecha)
+
+  2- Movimiento en el eje Y (arriba-abajo)
+
+  3- Movimiento en diagonal
+
+
+
+* Codigo numérico de movimiento en un cuadrado en un borde
+
+  1- Movimiento hacia el interior
+
+  2- Movimiento en el borde (arriba o derecha)
+
+  3- Movimiento en el borde (abajo o izquierda)
+
+  4- Movimiento en diagonal (arriba o derecha)
+
+  5- Movimiento en diagonal (abajo o izquierda)

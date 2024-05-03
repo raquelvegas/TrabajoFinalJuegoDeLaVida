@@ -37,8 +37,10 @@ public class Tablero {
                 identificador++;
             }
         }
-        System.out.println(squares.getDato(8).getID());
-        System.out.println(squares.getDato(8).getX()+","+squares.getDato(8).getY());
+        System.out.println(squares.getDato(5).getID());
+        System.out.println(squares.getDato(5).getX()+","+squares.getDato(5).getY());
+        System.out.println("Alto= "+DatosCompartidos.getAltoMatriz());
+        System.out.println("Ancho= "+DatosCompartidos.getAnchoMatriz());
     }
 
     private void setTheme(Square square, String theme, int i, int j) {
