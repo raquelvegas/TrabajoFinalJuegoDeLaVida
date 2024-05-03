@@ -1,9 +1,7 @@
 package com.example.NewInterfaz;
 
-import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -11,18 +9,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.beans.binding.Bindings;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class ControllerPrueba {
+public class ControllerMainStage {
     @FXML
     private Text vivosText, muertosText, playText, pauseText, //Información juego
             vidaUserText, probReproduccionText, probClonacionText, //Ajustes User
@@ -34,6 +30,8 @@ public class ControllerPrueba {
             aguaEfectoSlider, bibliotecaEfectoSlider, comidaEfectoSlider, montanaEfectoSlider, tesoroEfectoSlider; //Efecto Recursos
     @FXML
     private Button buttonVelocidad, buttonPlay, buttonPause, buttonStop; //Botones tablero
+    @FXML
+    static MediaPlayer mediaPlayer;
     @FXML
     private GridPane baseGridPane, centralGridPane, tableroJuego;
     @FXML
@@ -64,9 +62,7 @@ public class ControllerPrueba {
 
     /////////////////////////////////////MouseEvents////////////////////////////////////////////////////
     @FXML
-    void speedGame(MouseEvent event) {
-
-    }
+    void speedGame(MouseEvent event) {}
     @FXML
     void playGame(MouseEvent event) {
         if (gameStopped) {
@@ -95,9 +91,7 @@ public class ControllerPrueba {
         }
     }
     @FXML
-    void stopGame(MouseEvent event) {
-
-    }
+    void stopGame(MouseEvent event) {}
 
     @FXML
     void aplicarUser(MouseEvent event){
@@ -108,9 +102,9 @@ public class ControllerPrueba {
 
     @FXML
     void resetUser(MouseEvent event) {
-        getDatosCompartidosValue(DatosCompartidos::getVidaInicial, vidaUserSlider);
-        getDatosCompartidosValue(DatosCompartidos::getProbReproduccion, probReproduccionSlider);
-        getDatosCompartidosValue(DatosCompartidos::getProbClonacion, probClonacionSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getVidaInicial, vidaUserSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getProbReproduccion, probReproduccionSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getProbClonacion, probClonacionSlider);
     }
 
     @FXML
@@ -130,17 +124,17 @@ public class ControllerPrueba {
 
     @FXML
     void resetRecursosVida(MouseEvent event){
-        getDatosCompartidosValue(DatosCompartidos::getAguaVida, aguaVidaSlider);
-        getDatosCompartidosValue(DatosCompartidos::getComidaVida, comidaVidaSlider);
-        getDatosCompartidosValue(DatosCompartidos::getMontanaVida, montanaVidaSlider);
-        getDatosCompartidosValue(DatosCompartidos::getBibliotecaVida, bibliotecaVidaSlider);
-        getDatosCompartidosValue(DatosCompartidos::getTesoroVida, tesoroVidaSlider);
-        getDatosCompartidosValue(DatosCompartidos::getPozoVida, pozoVidaSlider);
-        getDatosCompartidosValue(DatosCompartidos::getAguaEfecto, aguaEfectoSlider);
-        getDatosCompartidosValue(DatosCompartidos::getComidaEfecto, comidaEfectoSlider);
-        getDatosCompartidosValue(DatosCompartidos::getMontanaEfecto, montanaEfectoSlider);
-        getDatosCompartidosValue(DatosCompartidos::getBibliotecaEfecto, bibliotecaEfectoSlider);
-        getDatosCompartidosValue(DatosCompartidos::getTesoroEfecto, tesoroEfectoSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getAguaVida, aguaVidaSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getComidaVida, comidaVidaSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getMontanaVida, montanaVidaSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getBibliotecaVida, bibliotecaVidaSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getTesoroVida, tesoroVidaSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getPozoVida, pozoVidaSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getAguaEfecto, aguaEfectoSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getComidaEfecto, comidaEfectoSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getMontanaEfecto, montanaEfectoSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getBibliotecaEfecto, bibliotecaEfectoSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getTesoroEfecto, tesoroEfectoSlider);
     }
 
 //    @FXML
@@ -157,30 +151,78 @@ public class ControllerPrueba {
     protected void setSlidersValue(Consumer<String> setter, Slider slider){
         setter.accept(String.valueOf((int) slider.getValue()));
     }
-    private void getDatosCompartidosValue (Supplier<String> getter, Slider slider) {
+    private void getDatosCompartidosValueSlider(Supplier<String> getter, Slider slider) {
         slider.setValue(Integer.parseInt(getter.get()));
     }
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+    private void setImage (String path, ImageView imageView, GridPane gridPane){
+        Image image = new Image(getClass().getClassLoader().getResourceAsStream(path));
+        imageView.setImage(image);
+        preserveRadio(imageView, gridPane);
+    }
+    protected void initializeMedia(){
+//        insertImage(imageViewLogo, "IconLifeGame.png");
+    }
+    private void preserveRadio(ImageView image, GridPane gridPane) {
+        AtomicReference<Double> maxWidth = new AtomicReference<>(Double.MAX_VALUE);
+        AtomicReference<Double> maxHeight = new AtomicReference<>(Double.MAX_VALUE);
 
+        // Escucha el cambio en el tamaño del GridPane y ajusta el tamaño máximo de la imagen
+        gridPane.widthProperty().addListener((obs, oldVal, newVal) -> {
+            double newWidth = newVal.doubleValue() / gridPane.getColumnCount() - 10; // Restamos un valor para dejar espacio para el borde, margen, etc.
+            maxWidth.set(Math.min(maxWidth.get(), newWidth));
+            image.setFitWidth(maxWidth.get());
+        });
+
+        gridPane.heightProperty().addListener((obs, oldVal, newVal) -> {
+            double newHeight = newVal.doubleValue() / gridPane.getRowCount() - 10; // Restamos un valor para dejar espacio para el borde, margen, etc.
+            maxHeight.set(Math.min(maxHeight.get(), newHeight));
+            image.setFitHeight(maxHeight.get());
+        });
+
+        // Mantenemos la relación de aspecto
+        image.setPreserveRatio(true);
+    }
+    protected static void initializeAudio(){
+        insertSong("LaBamba.mp3");
+    }
+    protected static void insertSong(String resourceName) {
+        String path = ControllerMainStage.class.getClassLoader().getResource(resourceName).toExternalForm();
+        Media media = new Media(path);
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.5);
+        mediaPlayer.play();
+    }
+    protected static void musicPause(MouseEvent event) {
+        if(DatosCompartidos.isPlayreproductor()){
+            mediaPlayer.pause();
+            DatosCompartidos.setPlayreproductor(false);
+        } else {
+            mediaPlayer.play();
+            DatosCompartidos.setPlayreproductor(true);
+        }
+
+    }
     public void updateAllSliders (){
-        getDatosCompartidosValue(DatosCompartidos::getVidaInicial, vidaUserSlider);
-        getDatosCompartidosValue(DatosCompartidos::getProbReproduccion, probReproduccionSlider);
-        getDatosCompartidosValue(DatosCompartidos::getProbClonacion, probClonacionSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getVidaInicial, vidaUserSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getProbReproduccion, probReproduccionSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getProbClonacion, probClonacionSlider);
 
-        getDatosCompartidosValue(DatosCompartidos::getAguaVida, aguaVidaSlider);
-        getDatosCompartidosValue(DatosCompartidos::getComidaVida, comidaVidaSlider);
-        getDatosCompartidosValue(DatosCompartidos::getMontanaVida, montanaVidaSlider);
-        getDatosCompartidosValue(DatosCompartidos::getBibliotecaVida, bibliotecaVidaSlider);
-        getDatosCompartidosValue(DatosCompartidos::getTesoroVida, tesoroVidaSlider);
-        getDatosCompartidosValue(DatosCompartidos::getPozoVida, pozoVidaSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getAguaVida, aguaVidaSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getComidaVida, comidaVidaSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getMontanaVida, montanaVidaSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getBibliotecaVida, bibliotecaVidaSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getTesoroVida, tesoroVidaSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getPozoVida, pozoVidaSlider);
 
-        getDatosCompartidosValue(DatosCompartidos::getAguaEfecto, aguaEfectoSlider);
-        getDatosCompartidosValue(DatosCompartidos::getComidaEfecto, comidaEfectoSlider);
-        getDatosCompartidosValue(DatosCompartidos::getMontanaEfecto, montanaEfectoSlider);
-        getDatosCompartidosValue(DatosCompartidos::getBibliotecaEfecto, bibliotecaEfectoSlider);
-        getDatosCompartidosValue(DatosCompartidos::getTesoroEfecto, tesoroEfectoSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getAguaEfecto, aguaEfectoSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getComidaEfecto, comidaEfectoSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getMontanaEfecto, montanaEfectoSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getBibliotecaEfecto, bibliotecaEfectoSlider);
+        getDatosCompartidosValueSlider(DatosCompartidos::getTesoroEfecto, tesoroEfectoSlider);
     }
 
     ////////////////////////////////////////Initialize////////////////////////////////////////////

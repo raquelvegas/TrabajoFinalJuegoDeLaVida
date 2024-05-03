@@ -43,7 +43,7 @@
             primaryStage.setResizable(false); // Evitar que la ventana sea redimensionable
 
             //Para el EXIT
-            ControllerPrueba controller = loader.getController();
+            ControllerMainStage controller = loader.getController();
             controller.setStage(primaryStage);
 
 
