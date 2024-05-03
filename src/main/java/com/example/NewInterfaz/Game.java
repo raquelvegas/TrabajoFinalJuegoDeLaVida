@@ -29,6 +29,7 @@ public class Game {
                 if (ind.getTipo() == 0) {
 
                 }
+                listaID.add(ind.getID()); // Se añade el ID del individuo a la lista de identificadores de los individuos que se han movido
             }
         }
     }
