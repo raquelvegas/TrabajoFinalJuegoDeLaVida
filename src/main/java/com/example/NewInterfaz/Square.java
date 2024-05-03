@@ -32,6 +32,10 @@ public class Square extends StackPane {
         this.ID = ID;
     }
 
+    public int getID() {
+        return ID;
+    }
+
     public int getX() {
         return x;
     }

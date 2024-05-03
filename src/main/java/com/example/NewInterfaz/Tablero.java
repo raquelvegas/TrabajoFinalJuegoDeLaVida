@@ -14,7 +14,7 @@ public class Tablero {
         this.tableroJuego = tableroJuego;
         this.theme = theme;
 
-        makeBoard(this.tableroJuego, theme);
+//        makeBoard(this.tableroJuego, theme);
     }
 
     void makeBoard(GridPane tableroJuego, String theme) {
@@ -37,6 +37,8 @@ public class Tablero {
                 identificador++;
             }
         }
+        System.out.println(squares.getDato(8).getID());
+        System.out.println(squares.getDato(8).getX()+","+squares.getDato(8).getY());
     }
 
     private void setTheme(Square square, String theme, int i, int j) {

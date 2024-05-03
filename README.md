@@ -31,3 +31,22 @@ Codigos numéricos de Game:
 
   2- El cuadrado está en una esquina (3 posibilidades de movimiento)
 
+
+
+* Codigo numérico de movimiento en un cuadrado NO exterior:
+
+  1- Arriba-Izquierda
+
+  2- Arriba
+
+  3- Arriba-Derecha
+
+  4- Derecha
+
+  5- Derecha-Abajo
+
+  6- Abajo
+
+  7- Abajo-Izquierda
+
+  8- Izquierda
