@@ -37,6 +37,8 @@ public class Tablero {
                 identificador++;
             }
         }
+
+        System.out.println("Pruebas en la clase Tablero:\n");
         System.out.println(squares.getDato(5).getID());
         System.out.println(squares.getDato(5).getX()+","+squares.getDato(5).getY());
         System.out.println("Alto= "+DatosCompartidos.getAltoMatriz());
