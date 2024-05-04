@@ -33,7 +33,7 @@
                                 <MenuItem fx:id="agua" mnemonicParsing="false" text="Agua" />
                                 <MenuItem fx:id="aire" mnemonicParsing="false" text="Aire" />
                                 <MenuItem fx:id="tierra" mnemonicParsing="false" text="Tierra" />
-                                <MenuItem fx:id="fuego" mnemonicParsing="false" text="Fuego" />
+                                <MenuItem fx:id="fuego" mnemonicParsing="false" onAction="#setEstiloFuego" text="Fuego" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Música">

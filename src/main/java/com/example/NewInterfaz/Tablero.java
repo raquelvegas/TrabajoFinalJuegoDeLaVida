@@ -13,8 +13,6 @@ public class Tablero {
     public Tablero(GridPane tableroJuego, String theme) {
         this.tableroJuego = tableroJuego;
         this.theme = theme;
-
-//        makeBoard(this.tableroJuego, theme);
     }
 
     void makeBoard(GridPane tableroJuego, String theme) {
@@ -46,41 +44,28 @@ public class Tablero {
     }
 
     private void setTheme(Square square, String theme, int i, int j) {
-        Color color1 = Color.web("#ffffff00");
-        Color color2 = Color.web("#ffffff00");
-
+        Color color = null;
         switch (theme) {
             case "Coral" -> {
-                color1 = Color.web("#b1e4b9");
-                color2 = Color.web("#70a2a3");
+                color = Color.web("#b1e4b9");
             }
-            case "Dusk" -> {
-                color1 = Color.web("#cbb7ae");
-                color2 = Color.web("#716677");
+            case "Agua" -> {
+                color = Color.LIGHTBLUE;
             }
             case "Wheat" -> {
-                color1 = Color.web("#eaefce");
-                color2 = Color.web("#bbbe65");
+                color = Color.web("#eaefce");
             }
             case "Marine" -> {
-                color1 = Color.web("#9dacff");
-                color2 = Color.web("#6f74d2");
+                color = Color.web("#9dacff");
             }
             case "Emerald" -> {
-                color1 = Color.web("#adbd90");
-                color2 = Color.web("#6e8f72");
+                color = Color.web("#adbd90");
             }
             case "Sandcastle" -> {
-                color1 = Color.web("#e4c16f");
-                color2 = Color.web("#b88b4a");
+                color = Color.web("#e4c16f");
             }
         }
-
-        if ((i + j) % 2 == 0) {
-            square.setBackground(new Background(new BackgroundFill(color1, CornerRadii.EMPTY, Insets.EMPTY)));
-        } else {
-            square.setBackground(new Background(new BackgroundFill(color2, CornerRadii.EMPTY, Insets.EMPTY)));
-        }
+        square.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
 
     }
 

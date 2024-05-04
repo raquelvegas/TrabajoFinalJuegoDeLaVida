@@ -2,12 +2,11 @@ package com.example.NewInterfaz;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -173,6 +172,12 @@ public class ControllerMainStage {
         getDatosCompartidosValueSlider(DatosCompartidos::getPozoAparicion, pozoAparicionSlider);
     }
 
+    @FXML
+    void setEstiloFuego(ActionEvent event) {
+        tabPaneParametros.getStylesheets().add(getClass().getResource("/estiloFuego.css").toExternalForm());
+        infoVBox.getStylesheets().add(getClass().getResource("/estiloFuego.css").toExternalForm());
+    }
+
     ///////////////////////////////////Métodos de apoyo///////////////////////////////////////////
     protected void initializeBindingSliders(Slider slider, Text text, IntegerProperty medida){
         slider.valueProperty().bindBidirectional(medida);
@@ -269,7 +274,7 @@ public class ControllerMainStage {
     ////////////////////////////////////////Initialize////////////////////////////////////////////
     @FXML
     public void initialize() {
-        Game game = new Game(tableroJuego, "Coral");
+        Game game = new Game(tableroJuego);
 
         pauseTab.setDisable(true);
         this.pauseText.setVisible(false);
@@ -296,8 +301,8 @@ public class ControllerMainStage {
         initializeBindingSliders(tesoroAparicionSlider, tesoroAparicionText, medidaTesoroAparicion);
         initializeBindingSliders(pozoAparicionSlider, pozoAparicionText, medidaPozoAparicion);
 
-        tabPaneParametros.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        infoVBox.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        tabPaneParametros.getStylesheets().add(getClass().getResource("/estiloAgua.css").toExternalForm());
+        infoVBox.getStylesheets().add(getClass().getResource("/estiloAgua.css").toExternalForm());
 
         tabPaneParametros.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
             if (newTab != null) {

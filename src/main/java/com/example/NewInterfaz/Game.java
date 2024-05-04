@@ -14,8 +14,8 @@ public class Game {
     public static Tablero tablero;
     private boolean game;
 
-    public Game(GridPane tablero, String theme){
-        this.tablero = new Tablero(tablero, theme);
+    public Game(GridPane tablero){
+        this.tablero = new Tablero(tablero, "Agua");
         this.game = true;
         addEventHandlers(this.tablero.tableroJuego);
     }

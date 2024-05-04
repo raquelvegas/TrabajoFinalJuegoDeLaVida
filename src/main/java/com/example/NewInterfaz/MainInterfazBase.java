@@ -55,12 +55,12 @@
 
             Stage optionStage = new Stage();
             optionStage.setScene(new Scene(root2));
-            optionStage.setResizable(false); // Evitar que la ventana sea redimensionable
-//            optionStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
-//            optionStage.initOwner(primaryStage);
+            optionStage.setResizable(true); // Evitar que la ventana sea redimensionable
+            optionStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
+            optionStage.initOwner(primaryStage);
 
-//            optionStage.initStyle(StageStyle.UNDECORATED);
-//            optionStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
+            optionStage.initStyle(StageStyle.UNDECORATED);
+            optionStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
 
 
             primaryStage.setOnCloseRequest(event -> {
