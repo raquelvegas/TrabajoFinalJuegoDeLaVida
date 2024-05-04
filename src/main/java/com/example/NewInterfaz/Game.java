@@ -14,6 +14,8 @@ public class Game {
         this.game = true;
     }
 
+    ////////////// MOVIMIENTO DE INDIVIDUOS //////////////////
+
     public void moverIndividuos() {
         ListaSimple<Integer> listaIdentificadoresIndMovidos = new ListaSimple<>();
         int contador = 0;
@@ -27,7 +29,8 @@ public class Game {
         while (!cuadrado.getIndividuos().isVacia()) {
             Individuo ind = cuadrado.getIndividuos().getPrimero();
             if (!individuoYaMovido(ind, listaID)) {   // Compruebo si el individuo a mover se ha movido ya en este turno o no
-                if (ind.getTipo() == 0) {   // TIpo Básico
+
+                if (ind.getTipo() == 0) {   // Tipo Básico
                     int posicionCuadrado = posicionCuadrado(cuadrado);
                     if (posicionCuadrado == 0) {
                         Integer movimiento = generarEnteroAleatorio(1, 8);   // Se genera el movimiento a realizar (véase el código numérico en README)
@@ -39,10 +42,13 @@ public class Game {
                         Integer movimiento = generarEnteroAleatorio(1, 5);
                         moverIndBasicoCuadradoBorde(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
                     }
-                } if (ind.getTipo()==1){   // Tipo Normal
 
-                    // FALTA ESTO
-
+                }
+                if (ind.getTipo() == 1) {   // Tipo Normal
+                    int posicionCuadrado = posicionCuadrado(cuadrado);
+                    if (posicionCuadrado == 0) {
+                        moverIndNormalCuadradoInterior(listaCuadrados, cuadrado, ind);
+                    }
                 } else {   // Tipo Avanzado
 
                     // FALTA ESTO
@@ -53,6 +59,22 @@ public class Game {
             }
         }
     }
+
+
+    // Método para mover un individuo normal en un cuadrado interior
+    private void moverIndNormalCuadradoInterior(ListaSimple<Square> listaCuadrados, Square cuadrado, Individuo ind) {
+        Integer contadorArriba = 0;
+        Integer contadorAbajo = 0;
+        Integer contadorDerecha = 0;
+        Integer contadorIZquierda = 0;
+
+
+        /// ACABAR ESTO
+
+
+
+    }
+
 
     // Método para comprobar si el individuo ya se ha movido o no
     private boolean individuoYaMovido(Individuo ind, ListaSimple<Integer> lista) {
@@ -101,6 +123,7 @@ public class Game {
         }
     }
 
+
     // Método para generar un número entero aleatorio entre los valores pedidos
     private int generarEnteroAleatorio(int min, int max) {
         Random random = new Random();
@@ -109,8 +132,6 @@ public class Game {
         return numeroAleatorio;
     }
 
-
-    ////////////// MOVIMIENTO DE INDIVIDUOS BÁSICOS //////////////////
 
     // Método para mover individuos básicos localizados en cuadrados interiores
     private void moverIndBasicoCuadradoInterior(ListaSimple<Square> listaCuadrados, Square cuadrado, Individuo ind, Integer movimiento) {
@@ -183,6 +204,7 @@ public class Game {
         }
         nuevoCuadrado.getIndividuos().add(ind);
     }
+
 
     // Método para mover individuos básicos localizados en esquinas
     private void moverIndBasicoCuadradoEsquina(ListaSimple<Square> listaCuadrados, Square cuadrado, Individuo ind, Integer movimiento, int esquina) {
@@ -304,6 +326,7 @@ public class Game {
             nuevoCuadrado.getIndividuos().add(ind);
         }
     }
+
 
     // Método para mover individuos básicos localizados en bordes (no esquinas)
     private void moverIndBasicoCuadradoBorde(ListaSimple<Square> listaCuadrados, Square cuadrado, Individuo ind, Integer movimiento, int borde) {
@@ -480,6 +503,7 @@ public class Game {
         }
         nuevoCuadrado.getIndividuos().add(ind);
     }
+
 
     public Tablero getTablero() {
         return tablero;
