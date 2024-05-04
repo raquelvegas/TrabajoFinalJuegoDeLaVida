@@ -6,7 +6,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -35,7 +38,9 @@ public class ControllerMainStage {
     @FXML
     static MediaPlayer mediaPlayer;
     @FXML
-    private GridPane baseGridPane, centralGridPane, tableroJuego;
+    private BorderPane basePane;
+    @FXML
+    private GridPane centralGridPane, tableroJuego;
     @FXML
     private TabPane tabPaneParametros;
     @FXML
@@ -44,7 +49,7 @@ public class ControllerMainStage {
     private Stage stage;
     protected boolean gameStopped = true;
     @FXML
-    private Tab pauseTab, individuoTab, recursosParametrosTab, anadirTab;
+    private Tab pauseTab, individuoTab, recursosParametrosTab, aparicionTab, anadirTab;
 
     ///////////////////////////////////BindingSliders////////////////////////////////////////////////////////////////////////////////
     protected IntegerProperty medidaVidaUser = new SimpleIntegerProperty(0);
@@ -79,6 +84,7 @@ public class ControllerMainStage {
             tabPaneParametros.getSelectionModel().select(pauseTab);
             this.individuoTab.setDisable(true);
             this.recursosParametrosTab.setDisable(true);
+            this.aparicionTab.setDisable(true);
             this.anadirTab.setDisable(true);
             this.pauseTab.setDisable(false);
             this.pauseText.setVisible(true);
@@ -92,6 +98,7 @@ public class ControllerMainStage {
 
             this.individuoTab.setDisable(false);
             this.recursosParametrosTab.setDisable(false);
+            this.aparicionTab.setDisable(false);
             this.anadirTab.setDisable(false);
             this.pauseTab.setDisable(true);
             this.pauseText.setVisible(false);
@@ -180,6 +187,10 @@ public class ControllerMainStage {
     }
     protected void initializeMedia(){
 //        insertImage(imageViewLogo, "IconLifeGame.png");
+    }
+    protected void insertImage(ImageView imageView, String resourceName) {
+        Image image = new Image(getClass().getClassLoader().getResourceAsStream(resourceName));
+        imageView.setImage(image);
     }
     private void preserveRadio(ImageView image, GridPane gridPane) {
         AtomicReference<Double> maxWidth = new AtomicReference<>(Double.MAX_VALUE);
