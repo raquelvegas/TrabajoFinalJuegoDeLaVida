@@ -176,6 +176,7 @@ public class ControllerMainStage {
     void setEstiloFuego(ActionEvent event) {
         tabPaneParametros.getStylesheets().add(getClass().getResource("/estiloFuego.css").toExternalForm());
         infoVBox.getStylesheets().add(getClass().getResource("/estiloFuego.css").toExternalForm());
+
     }
 
     ///////////////////////////////////Métodos de apoyo///////////////////////////////////////////
