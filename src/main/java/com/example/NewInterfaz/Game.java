@@ -1,7 +1,12 @@
 package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ListaSimple;
+import javafx.event.EventHandler;
+import javafx.event.EventTarget;
+import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Rectangle;
 
 import java.util.Random;
 
@@ -12,6 +17,28 @@ public class Game {
     public Game(GridPane tablero, String theme){
         this.tablero = new Tablero(tablero, theme);
         this.game = true;
+        addEventHandlers(this.tablero.tableroJuego);
+    }
+
+
+    private void addEventHandlers(GridPane tablero) {
+        tablero.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Node target = event.getPickResult().getIntersectedNode();
+                if (target != null && target instanceof Square) {
+                    Square square = (Square) target;
+                    int columna = square.getX();
+                    int fila = square.getY();
+                    handleSquareClick(columna, fila);
+                }
+            }
+        });
+    }
+
+    private void handleSquareClick(int columna, int fila) {
+        System.out.println("Clic en el cuadrado " + columna + ", " + fila);
+        // Aquí puedes agregar la lógica para manejar el clic en el cuadrado
     }
 
     ////////////// MOVIMIENTO DE INDIVIDUOS //////////////////

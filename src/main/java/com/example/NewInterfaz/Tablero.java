@@ -20,7 +20,7 @@ public class Tablero {
     void makeBoard(GridPane tableroJuego, String theme) {
         int alto = Integer.parseInt(DatosCompartidos.getAltoMatriz());
         int ancho = Integer.parseInt(DatosCompartidos.getAnchoMatriz());
-        int identificador=1;
+        int identificador=0;
         for (int i = 0; i < ancho; i++) {
             for (int j = 0; j < alto; j++) {
                 Square square = new Square(i, j);
