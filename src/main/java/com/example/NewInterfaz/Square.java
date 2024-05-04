@@ -78,8 +78,7 @@ public class Square extends StackPane {
         String status;
         if(this.occupied) status = "Occupied";
         else status = "Not occupied";
-//        return "Square" + this.x + this.y + " - " + status;
-        return "Square";
+        return "Square" + this.x + this.y;
     }
 
     public void setID(int ID) {
