@@ -17,6 +17,12 @@ public class DatosCompartidos {
     private static String montanaEfecto = "0";
     private static String tesoroEfecto = "0";
     private static String bibliotecaEfecto = "0";
+    private static String aguaAparicion = "0";
+    private static String comidaAparicion = "0";
+    private static String montanaAparicion = "0";
+    private static String tesoroAparicion = "0";
+    private static String bibliotecaAparicion = "0";
+    private static String pozoAparicion = "0";
     private static boolean playreproductor = true;
 
 
@@ -147,6 +153,54 @@ public class DatosCompartidos {
 
     public static void setBibliotecaEfecto(String bibliotecaEfecto) {
         DatosCompartidos.bibliotecaEfecto = bibliotecaEfecto;
+    }
+
+    public static String getAguaAparicion() {
+        return aguaAparicion;
+    }
+
+    public static void setAguaAparicion(String aguaAparicion) {
+        DatosCompartidos.aguaAparicion = aguaAparicion;
+    }
+
+    public static String getComidaAparicion() {
+        return comidaAparicion;
+    }
+
+    public static void setComidaAparicion(String comidaAparicion) {
+        DatosCompartidos.comidaAparicion = comidaAparicion;
+    }
+
+    public static String getMontanaAparicion() {
+        return montanaAparicion;
+    }
+
+    public static void setMontanaAparicion(String montanaAparicion) {
+        DatosCompartidos.montanaAparicion = montanaAparicion;
+    }
+
+    public static String getTesoroAparicion() {
+        return tesoroAparicion;
+    }
+
+    public static void setTesoroAparicion(String tesoroAparicion) {
+        DatosCompartidos.tesoroAparicion = tesoroAparicion;
+    }
+
+    public static String getBibliotecaAparicion() {
+        return bibliotecaAparicion;
+    }
+
+    public static void setBibliotecaAparicion(String bibliotecaAparicion) {
+        DatosCompartidos.bibliotecaAparicion = bibliotecaAparicion;
+    }
+
+    public static String getPozoAparicion() {
+        return pozoAparicion;
+    }
+
+    public static void setPozoAparicion(String pozoAparicion) {
+        DatosCompartidos.pozoAparicion = pozoAparicion;
     }
 
     public static boolean isPlayreproductor() {

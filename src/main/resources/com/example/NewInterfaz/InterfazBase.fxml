@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -195,8 +196,9 @@
                                        <children>
                                           <GridPane prefHeight="522.0" prefWidth="439.0">
                                             <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.4000244140625" minWidth="10.0" prefWidth="246.40001220703124" />
-                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.7999267578125" minWidth="10.0" prefWidth="288.7999877929688" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.4000244140625" minWidth="10.0" prefWidth="272.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.4000244140625" minWidth="0.0" prefWidth="0.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.7999267578125" minWidth="10.0" prefWidth="261.6" />
                                             </columnConstraints>
                                             <rowConstraints>
                                                 <RowConstraints maxHeight="536.200048828125" minHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
@@ -211,12 +213,12 @@
                                                          </font></Text>
                                                       <AnchorPane prefHeight="15.0" prefWidth="246.0">
                                                          <children>
-                                                            <Slider fx:id="aguaVidaSlider" layoutX="47.0" layoutY="11.0" max="25.0" prefHeight="28.0" prefWidth="132.0" showTickLabels="true" />
-                                                            <Text fx:id="aguaVidaText" fill="#5e5d5d" layoutX="185.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                                                            <Slider fx:id="aguaVidaSlider" layoutX="47.0" layoutY="11.0" max="25.0" prefHeight="33.0" prefWidth="112.0" showTickLabels="true" />
+                                                            <Text fx:id="aguaVidaText" fill="#5e5d5d" layoutX="171.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font></Text>
-                                                            <Text fx:id="aguaVidaText1" fill="#5e5d5d" layoutX="213.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos" wrappingWidth="52.08642578125">
+                                                            <Text fx:id="aguaVidaText1" fill="#5e5d5d" layoutX="199.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos" wrappingWidth="52.08642578125">
                                                                <font>
                                                                   <Font size="17.0" />
                                                                </font>
@@ -229,13 +231,13 @@
                                                          </font></Text>
                                                       <AnchorPane prefHeight="58.0" prefWidth="246.0">
                                                          <children>
-                                                            <Slider fx:id="comidaVidaSlider" layoutX="45.0" layoutY="5.0" max="25.0" prefHeight="28.0" prefWidth="132.0" showTickLabels="true" />
-                                                            <Text fx:id="comidaVidaText" fill="#5e5d5d" layoutX="183.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                                                            <Slider fx:id="comidaVidaSlider" layoutX="45.0" layoutY="5.0" max="25.0" prefHeight="33.0" prefWidth="113.0" showTickLabels="true" />
+                                                            <Text fx:id="comidaVidaText" fill="#5e5d5d" layoutX="169.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fx:id="aguaVidaText11" fill="#5e5d5d" layoutX="211.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos" wrappingWidth="54.48638916015625">
+                                                            <Text fx:id="aguaVidaText11" fill="#5e5d5d" layoutX="197.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos" wrappingWidth="54.48638916015625">
                                                                <font>
                                                                   <Font size="17.0" />
                                                                </font>
@@ -248,13 +250,13 @@
                                                          </font></Text>
                                                       <AnchorPane prefHeight="18.0" prefWidth="246.0">
                                                          <children>
-                                                            <Slider fx:id="montanaVidaSlider" layoutX="43.0" layoutY="12.0" max="25.0" prefHeight="28.0" prefWidth="132.0" showTickLabels="true" />
-                                                            <Text fx:id="montanaVidaText" fill="#5e5d5d" layoutX="184.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                                                            <Slider fx:id="montanaVidaSlider" layoutX="43.0" layoutY="12.0" max="25.0" prefHeight="33.0" prefWidth="115.0" showTickLabels="true" />
+                                                            <Text fx:id="montanaVidaText" fill="#5e5d5d" layoutX="170.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fx:id="aguaVidaText12" fill="#5e5d5d" layoutX="213.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                                                            <Text fx:id="aguaVidaText12" fill="#5e5d5d" layoutX="199.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
                                                                <font>
                                                                   <Font size="17.0" />
                                                                </font>
@@ -267,13 +269,13 @@
                                                          </font></Text>
                                                       <AnchorPane prefHeight="35.0" prefWidth="300.0">
                                                          <children>
-                                                            <Slider fx:id="bibliotecaVidaSlider" layoutX="42.0" layoutY="10.0" max="25.0" prefHeight="28.0" prefWidth="132.0" showTickLabels="true" />
-                                                            <Text fx:id="bibliotecaVidaText" fill="#5e5d5d" layoutX="183.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                                                            <Slider fx:id="bibliotecaVidaSlider" layoutX="42.0" layoutY="10.0" max="25.0" prefHeight="33.0" prefWidth="116.0" showTickLabels="true" />
+                                                            <Text fx:id="bibliotecaVidaText" fill="#5e5d5d" layoutX="169.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fx:id="aguaVidaText13" fill="#5e5d5d" layoutX="213.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                                                            <Text fx:id="aguaVidaText13" fill="#5e5d5d" layoutX="199.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
                                                                <font>
                                                                   <Font size="17.0" />
                                                                </font>
@@ -286,13 +288,13 @@
                                                          </font></Text>
                                                       <AnchorPane prefHeight="35.0" prefWidth="300.0">
                                                          <children>
-                                                            <Slider fx:id="tesoroVidaSlider" layoutX="43.0" layoutY="3.0" max="25.0" prefHeight="28.0" prefWidth="132.0" showTickLabels="true" />
-                                                            <Text fx:id="tesoroVidaText" fill="#5e5d5d" layoutX="182.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                                                            <Slider fx:id="tesoroVidaSlider" layoutX="43.0" layoutY="3.0" max="25.0" prefHeight="33.0" prefWidth="114.0" showTickLabels="true" />
+                                                            <Text fx:id="tesoroVidaText" fill="#5e5d5d" layoutX="168.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fx:id="aguaVidaText14" fill="#5e5d5d" layoutX="213.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                                                            <Text fx:id="aguaVidaText14" fill="#5e5d5d" layoutX="199.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
                                                                <font>
                                                                   <Font size="17.0" />
                                                                </font>
@@ -305,13 +307,13 @@
                                                          </font></Text>
                                                       <AnchorPane prefHeight="25.0" prefWidth="246.0">
                                                          <children>
-                                                            <Slider fx:id="pozoVidaSlider" layoutX="43.0" layoutY="14.0" max="25.0" prefHeight="28.0" prefWidth="132.0" showTickLabels="true" />
-                                                            <Text fx:id="pozoVidaText" fill="#5e5d5d" layoutX="182.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                                                            <Slider fx:id="pozoVidaSlider" layoutX="43.0" layoutY="14.0" max="25.0" prefHeight="33.0" prefWidth="114.0" showTickLabels="true" />
+                                                            <Text fx:id="pozoVidaText" fill="#5e5d5d" layoutX="168.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fx:id="aguaVidaText15" fill="#5e5d5d" layoutX="213.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                                                            <Text fx:id="aguaVidaText15" fill="#5e5d5d" layoutX="199.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
                                                                <font>
                                                                   <Font size="17.0" />
                                                                </font>
@@ -322,26 +324,26 @@
                                                 </VBox>
                                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                                    <children>
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIEMPOS DE VIDA" wrappingWidth="244.020263671875">
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIEMPOS DE VIDA" textAlignment="CENTER" underline="true" wrappingWidth="252.020263671875">
                                                          <font>
-                                                            <Font size="30.0" />
+                                                            <Font name="System Bold" size="27.0" />
                                                          </font></Text>
                                                    </children>
                                                 </VBox>
-                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
                                                    <children>
                                                       <VBox alignment="CENTER" prefHeight="75.0" prefWidth="274.0">
                                                          <children>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="EFECTO">
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="EFECTO" underline="true">
                                                                <font>
-                                                                  <Font size="30.0" />
+                                                                  <Font name="System Bold" size="27.0" />
                                                                </font>
                                                             </Text>
                                                          </children>
                                                       </VBox>
                                                    </children>
                                                 </VBox>
-                                                <VBox alignment="CENTER" prefHeight="342.0" prefWidth="288.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <VBox alignment="CENTER" prefHeight="342.0" prefWidth="288.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                    <children>
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AGUA" underline="true">
                                                          <font>
@@ -350,18 +352,18 @@
                                                       </Text>
                                                       <AnchorPane prefHeight="41.0" prefWidth="206.0">
                                                          <children>
-                                                            <Slider fx:id="aguaEfectoSlider" layoutX="19.0" layoutY="13.0" max="10.0" prefHeight="28.0" prefWidth="132.0" showTickLabels="true" />
-                                                            <Text fx:id="aguaEfectoText" fill="#5e5d5d" layoutX="177.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER">
+                                                            <Slider fx:id="aguaEfectoSlider" layoutX="21.0" layoutY="15.0" max="10.0" prefHeight="33.0" prefWidth="118.0" showTickLabels="true" />
+                                                            <Text fx:id="aguaEfectoText" fill="#5e5d5d" layoutX="165.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fill="#5e5d5d" layoutX="210.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                                                            <Text fill="#5e5d5d" layoutX="198.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
                                                                <font>
                                                                   <Font size="17.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fill="#5e5d5d" layoutX="159.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
+                                                            <Text fill="#5e5d5d" layoutX="147.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
@@ -375,18 +377,18 @@
                                                       </Text>
                                                       <AnchorPane prefHeight="37.0" prefWidth="193.0">
                                                          <children>
-                                                            <Slider fx:id="comidaEfectoSlider" layoutX="19.0" layoutY="2.0" max="10.0" prefHeight="28.0" prefWidth="132.0" showTickLabels="true" />
-                                                            <Text fx:id="comidaEfectoText" fill="#5e5d5d" layoutX="179.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER">
+                                                            <Slider fx:id="comidaEfectoSlider" layoutX="21.0" max="10.0" prefHeight="28.0" prefWidth="116.0" showTickLabels="true" />
+                                                            <Text fx:id="comidaEfectoText" fill="#5e5d5d" layoutX="165.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fill="#5e5d5d" layoutX="213.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
+                                                            <Text fill="#5e5d5d" layoutX="199.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos">
                                                                <font>
                                                                   <Font size="17.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fill="#5e5d5d" layoutX="161.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
+                                                            <Text fill="#5e5d5d" layoutX="147.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
@@ -400,18 +402,18 @@
                                                       </Text>
                                                       <AnchorPane prefHeight="39.0" prefWidth="199.0">
                                                          <children>
-                                                            <Slider fx:id="montanaEfectoSlider" layoutX="19.0" layoutY="9.0" max="10.0" prefHeight="28.0" prefWidth="132.0" showTickLabels="true" />
-                                                            <Text fx:id="montanaEfectoText" fill="#5e5d5d" layoutX="181.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER">
+                                                            <Slider fx:id="montanaEfectoSlider" layoutX="19.0" layoutY="11.0" max="10.0" prefHeight="33.0" prefWidth="116.0" showTickLabels="true" />
+                                                            <Text fx:id="montanaEfectoText" fill="#5e5d5d" layoutX="165.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fill="#5e5d5d" layoutX="214.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos" wrappingWidth="86.7152099609375">
+                                                            <Text fill="#5e5d5d" layoutX="198.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="turnos" wrappingWidth="86.7152099609375">
                                                                <font>
                                                                   <Font size="17.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fill="#5e5d5d" layoutX="164.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                                                            <Text fill="#5e5d5d" layoutX="148.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
@@ -425,23 +427,23 @@
                                                       </Text>
                                                       <AnchorPane prefHeight="40.0" prefWidth="203.0">
                                                          <children>
-                                                            <Slider fx:id="bibliotecaEfectoSlider" layoutX="19.0" layoutY="13.0" prefHeight="28.0" prefWidth="132.0" showTickLabels="true" />
-                                                            <Text fx:id="bibliotecaEfectoText" fill="#5e5d5d" layoutX="160.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="45.3531494140625">
+                                                            <Slider fx:id="bibliotecaEfectoSlider" layoutX="18.0" layoutY="11.0" prefHeight="33.0" prefWidth="114.0" showTickLabels="true" />
+                                                            <Text fx:id="bibliotecaEfectoText" fill="#5e5d5d" layoutX="141.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="45.3531494140625">
                                                                <font>
                                                                   <Font size="23.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fill="#5e5d5d" layoutX="201.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="86.7152099609375">
+                                                            <Text fill="#5e5d5d" layoutX="182.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="86.7152099609375">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fill="#5e5d5d" layoutX="151.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
+                                                            <Text fill="#5e5d5d" layoutX="132.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fill="#5e5d5d" layoutX="224.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prob. reproducción" wrappingWidth="80.3153076171875">
+                                                            <Text fill="#5e5d5d" layoutX="205.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prob. reproducción" wrappingWidth="80.3153076171875">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
@@ -455,23 +457,23 @@
                                                       </Text>
                                                       <AnchorPane prefHeight="39.0" prefWidth="201.0">
                                                          <children>
-                                                            <Slider fx:id="tesoroEfectoSlider" layoutX="19.0" layoutY="12.0" prefHeight="28.0" prefWidth="132.0" showTickLabels="true" />
-                                                            <Text fx:id="tesoroEfectoText" fill="#5e5d5d" layoutX="165.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.153076171875">
+                                                            <Slider fx:id="tesoroEfectoSlider" layoutX="19.0" layoutY="9.0" prefHeight="33.0" prefWidth="113.0" showTickLabels="true" />
+                                                            <Text fx:id="tesoroEfectoText" fill="#5e5d5d" layoutX="146.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.153076171875">
                                                                <font>
                                                                   <Font size="23.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fill="#5e5d5d" layoutX="202.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="86.7152099609375">
+                                                            <Text fill="#5e5d5d" layoutX="183.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="86.7152099609375">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fill="#5e5d5d" layoutX="152.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
+                                                            <Text fill="#5e5d5d" layoutX="133.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
                                                                <font>
                                                                   <Font size="25.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text fill="#5e5d5d" layoutX="224.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prob. clonación" wrappingWidth="57.915283203125">
+                                                            <Text fill="#5e5d5d" layoutX="205.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prob. clonación" wrappingWidth="57.915283203125">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
@@ -480,6 +482,7 @@
                                                       </AnchorPane>
                                                    </children>
                                                 </VBox>
+                                                <Line endX="-133.80557250976562" endY="-308.30682373046875" startX="-133.5984649658203" startY="-589.3846435546875" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                              </children>
                                           </GridPane>
                                           <HBox alignment="CENTER" prefHeight="30.0" prefWidth="534.0" GridPane.rowIndex="1">
@@ -495,6 +498,175 @@
                               </AnchorPane>
                         </content>
                       </Tab>
+                        <Tab fx:id="individuoTab1" text="Porcentages de aparición">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <GridPane layoutX="-2.0" layoutY="1.0" prefHeight="500.0" prefWidth="538.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="493.4" minHeight="10.0" prefHeight="487.80003051757814" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="279.0000366210937" minHeight="10.0" prefHeight="98.19996948242186" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="70.0" prefWidth="538.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <Button fx:id="buttonResetAparicionRecursos" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#resetAparicionRecursos" prefHeight="50.0" prefWidth="164.0" text="RESET" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="                      " />
+                                                <Button fx:id="buttonAparicionRecursos" mnemonicParsing="false" onMouseClicked="#aplicarAparicionRecursos" prefHeight="50.0" prefWidth="164.0" text="APLICAR" />
+                                             </children>
+                                          </HBox>
+                                          <GridPane>
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="537.8" minWidth="10.0" prefWidth="537.8" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.79998779296875" minWidth="0.0" prefWidth="0.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <VBox prefHeight="446.0" prefWidth="537.0">
+                                                   <children>
+                                                      <AnchorPane prefHeight="22.0" prefWidth="538.0" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AGUA" textAlignment="CENTER" underline="true" wrappingWidth="535.6723823547363">
+                                                         <font>
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <AnchorPane prefHeight="50.0" prefWidth="253.0">
+                                                         <children>
+                                                            <Slider fx:id="aguaAparicionSlider" layoutX="139.0" layoutY="8.0" prefHeight="34.0" prefWidth="190.0" showTickLabels="true" />
+                                                            <Text fx:id="aguaAparicionText" fill="#5e5d5d" layoutX="335.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="43.4749755859375">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fill="#5e5d5d" layoutX="378.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="33.8748779296875">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="22.0" prefWidth="538.0" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="COMIDA" textAlignment="CENTER" underline="true" wrappingWidth="535.6723823547363">
+                                                         <font>
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <AnchorPane prefHeight="50.0" prefWidth="253.0">
+                                                         <children>
+                                                            <Slider fx:id="comidaAparicionSlider" layoutX="139.0" layoutY="8.0" prefHeight="34.0" prefWidth="190.0" showTickLabels="true" />
+                                                            <Text fx:id="comidaAparicionText" fill="#5e5d5d" layoutX="341.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.675048828125">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fill="#5e5d5d" layoutX="380.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="33.8748779296875">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="22.0" prefWidth="538.0" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MONTAÑA" textAlignment="CENTER" underline="true" wrappingWidth="535.6723823547363">
+                                                         <font>
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <AnchorPane prefHeight="50.0" prefWidth="253.0">
+                                                         <children>
+                                                            <Slider fx:id="montanaAparicionSlider" layoutX="139.0" layoutY="8.0" prefHeight="34.0" prefWidth="190.0" showTickLabels="true" />
+                                                            <Text fx:id="montanaAparicionText" fill="#5e5d5d" layoutX="336.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="37.875">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fill="#5e5d5d" layoutX="374.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="33.8748779296875">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="22.0" prefWidth="538.0" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="BIBLIOTECA" textAlignment="CENTER" underline="true" wrappingWidth="535.6723823547363">
+                                                         <font>
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <AnchorPane prefHeight="50.0" prefWidth="253.0">
+                                                         <children>
+                                                            <Slider fx:id="bibliotecaAparicionSlider" layoutX="139.0" layoutY="8.0" prefHeight="34.0" prefWidth="190.0" showTickLabels="true" />
+                                                            <Text fx:id="bibliotecaAparicionText" fill="#5e5d5d" layoutX="335.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.6749267578125">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fill="#5e5d5d" layoutX="374.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="33.8748779296875">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="22.0" prefWidth="538.0" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TESORO" textAlignment="CENTER" underline="true" wrappingWidth="535.6723823547363">
+                                                         <font>
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <AnchorPane prefHeight="50.0" prefWidth="253.0">
+                                                         <children>
+                                                            <Slider fx:id="tesoroAparicionSlider" layoutX="139.0" layoutY="8.0" prefHeight="34.0" prefWidth="190.0" showTickLabels="true" />
+                                                            <Text fx:id="tesoroAparicionText" fill="#5e5d5d" layoutX="335.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.6749267578125">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fill="#5e5d5d" layoutX="374.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="33.8748779296875">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="22.0" prefWidth="538.0" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="POZO" textAlignment="CENTER" underline="true" wrappingWidth="535.6723823547363">
+                                                         <font>
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <AnchorPane prefHeight="50.0" prefWidth="253.0">
+                                                         <children>
+                                                            <Slider fx:id="pozoAparicionSlider" layoutX="139.0" layoutY="8.0" prefHeight="34.0" prefWidth="190.0" showTickLabels="true" />
+                                                            <Text fx:id="pozoAparicionText" fill="#5e5d5d" layoutX="337.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="37.875">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fill="#5e5d5d" layoutX="375.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="33.8748779296875">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="22.0" prefWidth="538.0" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="100.0" prefWidth="14.0" GridPane.columnIndex="1" />
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
                         <Tab fx:id="anadirTab" text="Añadir elementos">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />

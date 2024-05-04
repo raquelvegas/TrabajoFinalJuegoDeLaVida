@@ -21,9 +21,7 @@
 
         @Override
         public void start(Stage primaryStage) throws IOException {
-            //URL fxmlUrl1 = getClass().getResource("InterfazBase.fxml");
-            //URL fxmlUrl1 = getClass().getResource("InterfazGridPane.fxml");
-            URL fxmlUrl1 = getClass().getResource("InterfazPrueba.fxml");
+            URL fxmlUrl1 = getClass().getResource("InterfazBase.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlUrl1);
             Parent root1 = loader.load();
 
