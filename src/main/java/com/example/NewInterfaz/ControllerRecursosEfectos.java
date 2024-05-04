@@ -51,6 +51,7 @@ public class ControllerRecursosEfectos {
         DatosCompartidos.setBibliotecaEfecto(String.valueOf((int)bibliotecaEfectoSlider.getValue()));
         DatosCompartidos.setTesoroEfecto(String.valueOf((int)tesoroEfectoSlider.getValue()));
 
+
         // Cerrar la ventana actual
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();

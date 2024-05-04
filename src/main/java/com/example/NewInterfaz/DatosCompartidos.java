@@ -23,7 +23,6 @@ public class DatosCompartidos {
     private static String tesoroAparicion = "0";
     private static String bibliotecaAparicion = "0";
     private static String pozoAparicion = "0";
-
     private static boolean playreproductor = true;
 
 

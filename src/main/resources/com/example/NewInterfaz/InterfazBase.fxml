@@ -559,7 +559,7 @@
                                                       <AnchorPane prefHeight="50.0" prefWidth="253.0">
                                                          <children>
                                                             <Slider fx:id="comidaAparicionSlider" layoutX="139.0" layoutY="8.0" prefHeight="34.0" prefWidth="190.0" showTickLabels="true" />
-                                                            <Text fx:id="comidaAparicionText" fill="#5e5d5d" layoutX="341.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.675048828125">
+                                                            <Text fx:id="comidaAparicionText" fill="#5e5d5d" layoutX="341.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.675048828125">
                                                                <font>
                                                                   <Font size="23.0" />
                                                                </font>
