@@ -15,6 +15,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +39,9 @@ public class ControllerRecursosVida {
     protected IntegerProperty medidaBibliotecaVida = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaTesoroVida = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaPozoVida = new SimpleIntegerProperty(0);
+
+    private static final Logger log = LogManager.getLogger(ControllerRecursosVida.class);
+
 
     protected void initializeBindingSliders(Slider slider, Text text, IntegerProperty medida){
         slider.valueProperty().bindBidirectional(medida);
@@ -72,6 +77,8 @@ public class ControllerRecursosVida {
         configStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
 
         configStage.show();
+
+        log.info("Parametrización del tiempo de vida de los recursos correcta");
     }
 
     @FXML

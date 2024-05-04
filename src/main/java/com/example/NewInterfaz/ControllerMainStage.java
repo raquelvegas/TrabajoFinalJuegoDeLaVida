@@ -16,6 +16,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
@@ -74,6 +76,9 @@ public class ControllerMainStage {
     protected IntegerProperty medidaPozoAparicion = new SimpleIntegerProperty(0);
 
     /////////////////////////////////////MouseEvents////////////////////////////////////////////////////
+
+    private static final Logger log = LogManager.getLogger(ControllerMainStage.class);
+
     @FXML
     void speedGame(MouseEvent event) {}
     @FXML
@@ -89,6 +94,7 @@ public class ControllerMainStage {
             this.pauseTab.setDisable(false);
             this.pauseText.setVisible(true);
             this.playText.setVisible(false);
+            log.info("Reanudar el juego");
         }
     }
     @FXML
@@ -103,6 +109,7 @@ public class ControllerMainStage {
             this.pauseTab.setDisable(true);
             this.pauseText.setVisible(false);
             this.playText.setVisible(true);
+            log.info("Pausar el juego");
         }
     }
     @FXML

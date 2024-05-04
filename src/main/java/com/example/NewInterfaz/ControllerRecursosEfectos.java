@@ -14,6 +14,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,6 +37,8 @@ public class ControllerRecursosEfectos {
     protected IntegerProperty medidaMontanaEfecto = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaBibliotecaEfecto = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaTesoroEfecto = new SimpleIntegerProperty(0);
+
+    private static final Logger log = LogManager.getLogger(ControllerRecursosEfectos.class);
 
     protected void initializeBindingSliders(Slider slider, Text text, IntegerProperty medida){
         slider.valueProperty().bindBidirectional(medida);
@@ -71,6 +75,8 @@ public class ControllerRecursosEfectos {
         configStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
 
         configStage.show();
+
+        log.info("Parametrización de los efectos de los recursos correcta");
     }
 
     @FXML

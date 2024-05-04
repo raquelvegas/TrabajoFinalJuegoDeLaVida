@@ -9,6 +9,8 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
@@ -30,6 +32,9 @@ public class ControllerRecursosAparicion {
     protected IntegerProperty medidaTesoroAparicion = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaPozoAparicion = new SimpleIntegerProperty(0);
 
+    private static final Logger log = LogManager.getLogger(ControllerRecursosAparicion.class);
+
+
     protected void initializeBindingSliders(Slider slider, Text text, IntegerProperty medida) {
         slider.valueProperty().bindBidirectional(medida);
         text.textProperty().bind(medida.asString());
@@ -50,6 +55,8 @@ public class ControllerRecursosAparicion {
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
         ControllerMainStage.initializeAudio();
+
+        log.info("Parametrización de la probabilidad de aparición de los recursos correcta");
     }
 
     @FXML

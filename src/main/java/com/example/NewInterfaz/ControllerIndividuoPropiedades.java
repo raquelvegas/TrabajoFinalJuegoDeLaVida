@@ -14,6 +14,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +32,9 @@ public class ControllerIndividuoPropiedades {
     protected IntegerProperty medidaVida = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaProbReproduccion = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaProbClonacion = new SimpleIntegerProperty(0);
+
+    private static final Logger log = LogManager.getLogger(ControllerIndividuoPropiedades.class);
+
 
     @FXML
     void next(MouseEvent event) throws IOException {
@@ -57,6 +62,7 @@ public class ControllerIndividuoPropiedades {
 
         configStage.show();
 
+        log.info("Parametrización de las propiedades iniciales de los individuos correcta");
     }
 
     protected void initializeBindingSliders(Slider slider, Text text, IntegerProperty medida){

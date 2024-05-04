@@ -15,6 +15,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,6 +48,9 @@ public class ControllerTableroPropiedades {
         this.primaryStage = primaryStage;
     }
 
+    private static final Logger log = LogManager.getLogger(ControllerTableroPropiedades.class);
+
+
     @FXML
     void next(MouseEvent event) throws IOException {
         DatosCompartidos.setAltoMatriz(String.valueOf((int)altoSlider.getValue()));
@@ -71,6 +76,8 @@ public class ControllerTableroPropiedades {
         configStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
 
         configStage.show();
+
+        log.info("Parametrización de las dimensiones del tablero correcta");
     }
 
     protected void initializeBindingSliders(Slider slider, Text text, IntegerProperty medida){

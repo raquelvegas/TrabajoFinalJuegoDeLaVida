@@ -25,7 +25,7 @@
 
         @Override
         public void start(Stage primaryStage) throws IOException {
-            log.fatal("Primer log");
+            log.info("Inicio de la ejecución");
             URL fxmlUrl1 = getClass().getResource("InterfazBase.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlUrl1);
             Parent root1 = loader.load();
@@ -55,12 +55,12 @@
 
             Stage optionStage = new Stage();
             optionStage.setScene(new Scene(root2));
-            optionStage.setResizable(true); // Evitar que la ventana sea redimensionable
-            optionStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
-            optionStage.initOwner(primaryStage);
+            optionStage.setResizable(false); // Evitar que la ventana sea redimensionable
+//            optionStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
+//            optionStage.initOwner(primaryStage);
 
-            optionStage.initStyle(StageStyle.UNDECORATED);
-            optionStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
+//            optionStage.initStyle(StageStyle.UNDECORATED);
+//            optionStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
 
 
             primaryStage.setOnCloseRequest(event -> {
@@ -77,6 +77,7 @@
                     // Si el usuario cancela, se consume el evento para evitar que la ventana se cierre
                     event.consume();
                 }
+                log.info("Fin de la ejecución");
             });
 
             primaryStage.show();
