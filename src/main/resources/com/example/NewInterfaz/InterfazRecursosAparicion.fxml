@@ -69,7 +69,7 @@
             <Slider fx:id="aguaAparicionSlider" layoutX="47.0" layoutY="7.0" orientation="VERTICAL" prefHeight="148.0" prefWidth="35.0" showTickLabels="true" />
             <Slider fx:id="montanaAparicionSlider" layoutX="232.0" layoutY="7.0" orientation="VERTICAL" prefHeight="148.0" prefWidth="35.0" showTickLabels="true" />
             <Slider fx:id="comidaAparicionSlider" layoutX="136.0" layoutY="7.0" orientation="VERTICAL" prefHeight="148.0" prefWidth="35.0" showTickLabels="true" />
-            <AnchorPane layoutX="6.0" layoutY="150.0" prefHeight="47.0" prefWidth="588.0">
+            <AnchorPane layoutX="6.0" layoutY="153.0" prefHeight="44.0" prefWidth="588.0">
                <children>
                   <Text fx:id="comidaAparicionText" fill="#666565" layoutX="113.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="35.0078125">
                      <font>

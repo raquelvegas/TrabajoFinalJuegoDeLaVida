@@ -49,7 +49,7 @@ public class ControllerRecursosAparicion {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
-        ControllerMainStage.initializeAudio();
+//        ControllerMainStage.initializeAudio();
     }
 
     @FXML
