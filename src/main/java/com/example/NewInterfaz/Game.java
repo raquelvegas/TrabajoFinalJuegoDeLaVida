@@ -26,12 +26,12 @@ public class Game {
     private void moverIndividuosCuadrado(ListaSimple<Square> listaCuadrados, Square cuadrado, ListaSimple<Integer> listaID) {
         while (!cuadrado.getIndividuos().isVacia()) {
             Individuo ind = cuadrado.getIndividuos().getPrimero();
-            if (!individuoYaMovido(ind, listaID)) { // Compruebo si el individuo a mover se ha movido ya en este turno o no
-                if (ind.getTipo() == 0) { // TIpo Básico
-                    Integer posicionCuadrado = posicionCuadrado(cuadrado);
+            if (!individuoYaMovido(ind, listaID)) {   // Compruebo si el individuo a mover se ha movido ya en este turno o no
+                if (ind.getTipo() == 0) {   // TIpo Básico
+                    int posicionCuadrado = posicionCuadrado(cuadrado);
                     if (posicionCuadrado == 0) {
-                        Integer movimiento = generarEnteroAleatorio(1, 8); // Se genera el movimiento a realizar (véase el código numérico en README)
-                        moverIndBasicoCuadradoInterior(listaCuadrados, cuadrado, ind, movimiento); // Se añade el individuo a la lista de individuos del nuevo cuadrado
+                        Integer movimiento = generarEnteroAleatorio(1, 8);   // Se genera el movimiento a realizar (véase el código numérico en README)
+                        moverIndBasicoCuadradoInterior(listaCuadrados, cuadrado, ind, movimiento);   // Se añade el individuo a la lista de individuos del nuevo cuadrado
                     } else if ((posicionCuadrado == 1) || (posicionCuadrado == 3) || (posicionCuadrado == 5) || (posicionCuadrado == 7)) {
                         Integer movimiento = generarEnteroAleatorio(1, 3);
                         moverIndBasicoCuadradoEsquina(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
@@ -39,11 +39,11 @@ public class Game {
                         Integer movimiento = generarEnteroAleatorio(1, 5);
                         moverIndBasicoCuadradoBorde(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
                     }
-                } if (ind.getTipo()==1){ // Tipo Normal
+                } if (ind.getTipo()==1){   // Tipo Normal
 
                     // FALTA ESTO
 
-                } else { // Tipo Avanzado
+                } else {   // Tipo Avanzado
 
                     // FALTA ESTO
 
