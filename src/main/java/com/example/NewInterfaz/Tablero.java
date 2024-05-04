@@ -28,7 +28,7 @@ public class Tablero {
                 square.setBorder(new Border(new BorderStroke(Color.BLACK,
                         BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
                 // Llama a setTheme() con los parámetros apropiados
-                setTheme(square, theme, i, j);
+                setTheme(square, theme);
                 // Modifica la llamada al método add para agregar el tablero en la celda (0,2)
                 tableroJuego.add(square, i, j); // Aquí solo agrega el square, no necesitas especificar el rowspan y colspan
                 squares.add(square);
@@ -43,7 +43,7 @@ public class Tablero {
         System.out.println("Ancho= "+DatosCompartidos.getAnchoMatriz());
     }
 
-    private void setTheme(Square square, String theme, int i, int j) {
+    private void setTheme(Square square, String theme) {
         Color color = null;
         switch (theme) {
             case "Coral" -> {
@@ -69,13 +69,36 @@ public class Tablero {
 
     }
 
+    public void setTheme(String theme){
+        Color color = null;
+        switch (theme) {
+            case "Fuego" -> {
+                color = Color.web("#ffc09f");
+            }
+            case "Agua" -> {
+                color = Color.web("#add8e6ff");
+            }
+            case "Natura" -> {
+                color = Color.web("#adf7b6");
+            }
+            case "Tierra" -> {
+                color = Color.web("#fcf5c7");
+            }
+        }
+        Integer contador=0;
+        while (contador<squares.getNumeroElementos()){
+            squares.getDato(contador).setBackground(new Background(new BackgroundFill(color,CornerRadii.EMPTY, Insets.EMPTY)));
+            contador++;
+        }
+    }
+
     public void updateTheme(String newTheme) {
         this.theme = newTheme;
         int contador = 0;
         while (contador < squares.getNumeroElementos()){
             int i= squares.getDato(contador).getX();
             int j = squares.getDato(contador).getY();
-            setTheme(squares.getDato(contador),newTheme,i,j);
+            setTheme(squares.getDato(contador),newTheme);
             contador++;
         }
     }

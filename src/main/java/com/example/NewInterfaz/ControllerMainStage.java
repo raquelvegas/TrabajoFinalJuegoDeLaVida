@@ -52,6 +52,8 @@ public class ControllerMainStage {
     @FXML
     private Tab pauseTab, individuoTab, recursosParametrosTab, aparicionTab, anadirTab;
 
+    private Game game=null;
+
     ///////////////////////////////////BindingSliders////////////////////////////////////////////////////////////////////////////////
     protected IntegerProperty medidaVidaUser = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaReproduccion = new SimpleIntegerProperty(0);
@@ -174,9 +176,28 @@ public class ControllerMainStage {
 
     @FXML
     void setEstiloFuego(ActionEvent event) {
-        tabPaneParametros.getStylesheets().add(getClass().getResource("/estiloFuego.css").toExternalForm());
-        infoVBox.getStylesheets().add(getClass().getResource("/estiloFuego.css").toExternalForm());
+        tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloFuego.css").toExternalForm());
+        infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloFuego.css").toExternalForm());
+        game.getTablero().setTheme("Fuego");
+    }
+    @FXML
+    void setEstiloAgua(ActionEvent event) {
+        tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloAgua.css").toExternalForm());
+        infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloAgua.css").toExternalForm());
+        game.getTablero().setTheme("Agua");
+    }
+    @FXML
+    void setEstiloNatura(ActionEvent event) {
+        tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloNatura.css").toExternalForm());
+        infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloNatura.css").toExternalForm());
+        game.getTablero().setTheme("Natura");
+    }
 
+    @FXML
+    void setEstiloTierra(ActionEvent event) {
+        tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloTierra.css").toExternalForm());
+        infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloTierra.css").toExternalForm());
+        game.getTablero().setTheme("Tierra");
     }
 
     ///////////////////////////////////Métodos de apoyo///////////////////////////////////////////
@@ -275,7 +296,7 @@ public class ControllerMainStage {
     ////////////////////////////////////////Initialize////////////////////////////////////////////
     @FXML
     public void initialize() {
-        Game game = new Game(tableroJuego);
+        game = new Game(tableroJuego);
 
         pauseTab.setDisable(true);
         this.pauseText.setVisible(false);
@@ -302,8 +323,8 @@ public class ControllerMainStage {
         initializeBindingSliders(tesoroAparicionSlider, tesoroAparicionText, medidaTesoroAparicion);
         initializeBindingSliders(pozoAparicionSlider, pozoAparicionText, medidaPozoAparicion);
 
-        tabPaneParametros.getStylesheets().add(getClass().getResource("/estiloAgua.css").toExternalForm());
-        infoVBox.getStylesheets().add(getClass().getResource("/estiloAgua.css").toExternalForm());
+        tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloAgua.css").toExternalForm());
+        infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloAgua.css").toExternalForm());
 
         tabPaneParametros.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
             if (newTab != null) {

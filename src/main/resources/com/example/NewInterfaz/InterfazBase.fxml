@@ -30,9 +30,9 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="Tema del tablero 🎨">
                             <items>
-                                <MenuItem fx:id="agua" mnemonicParsing="false" text="Agua" />
-                                <MenuItem fx:id="aire" mnemonicParsing="false" text="Aire" />
-                                <MenuItem fx:id="tierra" mnemonicParsing="false" text="Tierra" />
+                                <MenuItem fx:id="agua" mnemonicParsing="false" onAction="#setEstiloAgua" text="Agua" />
+                                <MenuItem fx:id="aire" mnemonicParsing="false" onAction="#setEstiloNatura" text="Natura" />
+                                <MenuItem fx:id="tierra" mnemonicParsing="false" onAction="#setEstiloTierra" text="Tierra" />
                                 <MenuItem fx:id="fuego" mnemonicParsing="false" onAction="#setEstiloFuego" text="Fuego" />
                             </items>
                         </Menu>
