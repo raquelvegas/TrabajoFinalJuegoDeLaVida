@@ -12,6 +12,8 @@
     import javafx.stage.Modality;
     import javafx.stage.Stage;
     import javafx.stage.StageStyle;
+    import org.apache.logging.log4j.LogManager;
+    import org.apache.logging.log4j.Logger;
 
     import java.io.IOException;
     import java.net.URL;
@@ -19,8 +21,11 @@
 
     public class MainInterfazBase extends Application {
 
+        private static final Logger log = LogManager.getLogger(MainInterfazBase.class);
+
         @Override
         public void start(Stage primaryStage) throws IOException {
+            log.fatal("Primer log");
             URL fxmlUrl1 = getClass().getResource("InterfazBase.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlUrl1);
             Parent root1 = loader.load();
