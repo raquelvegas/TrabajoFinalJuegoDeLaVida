@@ -179,18 +179,23 @@ public class ControllerMainStage {
         tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloFuego.css").toExternalForm());
         infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloFuego.css").toExternalForm());
         game.getTablero().setTheme("Fuego");
+        log.info("Cambio de color de visualización: Fuego");
     }
     @FXML
     void setEstiloAgua(ActionEvent event) {
         tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloAgua.css").toExternalForm());
         infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloAgua.css").toExternalForm());
         game.getTablero().setTheme("Agua");
+        log.info("Cambio de color de visualización: Agua");
+
     }
     @FXML
     void setEstiloNatura(ActionEvent event) {
         tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloNatura.css").toExternalForm());
         infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloNatura.css").toExternalForm());
         game.getTablero().setTheme("Natura");
+        log.info("Cambio de color de visualización: Natura");
+
     }
 
     @FXML
@@ -198,6 +203,8 @@ public class ControllerMainStage {
         tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloTierra.css").toExternalForm());
         infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloTierra.css").toExternalForm());
         game.getTablero().setTheme("Tierra");
+        log.info("Cambio de color de visualización: Tierra");
+
     }
 
     ///////////////////////////////////Métodos de apoyo///////////////////////////////////////////
