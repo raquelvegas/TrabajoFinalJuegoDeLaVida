@@ -8,23 +8,25 @@ import javafx.scene.shape.Rectangle;
 
 public class Celda extends StackPane {
     private int x, y;
-    private String tipo;
+    private Integer tipo;
     private int id;
     private boolean ocupado;
 
     public Celda(int x, int y) {
         this.x = x;
         this.y = y;
-        this.tipo = "";
+        this.tipo = null;
         this.ocupado = false;
         setPickOnBounds(false);
     }
 
-    public void setTipo(String tipo) {
+
+
+    public void setTipo(Integer tipo) {
         this.tipo = tipo;
     }
 
-    public String getTipo() {
+    public Integer getTipo() {
         return tipo;
     }
 

@@ -49,7 +49,6 @@ public class ControllerRecursosAparicion {
         DatosCompartidos.setTesoroAparicion(String.valueOf((int) tesoroAparicionSlider.getValue()));
         DatosCompartidos.setPozoAparicion(String.valueOf((int) pozoAparicionSlider.getValue()));
 
-
         // Cerrar la ventana actual
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();

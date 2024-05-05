@@ -1,12 +1,11 @@
 package com.example.NewInterfaz;
 
+import com.example.EstructurasDeDatos.ArbolBinario;
+import com.example.EstructurasDeDatos.Cola;
 import com.example.EstructurasDeDatos.ListaSimple;
-import javafx.event.EventHandler;
-import javafx.event.EventTarget;
 import javafx.scene.Node;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.util.Random;
 
@@ -31,17 +30,85 @@ public class Game {
                     if (square.getBoundsInParent().contains(x, y)) {
                         int columna = square.getX();
                         int fila = square.getY();
-                        handleSquareClick(columna, fila);
+                        handleSquareClick(columna, fila, square);
                         break; // Salir del bucle una vez que se encuentre un cuadrado clicado
                     }
                 }
             }
+            actualizarTablero(this.getTablero());
         });
     }
 
-    private void handleSquareClick(int columna, int fila) {
+    private void handleSquareClick(int columna, int fila, Square square) {
         System.out.println("Clic en el cuadrado " + columna + ", " + fila);
-        // Aquí puedes agregar la lógica para manejar el clic en el cuadrado
+        addIndividuo(square);
+    }
+
+    private void actualizarTablero(Tablero tablero){
+        int tamañoTablero = tablero.getSquares().getNumeroElementos();
+        Integer identificador = 0;
+        for (int i = 0; i < tamañoTablero; i++) {
+            actualizarSquare(tablero.getSquare(identificador));
+            identificador++;
+        }
+    }
+
+    private void actualizarSquare(Square square){
+        Integer identificador = 0;
+        for (int i = 0; i < 6; i++) {
+            actualizarCelda(square.getCelda(identificador));
+            identificador++;
+        }
+    }
+
+    private void addIndividuo(Square square){
+        if(square.getIndividuos().getNumeroElementos() <3){
+            Individuo individuoNuevo = new Individuo(1,1,1,1,1,1,new Cola<>(),new ArbolBinario<>(null));
+            addTipo(square, 1);
+            square.getIndividuos().add(individuoNuevo);
+        }
+    }
+
+    private void addTipo (Square square, Integer tipo){
+        Integer identificador = 0;
+        for (int i = 0; i < 6; i++) {
+            if(!square.getCelda(identificador).isOcupado()){
+                square.getCelda(identificador).setTipo(tipo);
+                square.getCelda(identificador).setOcupado(true);
+                System.out.println("Se ha añadido un individuo a la celda" + identificador);
+                break;
+            }identificador++;
+        }
+    }
+
+    private void actualizarCelda(Celda celda) {
+        if (celda.isOcupado()) {
+            switch (celda.getTipo()) {
+                case 1: //Individuo
+                    celda.setColor(Color.BLACK);
+                    break;
+                case 2: //Agua
+                    celda.setColor(Color.BLUE);
+                    break;
+                case 3: //Comida
+                    celda.setColor(Color.GREEN);
+                    break;
+                case 4: //Montaña
+                    celda.setColor(Color.ORANGE);
+                    break;
+                case 5: //Biblioteca
+                    celda.setColor(Color.BEIGE);
+                    break;
+                case 6: //Tesoro
+                    celda.setColor(Color.GOLD);
+                    break;
+                case 7: //Pozo
+                    celda.setColor(Color.RED);
+                    break;
+            }
+        } else {
+            celda.setColor(Color.TRANSPARENT);
+        }
     }
 
     ////////////// MOVIMIENTO DE INDIVIDUOS //////////////////

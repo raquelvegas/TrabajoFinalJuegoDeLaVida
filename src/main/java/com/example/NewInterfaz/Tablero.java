@@ -2,6 +2,7 @@ package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ListaSimple;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
@@ -18,7 +19,7 @@ public class Tablero {
     void makeBoard(GridPane tableroJuego, String theme) {
         int alto = Integer.parseInt(DatosCompartidos.getAltoMatriz());
         int ancho = Integer.parseInt(DatosCompartidos.getAnchoMatriz());
-        int identificador=0;
+        int identificador = 0;
         for (int i = 0; i < ancho; i++) {
             for (int j = 0; j < alto; j++) {
                 Square square = new Square(i, j);
@@ -38,9 +39,9 @@ public class Tablero {
 
         System.out.println("Pruebas en la clase Tablero:\n");
         System.out.println(squares.getDato(5).getID());
-        System.out.println(squares.getDato(5).getX()+","+squares.getDato(5).getY());
-        System.out.println("Alto= "+DatosCompartidos.getAltoMatriz());
-        System.out.println("Ancho= "+DatosCompartidos.getAnchoMatriz());
+        System.out.println(squares.getDato(5).getX() + "," + squares.getDato(5).getY());
+        System.out.println("Alto= " + DatosCompartidos.getAltoMatriz());
+        System.out.println("Ancho= " + DatosCompartidos.getAnchoMatriz());
     }
 
     private void setTheme(Square square, String theme) {
@@ -69,7 +70,7 @@ public class Tablero {
 
     }
 
-    public void setTheme(String theme){
+    public void setTheme(String theme) {
         Color color = null;
         switch (theme) {
             case "Fuego" -> {
@@ -85,9 +86,9 @@ public class Tablero {
                 color = Color.web("#fcf5c7");
             }
         }
-        Integer contador=0;
-        while (contador<squares.getNumeroElementos()){
-            squares.getDato(contador).setBackground(new Background(new BackgroundFill(color,CornerRadii.EMPTY, Insets.EMPTY)));
+        Integer contador = 0;
+        while (contador < squares.getNumeroElementos()) {
+            squares.getDato(contador).setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
             contador++;
         }
     }
@@ -95,15 +96,27 @@ public class Tablero {
     public void updateTheme(String newTheme) {
         this.theme = newTheme;
         int contador = 0;
-        while (contador < squares.getNumeroElementos()){
-            int i= squares.getDato(contador).getX();
+        while (contador < squares.getNumeroElementos()) {
+            int i = squares.getDato(contador).getX();
             int j = squares.getDato(contador).getY();
-            setTheme(squares.getDato(contador),newTheme);
+            setTheme(squares.getDato(contador), newTheme);
             contador++;
         }
     }
 
     public ListaSimple<Square> getSquares() {
         return squares;
+    }
+
+    public Square getSquare(int id) {
+        for (Node node : tableroJuego.getChildren()) {
+            if (node instanceof Square) {
+                Square square = (Square) node;
+                if (square.getID() == id) {
+                    return square;
+                }
+            }
+        }
+        return null; // Si no se encuentra ninguna celda con el ID especificado
     }
 }

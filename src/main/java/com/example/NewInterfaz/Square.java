@@ -2,6 +2,7 @@ package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ListaSimple;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -14,7 +15,7 @@ public class Square extends StackPane {
     private ListaSimple<Individuo> individuos;
     private ListaSimple<Recurso> recursos;
 
-    private GridPane gridPane;
+    GridPane gridPane;
 
     public Square(int x, int y){
         this.individuos = new ListaSimple<>();
@@ -27,6 +28,7 @@ public class Square extends StackPane {
         this.gridPane = new GridPane();
 
         // Crear celdas del GridPane
+        Integer identificador = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 2; j++) {
                 Celda celda = new Celda(i, j);
@@ -35,7 +37,8 @@ public class Square extends StackPane {
                 celda.setBorder(new Border(new BorderStroke(Color.TRANSPARENT,
                         BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
                 celda.setColor(Color.RED);
-
+                celda.setID(identificador);
+                identificador++;
                 gridPane.add(celda, i, j);
             }
         }
@@ -43,6 +46,7 @@ public class Square extends StackPane {
         // Agrega el GridPane al StackPane (Square)
         getChildren().add(gridPane);
     }
+
 
 
     @Override
@@ -71,6 +75,20 @@ public class Square extends StackPane {
     public ListaSimple<Individuo> getIndividuos() {
         return individuos;
     }
+    public ListaSimple<Recurso> getRecursos() {
+        return recursos;
+    }
 
+    public Celda getCelda(int id) {
+        for (Node node : gridPane.getChildren()) {
+            if (node instanceof Celda) {
+                Celda celda = (Celda) node;
+                if (celda.getID() == id) {
+                    return celda;
+                }
+            }
+        }
+        return null; // Si no se encuentra ninguna celda con el ID especificado
+    }
 
 }
