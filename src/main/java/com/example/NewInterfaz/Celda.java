@@ -1,14 +1,23 @@
 package com.example.NewInterfaz;
 
-public class Celda {
+import com.example.EstructurasDeDatos.ListaSimple;
+import javafx.geometry.Insets;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+
+public class Celda extends StackPane {
+    private int x, y;
     private String tipo;
-    private int numero;
+    private int id;
     private boolean ocupado;
 
-    public Celda() {
+    public Celda(int x, int y) {
+        this.x = x;
+        this.y = y;
         this.tipo = "";
-        this.numero = 0;
         this.ocupado = false;
+        setPickOnBounds(false);
     }
 
     public void setTipo(String tipo) {
@@ -19,12 +28,12 @@ public class Celda {
         return tipo;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setID(int newId) {
+        this.id = newId;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getID() {
+        return id;
     }
 
     public void setOcupado(boolean ocupado) {
@@ -33,5 +42,9 @@ public class Celda {
 
     public boolean isOcupado() {
         return ocupado;
+    }
+
+    public void setColor(Color color) {
+        setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 }

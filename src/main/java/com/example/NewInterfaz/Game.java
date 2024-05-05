@@ -22,15 +22,18 @@ public class Game {
 
 
     private void addEventHandlers(GridPane tablero) {
-        tablero.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Node target = event.getPickResult().getIntersectedNode();
-                if (target != null && target instanceof Square) {
-                    Square square = (Square) target;
-                    int columna = square.getX();
-                    int fila = square.getY();
-                    handleSquareClick(columna, fila);
+        tablero.setOnMouseClicked(event -> {
+            double x = event.getX();
+            double y = event.getY();
+            for (Node node : tablero.getChildren()) {
+                if (node instanceof Square) {
+                    Square square = (Square) node;
+                    if (square.getBoundsInParent().contains(x, y)) {
+                        int columna = square.getX();
+                        int fila = square.getY();
+                        handleSquareClick(columna, fila);
+                        break; // Salir del bucle una vez que se encuentre un cuadrado clicado
+                    }
                 }
             }
         });
