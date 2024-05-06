@@ -20,14 +20,14 @@ public class Individuo {
 
     private ArbolBinario<Individuo> arbolGenealogico;
 
-    public Individuo(int ID, int generacion, int turnosVida, int probRepr, int probClon, int tipo, Cola<Integer> acciones, ArbolBinario<Individuo> arbolGenealogico) {
-        this.ID = ID;
-        Generacion = generacion;
-        TurnosVida = turnosVida;
-        ProbRepr = probRepr;
-        ProbClon = probClon;
+    public Individuo(int tipo, ArbolBinario<Individuo> arbolGenealogico) {
+        this.ID = DatosCompartidos.getNumIndividuos();
+        Generacion = DatosCompartidos.getTurnoJuego();
+        TurnosVida = Integer.parseInt(DatosCompartidos.getVidaInicial());
+        ProbRepr = Integer.parseInt(DatosCompartidos.getProbReproduccion());
+        ProbClon = Integer.parseInt(DatosCompartidos.getProbClonacion());
         Tipo = tipo;
-        this.acciones = acciones;
+        this.acciones = new Cola<Integer>();
         this.arbolGenealogico = arbolGenealogico;
     }
 

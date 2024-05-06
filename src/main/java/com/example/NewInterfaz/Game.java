@@ -47,17 +47,17 @@ public class Game {
         if (DatosCompartidos.getAnadir() == 1) {
             addIndividuo(square);
         } else if (DatosCompartidos.getAnadir() == 2) {
-
+            addRecursos(square, 2);
         } else if (DatosCompartidos.getAnadir() == 3) {
-
+            addRecursos(square, 3);
         } else if (DatosCompartidos.getAnadir() == 4) {
-
+            addRecursos(square, 4);
         } else if (DatosCompartidos.getAnadir() == 5) {
-
+            addRecursos(square, 5);
         } else if (DatosCompartidos.getAnadir() == 6) {
-
+            addRecursos(square, 6);
         } else if (DatosCompartidos.getAnadir() == 7) {
-
+            addRecursos(square, 7);
         } else{
 
         }
@@ -83,16 +83,20 @@ public class Game {
     private void addIndividuo(Square square){
         if(square.getIndividuos().getNumeroElementos() <3){
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
-            int idIndividuos = DatosCompartidos.getNumIndividuos();
-            int generacion = DatosCompartidos.getTurnoJuego();
-            int turnosVida = Integer.parseInt(DatosCompartidos.getVidaInicial());
-            int probReproduccion = Integer.parseInt(DatosCompartidos.getProbReproduccion());
-            int probClonacion = Integer.parseInt(DatosCompartidos.getProbClonacion());
-            int tipo = 0; //generar aleatorio de tipo
-            Individuo individuoNuevo = new Individuo(idIndividuos,generacion,turnosVida,
-                    probReproduccion,probClonacion,tipo,new Cola<>(),new ArbolBinario<>(null));
+            int tipo = generarEnteroAleatorio(0, 2); //generar aleatorio de tipo
+            Individuo individuoNuevo = new Individuo(tipo, new ArbolBinario<>(null));
             addTipo(square, 1);
             square.getIndividuos().add(individuoNuevo);
+            System.out.println("Se ha añadido un individuo con id: " + individuoNuevo.getID());
+        }
+    }
+
+    private void addRecursos(Square square, int tipo){
+        if(square.getRecursos().getNumeroElementos() <3){
+            Recurso recursoNuevo = new Recurso(tipo);
+            addTipo(square, tipo);
+            square.getRecursos().add(recursoNuevo);
+            System.out.println("Se ha añadido un recurso tipo: " + recursoNuevo.getTipoRecurso());
         }
     }
 

@@ -23,6 +23,24 @@ Códigos numéricos de los individuos:
 
 Codigos numéricos de Game:
 
+* Codigo numérico de los tipos de elementos:
+
+    1- Individuo
+
+    2- Agua
+
+    3- Comida
+
+    4- Montaña
+
+    5- Biblioteca
+
+    6- Tesoro
+
+    7- Pozo
+
+
+
 * Código posicionCuadrado():
 
   0- El cuadrado no está en el borde (8 posibilidades de movimiento)
