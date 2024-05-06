@@ -243,6 +243,7 @@ public class ControllerMainStage {
     @FXML
     void clear(MouseEvent event) {
         game.clearTablero(game.getTablero());
+        game.crearTableroAleatorio(game.getTablero());
         game.actualizarTablero(game.getTablero());
     }
 
