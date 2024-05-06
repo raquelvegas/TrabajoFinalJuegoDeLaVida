@@ -14,7 +14,6 @@ public class Square extends StackPane {
     private int ID;
     private ListaSimple<Individuo> individuos;
     private ListaSimple<Recurso> recursos;
-
     GridPane gridPane;
 
     public Square(int x, int y){
@@ -42,12 +41,9 @@ public class Square extends StackPane {
                 gridPane.add(celda, i, j);
             }
         }
-
         // Agrega el GridPane al StackPane (Square)
         getChildren().add(gridPane);
     }
-
-
 
     @Override
     public String toString() {

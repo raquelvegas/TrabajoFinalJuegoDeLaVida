@@ -1,10 +1,9 @@
 package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
-import com.example.EstructurasDeDatos.Cola;
 import com.example.EstructurasDeDatos.ListaSimple;
 import javafx.scene.Node;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
 import java.util.Random;
@@ -236,7 +235,7 @@ public class Game {
                 if (ind.getTipo() == 1) {   // Tipo Normal
                     int posicionCuadrado = posicionCuadrado(cuadrado);
                     if (posicionCuadrado == 0) {
-                        moverIndNormalCuadradoInterior(listaCuadrados, cuadrado, ind);
+                        moverIndNormal(listaCuadrados, cuadrado, ind);
                     }
                 } else {   // Tipo Avanzado
 
@@ -251,14 +250,19 @@ public class Game {
 
 
     // Método para mover un individuo normal en un cuadrado interior
-    private void moverIndNormalCuadradoInterior(ListaSimple<Square> listaCuadrados, Square cuadrado, Individuo ind) {
-        Integer contadorArriba = 0;
-        Integer contadorAbajo = 0;
+    private void moverIndNormal(ListaSimple<Square> listaCuadrados, Square cuadrado, Individuo ind) {
+        ListaSimple<Square> cuadradosTotales = getTablero().getSquares();
+        Integer distanciaRecursoDerecha = Integer.valueOf(DatosCompartidos.getAnchoMatriz());
+        boolean finFila = false;
+        Square cuadradoActual = cuadrado;
         Integer contadorDerecha = 0;
-        Integer contadorIZquierda = 0;
+        Integer contador = 0;
+        while ((!finFila) && (cuadradoActual != null)) {
+            if (cuadradosTotales.getDato(contador).getY() == cuadradoActual.getY() + 1 && cuadradosTotales.getDato(contador).getX() == cuadradoActual.getX()) {
 
 
-        /// ACABAR ESTO
+            }
+        }
 
 
 

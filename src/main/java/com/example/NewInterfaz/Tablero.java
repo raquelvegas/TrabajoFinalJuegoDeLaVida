@@ -47,23 +47,17 @@ public class Tablero {
     private void setTheme(Square square, String theme) {
         Color color = null;
         switch (theme) {
-            case "Coral" -> {
-                color = Color.web("#b1e4b9");
+            case "Fuego" -> {
+                color = Color.web("#ffc09f");
             }
             case "Agua" -> {
-                color = Color.LIGHTBLUE;
+                color = Color.web("#add8e6ff");
             }
-            case "Wheat" -> {
-                color = Color.web("#eaefce");
+            case "Natura" -> {
+                color = Color.web("#adf7b6");
             }
-            case "Marine" -> {
-                color = Color.web("#9dacff");
-            }
-            case "Emerald" -> {
-                color = Color.web("#adbd90");
-            }
-            case "Sandcastle" -> {
-                color = Color.web("#e4c16f");
+            case "Tierra" -> {
+                color = Color.web("#fcf5c7");
             }
         }
         square.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -89,17 +83,6 @@ public class Tablero {
         Integer contador = 0;
         while (contador < squares.getNumeroElementos()) {
             squares.getDato(contador).setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
-            contador++;
-        }
-    }
-
-    public void updateTheme(String newTheme) {
-        this.theme = newTheme;
-        int contador = 0;
-        while (contador < squares.getNumeroElementos()) {
-            int i = squares.getDato(contador).getX();
-            int j = squares.getDato(contador).getY();
-            setTheme(squares.getDato(contador), newTheme);
             contador++;
         }
     }
