@@ -140,15 +140,16 @@ public class Game {
 
     private int celdaAleatoria(Square square){
         Integer identificador = 0;
-        ListaSimple<Integer> listaCeldasLibres = new ListaSimple<Integer>();
+        ListaSimple<Celda> listaCeldasLibres = new ListaSimple<Celda>();
         for (int i = 0; i < 6; i++) {
             if(!square.getCelda(identificador).isOcupado()){
-                listaCeldasLibres.add(identificador);
+                listaCeldasLibres.add(square.getCelda(identificador));
             }
             identificador++;
         }
         int aleatorio = generarEnteroAleatorio(0,listaCeldasLibres.getNumeroElementos()-1);
-        return aleatorio;
+        int celdaIdentificador = listaCeldasLibres.getDato(aleatorio).getID();
+        return celdaIdentificador;
     }
 
     ////////////// MOVIMIENTO DE INDIVIDUOS //////////////////
