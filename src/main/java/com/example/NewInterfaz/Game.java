@@ -58,8 +58,8 @@ public class Game {
             addRecursos(square, 6);
         } else if (DatosCompartidos.getAnadir() == 7) {
             addRecursos(square, 7);
-        } else{
-
+        } else {
+            System.out.println("No has seleccionado el tipo");
         }
     }
 
@@ -101,15 +101,11 @@ public class Game {
     }
 
     private void addTipo (Square square, Integer tipo){
-        Integer identificador = 0;
-        for (int i = 0; i < 6; i++) {
-            if(!square.getCelda(identificador).isOcupado()){
-                square.getCelda(identificador).setTipo(tipo);
-                square.getCelda(identificador).setOcupado(true);
-                System.out.println("Se ha añadido un individuo a la celda" + identificador);
-                break;
-            }identificador++;
-        }
+        int idCeldaAleatoria = celdaAleatoria(square);
+        square.getCelda(idCeldaAleatoria).setTipo(tipo);
+        square.getCelda(idCeldaAleatoria).setOcupado(true);
+        System.out.println("Se ha añadido a la celda" + idCeldaAleatoria);
+
     }
 
     private void actualizarCelda(Celda celda) {
@@ -140,6 +136,19 @@ public class Game {
         } else {
             celda.setColor(Color.TRANSPARENT);
         }
+    }
+
+    private int celdaAleatoria(Square square){
+        Integer identificador = 0;
+        ListaSimple<Integer> listaCeldasLibres = new ListaSimple<Integer>();
+        for (int i = 0; i < 6; i++) {
+            if(!square.getCelda(identificador).isOcupado()){
+                listaCeldasLibres.add(identificador);
+            }
+            identificador++;
+        }
+        int aleatorio = generarEnteroAleatorio(0,listaCeldasLibres.getNumeroElementos()-1);
+        return aleatorio;
     }
 
     ////////////// MOVIMIENTO DE INDIVIDUOS //////////////////
