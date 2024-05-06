@@ -24,6 +24,8 @@ public class DatosCompartidos {
     private static String bibliotecaAparicion = "0";
     private static String pozoAparicion = "0";
     private static boolean playreproductor = true;
+    private static Integer anadir = null;
+    private static boolean anadirTab = false;
 
 
 
@@ -201,6 +203,22 @@ public class DatosCompartidos {
 
     public static void setPozoAparicion(String pozoAparicion) {
         DatosCompartidos.pozoAparicion = pozoAparicion;
+    }
+
+    public static Integer getAnadir() {
+        return anadir;
+    }
+
+    public static void setAnadir(Integer anadir) {
+        DatosCompartidos.anadir = anadir;
+    }
+
+    public static boolean isAnadirTab() {
+        return anadirTab;
+    }
+
+    public static void setAnadirTab(boolean anadirTab) {
+        DatosCompartidos.anadirTab = anadirTab;
     }
 
     public static boolean isPlayreproductor() {

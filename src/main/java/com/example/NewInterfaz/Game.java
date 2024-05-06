@@ -22,26 +22,42 @@ public class Game {
 
     private void addEventHandlers(GridPane tablero) {
         tablero.setOnMouseClicked(event -> {
-            double x = event.getX();
-            double y = event.getY();
-            for (Node node : tablero.getChildren()) {
-                if (node instanceof Square) {
-                    Square square = (Square) node;
-                    if (square.getBoundsInParent().contains(x, y)) {
-                        int columna = square.getX();
-                        int fila = square.getY();
-                        handleSquareClick(columna, fila, square);
-                        break; // Salir del bucle una vez que se encuentre un cuadrado clicado
+            if(DatosCompartidos.isAnadirTab()) {
+                double x = event.getX();
+                double y = event.getY();
+                for (Node node : tablero.getChildren()) {
+                    if (node instanceof Square) {
+                        Square square = (Square) node;
+                        if (square.getBoundsInParent().contains(x, y)) {
+                            int columna = square.getX();
+                            int fila = square.getY();
+                            handleSquareClick(columna, fila, square);
+                            break; // Salir del bucle una vez que se encuentre un cuadrado clicado
+                        }
                     }
                 }
+                actualizarTablero(this.getTablero());
             }
-            actualizarTablero(this.getTablero());
         });
     }
 
     private void handleSquareClick(int columna, int fila, Square square) {
         System.out.println("Clic en el cuadrado " + columna + ", " + fila);
-        addIndividuo(square);
+        if (DatosCompartidos.getAnadir() == 1) {
+            addIndividuo(square);
+        } else if (DatosCompartidos.getAnadir() == 2) {
+
+        } else if (DatosCompartidos.getAnadir() == 3) {
+
+        } else if (DatosCompartidos.getAnadir() == 4) {
+
+        } else if (DatosCompartidos.getAnadir() == 5) {
+
+        } else if (DatosCompartidos.getAnadir() == 6) {
+
+        } else if (DatosCompartidos.getAnadir() == 7) {
+
+        }
     }
 
     private void actualizarTablero(Tablero tablero){

@@ -37,6 +37,10 @@ public class ControllerMainStage {
     @FXML
     private Button buttonVelocidad, buttonPlay, buttonPause, buttonStop; //Botones tablero
     @FXML
+    private RadioButton radioIndividuo, radioAgua, radioComida, radioMontana, radioBiblioteca, radioTesoro, radioPozo; //Añadir RadioButtons
+    @FXML
+    private ToggleGroup anadir;
+    @FXML
     static MediaPlayer mediaPlayer;
     @FXML
     private BorderPane basePane;
@@ -207,6 +211,25 @@ public class ControllerMainStage {
 
     }
 
+    @FXML
+    void anadirElemento(ActionEvent event) {
+        if (radioIndividuo.isSelected()){
+            DatosCompartidos.setAnadir(1);
+        } else if (radioAgua.isSelected()) {
+            DatosCompartidos.setAnadir(2);
+        } else if (radioComida.isSelected()) {
+            DatosCompartidos.setAnadir(3);
+        } else if (radioMontana.isSelected()) {
+            DatosCompartidos.setAnadir(4);
+        } else if (radioBiblioteca.isSelected()) {
+            DatosCompartidos.setAnadir(5);
+        } else if (radioTesoro.isSelected()) {
+            DatosCompartidos.setAnadir(6);
+        } else if (radioPozo.isSelected()) {
+            DatosCompartidos.setAnadir(7);
+        }
+    }
+
     ///////////////////////////////////Métodos de apoyo///////////////////////////////////////////
     protected void initializeBindingSliders(Slider slider, Text text, IntegerProperty medida){
         slider.valueProperty().bindBidirectional(medida);
@@ -337,6 +360,20 @@ public class ControllerMainStage {
             if (newTab != null) {
                 // Actualizar los sliders al cambiar de pestaña
                 updateAllSliders();
+                if (newTab == anadirTab) {
+                    // Si es la pestaña de añadir, establecer el valor de DatosCompartidos como true
+                    DatosCompartidos.setAnadirTab(true);
+                } else {
+                    // Si es cualquier otra pestaña, establecer el valor de DatosCompartidos como false
+                    DatosCompartidos.setAnadirTab(false);
+                    radioIndividuo.setSelected(false);
+                    radioAgua.setSelected(false);
+                    radioComida.setSelected(false);
+                    radioMontana.setSelected(false);
+                    radioBiblioteca.setSelected(false);
+                    radioTesoro.setSelected(false);
+                    radioPozo.setSelected(false);
+                }
             }
         });
     }

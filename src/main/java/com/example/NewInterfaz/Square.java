@@ -36,7 +36,7 @@ public class Square extends StackPane {
                 celda.setPrefWidth(100);
                 celda.setBorder(new Border(new BorderStroke(Color.TRANSPARENT,
                         BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-                celda.setColor(Color.RED);
+                celda.setColor(Color.TRANSPARENT);
                 celda.setID(identificador);
                 identificador++;
                 gridPane.add(celda, i, j);
