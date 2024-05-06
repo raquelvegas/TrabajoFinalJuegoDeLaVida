@@ -729,7 +729,7 @@
                                           </VBox>
                                        </children>
                                     </HBox>
-                                    <Button fx:id="tableroAleatorio" layoutX="104.0" layoutY="407.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="328.0" text="GENERAR TABLERO ALEATORIO">
+                                    <Button fx:id="tableroAleatorio" layoutX="104.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#clear" prefHeight="58.0" prefWidth="328.0" text="GENERAR TABLERO ALEATORIO">
                                        <font>
                                           <Font size="21.0" />
                                        </font>

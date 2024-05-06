@@ -35,7 +35,7 @@ public class ControllerMainStage {
             aguaEfectoSlider, bibliotecaEfectoSlider, comidaEfectoSlider, montanaEfectoSlider, tesoroEfectoSlider, //Efecto Recursos
             aguaAparicionSlider, bibliotecaAparicionSlider, comidaAparicionSlider, montanaAparicionSlider, pozoAparicionSlider, tesoroAparicionSlider; // Aparicion Recursos
     @FXML
-    private Button buttonVelocidad, buttonPlay, buttonPause, buttonStop; //Botones tablero
+    private Button buttonVelocidad, buttonPlay, buttonPause, buttonStop, tableroAleatorio; //Botones tablero
     @FXML
     private RadioButton radioIndividuo, radioAgua, radioComida, radioMontana, radioBiblioteca, radioTesoro, radioPozo; //Añadir RadioButtons
     @FXML
@@ -88,6 +88,7 @@ public class ControllerMainStage {
     void speedGame(MouseEvent event) {}
     @FXML
     void playGame(MouseEvent event) {
+        DatosCompartidos.setGameIniciado(true);
         if (gameStopped) {
             gameStopped = false;
 
@@ -239,6 +240,12 @@ public class ControllerMainStage {
         }
     }
 
+    @FXML
+    void clear(MouseEvent event) {
+        game.clearTablero(game.getTablero());
+        game.actualizarTablero(game.getTablero());
+    }
+
     ///////////////////////////////////Métodos de apoyo///////////////////////////////////////////
     protected void initializeBindingSliders(Slider slider, Text text, IntegerProperty medida){
         slider.valueProperty().bindBidirectional(medida);
@@ -372,6 +379,9 @@ public class ControllerMainStage {
                 if (newTab == anadirTab) {
                     // Si es la pestaña de añadir, establecer el valor de DatosCompartidos como true
                     DatosCompartidos.setAnadirTab(true);
+                    if(DatosCompartidos.isGameIniciado()){
+                        tableroAleatorio.setVisible(false);
+                    }
                 } else {
                     // Si es cualquier otra pestaña, establecer el valor de DatosCompartidos como false
                     DatosCompartidos.setAnadirTab(false);
@@ -386,6 +396,8 @@ public class ControllerMainStage {
                 }
             }
         });
+
+
     }
 
 }

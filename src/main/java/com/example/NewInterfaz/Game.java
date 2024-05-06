@@ -17,6 +17,7 @@ public class Game {
         this.tablero = new Tablero(tablero, "Agua");
         this.game = true;
         addEventHandlers(this.tablero.tableroJuego);
+
     }
 
 
@@ -63,23 +64,6 @@ public class Game {
         }
     }
 
-    private void actualizarTablero(Tablero tablero){
-        int tamañoTablero = tablero.getSquares().getNumeroElementos();
-        Integer identificador = 0;
-        for (int i = 0; i < tamañoTablero; i++) {
-            actualizarSquare(tablero.getSquare(identificador));
-            identificador++;
-        }
-    }
-
-    private void actualizarSquare(Square square){
-        Integer identificador = 0;
-        for (int i = 0; i < 6; i++) {
-            actualizarCelda(square.getCelda(identificador));
-            identificador++;
-        }
-    }
-
     private void addIndividuo(Square square){
         if(square.getIndividuos().getNumeroElementos() <3){
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
@@ -106,6 +90,35 @@ public class Game {
         square.getCelda(idCeldaAleatoria).setOcupado(true);
         System.out.println("Se ha añadido a la celda" + idCeldaAleatoria);
 
+    }
+
+    public void actualizarTablero(Tablero tablero){
+        int tamañoTablero = tablero.getSquares().getNumeroElementos();
+        Integer identificador = 0;
+        for (int i = 0; i < tamañoTablero; i++) {
+            actualizarSquare(tablero.getSquare(identificador));
+            identificador++;
+        }
+    }
+
+    public void clearTablero(Tablero tablero){
+        int tamañoTablero = tablero.getSquares().getNumeroElementos();
+        for (int i = 0; i < tamañoTablero; i++) {
+            for (int j = 0; j<6; j++){
+                tablero.getSquare(i).getCelda(j).setTipo(0);
+                tablero.getSquare(i).getCelda(j).setOcupado(false); // asegurarse de marcar la celda como no ocupada
+            }
+            tablero.getSquare(i).setIndividuos(new ListaSimple<Individuo>());
+            tablero.getSquare(i).setRecursos(new ListaSimple<Recurso>());
+        }
+    }
+
+    private void actualizarSquare(Square square){
+        Integer identificador = 0;
+        for (int i = 0; i < 6; i++) {
+            actualizarCelda(square.getCelda(identificador));
+            identificador++;
+        }
     }
 
     private void actualizarCelda(Celda celda) {
@@ -643,7 +656,7 @@ public class Game {
     }
 
 
-    public Tablero getTablero() {
+    public static Tablero getTablero() {
         return tablero;
     }
 }

@@ -28,7 +28,8 @@ public class DatosCompartidos {
     private static boolean anadirTab = false;
     private static int numIndividuos = 0;
     private static int turnoJuego = 0;
-
+    private static boolean gameIniciado = false;
+    private static boolean tableroAleatorio = false;
 
 
     public static String getAltoMatriz() {
@@ -241,6 +242,22 @@ public class DatosCompartidos {
 
     public static boolean isPlayreproductor() {
         return playreproductor;
+    }
+
+    public static boolean isGameIniciado() {
+        return gameIniciado;
+    }
+
+    public static void setGameIniciado(boolean gameIniciado) {
+        DatosCompartidos.gameIniciado = gameIniciado;
+    }
+
+    public static boolean isTableroAleatorio() {
+        return tableroAleatorio;
+    }
+
+    public static void setTableroAleatorio(boolean tableroAleatorio) {
+        DatosCompartidos.tableroAleatorio = tableroAleatorio;
     }
 
     public static void setPlayreproductor(boolean playreproductor) {

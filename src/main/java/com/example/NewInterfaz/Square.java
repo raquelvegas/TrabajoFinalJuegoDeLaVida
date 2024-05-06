@@ -75,8 +75,17 @@ public class Square extends StackPane {
     public ListaSimple<Individuo> getIndividuos() {
         return individuos;
     }
+
     public ListaSimple<Recurso> getRecursos() {
         return recursos;
+    }
+
+    public void setIndividuos(ListaSimple<Individuo> individuos) {
+        this.individuos = individuos;
+    }
+
+    public void setRecursos(ListaSimple<Recurso> recursos) {
+        this.recursos = recursos;
     }
 
     public Celda getCelda(int id) {
