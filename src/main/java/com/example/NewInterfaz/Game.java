@@ -43,6 +43,7 @@ public class Game {
 
     private void handleSquareClick(int columna, int fila, Square square) {
         System.out.println("Clic en el cuadrado " + columna + ", " + fila);
+        System.out.println("elección es: "+DatosCompartidos.getAnadir());
         if (DatosCompartidos.getAnadir() == 1) {
             addIndividuo(square);
         } else if (DatosCompartidos.getAnadir() == 2) {
@@ -56,6 +57,8 @@ public class Game {
         } else if (DatosCompartidos.getAnadir() == 6) {
 
         } else if (DatosCompartidos.getAnadir() == 7) {
+
+        } else{
 
         }
     }
@@ -79,7 +82,15 @@ public class Game {
 
     private void addIndividuo(Square square){
         if(square.getIndividuos().getNumeroElementos() <3){
-            Individuo individuoNuevo = new Individuo(1,1,1,1,1,1,new Cola<>(),new ArbolBinario<>(null));
+            DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
+            int idIndividuos = DatosCompartidos.getNumIndividuos();
+            int generacion = DatosCompartidos.getTurnoJuego();
+            int turnosVida = Integer.parseInt(DatosCompartidos.getVidaInicial());
+            int probReproduccion = Integer.parseInt(DatosCompartidos.getProbReproduccion());
+            int probClonacion = Integer.parseInt(DatosCompartidos.getProbClonacion());
+            int tipo = 1; //generar aleatorio de tipo
+            Individuo individuoNuevo = new Individuo(idIndividuos,generacion,turnosVida,
+                    probReproduccion,probClonacion,tipo,new Cola<>(),new ArbolBinario<>(null));
             addTipo(square, 1);
             square.getIndividuos().add(individuoNuevo);
         }

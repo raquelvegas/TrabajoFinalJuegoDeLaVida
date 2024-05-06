@@ -24,8 +24,10 @@ public class DatosCompartidos {
     private static String bibliotecaAparicion = "0";
     private static String pozoAparicion = "0";
     private static boolean playreproductor = true;
-    private static Integer anadir = null;
+    private static int anadir = 0;
     private static boolean anadirTab = false;
+    private static int numIndividuos = 0;
+    private static int turnoJuego = 0;
 
 
 
@@ -205,11 +207,11 @@ public class DatosCompartidos {
         DatosCompartidos.pozoAparicion = pozoAparicion;
     }
 
-    public static Integer getAnadir() {
+    public static int getAnadir() {
         return anadir;
     }
 
-    public static void setAnadir(Integer anadir) {
+    public static void setAnadir(int anadir) {
         DatosCompartidos.anadir = anadir;
     }
 
@@ -219,6 +221,22 @@ public class DatosCompartidos {
 
     public static void setAnadirTab(boolean anadirTab) {
         DatosCompartidos.anadirTab = anadirTab;
+    }
+
+    public static int getNumIndividuos() {
+        return numIndividuos;
+    }
+
+    public static void setNumIndividuos(int numIndividuos) {
+        DatosCompartidos.numIndividuos = numIndividuos;
+    }
+
+    public static int getTurnoJuego() {
+        return turnoJuego;
+    }
+
+    public static void setTurnoJuego(int turnoJuego) {
+        DatosCompartidos.turnoJuego = turnoJuego;
     }
 
     public static boolean isPlayreproductor() {

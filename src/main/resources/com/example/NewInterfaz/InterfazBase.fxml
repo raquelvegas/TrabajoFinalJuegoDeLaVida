@@ -692,7 +692,7 @@
                                                    </font>
                                                 </RadioButton>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
-                                                <RadioButton fx:id="radioAgua" mnemonicParsing="false" onAction="#anadirElemento" text="COMIDA" textAlignment="CENTER" toggleGroup="$anadir">
+                                                <RadioButton fx:id="radioComida" mnemonicParsing="false" onAction="#anadirElemento" text="COMIDA" textAlignment="CENTER" toggleGroup="$anadir">
                                                    <font>
                                                       <Font size="24.0" />
                                                    </font>

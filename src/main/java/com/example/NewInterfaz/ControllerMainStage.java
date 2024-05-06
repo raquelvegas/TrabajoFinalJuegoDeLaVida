@@ -213,20 +213,29 @@ public class ControllerMainStage {
 
     @FXML
     void anadirElemento(ActionEvent event) {
-        if (radioIndividuo.isSelected()){
-            DatosCompartidos.setAnadir(1);
-        } else if (radioAgua.isSelected()) {
-            DatosCompartidos.setAnadir(2);
-        } else if (radioComida.isSelected()) {
-            DatosCompartidos.setAnadir(3);
-        } else if (radioMontana.isSelected()) {
-            DatosCompartidos.setAnadir(4);
-        } else if (radioBiblioteca.isSelected()) {
-            DatosCompartidos.setAnadir(5);
-        } else if (radioTesoro.isSelected()) {
-            DatosCompartidos.setAnadir(6);
-        } else if (radioPozo.isSelected()) {
-            DatosCompartidos.setAnadir(7);
+        RadioButton selectedRadioButton = (RadioButton) event.getSource();
+        ToggleGroup group = selectedRadioButton.getToggleGroup();
+
+        if (group.getSelectedToggle() != null) {
+            int valor = 0;
+
+            if (selectedRadioButton.equals(radioIndividuo)) {
+                valor = 1;
+            } else if (selectedRadioButton.equals(radioAgua)) {
+                valor = 2;
+            } else if (selectedRadioButton.equals(radioComida)) {
+                valor = 3;
+            } else if (selectedRadioButton.equals(radioMontana)) {
+                valor = 4;
+            } else if (selectedRadioButton.equals(radioBiblioteca)) {
+                valor = 5;
+            } else if (selectedRadioButton.equals(radioTesoro)) {
+                valor = 6;
+            } else if (selectedRadioButton.equals(radioPozo)) {
+                valor = 7;
+            }
+
+            DatosCompartidos.setAnadir(valor);
         }
     }
 
@@ -373,6 +382,7 @@ public class ControllerMainStage {
                     radioBiblioteca.setSelected(false);
                     radioTesoro.setSelected(false);
                     radioPozo.setSelected(false);
+                    DatosCompartidos.setAnadir(0);
                 }
             }
         });
