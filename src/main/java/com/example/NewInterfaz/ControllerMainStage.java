@@ -181,33 +181,45 @@ public class ControllerMainStage {
 
     @FXML
     void setEstiloFuego(ActionEvent event) {
-        tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloFuego.css").toExternalForm());
-        infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloFuego.css").toExternalForm());
-        game.getTablero().setTheme("Fuego");
+        tabPaneParametros.setStyle("-fx-background-color: #ffc09f;");
+        infoVBox.setStyle("-fx-background-color: #ffc09f;");
+        for (int i = 0; i< Game.getTablero().getSquares().getNumeroElementos(); i++){
+            Square square = Game.getTablero().getSquare(i);
+            Game.getTablero().setTheme(square,"Fuego");
+        }
         log.info("Cambio de color de visualización: Fuego");
     }
     @FXML
     void setEstiloAgua(ActionEvent event) {
-        tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloAgua.css").toExternalForm());
-        infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloAgua.css").toExternalForm());
-        game.getTablero().setTheme("Agua");
+        tabPaneParametros.setStyle("-fx-background-color: #add8e6ff;");
+        infoVBox.setStyle("-fx-background-color: #add8e6ff;");
+        for (int i = 0; i< Game.getTablero().getSquares().getNumeroElementos(); i++){
+            Square square = Game.getTablero().getSquare(i);
+            Game.getTablero().setTheme(square,"Agua");
+        }
         log.info("Cambio de color de visualización: Agua");
 
     }
     @FXML
     void setEstiloNatura(ActionEvent event) {
-        tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloNatura.css").toExternalForm());
-        infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloNatura.css").toExternalForm());
-        game.getTablero().setTheme("Natura");
+        tabPaneParametros.setStyle("-fx-background-color: #adf7b6;");
+        infoVBox.setStyle("-fx-background-color: #adf7b6;");
+        for (int i = 0; i< Game.getTablero().getSquares().getNumeroElementos(); i++){
+            Square square = Game.getTablero().getSquare(i);
+            Game.getTablero().setTheme(square,"Natura");
+        }
         log.info("Cambio de color de visualización: Natura");
 
     }
 
     @FXML
     void setEstiloTierra(ActionEvent event) {
-        tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloTierra.css").toExternalForm());
-        infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloTierra.css").toExternalForm());
-        game.getTablero().setTheme("Tierra");
+        tabPaneParametros.setStyle("-fx-background-color: #fcf5c7;");
+        infoVBox.setStyle("-fx-background-color: #fcf5c7;");
+        for (int i = 0; i< Game.getTablero().getSquares().getNumeroElementos(); i++){
+            Square square = Game.getTablero().getSquare(i);
+            Game.getTablero().setTheme(square,"Tierra");
+        }
         log.info("Cambio de color de visualización: Tierra");
 
     }

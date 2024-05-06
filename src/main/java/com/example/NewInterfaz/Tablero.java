@@ -44,7 +44,7 @@ public class Tablero {
         System.out.println("Ancho= " + DatosCompartidos.getAnchoMatriz());
     }
 
-    private void setTheme(Square square, String theme) {
+    public void setTheme(Square square, String theme) {
         Color color = null;
         switch (theme) {
             case "Fuego" -> {
@@ -62,29 +62,6 @@ public class Tablero {
         }
         square.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
 
-    }
-
-    public void setTheme(String theme) {
-        Color color = null;
-        switch (theme) {
-            case "Fuego" -> {
-                color = Color.web("#ffc09f");
-            }
-            case "Agua" -> {
-                color = Color.web("#add8e6ff");
-            }
-            case "Natura" -> {
-                color = Color.web("#adf7b6");
-            }
-            case "Tierra" -> {
-                color = Color.web("#fcf5c7");
-            }
-        }
-        Integer contador = 0;
-        while (contador < squares.getNumeroElementos()) {
-            squares.getDato(contador).setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
-            contador++;
-        }
     }
 
     public ListaSimple<Square> getSquares() {

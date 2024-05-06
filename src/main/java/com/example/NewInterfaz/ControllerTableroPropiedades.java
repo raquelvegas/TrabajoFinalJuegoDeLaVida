@@ -87,6 +87,10 @@ public class ControllerTableroPropiedades {
 
     @FXML
     public void initialize(){
+        anchoSlider.setValue(1);
+        altoSlider.setValue(1);
+        anchoText.setText("1");
+        altoText.setText("1");
         initializeBindingSliders(anchoSlider,anchoText, medidaAncho);
         initializeBindingSliders(altoSlider,altoText, medidaAlto);
     }
