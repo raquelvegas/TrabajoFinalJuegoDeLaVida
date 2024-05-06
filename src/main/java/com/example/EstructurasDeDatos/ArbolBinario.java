@@ -18,4 +18,12 @@ public class ArbolBinario<TipoDato> {
         this.raiz.setNodoDch(padre);
         this.raiz.setNodoIzq(madre);
     }
+
+    public void add(TipoDato a){
+        if (this.raiz == null) {
+            this.raiz = new ElementoArbol<>(a);
+        } else {
+            raiz.add(raiz, a);
+        }
+    }
 }

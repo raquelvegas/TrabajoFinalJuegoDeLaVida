@@ -88,7 +88,7 @@ public class Game {
             int turnosVida = Integer.parseInt(DatosCompartidos.getVidaInicial());
             int probReproduccion = Integer.parseInt(DatosCompartidos.getProbReproduccion());
             int probClonacion = Integer.parseInt(DatosCompartidos.getProbClonacion());
-            int tipo = 1; //generar aleatorio de tipo
+            int tipo = 0; //generar aleatorio de tipo
             Individuo individuoNuevo = new Individuo(idIndividuos,generacion,turnosVida,
                     probReproduccion,probClonacion,tipo,new Cola<>(),new ArbolBinario<>(null));
             addTipo(square, 1);
