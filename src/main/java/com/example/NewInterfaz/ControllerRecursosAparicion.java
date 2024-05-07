@@ -55,6 +55,8 @@ public class ControllerRecursosAparicion {
         stage.close();
         ControllerMainStage.initializeAudio();
 
+        DatosCompartidos.getGame().crearTableroAleatorio();
+        DatosCompartidos.getGame().actualizarTablero();
         log.info("Parametrización de la probabilidad de aparición de los recursos correcta");
     }
 

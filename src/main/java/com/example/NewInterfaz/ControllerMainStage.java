@@ -1,5 +1,6 @@
 package com.example.NewInterfaz;
 
+import com.example.EstructurasDeDatos.ListaSimple;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
@@ -255,7 +256,7 @@ public class ControllerMainStage {
     @FXML
     void clear(MouseEvent event) {
         game.clearTablero(game.getTablero());
-        game.actualizarTablero(game.getTablero());
+        game.actualizarTablero();
         DatosCompartidos.setGame(game);
     }
 
@@ -272,13 +273,13 @@ public class ControllerMainStage {
     @FXML
     void eraseUnaVezLaVida(ActionEvent event) {
         mediaPlayer.stop();
-        insertSong("Música/EraseUnaVezLaVida.mp3");
+        insertSong("EraseUnaVezLaVida.mp3");
     }
 
     @FXML
     void laBamba(ActionEvent event) {
         mediaPlayer.stop();
-        insertSong("Música/LaBamba.mp3");
+        insertSong("LaBamba.mp3");
     }
 
     ///////////////////////////////////Métodos de apoyo///////////////////////////////////////////
@@ -328,7 +329,7 @@ public class ControllerMainStage {
         image.setPreserveRatio(true);
     }
     protected static void initializeAudio(){
-        insertSong("Música/LaBamba.mp3");
+        insertSong("LaBamba.mp3");
     }
     protected static void insertSong(String resourceName) {
         String path = ControllerMainStage.class.getClassLoader().getResource(resourceName).toExternalForm();
