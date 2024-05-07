@@ -35,7 +35,7 @@ public class ControllerMainStage {
             aguaEfectoSlider, bibliotecaEfectoSlider, comidaEfectoSlider, montanaEfectoSlider, tesoroEfectoSlider, //Efecto Recursos
             aguaAparicionSlider, bibliotecaAparicionSlider, comidaAparicionSlider, montanaAparicionSlider, pozoAparicionSlider, tesoroAparicionSlider; // Aparicion Recursos
     @FXML
-    private Button buttonVelocidad, buttonPlay, buttonPause, buttonStop, tableroAleatorio; //Botones tablero
+    private Button buttonVelocidad, buttonPlay, buttonPause, buttonStop, clearTablero; //Botones tablero
     @FXML
     private RadioButton radioIndividuo, radioAgua, radioComida, radioMontana, radioBiblioteca, radioTesoro, radioPozo; //Añadir RadioButtons
     @FXML
@@ -57,6 +57,8 @@ public class ControllerMainStage {
     private Tab pauseTab, individuoTab, recursosParametrosTab, aparicionTab, anadirTab;
 
     private Game game=null;
+
+    private static final Logger log = LogManager.getLogger(ControllerMainStage.class);
 
     ///////////////////////////////////BindingSliders////////////////////////////////////////////////////////////////////////////////
     protected IntegerProperty medidaVidaUser = new SimpleIntegerProperty(0);
@@ -81,8 +83,6 @@ public class ControllerMainStage {
     protected IntegerProperty medidaPozoAparicion = new SimpleIntegerProperty(0);
 
     /////////////////////////////////////MouseEvents////////////////////////////////////////////////////
-
-    private static final Logger log = LogManager.getLogger(ControllerMainStage.class);
 
     @FXML
     void speedGame(MouseEvent event) {}
@@ -255,8 +255,29 @@ public class ControllerMainStage {
     @FXML
     void clear(MouseEvent event) {
         game.clearTablero(game.getTablero());
-        game.crearTableroAleatorio(game.getTablero());
         game.actualizarTablero(game.getTablero());
+    }
+
+    @FXML
+    void play(ActionEvent event) {
+        mediaPlayer.play();
+    }
+
+    @FXML
+    void pause(ActionEvent event) {
+        mediaPlayer.pause();
+    }
+
+    @FXML
+    void eraseUnaVezLaVida(ActionEvent event) {
+        mediaPlayer.stop();
+        insertSong("EraseUnaVezLaVida.mp3");
+    }
+
+    @FXML
+    void laBamba(ActionEvent event) {
+        mediaPlayer.stop();
+        insertSong("LaBamba.mp3");
     }
 
     ///////////////////////////////////Métodos de apoyo///////////////////////////////////////////
@@ -306,7 +327,7 @@ public class ControllerMainStage {
         image.setPreserveRatio(true);
     }
     protected static void initializeAudio(){
-        insertSong("LaBamba.mp3");
+        insertSong("EraseUnaVezLaVida.mp3");
     }
     protected static void insertSong(String resourceName) {
         String path = ControllerMainStage.class.getClassLoader().getResource(resourceName).toExternalForm();
@@ -315,16 +336,6 @@ public class ControllerMainStage {
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setVolume(0.5);
         mediaPlayer.play();
-    }
-    protected static void musicPause(MouseEvent event) {
-        if(DatosCompartidos.isPlayreproductor()){
-            mediaPlayer.pause();
-            DatosCompartidos.setPlayreproductor(false);
-        } else {
-            mediaPlayer.play();
-            DatosCompartidos.setPlayreproductor(true);
-        }
-
     }
     public void updateAllSliders (){
         getDatosCompartidosValueSlider(DatosCompartidos::getVidaInicial, vidaUserSlider);
@@ -392,9 +403,6 @@ public class ControllerMainStage {
                 if (newTab == anadirTab) {
                     // Si es la pestaña de añadir, establecer el valor de DatosCompartidos como true
                     DatosCompartidos.setAnadirTab(true);
-                    if(DatosCompartidos.isGameIniciado()){
-                        tableroAleatorio.setVisible(false);
-                    }
                 } else {
                     // Si es cualquier otra pestaña, establecer el valor de DatosCompartidos como false
                     DatosCompartidos.setAnadirTab(false);

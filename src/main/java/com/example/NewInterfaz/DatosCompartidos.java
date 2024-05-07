@@ -23,7 +23,6 @@ public class DatosCompartidos {
     private static String tesoroAparicion = "0";
     private static String bibliotecaAparicion = "0";
     private static String pozoAparicion = "0";
-    private static boolean playreproductor = true;
     private static int anadir = 0;
     private static boolean anadirTab = false;
     private static int numIndividuos = 0;
@@ -240,10 +239,6 @@ public class DatosCompartidos {
         DatosCompartidos.turnoJuego = turnoJuego;
     }
 
-    public static boolean isPlayreproductor() {
-        return playreproductor;
-    }
-
     public static boolean isGameIniciado() {
         return gameIniciado;
     }
@@ -258,9 +253,5 @@ public class DatosCompartidos {
 
     public static void setTableroAleatorio(boolean tableroAleatorio) {
         DatosCompartidos.tableroAleatorio = tableroAleatorio;
-    }
-
-    public static void setPlayreproductor(boolean playreproductor) {
-        DatosCompartidos.playreproductor = playreproductor;
     }
 }

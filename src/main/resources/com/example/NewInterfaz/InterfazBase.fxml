@@ -40,8 +40,14 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="Música">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Play" />
-                                <MenuItem mnemonicParsing="false" text="Pause" />
+                                <MenuItem fx:id="playMusic" mnemonicParsing="false" onAction="#play" text="Play" />
+                                <MenuItem fx:id="pauseMusic" mnemonicParsing="false" onAction="#pause" text="Pause" />
+                        <Menu mnemonicParsing="false" text="Cambiar canción">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#laBamba" text="La Bamba - Los Lobos" />
+                              <MenuItem fx:id="pauseMusic1" mnemonicParsing="false" onAction="#eraseUnaVezLaVida" text="Erase una Vez la Vida - Nins" />
+                          </items>
+                        </Menu>
                             </items>
                         </Menu>
                     </menus>
@@ -729,7 +735,7 @@
                                           </VBox>
                                        </children>
                                     </HBox>
-                                    <Button fx:id="tableroAleatorio" layoutX="104.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#clear" prefHeight="58.0" prefWidth="328.0" text="GENERAR TABLERO ALEATORIO">
+                                    <Button fx:id="clearTablero" layoutX="104.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#clear" prefHeight="58.0" prefWidth="328.0" text="BORRAR TABLERO">
                                        <font>
                                           <Font size="21.0" />
                                        </font>

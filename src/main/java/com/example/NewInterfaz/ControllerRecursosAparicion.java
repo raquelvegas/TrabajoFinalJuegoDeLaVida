@@ -53,7 +53,7 @@ public class ControllerRecursosAparicion {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
-        //ControllerMainStage.initializeAudio();
+        ControllerMainStage.initializeAudio();
 
         log.info("Parametrización de la probabilidad de aparición de los recursos correcta");
     }
