@@ -150,40 +150,41 @@ public class Game {
         }
     }
 
-    public void crearTableroAleatorio(Tablero tablero){
-        int numIndividuos = generarEnteroAleatorio(10,20);
-        int numAgua = generarEnteroAleatorio(10,20);
-        int numComida = generarEnteroAleatorio(10,20);
-        int numMontana = generarEnteroAleatorio(10,20);
-        int numBiblioteca = generarEnteroAleatorio(10,20);
-        int numTesoro = generarEnteroAleatorio(10,20);
-        int numPozo = generarEnteroAleatorio(10,20);
+    public void crearTableroAleatorio(){
+        Integer numeroCuadrados = tablero.getSquares().getNumeroElementos();
+        int numIndividuos = generarEnteroAleatorio(numeroCuadrados/4,numeroCuadrados/4+numeroCuadrados/2);
+        int numAgua = generarEnteroAleatorio(numeroCuadrados/4,numeroCuadrados/4+numeroCuadrados/2);
+        int numComida = generarEnteroAleatorio(numeroCuadrados/4,numeroCuadrados/4+numeroCuadrados/2);
+        int numMontana = generarEnteroAleatorio(numeroCuadrados/4,numeroCuadrados/4+numeroCuadrados/2);
+        int numBiblioteca = generarEnteroAleatorio(numeroCuadrados/4,numeroCuadrados/4+numeroCuadrados/2);
+        int numTesoro = generarEnteroAleatorio(numeroCuadrados/4,numeroCuadrados/4+numeroCuadrados/2);
+        int numPozo = generarEnteroAleatorio(numeroCuadrados/4,numeroCuadrados/4+numeroCuadrados/2);
         for (int i = 0; i < numIndividuos; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, tablero.getSquares().getNumeroElementos());
+            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados);
             addIndividuo(tablero.getSquare(idSquareAleatorio));
         }
         for (int i = 0; i < numAgua; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, tablero.getSquares().getNumeroElementos());
+            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados);
             addRecursos(tablero.getSquare(idSquareAleatorio),2);
         }
         for (int i = 0; i < numComida; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, tablero.getSquares().getNumeroElementos());
+            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados);
             addRecursos(tablero.getSquare(idSquareAleatorio),3);
         }
         for (int i = 0; i < numMontana; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, tablero.getSquares().getNumeroElementos());
+            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados);
             addRecursos(tablero.getSquare(idSquareAleatorio),4);
         }
         for (int i = 0; i < numBiblioteca; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, tablero.getSquares().getNumeroElementos());
+            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados);
             addRecursos(tablero.getSquare(idSquareAleatorio),5);
         }
         for (int i = 0; i < numTesoro; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, tablero.getSquares().getNumeroElementos());
+            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados);
             addRecursos(tablero.getSquare(idSquareAleatorio),6);
         }
         for (int i = 0; i < numPozo; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, tablero.getSquares().getNumeroElementos());
+            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados);
             addRecursos(tablero.getSquare(idSquareAleatorio),7);
         }
     }

@@ -56,7 +56,7 @@ public class ControllerMainStage {
     @FXML
     private Tab pauseTab, individuoTab, recursosParametrosTab, aparicionTab, anadirTab;
 
-    private Game game=null;
+    private Game game = DatosCompartidos.getGame();
 
     private static final Logger log = LogManager.getLogger(ControllerMainStage.class);
 
@@ -256,6 +256,7 @@ public class ControllerMainStage {
     void clear(MouseEvent event) {
         game.clearTablero(game.getTablero());
         game.actualizarTablero(game.getTablero());
+        DatosCompartidos.setGame(game);
     }
 
     @FXML
@@ -271,13 +272,13 @@ public class ControllerMainStage {
     @FXML
     void eraseUnaVezLaVida(ActionEvent event) {
         mediaPlayer.stop();
-        insertSong("EraseUnaVezLaVida.mp3");
+        insertSong("Música/EraseUnaVezLaVida.mp3");
     }
 
     @FXML
     void laBamba(ActionEvent event) {
         mediaPlayer.stop();
-        insertSong("LaBamba.mp3");
+        insertSong("Música/LaBamba.mp3");
     }
 
     ///////////////////////////////////Métodos de apoyo///////////////////////////////////////////
@@ -327,7 +328,7 @@ public class ControllerMainStage {
         image.setPreserveRatio(true);
     }
     protected static void initializeAudio(){
-        insertSong("EraseUnaVezLaVida.mp3");
+        insertSong("Música/LaBamba.mp3");
     }
     protected static void insertSong(String resourceName) {
         String path = ControllerMainStage.class.getClassLoader().getResource(resourceName).toExternalForm();
@@ -367,6 +368,7 @@ public class ControllerMainStage {
     @FXML
     public void initialize() {
         game = new Game(tableroJuego);
+        DatosCompartidos.setGame(game);
 
         pauseTab.setDisable(true);
         this.pauseText.setVisible(false);

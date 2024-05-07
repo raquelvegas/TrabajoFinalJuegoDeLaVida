@@ -29,6 +29,7 @@ public class DatosCompartidos {
     private static int turnoJuego = 0;
     private static boolean gameIniciado = false;
     private static boolean tableroAleatorio = false;
+    private static Game game = null;
 
 
     public static String getAltoMatriz() {
@@ -253,5 +254,13 @@ public class DatosCompartidos {
 
     public static void setTableroAleatorio(boolean tableroAleatorio) {
         DatosCompartidos.tableroAleatorio = tableroAleatorio;
+    }
+
+    public static Game getGame() {
+        return game;
+    }
+
+    public static void setGame(Game game) {
+        DatosCompartidos.game = game;
     }
 }
