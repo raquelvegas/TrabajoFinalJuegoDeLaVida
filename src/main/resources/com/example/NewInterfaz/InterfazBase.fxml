@@ -775,7 +775,7 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font></Text>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  " />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="00">
+                              <Text fx:id="turnoContador" strokeType="OUTSIDE" strokeWidth="0.0" text="00">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font></Text>

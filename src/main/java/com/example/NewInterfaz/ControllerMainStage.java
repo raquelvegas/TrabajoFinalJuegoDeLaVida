@@ -1,6 +1,9 @@
 package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ListaSimple;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
@@ -16,6 +19,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,7 +29,7 @@ import java.util.function.Supplier;
 
 public class ControllerMainStage {
     @FXML
-    private Text vivosText, muertosText, playText, pauseText, //Información juego
+    private Text turnoContador, vivosText, muertosText, playText, pauseText, //Información juego
             vidaUserText, probReproduccionText, probClonacionText, //Ajustes User
             aguaVidaText, bibliotecaVidaText, comidaVidaText, montanaVidaText, pozoVidaText, tesoroVidaText, // Vida Recursos
             aguaEfectoText, bibliotecaEfectoText, comidaEfectoText, montanaEfectoText, tesoroEfectoText, // Efecto Recursos
@@ -53,10 +57,10 @@ public class ControllerMainStage {
     private VBox infoVBox;
     @FXML
     private Stage stage;
-    protected boolean gameStopped = true;
     @FXML
     private Tab pauseTab, individuoTab, recursosParametrosTab, aparicionTab, anadirTab;
-
+    protected boolean gameStopped = true;
+    protected boolean gameON = false;
     private Game game = DatosCompartidos.getGame();
 
     private static final Logger log = LogManager.getLogger(ControllerMainStage.class);
@@ -92,6 +96,7 @@ public class ControllerMainStage {
         DatosCompartidos.setGameIniciado(true);
         if (gameStopped) {
             gameStopped = false;
+            gameON = true;
 
             tabPaneParametros.getSelectionModel().select(pauseTab);
             this.individuoTab.setDisable(true);
@@ -365,6 +370,29 @@ public class ControllerMainStage {
         getDatosCompartidosValueSlider(DatosCompartidos::getPozoAparicion, pozoAparicionSlider);
     }
 
+    private void inicializarBucleControl() {
+        Timeline controlLoop = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            if (gameON) {
+                if(!gameStopped) {
+                    // Lógica para continuar el juego
+                    int turno = Integer.parseInt(turnoContador.getText());
+                    turno++;
+                    DatosCompartidos.setTurnoJuego(turno);
+                    turnoContador.setText(String.valueOf(turno));
+                } else {
+                    System.out.println("Juego pausado");
+                }
+            } else if (DatosCompartidos.getTurnoJuego()==0) {
+                System.out.println("El juego aun no ha iniciado");
+            } else {
+                System.out.println("Juego terminado");
+
+            }
+        }));
+        controlLoop.setCycleCount(Animation.INDEFINITE);
+        controlLoop.play();
+    }
+
     ////////////////////////////////////////Initialize////////////////////////////////////////////
     @FXML
     public void initialize() {
@@ -421,6 +449,7 @@ public class ControllerMainStage {
             }
         });
 
+        inicializarBucleControl();
 
     }
 
