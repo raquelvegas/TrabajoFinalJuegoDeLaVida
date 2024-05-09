@@ -4,7 +4,9 @@ import com.example.EstructurasDeDatos.ListaSimple;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -87,21 +89,21 @@ public class ControllerMainStage {
     protected IntegerProperty medidaBibliotecaAparicion = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaTesoroAparicion = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaPozoAparicion = new SimpleIntegerProperty(0);
+    protected DoubleProperty velocidadJuegoProperty = new SimpleDoubleProperty(1.0);
 
     /////////////////////////////////////MouseEvents////////////////////////////////////////////////////
 
     @FXML
     void speedGame(MouseEvent event) {
         double nuevaVelocidad = 1;
-        if (DatosCompartidos.getVelocidadJuego() == 1){
-            nuevaVelocidad = 0.75;
-        } else if (DatosCompartidos.getVelocidadJuego() == 0.75){
-            nuevaVelocidad = 0.5;
-        }else if (DatosCompartidos.getVelocidadJuego() == 0.5){
+        if (velocidadJuegoProperty.get() == 1){
+            nuevaVelocidad = 1.5;
+        } else if (velocidadJuegoProperty.get() == 1.5){
+            nuevaVelocidad = 2;
+        }else if (velocidadJuegoProperty.get() == 2){
             nuevaVelocidad = 1;
         }
-        DatosCompartidos.setVelocidadJuego(nuevaVelocidad);
-        controlLoop.getKeyFrames().setAll(new KeyFrame(Duration.seconds(nuevaVelocidad), controlLoop.getOnFinished()));
+        velocidadJuegoProperty.set(nuevaVelocidad);
     }
     @FXML
     void playGame(MouseEvent event) {
@@ -385,7 +387,7 @@ public class ControllerMainStage {
     }
 
     private void inicializarBucleControl() {
-        controlLoop = new Timeline(new KeyFrame(Duration.seconds(DatosCompartidos.getVelocidadJuego()), event -> {
+        controlLoop = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (DatosCompartidos.isGameIniciado()) {
                 if (!gameStopped) {
                     // Lógica para continuar el juego
@@ -404,6 +406,7 @@ public class ControllerMainStage {
             }
         }));
         controlLoop.setCycleCount(Animation.INDEFINITE);
+        controlLoop.rateProperty().bind(velocidadJuegoProperty);
         controlLoop.play();
     }
 
