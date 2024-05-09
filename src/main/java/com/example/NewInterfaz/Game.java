@@ -64,7 +64,7 @@ public class Game {
     }
 
     private void addIndividuo(Square square){
-        if(square.getIndividuos().getNumeroElementos() < 3){
+        if (square.getIndividuos().getNumeroElementos() < 3) {
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
             int tipo = generarEnteroAleatorio(0, 2); //generar aleatorio de tipo
             Individuo individuoNuevo = new Individuo(tipo, new ArbolBinario<>(null));
@@ -152,40 +152,57 @@ public class Game {
 
     public void crearTableroAleatorio(){
         Integer numeroCuadrados = tablero.getSquares().getNumeroElementos();
-        int numIndividuos = generarEnteroAleatorio(numeroCuadrados/5,numeroCuadrados/5+numeroCuadrados/2);
-        int numAgua = generarEnteroAleatorio(numeroCuadrados/5,numeroCuadrados/5+numeroCuadrados/3);
-        int numComida = generarEnteroAleatorio(numeroCuadrados/5,numeroCuadrados/5+numeroCuadrados/3);
-        int numMontana = generarEnteroAleatorio(numeroCuadrados/5,numeroCuadrados/5+numeroCuadrados/3);
-        int numBiblioteca = generarEnteroAleatorio(numeroCuadrados/5,numeroCuadrados/5+numeroCuadrados/3);
-        int numTesoro = generarEnteroAleatorio(numeroCuadrados/5,numeroCuadrados/5+numeroCuadrados/3);
-        int numPozo = generarEnteroAleatorio(numeroCuadrados/5,numeroCuadrados/5+numeroCuadrados/3);
-        for (int i = 0; i < numIndividuos; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados-1);
-            addIndividuo(tablero.getSquare(idSquareAleatorio));
-        }
-        for (int i = 0; i < numAgua; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados-1);
-            addRecursos(tablero.getSquare(idSquareAleatorio),2);
-        }
-        for (int i = 0; i < numComida; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados-1);
-            addRecursos(tablero.getSquare(idSquareAleatorio),3);
-        }
-        for (int i = 0; i < numMontana; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados-1);
-            addRecursos(tablero.getSquare(idSquareAleatorio),4);
-        }
-        for (int i = 0; i < numBiblioteca; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados-1);
-            addRecursos(tablero.getSquare(idSquareAleatorio),5);
-        }
-        for (int i = 0; i < numTesoro; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados-1);
-            addRecursos(tablero.getSquare(idSquareAleatorio),6);
-        }
-        for (int i = 0; i < numPozo; i++){
-            int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados-1);
-            addRecursos(tablero.getSquare(idSquareAleatorio),7);
+        if (numeroCuadrados == 1) {
+            addIndividuo(tablero.getSquare(0));
+            int tipoRecurso = generarEnteroAleatorio(2, 7);
+            addRecursos(tablero.getSquare(0), tipoRecurso);
+        } else if (numeroCuadrados == 2) {
+            int numerocuadrado = generarEnteroAleatorio(0, 1);
+            addIndividuo(tablero.getSquare(numerocuadrado));
+            int numerocuadrado2 = generarEnteroAleatorio(0, 1);
+            addIndividuo(tablero.getSquare(numerocuadrado2));
+            int tipoRecurso = generarEnteroAleatorio(2, 7);
+            addRecursos(tablero.getSquare(numerocuadrado), tipoRecurso);
+            int tipoRecurso2 = generarEnteroAleatorio(2, 7);
+            addRecursos(tablero.getSquare(numerocuadrado2), tipoRecurso2);
+            int tipoRecurso3 = generarEnteroAleatorio(2, 7);
+            addRecursos(tablero.getSquare(numerocuadrado), tipoRecurso3);
+        } else {
+            int numIndividuos = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 2);
+            int numAgua = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
+            int numComida = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
+            int numMontana = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
+            int numBiblioteca = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
+            int numTesoro = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
+            int numPozo = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
+            for (int i = 0; i < numIndividuos; i++) {
+                int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                addIndividuo(tablero.getSquare(idSquareAleatorio));
+            }
+            for (int i = 0; i < numAgua; i++) {
+                int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                addRecursos(tablero.getSquare(idSquareAleatorio), 2);
+            }
+            for (int i = 0; i < numComida; i++) {
+                int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                addRecursos(tablero.getSquare(idSquareAleatorio), 3);
+            }
+            for (int i = 0; i < numMontana; i++) {
+                int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                addRecursos(tablero.getSquare(idSquareAleatorio), 4);
+            }
+            for (int i = 0; i < numBiblioteca; i++) {
+                int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                addRecursos(tablero.getSquare(idSquareAleatorio), 5);
+            }
+            for (int i = 0; i < numTesoro; i++) {
+                int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                addRecursos(tablero.getSquare(idSquareAleatorio), 6);
+            }
+            for (int i = 0; i < numPozo; i++) {
+                int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                addRecursos(tablero.getSquare(idSquareAleatorio), 7);
+            }
         }
     }
 
@@ -215,6 +232,7 @@ public class Game {
     }
 
     private void moverIndividuosCuadrado(ListaSimple<Square> listaCuadrados, Square cuadrado, ListaSimple<Integer> listaID) {
+        ListaSimple<Individuo> individuosMovidosCuadrado = new ListaSimple<>(); // Se crea una lista donde se van a meter los individuos que esten en el cuadrado que ya se hayan movido
         while (!cuadrado.getIndividuos().isVacia()) {
             Individuo ind = cuadrado.getIndividuos().getPrimero();
             if (!individuoYaMovido(ind, listaID)) {   // Compruebo si el individuo a mover se ha movido ya en este turno o no
@@ -231,44 +249,182 @@ public class Game {
                         Integer movimiento = generarEnteroAleatorio(1, 5);
                         moverIndBasicoCuadradoBorde(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
                     }
+                } else if (ind.getTipo() == 1) {   // Tipo Normal
+                    moverIndNormal(listaCuadrados, cuadrado, ind);
 
-                }
-                if (ind.getTipo() == 1) {   // Tipo Normal
-                    int posicionCuadrado = posicionCuadrado(cuadrado);
-                    if (posicionCuadrado == 0) {
-                        moverIndNormal(listaCuadrados, cuadrado, ind);
-                    }
                 } else {   // Tipo Avanzado
 
                     // FALTA ESTO
 
                 }
-                cuadrado.getIndividuos().del(0); // Se elimina el individuo del cuadrado en el que estaba
                 listaID.add(ind.getID()); // Se añade el ID del individuo a la lista de identificadores de los individuos que se han movido
+            } else {
+                individuosMovidosCuadrado.add(ind); // añado el individuo a la lista de individuos que ya se habían movido
             }
+            cuadrado.getIndividuos().del(0);// Se elimina el individuo del cuadrado en el que estaba
         }
+
+        // Volvemos a añadir a la lista los individuos que ya se habían movido
+        int contador = 0;
+        while (contador < individuosMovidosCuadrado.getNumeroElementos()) {
+            cuadrado.getIndividuos().add(individuosMovidosCuadrado.getDato(contador));
+            contador++;
+        }
+
     }
 
 
     // Método para mover un individuo normal en un cuadrado interior
     private void moverIndNormal(ListaSimple<Square> listaCuadrados, Square cuadrado, Individuo ind) {
-        ListaSimple<Square> cuadradosTotales = getTablero().getSquares();
-        Integer distanciaRecursoDerecha = Integer.valueOf(DatosCompartidos.getAnchoMatriz());
-        boolean finFila = false;
-        Square cuadradoActual = cuadrado;
-        Integer contadorDerecha = 0;
-        Integer contador = 0;
-        while ((!finFila) && (cuadradoActual != null)) {
-            if (cuadradosTotales.getDato(contador).getY() == cuadradoActual.getY() + 1 && cuadradosTotales.getDato(contador).getX() == cuadradoActual.getX()) {
 
+        // Primero nos vamos a construir listas con los cuadrados en las cuatro direcciones del plano hasta que haya uno con un recurso o hallamos llegado al borde de la matriz
+        boolean ERecDerecha = false;
+        ListaSimple<Square> cuadradosDerecha = new ListaSimple<>();
+        int identificador = cuadrado.getID() + Integer.parseInt(DatosCompartidos.getAltoMatriz());
+        while ((identificador <= listaCuadrados.getNumeroElementos()) && (!ERecDerecha)) {
+            cuadradosDerecha.add(listaCuadrados.getDato(identificador));
+            if (!listaCuadrados.getDato(identificador).getRecursos().isVacia()) {
+                ERecDerecha = true;
+            } else {
+                identificador += Integer.parseInt(DatosCompartidos.getAltoMatriz());
+            }
+        }
 
+        boolean ERecIzquierda = false;
+        ListaSimple<Square> cuadradosIzquierda = new ListaSimple<>();
+        int identificador2 = cuadrado.getID() - Integer.parseInt(DatosCompartidos.getAltoMatriz());
+        while ((identificador2 <= 0) && (!ERecIzquierda)) {
+            cuadradosIzquierda.add(listaCuadrados.getDato(identificador2));
+            if (!listaCuadrados.getDato(identificador2).getRecursos().isVacia()) {
+                ERecIzquierda = true;
+            } else {
+                identificador2 -= Integer.parseInt(DatosCompartidos.getAltoMatriz());
+            }
+        }
+
+        boolean ERecArriba = false;
+        ListaSimple<Square> cuadradosArriba = new ListaSimple<>();
+        int identificador3 = cuadrado.getID() - 1;
+        while ((identificador3 % Integer.parseInt(DatosCompartidos.getAltoMatriz()) != Integer.parseInt(DatosCompartidos.getAltoMatriz()) - 1) && (!ERecArriba)) {
+            cuadradosArriba.add(listaCuadrados.getDato(identificador3));
+            if (!listaCuadrados.getDato(identificador3).getRecursos().isVacia()) {
+                ERecArriba = true;
+            } else {
+                identificador3--;
+            }
+        }
+
+        boolean ERecAbajo = false;
+        ListaSimple<Square> cuadradosAbajo = new ListaSimple<>();
+        int identificador4 = cuadrado.getID() + 1;
+        while ((identificador4 % Integer.parseInt(DatosCompartidos.getAltoMatriz()) != 0) && (!ERecAbajo)) {
+            cuadradosAbajo.add(listaCuadrados.getDato(identificador4));
+            if (!listaCuadrados.getDato(identificador4).getRecursos().isVacia()) {
+                ERecAbajo = true;
+            } else {
+                identificador4++;
             }
         }
 
 
+        // Una vez hechas las listas, vamos a dividir el problema en casos (dependiendo de el elemento final de cada lista es un cuadrado del borde de la matriz o es un cuadrado con un recurso)
+        if (ERecArriba) {
+            if (ERecAbajo) {
+                if (ERecDerecha) {
+                    if (ERecIzquierda) { // 4 direcciones: Arr, abj, izq, dch
 
+                    } else { // 3 direcciones: Arr, abj, dch
+                    }
+                } else {
+                    if (ERecIzquierda) { // 3 direcciones: Arr, abj, izq
+
+                    } else { // 2 direcciones: Arr, abj
+                        moverNormal2Listas(cuadradosArriba, cuadradosAbajo, ind);
+                    }
+                }
+            } else {
+                if (ERecDerecha) {
+                    if (ERecIzquierda) { // 3 direcciones: Arr, izq, dch
+
+                    } else { // 2 direcciones: Arr, dch
+                        moverNormal2Listas(cuadradosArriba, cuadradosDerecha, ind);
+                    }
+                } else {
+                    if (ERecIzquierda) { // 2 direcciones: Arr, izq
+                        moverNormal2Listas(cuadradosArriba, cuadradosIzquierda, ind);
+                    } else { // 1 direcciones: Arr
+                        cuadradosArriba.getPrimero().getIndividuos().add(ind);
+                    }
+                }
+            }
+        } else {
+            if (ERecAbajo) {
+                if (ERecDerecha) {
+                    if (ERecIzquierda) { // 3 direcciones: Abj, izq, dch
+
+                    } else { // 2 direcciones: Abj, dch
+                        moverNormal2Listas(cuadradosAbajo, cuadradosDerecha, ind);
+                    }
+                } else {
+                    if (ERecIzquierda) { // 2 direcciones: Abj, izq
+                        moverNormal2Listas(cuadradosAbajo, cuadradosIzquierda, ind);
+                    } else { // 1 direcciones: Abj
+                        cuadradosAbajo.getPrimero().getIndividuos().add(ind);
+                    }
+                }
+            } else {
+                if (ERecDerecha) {
+                    if (ERecIzquierda) { // 2 direcciones: Izq, dch
+                        moverNormal2Listas(cuadradosIzquierda, cuadradosDerecha, ind);
+                    } else { // 1 direcciones: Dch
+                        cuadradosDerecha.getPrimero().getIndividuos().add(ind);
+                    }
+                } else {
+                    if (ERecIzquierda) { // 1 direcciones: Izq
+                        cuadradosIzquierda.getPrimero().getIndividuos().add(ind);
+                    } else { // 0 direcciones
+
+                    }
+                }
+            }
+        }
     }
 
+    private void moverNormal2Listas(ListaSimple<Square> lista1, ListaSimple<Square> lista2, Individuo ind) {
+        int comparacion = lista1.getNumeroElementos().compareTo(lista2.getNumeroElementos());
+        if (comparacion > 0) {
+            lista2.getPrimero().getIndividuos().add(ind);
+        } else if (comparacion < 0) {
+            lista1.getPrimero().getIndividuos().add(ind);
+        } else {
+            int numerorandom = generarEnteroAleatorio(0, 1);
+            if (numerorandom == 1) {
+                lista2.getPrimero().getIndividuos().add(ind);
+            } else {
+                lista1.getPrimero().getIndividuos().add(ind);
+            }
+        }
+    }
+
+    private void moverNormal3Listas(ListaSimple<Square> lista1, ListaSimple<Square> lista2, ListaSimple<Square> lista3, Individuo ind) {
+        int comparacion1_2 = lista1.getNumeroElementos().compareTo(lista2.getNumeroElementos());
+        int comparacion1_3 = lista1.getNumeroElementos().compareTo(lista3.getNumeroElementos());
+        int comparacion2_3 = lista2.getNumeroElementos().compareTo(lista3.getNumeroElementos());
+        if (comparacion1_2 < 0) {
+            if (comparacion1_3 < 0) { // lista1
+
+            }
+            if (comparacion1_3 > 0) {
+                if (comparacion2_3>0){
+
+                }
+            }
+        } else if (comparacion1_2 > 0) {
+
+        } else {
+
+        }
+    }
 
     // Método para comprobar si el individuo ya se ha movido o no
     private boolean individuoYaMovido(Individuo ind, ListaSimple<Integer> lista) {
@@ -568,7 +724,7 @@ public class Game {
                     }
                 }
             }
-        } else if (borde==4){
+        } else if (borde == 4) {
             if (movimiento == 1) {
                 while (nuevoCuadrado == null) {
                     if ((listaCuadrados.getDato(contador).getX() == cuadrado.getX()-1) && (listaCuadrados.getDato(contador).getY() == cuadrado.getY())) {
@@ -610,7 +766,7 @@ public class Game {
                     }
                 }
             }
-        } else if (borde==6){
+        } else if (borde == 6) {
             if (movimiento == 1) {
                 while (nuevoCuadrado == null) {
                     if ((listaCuadrados.getDato(contador).getX() == cuadrado.getX()) && (listaCuadrados.getDato(contador).getY() == cuadrado.getY() - 1)) {
@@ -697,7 +853,6 @@ public class Game {
         }
         nuevoCuadrado.getIndividuos().add(ind);
     }
-
 
     public static Tablero getTablero() {
         return tablero;
