@@ -23,7 +23,7 @@ public class ControllerRecursosAparicion {
     private Text aguaAparicionText, bibliotecaAparicionText, comidaAparicionText,
             montanaAparicionText, pozoAparicionText, tesoroAparicionText;
     @FXML
-    private Button buttonSiguiente;
+    private Button buttonSiguienteClear, getButtonSiguienteAleatorio;
 
     protected IntegerProperty medidaAguaAparicion = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaComidaAparicion = new SimpleIntegerProperty(0);
@@ -41,7 +41,7 @@ public class ControllerRecursosAparicion {
     }
 
     @FXML
-    void next(MouseEvent event) {
+    void nextAleatorio(MouseEvent event) {
         DatosCompartidos.setAguaAparicion(String.valueOf((int) aguaAparicionSlider.getValue()));
         DatosCompartidos.setComidaAparicion(String.valueOf((int) comidaAparicionSlider.getValue()));
         DatosCompartidos.setMontanaAparicion(String.valueOf((int) montanaAparicionSlider.getValue()));
@@ -57,6 +57,24 @@ public class ControllerRecursosAparicion {
 
         DatosCompartidos.getGame().crearTableroAleatorio();
         DatosCompartidos.getGame().actualizarTablero();
+        log.info("Parametrización de la probabilidad de aparición de los recursos correcta");
+        log.info("Creación del tablero aleatorio correcta");
+    }
+
+    @FXML
+    void nextClear(MouseEvent event) {
+        DatosCompartidos.setAguaAparicion(String.valueOf((int) aguaAparicionSlider.getValue()));
+        DatosCompartidos.setComidaAparicion(String.valueOf((int) comidaAparicionSlider.getValue()));
+        DatosCompartidos.setMontanaAparicion(String.valueOf((int) montanaAparicionSlider.getValue()));
+        DatosCompartidos.setBibliotecaAparicion(String.valueOf((int) bibliotecaAparicionSlider.getValue()));
+        DatosCompartidos.setTesoroAparicion(String.valueOf((int) tesoroAparicionSlider.getValue()));
+        DatosCompartidos.setPozoAparicion(String.valueOf((int) pozoAparicionSlider.getValue()));
+
+        // Cerrar la ventana actual
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+        ControllerMainStage.initializeAudio();
         log.info("Parametrización de la probabilidad de aparición de los recursos correcta");
     }
 

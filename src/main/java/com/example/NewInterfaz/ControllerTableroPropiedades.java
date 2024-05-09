@@ -41,8 +41,8 @@ public class ControllerTableroPropiedades {
     @FXML
     private Button buttonSiguiente;
     private Stage primaryStage; // Referencia al Stage principal
-    protected IntegerProperty medidaAncho = new SimpleIntegerProperty(0);
-    protected IntegerProperty medidaAlto = new SimpleIntegerProperty(0);
+    protected IntegerProperty medidaAncho = new SimpleIntegerProperty(1);
+    protected IntegerProperty medidaAlto = new SimpleIntegerProperty(1);
 
     public void setStage(Stage primaryStage) {
         this.primaryStage = primaryStage;

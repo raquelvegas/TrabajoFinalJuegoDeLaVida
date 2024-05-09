@@ -16,16 +16,22 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <Text fontSmoothingType="LCD" layoutX="11.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ESPECIFICA LS PROBABILIDAD CON LA QUE IRÁN APARECIENDO TUS RECURSOS" textAlignment="CENTER" wrappingWidth="577.4732055664062">
+      <Text fontSmoothingType="LCD" layoutX="11.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ESPECIFICA LAS PROBABILIDAD CON LA QUE IRÁN APARECIENDO TUS RECURSOS" textAlignment="CENTER" wrappingWidth="577.4732055664062">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
       <HBox alignment="CENTER" layoutY="339.0" prefHeight="47.0" prefWidth="600.0">
          <children>
-            <Button fx:id="buttonSiguiente" mnemonicParsing="false" onMouseClicked="#next" prefHeight="100.0" prefWidth="170.0" text="SIGUIENTE">
+            <Button fx:id="buttonSiguienteAleatorio" mnemonicParsing="false" onMouseClicked="#nextAleatorio" prefHeight="47.0" prefWidth="242.0" text="INICIAR CON TABLERO ALEATORIO" textAlignment="CENTER" textOverrun="CLIP">
                <font>
-                  <Font size="18.0" />
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       " />
+            <Button fx:id="buttonSiguienteClear" mnemonicParsing="false" onMouseClicked="#nextClear" prefHeight="47.0" prefWidth="242.0" text="INICIAR CON TABLERO EN BLANCO" textAlignment="CENTER" textOverrun="CLIP">
+               <font>
+                  <Font size="13.0" />
                </font>
             </Button>
          </children>
