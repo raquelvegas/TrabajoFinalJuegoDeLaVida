@@ -110,6 +110,7 @@ public class ControllerMainStage {
         DatosCompartidos.setGameIniciado(true);
         if (gameStopped) {
             gameStopped = false;
+            this.buttonVelocidad.setDisable(false);
 
             tabPaneParametros.getSelectionModel().select(pauseTab);
             this.individuoTab.setDisable(true);
@@ -126,6 +127,7 @@ public class ControllerMainStage {
     void pauseGame(MouseEvent event) {
         if (!gameStopped) {
             gameStopped = true;
+            this.buttonVelocidad.setDisable(true);
 
             this.individuoTab.setDisable(false);
             this.recursosParametrosTab.setDisable(false);
@@ -419,6 +421,7 @@ public class ControllerMainStage {
         pauseTab.setDisable(true);
         this.pauseText.setVisible(false);
         this.playText.setVisible(true);
+        this.buttonVelocidad.setDisable(true);
 
         initializeBindingSliders(vidaUserSlider,vidaUserText, medidaVidaUser);
         initializeBindingSliders(probReproduccionSlider,probReproduccionText, medidaReproduccion);
