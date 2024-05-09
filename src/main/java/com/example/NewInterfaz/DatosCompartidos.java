@@ -27,6 +27,7 @@ public class DatosCompartidos {
     private static boolean anadirTab = false;
     private static int numIndividuos = 0;
     private static int turnoJuego = 0;
+    private static double velocidadJuego = 1;
     private static boolean gameIniciado = false;
     private static boolean tableroAleatorio = false;
     private static Game game = null;
@@ -238,6 +239,14 @@ public class DatosCompartidos {
 
     public static void setTurnoJuego(int turnoJuego) {
         DatosCompartidos.turnoJuego = turnoJuego;
+    }
+
+    public static double getVelocidadJuego() {
+        return velocidadJuego;
+    }
+
+    public static void setVelocidadJuego(double velocidadJuego) {
+        DatosCompartidos.velocidadJuego = velocidadJuego;
     }
 
     public static boolean isGameIniciado() {

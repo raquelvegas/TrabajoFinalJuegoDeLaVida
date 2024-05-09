@@ -61,6 +61,7 @@ public class ControllerMainStage {
     private Tab pauseTab, individuoTab, recursosParametrosTab, aparicionTab, anadirTab;
     protected boolean gameStopped = true;
     protected boolean gameON = false;
+    private Timeline controlLoop;
     private Game game = DatosCompartidos.getGame();
 
     private static final Logger log = LogManager.getLogger(ControllerMainStage.class);
@@ -90,13 +91,23 @@ public class ControllerMainStage {
     /////////////////////////////////////MouseEvents////////////////////////////////////////////////////
 
     @FXML
-    void speedGame(MouseEvent event) {}
+    void speedGame(MouseEvent event) {
+        double nuevaVelocidad = 1;
+        if (DatosCompartidos.getVelocidadJuego() == 1){
+            nuevaVelocidad = 0.75;
+        } else if (DatosCompartidos.getVelocidadJuego() == 0.75){
+            nuevaVelocidad = 0.5;
+        }else if (DatosCompartidos.getVelocidadJuego() == 0.5){
+            nuevaVelocidad = 1;
+        }
+        DatosCompartidos.setVelocidadJuego(nuevaVelocidad);
+        controlLoop.getKeyFrames().setAll(new KeyFrame(Duration.seconds(nuevaVelocidad), controlLoop.getOnFinished()));
+    }
     @FXML
     void playGame(MouseEvent event) {
         DatosCompartidos.setGameIniciado(true);
         if (gameStopped) {
             gameStopped = false;
-            gameON = true;
 
             tabPaneParametros.getSelectionModel().select(pauseTab);
             this.individuoTab.setDisable(true);
@@ -125,7 +136,10 @@ public class ControllerMainStage {
         }
     }
     @FXML
-    void stopGame(MouseEvent event) {}
+    void stopGame(MouseEvent event) {
+        gameStopped = true;
+        DatosCompartidos.setGameIniciado(false);
+    }
     @FXML
     void aplicarUser(MouseEvent event){
         setSlidersValue(DatosCompartidos::setVidaInicial, vidaUserSlider);
@@ -371,9 +385,9 @@ public class ControllerMainStage {
     }
 
     private void inicializarBucleControl() {
-        Timeline controlLoop = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-            if (gameON) {
-                if(!gameStopped) {
+        controlLoop = new Timeline(new KeyFrame(Duration.seconds(DatosCompartidos.getVelocidadJuego()), event -> {
+            if (DatosCompartidos.isGameIniciado()) {
+                if (!gameStopped) {
                     // Lógica para continuar el juego
                     int turno = Integer.parseInt(turnoContador.getText());
                     turno++;
@@ -382,11 +396,11 @@ public class ControllerMainStage {
                 } else {
                     System.out.println("Juego pausado");
                 }
-            } else if (DatosCompartidos.getTurnoJuego()==0) {
+            } else if (DatosCompartidos.getTurnoJuego() == 0) {
                 System.out.println("El juego aun no ha iniciado");
             } else {
                 System.out.println("Juego terminado");
-
+                controlLoop.stop();
             }
         }));
         controlLoop.setCycleCount(Animation.INDEFINITE);
