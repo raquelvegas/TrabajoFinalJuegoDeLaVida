@@ -66,15 +66,19 @@ public class Tablero {
         return squares;
     }
 
-    public Square getSquare(int id) {
-        for (Node node : tableroJuego.getChildren()) {
-            if (node instanceof Square) {
-                Square square = (Square) node;
-                if (square.getID() == id) {
-                    return square;
-                }
-            }
-        }
-        return null; // Si no se encuentra ninguna celda con el ID especificado
+//    public Square getSquare(int id) {
+//        for (Node node : tableroJuego.getChildren()) {
+//            if (node instanceof Square) {
+//                Square square = (Square) node;
+//                if (square.getID() == id) {
+//                    return square;
+//                }
+//            }
+//        }
+//        return null; // Si no se encuentra ninguna celda con el ID especificado
+//    }
+
+    public Square getSquare(int id){
+        return squares.getDato(id);
     }
 }

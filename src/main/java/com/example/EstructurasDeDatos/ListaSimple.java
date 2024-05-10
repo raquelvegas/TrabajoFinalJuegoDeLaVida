@@ -8,10 +8,13 @@ public class ListaSimple<Tipodato> {
 
     private Integer maximo = 50000;
 
+    private Integer numElem;
+
     //////////////
 
     public ListaSimple() {
         this.datos = new ElementoLS[maximo];
+        this.numElem=0;
     }
 
     ////////////////
@@ -35,30 +38,8 @@ public class ListaSimple<Tipodato> {
     }
 
     public void add(Tipodato el) {
-        int i = 0;
-        while (i < maximo && datos[i] != null) {
-            i++;
-        }
-        datos[i] = new ElementoLS<>(el);
-    }
-
-    public void insert(Tipodato el, Integer pos) {
-        if (pos >= 0 && pos <= getNumeroElementos()) {  // Comprobar que la posición sea válida
-            if (pos.equals(getNumeroElementos())) {
-                add(el);
-            } else {
-                Integer elementosIniciales = getNumeroElementos();
-                ElementoLS<Tipodato> SiguienteElemento = datos[pos];
-                datos[pos] = new ElementoLS<>(el);
-                pos++;
-                while (Objects.equals(elementosIniciales, getNumeroElementos())) {
-                    ElementoLS<Tipodato> nextEl = datos[pos];
-                    datos[pos] = SiguienteElemento;
-                    SiguienteElemento = nextEl;
-                    pos++;
-                }
-            }
-        }
+        datos[numElem] = new ElementoLS<>(el);
+        numElem++;
     }
 
     public void del(int pos) {
@@ -68,6 +49,7 @@ public class ListaSimple<Tipodato> {
                 datos[pos] = datos[num_elem - 1];
                 datos[num_elem - 1] = null;
         }
+        numElem--;
     }
 
     public Integer getPosicion(Tipodato data) {
@@ -121,16 +103,6 @@ public class ListaSimple<Tipodato> {
     }
 
     public Integer getNumeroElementos() {
-        if (datos[0] == null) {
-            return 0;
-        } else {
-            int contador = 1;
-            ElementoLS<Tipodato> el = datos[contador - 1];
-            while (this.getSiguiente(el) != null) {
-                el=this.getSiguiente(el);
-                contador++;
-            }
-            return contador;
-        }
+        return numElem;
     }
 }

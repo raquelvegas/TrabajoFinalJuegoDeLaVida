@@ -152,7 +152,7 @@ public class ControllerMainStage {
 //        DatosCompartidos.setGameIniciado(false);
         game.moverIndividuos();
         game.actualizarIndividuos();
-        game.actualizarRecursos();
+//        game.actualizarRecursos();
         game.actualizarTablero();
 
     }
