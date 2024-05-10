@@ -1,11 +1,10 @@
 package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ListaSimple;
-import javafx.geometry.Insets;
+import com.example.NewInterfaz.Individuos.Individuo;
 import javafx.scene.Node;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class Square extends StackPane {
 

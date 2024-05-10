@@ -1,32 +1,26 @@
-package com.example.NewInterfaz;
+package com.example.NewInterfaz.Individuos;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.Cola;
+import com.example.NewInterfaz.DatosCompartidos;
 
-public class Individuo {
+public abstract class Individuo {
     private int ID;
-
     private int Generacion;
-
     private int TurnosVida;
-
     private int ProbRepr;
-
     private int ProbClon;
-
-    private int Tipo;
-
     private Cola<Integer> acciones;
-
     private ArbolBinario<Individuo> arbolGenealogico;
 
-    public Individuo(int tipo, ArbolBinario<Individuo> arbolGenealogico) {
+    public abstract int getTipo();
+
+    public Individuo(ArbolBinario<Individuo> arbolGenealogico) {
         this.ID = DatosCompartidos.getNumIndividuos();
         Generacion = DatosCompartidos.getTurnoJuego();
         TurnosVida = Integer.parseInt(DatosCompartidos.getVidaInicial());
         ProbRepr = Integer.parseInt(DatosCompartidos.getProbReproduccion());
         ProbClon = Integer.parseInt(DatosCompartidos.getProbClonacion());
-        Tipo = tipo;
         this.acciones = new Cola<Integer>();
         this.arbolGenealogico = arbolGenealogico;
     }
@@ -69,10 +63,6 @@ public class Individuo {
 
     public void setProbClon(int probClon) {
         ProbClon = probClon;
-    }
-
-    public int getTipo() {
-        return Tipo;
     }
 
     public void setTipo(int tipo) {
