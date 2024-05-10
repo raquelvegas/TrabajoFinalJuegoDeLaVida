@@ -1,21 +1,21 @@
 package com.example.NewInterfaz;
 
-import com.example.EstructurasDeDatos.ListaSimple;
 import javafx.geometry.Insets;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class Celda extends StackPane {
     private int x, y;
-    private Integer tipo;
+    private Integer tipo = 0;
     private int id;
     private boolean ocupado;
 
     public Celda(int x, int y) {
         this.x = x;
         this.y = y;
-        this.tipo = null;
         this.ocupado = false;
         setPickOnBounds(false);
     }

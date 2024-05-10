@@ -233,7 +233,7 @@ public class Game {
         return celdaIdentificador;
     }
 
-    private void actualizarIndividuos(){
+    public void actualizarIndividuos(){
         clearIndividuos();
         int tamanoTablero = tablero.getSquares().getNumeroElementos();
         for (int i = 0; i < tamanoTablero; i++) {
@@ -255,7 +255,7 @@ public class Game {
         }
     }
 
-    private void actualizarRecursos(){
+    public void actualizarRecursos(){
         int numRecursos = DatosCompartidos.getListaRecursos().getNumeroElementos();
         int tamanoTablero = tablero.getSquares().getNumeroElementos();
 

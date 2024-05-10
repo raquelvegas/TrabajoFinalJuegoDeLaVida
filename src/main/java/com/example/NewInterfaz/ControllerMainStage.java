@@ -148,8 +148,13 @@ public class ControllerMainStage {
     }
     @FXML
     void stopGame(MouseEvent event) {
-        gameStopped = true;
-        DatosCompartidos.setGameIniciado(false);
+//        gameStopped = true;
+//        DatosCompartidos.setGameIniciado(false);
+        game.moverIndividuos();
+        game.actualizarIndividuos();
+        game.actualizarRecursos();
+        game.actualizarTablero();
+
     }
     @FXML
     void aplicarUser(MouseEvent event){
