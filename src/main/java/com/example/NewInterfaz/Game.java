@@ -2,6 +2,7 @@ package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.ListaSimple;
+import com.example.NewInterfaz.Individuos.IndBasico;
 import com.example.NewInterfaz.Individuos.Individuo;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
@@ -68,7 +69,7 @@ public class Game {
         if (square.getIndividuos().getNumeroElementos() < 3) {
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
             int tipo = generarEnteroAleatorio(0, 2); //generar aleatorio de tipo
-            Individuo individuoNuevo = new Individuo(tipo, new ArbolBinario<>(null));
+            Individuo individuoNuevo = new IndBasico(new ArbolBinario<>(null));
             addTipo(square, 1);
             square.getIndividuos().add(individuoNuevo);
             System.out.println("Se ha añadido un individuo con id: " + individuoNuevo.getID());
