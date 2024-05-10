@@ -28,7 +28,7 @@
             <children>
                 <MenuBar nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="NEVER">
                     <menus>
-                        <Menu mnemonicParsing="false" text="Como Jugar">
+                        <Menu fx:id="comoJugarMenu" mnemonicParsing="false" onAction="#comoJugar" text="Como Jugar">
                         </Menu>
                         <Menu mnemonicParsing="false" text="Tema del tablero 🎨">
                             <items>
