@@ -150,6 +150,7 @@ public class ControllerMainStage {
     void stopGame(MouseEvent event) {
         game.moverIndividuos();
         game.actualizarIndividuos();
+        game.actualizarRecursos();
         game.actualizarTablero();
     }
     @FXML
@@ -423,8 +424,10 @@ public class ControllerMainStage {
                     turno++;
                     DatosCompartidos.setTurnoJuego(turno);
                     turnoContador.setText(String.valueOf(turno));
-                    game.moverIndividuos();
+                    game.actualizarVidas();
+                    //game.moverIndividuos();
                     game.actualizarIndividuos();
+                    game.actualizarRecursos();
                     game.actualizarTablero();
                 } else {
                     System.out.println("Juego pausado");

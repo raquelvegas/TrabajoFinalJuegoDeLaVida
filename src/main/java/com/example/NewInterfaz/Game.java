@@ -259,25 +259,16 @@ public class Game {
 
     public void actualizarRecursos(){
         int numRecursos = DatosCompartidos.getListaRecursos().getNumeroElementos();
-        int tamanoTablero = tablero.getSquares().getNumeroElementos();
-
         ListaSimple<Recurso> listaDel = new ListaSimple<Recurso>();
-        for (int i = 0; i < numRecursos; i++){
-            Square squareRecurso = DatosCompartidos.getListaRecursos().getDato(i).getSquare();
+
+        for (int i = 0; i < numRecursos; i++) {
             Recurso recurso = DatosCompartidos.getListaRecursos().getDato(i);
-            for (int j = 0; j < tamanoTablero; j++) {
-                if(squareRecurso == tablero.getSquare(i)){
-                    for (int m = 0; m < 3; m++){
-                        if(tablero.getSquare(i).getRecursos().getDato(m) == recurso){
-                            if(recurso.getTiempoVida() == 0){
-                                int celda = recurso.getCelda();
-                                tablero.getSquare(i).getCelda(celda).setTipo(0);
-                                tablero.getSquare(i).getCelda(celda).setOcupado(false);
-                                listaDel.add(recurso);
-                            }
-                        }
-                    }
-                }
+            if (recurso.getTiempoVida() == 0){
+                int idSquareRecurso = DatosCompartidos.getListaRecursos().getDato(i).getSquare().getID();
+                int idCeldaRecurso = DatosCompartidos.getListaRecursos().getDato(i).getCelda();
+                tablero.getSquare(idSquareRecurso).getCelda(idCeldaRecurso).setTipo(0);
+                tablero.getSquare(idSquareRecurso).getCelda(idCeldaRecurso).setOcupado(false);
+                listaDel.add(recurso);
             }
         }
         eliminarRecursos(listaDel);
@@ -292,6 +283,20 @@ public class Game {
                     DatosCompartidos.getListaRecursos().del(j);
                 }
             }
+        }
+    }
+
+    public void actualizarVidas(){
+        int numIndividuos = DatosCompartidos.getListaIndividuos().getNumeroElementos();
+        int numRecursos = DatosCompartidos.getListaRecursos().getNumeroElementos();
+
+        for(int i = 0; i < numIndividuos; i++){
+            int vida = DatosCompartidos.getListaIndividuos().getDato(i).getTurnosVida();
+            DatosCompartidos.getListaIndividuos().getDato(i).setTurnosVida(vida-1);
+        }
+        for(int i = 0; i < numRecursos; i++){
+            int vida = DatosCompartidos.getListaRecursos().getDato(i).getTiempoVida();
+            DatosCompartidos.getListaRecursos().getDato(i).setTiempoVida(vida-1);
         }
     }
 
