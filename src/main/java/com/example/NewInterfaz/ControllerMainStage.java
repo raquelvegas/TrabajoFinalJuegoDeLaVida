@@ -427,6 +427,9 @@ public class ControllerMainStage {
                     turno++;
                     DatosCompartidos.setTurnoJuego(turno);
                     turnoContador.setText(String.valueOf(turno));
+                    game.moverIndividuos();
+                    game.actualizarIndividuos();
+                    game.actualizarTablero();
                 } else {
                     System.out.println("Juego pausado");
                 }
