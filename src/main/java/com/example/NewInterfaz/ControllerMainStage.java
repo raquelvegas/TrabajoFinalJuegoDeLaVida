@@ -10,6 +10,9 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,11 +23,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -58,7 +65,7 @@ public class ControllerMainStage {
     @FXML
     private VBox infoVBox;
     @FXML
-    private Stage stage;
+    private Stage stage, primaryStage;
     @FXML
     private Tab pauseTab, individuoTab, recursosParametrosTab, aparicionTab, anadirTab;
     protected boolean gameStopped = true;
@@ -246,6 +253,23 @@ public class ControllerMainStage {
         }
         log.info("Cambio de color de visualización: Tierra");
 
+    }
+
+    @FXML
+    void comoJugar(ActionEvent event) throws IOException {
+        URL fxmlUrl = getClass().getResource("InterfazComoJugar.fxml");
+        Parent root = FXMLLoader.load(fxmlUrl);
+
+        Stage configStage = new Stage();
+        configStage.setScene(new Scene(root));
+        configStage.setResizable(true); // Evitar que la ventana sea redimensionable
+        configStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
+        configStage.initOwner(primaryStage);
+
+        configStage.initStyle(StageStyle.UNDECORATED);
+        configStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
+
+        configStage.show();
     }
 
     @FXML
