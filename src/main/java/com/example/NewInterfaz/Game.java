@@ -220,6 +220,19 @@ public class Game {
         return celdaIdentificador;
     }
 
+    private void pintar(){
+        //Pintar individuos
+        int tamanoTablero = tablero.getSquares().getNumeroElementos();
+        Integer identificador = 0;
+        for (int i = 0; i < tamanoTablero; i++) {
+            actualizarSquare(tablero.getSquare(identificador));
+            for (int j = 0; j < tablero.getSquare(identificador).getIndividuos().getNumeroElementos(); j++) {
+                addIndividuo(tablero.getSquare(identificador));
+            }
+            identificador++;
+        }
+    }
+
     ////////////// MOVIMIENTO DE INDIVIDUOS //////////////////
 
     public void moverIndividuos() {
