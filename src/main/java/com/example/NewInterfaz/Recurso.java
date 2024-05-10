@@ -1,11 +1,11 @@
 package com.example.NewInterfaz;
 
 public class Recurso {
-    int tipoRecurso;
-    int tiempoVida;
-    int efecto;
-    Square square;
-    int celda;
+    private int tipoRecurso;
+    private int tiempoVida;
+    private int efecto;
+    private Square square;
+    private int celda;
 
     public Recurso(int tipoRecurso, Square square) {
         this.tipoRecurso = tipoRecurso;

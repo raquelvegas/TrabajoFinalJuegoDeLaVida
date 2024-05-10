@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 public class Square extends StackPane {
 
-    private int x, y;
+    private Integer x, y;
     private boolean occupied;
     private int ID;
     private ListaSimple<Celda> celdas = new ListaSimple<>();

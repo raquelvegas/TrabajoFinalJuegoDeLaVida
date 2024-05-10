@@ -1,10 +1,11 @@
 package com.example.NewInterfaz.Individuos;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
+import com.example.EstructurasDeDatos.ListaEnlazada;
 import com.example.NewInterfaz.Square;
 
 public class IndNormal extends Individuo{
-    Square objetivo = null;
+    private ListaEnlazada<Square> recorrido = new ListaEnlazada<>();
     public IndNormal(ArbolBinario<Individuo> arbolGenealogico) {
         super(arbolGenealogico);
     }
@@ -14,11 +15,11 @@ public class IndNormal extends Individuo{
         return 1;
     }
 
-    public Square getObjetivo() {
-        return objetivo;
+    public ListaEnlazada<Square> getRecorrido() {
+        return recorrido;
     }
 
-    public void setObjetivo(Square objetivo) {
-        this.objetivo = objetivo;
+    public void setRecorrido(ListaEnlazada<Square> recorrido) {
+        this.recorrido = recorrido;
     }
 }

@@ -1,8 +1,8 @@
 package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
+import com.example.EstructurasDeDatos.ListaEnlazada;
 import com.example.EstructurasDeDatos.ListaSimple;
-import com.example.NewInterfaz.Individuos.IndAvanzado;
 import com.example.NewInterfaz.Individuos.IndBasico;
 import com.example.NewInterfaz.Individuos.IndNormal;
 import com.example.NewInterfaz.Individuos.Individuo;
@@ -73,9 +73,9 @@ public class Game {
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
             int tipo = generarEnteroAleatorio(0, 2); // Generar aleatorio de tipo
 //            if (tipo == 0) {
-                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
+//                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
 //            } else if (tipo == 1) {
-//                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
+                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
 //            } else {
 //                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
 //            }
@@ -351,154 +351,52 @@ public class Game {
 
     // Método para mover un individuo normal en un cuadrado interior
     private void moverIndNormal(ListaSimple<Square> listaCuadrados, Square cuadrado, Individuo ind) {
-
-        // Primero nos vamos a construir listas con los cuadrados en las cuatro direcciones del plano hasta que haya uno con un recurso o hallamos llegado al borde de la matriz
-        boolean ERecDerecha = false;
-        ListaSimple<Square> cuadradosDerecha = new ListaSimple<>();
-        int identificador = cuadrado.getID() + Integer.parseInt(DatosCompartidos.getAltoMatriz());
-        while ((identificador <= listaCuadrados.getNumeroElementos()) && (!ERecDerecha)) {
-            cuadradosDerecha.add(listaCuadrados.getDato(identificador));
-            if (!listaCuadrados.getDato(identificador).getRecursos().isVacia()) {
-                ERecDerecha = true;
-            } else {
-                identificador += Integer.parseInt(DatosCompartidos.getAltoMatriz());
-            }
+        IndNormal indNormal = (IndNormal) ind;
+        if (indNormal.getRecorrido().isVacia()) {
+            buscarNuevoObjetivo(listaCuadrados, cuadrado, indNormal);
         }
-
-        boolean ERecIzquierda = false;
-        ListaSimple<Square> cuadradosIzquierda = new ListaSimple<>();
-        int identificador2 = cuadrado.getID() - Integer.parseInt(DatosCompartidos.getAltoMatriz());
-        while ((identificador2 <= 0) && (!ERecIzquierda)) {
-            cuadradosIzquierda.add(listaCuadrados.getDato(identificador2));
-            if (!listaCuadrados.getDato(identificador2).getRecursos().isVacia()) {
-                ERecIzquierda = true;
-            } else {
-                identificador2 -= Integer.parseInt(DatosCompartidos.getAltoMatriz());
-            }
-        }
-
-        boolean ERecArriba = false;
-        ListaSimple<Square> cuadradosArriba = new ListaSimple<>();
-        int identificador3 = cuadrado.getID() - 1;
-        while ((identificador3 % Integer.parseInt(DatosCompartidos.getAltoMatriz()) != Integer.parseInt(DatosCompartidos.getAltoMatriz()) - 1) && (!ERecArriba)) {
-            cuadradosArriba.add(listaCuadrados.getDato(identificador3));
-            if (!listaCuadrados.getDato(identificador3).getRecursos().isVacia()) {
-                ERecArriba = true;
-            } else {
-                identificador3--;
-            }
-        }
-
-        boolean ERecAbajo = false;
-        ListaSimple<Square> cuadradosAbajo = new ListaSimple<>();
-        int identificador4 = cuadrado.getID() + 1;
-        while ((identificador4 % Integer.parseInt(DatosCompartidos.getAltoMatriz()) != 0) && (!ERecAbajo)) {
-            cuadradosAbajo.add(listaCuadrados.getDato(identificador4));
-            if (!listaCuadrados.getDato(identificador4).getRecursos().isVacia()) {
-                ERecAbajo = true;
-            } else {
-                identificador4++;
-            }
-        }
-
-
-        // Una vez hechas las listas, vamos a dividir el problema en casos (dependiendo de el elemento final de cada lista es un cuadrado del borde de la matriz o es un cuadrado con un recurso)
-        if (ERecArriba) {
-            if (ERecAbajo) {
-                if (ERecDerecha) {
-                    if (ERecIzquierda) { // 4 direcciones: Arr, abj, izq, dch
-
-                    } else { // 3 direcciones: Arr, abj, dch
-                    }
-                } else {
-                    if (ERecIzquierda) { // 3 direcciones: Arr, abj, izq
-
-                    } else { // 2 direcciones: Arr, abj
-                        moverNormal2Listas(cuadradosArriba, cuadradosAbajo, ind);
-                    }
-                }
-            } else {
-                if (ERecDerecha) {
-                    if (ERecIzquierda) { // 3 direcciones: Arr, izq, dch
-
-                    } else { // 2 direcciones: Arr, dch
-                        moverNormal2Listas(cuadradosArriba, cuadradosDerecha, ind);
-                    }
-                } else {
-                    if (ERecIzquierda) { // 2 direcciones: Arr, izq
-                        moverNormal2Listas(cuadradosArriba, cuadradosIzquierda, ind);
-                    } else { // 1 direcciones: Arr
-                        cuadradosArriba.getPrimero().getIndividuos().add(ind);
-                    }
-                }
-            }
-        } else {
-            if (ERecAbajo) {
-                if (ERecDerecha) {
-                    if (ERecIzquierda) { // 3 direcciones: Abj, izq, dch
-
-                    } else { // 2 direcciones: Abj, dch
-                        moverNormal2Listas(cuadradosAbajo, cuadradosDerecha, ind);
-                    }
-                } else {
-                    if (ERecIzquierda) { // 2 direcciones: Abj, izq
-                        moverNormal2Listas(cuadradosAbajo, cuadradosIzquierda, ind);
-                    } else { // 1 direcciones: Abj
-                        cuadradosAbajo.getPrimero().getIndividuos().add(ind);
-                    }
-                }
-            } else {
-                if (ERecDerecha) {
-                    if (ERecIzquierda) { // 2 direcciones: Izq, dch
-                        moverNormal2Listas(cuadradosIzquierda, cuadradosDerecha, ind);
-                    } else { // 1 direcciones: Dch
-                        cuadradosDerecha.getPrimero().getIndividuos().add(ind);
-                    }
-                } else {
-                    if (ERecIzquierda) { // 1 direcciones: Izq
-                        cuadradosIzquierda.getPrimero().getIndividuos().add(ind);
-                    } else { // 0 direcciones
-
-                    }
-                }
-            }
-        }
+        moverIndNormalDirigido(indNormal.getRecorrido(),indNormal);
     }
 
-    private void moverNormal2Listas(ListaSimple<Square> lista1, ListaSimple<Square> lista2, Individuo ind) {
-        int comparacion = lista1.getNumeroElementos().compareTo(lista2.getNumeroElementos());
-        if (comparacion > 0) {
-            lista2.getPrimero().getIndividuos().add(ind);
-        } else if (comparacion < 0) {
-            lista1.getPrimero().getIndividuos().add(ind);
-        } else {
-            int numerorandom = generarEnteroAleatorio(0, 1);
-            if (numerorandom == 1) {
-                lista2.getPrimero().getIndividuos().add(ind);
+    private void buscarNuevoObjetivo(ListaSimple<Square> listaCuadrados, Square cuadrado, IndNormal ind) {
+        int recursoRandom = generarEnteroAleatorio(0, DatosCompartidos.getListaRecursos().getNumeroElementos() - 1);
+        Recurso objetivo = DatosCompartidos.getListaRecursos().getDato(recursoRandom);
+        ListaEnlazada<Square> listaRecorrido = new ListaEnlazada<>();
+        int coordXObjetivo = objetivo.getSquare().getX();
+        while (cuadrado.getX() != coordXObjetivo) {
+            Integer coordXCuadrado = cuadrado.getX();
+            int comparacion = coordXCuadrado.compareTo(coordXObjetivo);
+            if (comparacion > 0) {
+                Square siguienteCuadrado = listaCuadrados.getDato(cuadrado.getID() - Integer.parseInt(DatosCompartidos.getAltoMatriz()));
+                listaRecorrido.add(siguienteCuadrado);
+                cuadrado = siguienteCuadrado;
             } else {
-                lista1.getPrimero().getIndividuos().add(ind);
+                Square siguienteCuadrado = listaCuadrados.getDato(cuadrado.getID() + Integer.parseInt(DatosCompartidos.getAltoMatriz()));
+                listaRecorrido.add(siguienteCuadrado);
+                cuadrado = siguienteCuadrado;
             }
         }
+        int coordYObjetivo = objetivo.getSquare().getY();
+        while (cuadrado.getY() != coordYObjetivo) {
+            Integer coordYCuadrado = cuadrado.getY();
+            int comparacion = coordYCuadrado.compareTo(coordYObjetivo);
+            if (comparacion > 0) {
+                Square siguienteCuadrado = listaCuadrados.getDato(cuadrado.getID() - 1);
+                listaRecorrido.add(siguienteCuadrado);
+                cuadrado = siguienteCuadrado;
+            } else {
+                Square siguienteCuadrado = listaCuadrados.getDato(cuadrado.getID() + 1);
+                listaRecorrido.add(siguienteCuadrado);
+                cuadrado = siguienteCuadrado;
+            }
+        }
+        ind.setRecorrido(listaRecorrido);
     }
 
-    private void moverNormal3Listas(ListaSimple<Square> lista1, ListaSimple<Square> lista2, ListaSimple<Square> lista3, Individuo ind) {
-        int comparacion1_2 = lista1.getNumeroElementos().compareTo(lista2.getNumeroElementos());
-        int comparacion1_3 = lista1.getNumeroElementos().compareTo(lista3.getNumeroElementos());
-        int comparacion2_3 = lista2.getNumeroElementos().compareTo(lista3.getNumeroElementos());
-        if (comparacion1_2 < 0) {
-            if (comparacion1_3 < 0) { // lista1
-
-            }
-            if (comparacion1_3 > 0) {
-                if (comparacion2_3>0){
-
-                }
-            }
-        } else if (comparacion1_2 > 0) {
-
-        } else {
-
-        }
+    private void moverIndNormalDirigido(ListaEnlazada<Square> listaRecorrido, IndNormal ind){
+        Square siguienteCuadrado = listaRecorrido.getPrimero().getData();
+        siguienteCuadrado.getIndividuos().add(ind);
+        listaRecorrido.del(0);
     }
 
     // Método para comprobar si el individuo ya se ha movido o no
