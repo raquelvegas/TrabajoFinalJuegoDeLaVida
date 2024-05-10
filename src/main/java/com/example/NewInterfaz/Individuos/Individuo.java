@@ -21,7 +21,7 @@ public abstract class Individuo {
         TurnosVida = Integer.parseInt(DatosCompartidos.getVidaInicial());
         ProbRepr = Integer.parseInt(DatosCompartidos.getProbReproduccion());
         ProbClon = Integer.parseInt(DatosCompartidos.getProbClonacion());
-        this.acciones = new Cola<Integer>();
+        this.acciones = new Cola<>();
         this.arbolGenealogico = arbolGenealogico;
     }
 
@@ -63,10 +63,6 @@ public abstract class Individuo {
 
     public void setProbClon(int probClon) {
         ProbClon = probClon;
-    }
-
-    public void setTipo(int tipo) {
-        Tipo = tipo;
     }
 
     public Cola<Integer> getAcciones() {

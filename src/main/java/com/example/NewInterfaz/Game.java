@@ -2,7 +2,9 @@ package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.ListaSimple;
+import com.example.NewInterfaz.Individuos.IndAvanzado;
 import com.example.NewInterfaz.Individuos.IndBasico;
+import com.example.NewInterfaz.Individuos.IndNormal;
 import com.example.NewInterfaz.Individuos.Individuo;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
@@ -67,10 +69,17 @@ public class Game {
 
     private void addIndividuo(Square square){
         if (square.getIndividuos().getNumeroElementos() < 3) {
+            Individuo individuoNuevo;
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
-            int tipo = generarEnteroAleatorio(0, 2); //generar aleatorio de tipo
-            Individuo individuoNuevo = new IndBasico(new ArbolBinario<>(null));
-            addTipo(square, 1);
+            int tipo = generarEnteroAleatorio(0, 2); // Generar aleatorio de tipo
+            if (tipo == 0) {
+                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
+            } else if (tipo == 1) {
+                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
+            } else {
+                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
+            }
+            addTipo(square, 1); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
             System.out.println("Se ha añadido un individuo con id: " + individuoNuevo.getID());
         }
@@ -315,7 +324,7 @@ public class Game {
                         Integer movimiento = generarEnteroAleatorio(1, 5);
                         moverIndBasicoCuadradoBorde(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
                     }
-                } else if (ind.getTipo() == 1) {   // Tipo Normal
+                } else if (ind.getTipo() == 1) { // Tipo Normal
                     moverIndNormal(listaCuadrados, cuadrado, ind);
 
                 } else {   // Tipo Avanzado
@@ -327,7 +336,7 @@ public class Game {
             } else {
                 individuosMovidosCuadrado.add(ind); // añado el individuo a la lista de individuos que ya se habían movido
             }
-            cuadrado.getIndividuos().del(0);// Se elimina el individuo del cuadrado en el que estaba
+            cuadrado.getIndividuos().del(0); // Se elimina el individuo del cuadrado en el que estaba
         }
 
         // Volvemos a añadir a la lista los individuos que ya se habían movido
