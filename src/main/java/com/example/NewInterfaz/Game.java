@@ -252,6 +252,7 @@ public class Game {
     private void actualizarRecursos(){
         int numRecursos = DatosCompartidos.getListaRecursos().getNumeroElementos();
         int tamanoTablero = tablero.getSquares().getNumeroElementos();
+
         ListaSimple<Recurso> listaDel = new ListaSimple<Recurso>();
         for (int i = 0; i < numRecursos; i++){
             Square squareRecurso = DatosCompartidos.getListaRecursos().getDato(i).getSquare();
