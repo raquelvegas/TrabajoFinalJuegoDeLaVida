@@ -8,14 +8,15 @@ import javafx.scene.paint.Color;
 
 public class Square extends StackPane {
 
-    private int x,y;
+    private int x, y;
     private boolean occupied;
     private int ID;
+    private ListaSimple<Celda> celdas = new ListaSimple<>();
     private ListaSimple<Individuo> individuos;
     private ListaSimple<Recurso> recursos;
     GridPane gridPane;
 
-    public Square(int x, int y){
+    public Square(int x, int y) {
         this.individuos = new ListaSimple<>();
         this.recursos = new ListaSimple<>();
         this.x = x;
@@ -38,6 +39,7 @@ public class Square extends StackPane {
                 celda.setID(identificador);
                 identificador++;
                 gridPane.add(celda, i, j);
+                celdas.add(celda);
             }
         }
         // Agrega el GridPane al StackPane (Square)
@@ -47,7 +49,7 @@ public class Square extends StackPane {
     @Override
     public String toString() {
         String status;
-        if(this.occupied) status = "Occupied";
+        if (this.occupied) status = "Occupied";
         else status = "Not occupied";
         return "Square" + this.x + this.y;
     }
@@ -67,6 +69,7 @@ public class Square extends StackPane {
     public int getY() {
         return y;
     }
+
     public ListaSimple<Individuo> getIndividuos() {
         return individuos;
     }

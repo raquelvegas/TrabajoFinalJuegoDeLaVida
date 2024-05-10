@@ -72,13 +72,13 @@ public class Game {
             Individuo individuoNuevo;
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
             int tipo = generarEnteroAleatorio(0, 2); // Generar aleatorio de tipo
-            if (tipo == 0) {
+//            if (tipo == 0) {
                 individuoNuevo = new IndBasico(new ArbolBinario<>(null));
-            } else if (tipo == 1) {
-                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
-            } else {
-                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
-            }
+//            } else if (tipo == 1) {
+//                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
+//            } else {
+//                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
+//            }
             addTipo(square, 1); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
             System.out.println("Se ha añadido un individuo con id: " + individuoNuevo.getID());
@@ -247,9 +247,11 @@ public class Game {
     private void clearIndividuos(){
         int tamanoTablero = tablero.getSquares().getNumeroElementos();
         for (int i = 0; i < tamanoTablero; i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 6; j++) {
                 if(tablero.getSquare(i).getCelda(j).getTipo() == 1){
                     tablero.getSquare(i).getCelda(j).setTipo(0);
+                    tablero.getSquare(i).getCelda(j).setOcupado(false);
+                    System.out.println("ELIMINADO");
                 }
             }
         }
