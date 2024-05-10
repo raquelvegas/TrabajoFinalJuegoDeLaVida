@@ -65,7 +65,7 @@ public class ControllerMainStage {
     @FXML
     private VBox infoVBox;
     @FXML
-    private Stage stage, primaryStage;
+    private Stage primaryStage, stage;
     @FXML
     private Tab pauseTab, individuoTab, recursosParametrosTab, aparicionTab, anadirTab;
     protected boolean gameStopped = true;
@@ -270,6 +270,7 @@ public class ControllerMainStage {
         configStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
 
         configStage.show();
+        System.out.println("Como Jugar abierto");
     }
 
     @FXML
