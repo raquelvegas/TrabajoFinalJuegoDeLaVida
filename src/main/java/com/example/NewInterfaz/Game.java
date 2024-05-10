@@ -234,28 +234,25 @@ public class Game {
     }
 
     private void actualizarIndividuos(){
-        int numIndividuos = DatosCompartidos.getListaIndividuos().getNumeroElementos();
+        clearIndividuos();
         int tamanoTablero = tablero.getSquares().getNumeroElementos();
-        ListaSimple<Individuo> listaDel = new ListaSimple<Individuo>();
-        for (int i = 0; i < numIndividuos; i++){
-            Square squareRecurso = DatosCompartidos.getListaRecursos().getDato(i).getSquare();
-            Recurso recurso = DatosCompartidos.getListaRecursos().getDato(i);
-            for (int j = 0; j < tamanoTablero; j++) {
-                if(squareRecurso == tablero.getSquare(i)){
-                    for (int m = 0; m < 3; m++){
-                        if(tablero.getSquare(i).getRecursos().getDato(m) == recurso){
-                            if(recurso.getTiempoVida() == 0){
-                                int celda = recurso.getCelda();
-                                tablero.getSquare(i).getCelda(celda).setTipo(0);
-                                tablero.getSquare(i).getCelda(celda).setOcupado(false);
-                                listaDel.add(recurso);
-                            }
-                        }
-                    }
+        for (int i = 0; i < tamanoTablero; i++) {
+            int numIndividuos = tablero.getSquare(i).getIndividuos().getNumeroElementos();
+            for (int j = 0; j < numIndividuos; j++){
+                addTipo(tablero.getSquare(i), 1);
+            }
+        }
+    }
+
+    private void clearIndividuos(){
+        int tamanoTablero = tablero.getSquares().getNumeroElementos();
+        for (int i = 0; i < tamanoTablero; i++) {
+            for (int j = 0; j < 5; j++) {
+                if(tablero.getSquare(i).getCelda(j).getTipo() == 1){
+                    tablero.getSquare(i).getCelda(j).setTipo(0);
                 }
             }
         }
-        eliminarRecursos(listaDel);
     }
 
     private void actualizarRecursos(){
