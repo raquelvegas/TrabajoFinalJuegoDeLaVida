@@ -1,5 +1,8 @@
 package com.example.NewInterfaz;
 
+import com.example.EstructurasDeDatos.ListaSimple;
+import com.example.NewInterfaz.Individuos.Individuo;
+
 public class DatosCompartidos {
     private static String  altoMatriz = "0";
     private static String anchoMatriz = "0";
@@ -30,6 +33,8 @@ public class DatosCompartidos {
     private static double velocidadJuego = 1;
     private static boolean gameIniciado = false;
     private static boolean tableroAleatorio = false;
+    private static ListaSimple<Recurso> listaRecursos= new ListaSimple<Recurso>();
+    private static ListaSimple<Individuo> listaIndividuos = new ListaSimple<Individuo>();
     private static Game game = null;
 
 
@@ -263,6 +268,22 @@ public class DatosCompartidos {
 
     public static void setTableroAleatorio(boolean tableroAleatorio) {
         DatosCompartidos.tableroAleatorio = tableroAleatorio;
+    }
+
+    public static ListaSimple<Recurso> getListaRecursos() {
+        return listaRecursos;
+    }
+
+    public static void setListaRecursos(ListaSimple<Recurso> listaRecursos) {
+        DatosCompartidos.listaRecursos = listaRecursos;
+    }
+
+    public static ListaSimple<Individuo> getListaIndividuos() {
+        return listaIndividuos;
+    }
+
+    public static void setListaIndividuos(ListaSimple<Individuo> listaIndividuos) {
+        DatosCompartidos.listaIndividuos = listaIndividuos;
     }
 
     public static Game getGame() {

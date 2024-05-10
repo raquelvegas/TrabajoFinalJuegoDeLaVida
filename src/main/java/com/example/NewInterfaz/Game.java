@@ -77,19 +77,21 @@ public class Game {
 
     private void addRecursos(Square square, int tipo){
         if(square.getRecursos().getNumeroElementos() <3){
-            Recurso recursoNuevo = new Recurso(tipo);
-            addTipo(square, tipo);
+            Recurso recursoNuevo = new Recurso(tipo, square);
+            int idCeldaAleatoria = addTipo(square, tipo);
             square.getRecursos().add(recursoNuevo);
+            recursoNuevo.setCelda(idCeldaAleatoria);
+            DatosCompartidos.getListaRecursos().add(recursoNuevo);
             System.out.println("Se ha añadido un recurso tipo: " + recursoNuevo.getTipoRecurso());
         }
     }
 
-    private void addTipo (Square square, Integer tipo){
+    private int addTipo (Square square, Integer tipo){
         int idCeldaAleatoria = celdaAleatoria(square);
         square.getCelda(idCeldaAleatoria).setTipo(tipo);
         square.getCelda(idCeldaAleatoria).setOcupado(true);
         System.out.println("Se ha añadido a la celda" + idCeldaAleatoria);
-
+        return idCeldaAleatoria;
     }
 
     public void actualizarTablero(){
@@ -221,16 +223,65 @@ public class Game {
         return celdaIdentificador;
     }
 
-    private void pintar(){
-        //Pintar individuos
+    private void actualizarIndividuos(){
+        int numIndividuos = DatosCompartidos.getListaIndividuos().getNumeroElementos();
         int tamanoTablero = tablero.getSquares().getNumeroElementos();
-        Integer identificador = 0;
-        for (int i = 0; i < tamanoTablero; i++) {
-            actualizarSquare(tablero.getSquare(identificador));
-            for (int j = 0; j < tablero.getSquare(identificador).getIndividuos().getNumeroElementos(); j++) {
-                addIndividuo(tablero.getSquare(identificador));
+        ListaSimple<Individuo> listaDel = new ListaSimple<Individuo>();
+        for (int i = 0; i < numIndividuos; i++){
+            Square squareRecurso = DatosCompartidos.getListaRecursos().getDato(i).getSquare();
+            Recurso recurso = DatosCompartidos.getListaRecursos().getDato(i);
+            for (int j = 0; j < tamanoTablero; j++) {
+                if(squareRecurso == tablero.getSquare(i)){
+                    for (int m = 0; m < 3; m++){
+                        if(tablero.getSquare(i).getRecursos().getDato(m) == recurso){
+                            if(recurso.getTiempoVida() == 0){
+                                int celda = recurso.getCelda();
+                                tablero.getSquare(i).getCelda(celda).setTipo(0);
+                                tablero.getSquare(i).getCelda(celda).setOcupado(false);
+                                listaDel.add(recurso);
+                            }
+                        }
+                    }
+                }
             }
-            identificador++;
+        }
+        eliminarRecursos(listaDel);
+    }
+
+    private void actualizarRecursos(){
+        int numRecursos = DatosCompartidos.getListaRecursos().getNumeroElementos();
+        int tamanoTablero = tablero.getSquares().getNumeroElementos();
+        ListaSimple<Recurso> listaDel = new ListaSimple<Recurso>();
+        for (int i = 0; i < numRecursos; i++){
+            Square squareRecurso = DatosCompartidos.getListaRecursos().getDato(i).getSquare();
+            Recurso recurso = DatosCompartidos.getListaRecursos().getDato(i);
+            for (int j = 0; j < tamanoTablero; j++) {
+                if(squareRecurso == tablero.getSquare(i)){
+                    for (int m = 0; m < 3; m++){
+                        if(tablero.getSquare(i).getRecursos().getDato(m) == recurso){
+                            if(recurso.getTiempoVida() == 0){
+                                int celda = recurso.getCelda();
+                                tablero.getSquare(i).getCelda(celda).setTipo(0);
+                                tablero.getSquare(i).getCelda(celda).setOcupado(false);
+                                listaDel.add(recurso);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        eliminarRecursos(listaDel);
+    }
+
+    private void eliminarRecursos(ListaSimple<Recurso> listaDel){
+        int numRecursosDel = DatosCompartidos.getListaRecursos().getNumeroElementos();
+        int numRecursos = DatosCompartidos.getListaRecursos().getNumeroElementos();
+        for (int i = 0; i < numRecursosDel; i++){
+            for (int j = 0; j < numRecursos; j++){
+                if(listaDel.getDato(i) == DatosCompartidos.getListaRecursos().getDato(j)){
+                    DatosCompartidos.getListaRecursos().del(j);
+                }
+            }
         }
     }
 

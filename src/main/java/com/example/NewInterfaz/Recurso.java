@@ -4,9 +4,12 @@ public class Recurso {
     int tipoRecurso;
     int tiempoVida;
     int efecto;
+    Square square;
+    int celda;
 
-    public Recurso(int tipoRecurso) {
+    public Recurso(int tipoRecurso, Square square) {
         this.tipoRecurso = tipoRecurso;
+        this.square = square;
         if (tipoRecurso == 2){
             tiempoVida = Integer.parseInt(DatosCompartidos.getAguaVida());
             efecto = Integer.parseInt(DatosCompartidos.getAguaEfecto());
@@ -50,5 +53,21 @@ public class Recurso {
 
     public void setEfecto(int efecto) {
         this.efecto = efecto;
+    }
+
+    public Square getSquare() {
+        return square;
+    }
+
+    public void setSquare(Square square) {
+        this.square = square;
+    }
+
+    public int getCelda() {
+        return celda;
+    }
+
+    public void setCelda(int celda) {
+        this.celda = celda;
     }
 }
