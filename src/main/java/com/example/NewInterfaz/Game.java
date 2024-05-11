@@ -44,6 +44,7 @@ public class Game {
         });
     }
 
+
     private void handleSquareClick(int columna, int fila, Square square) {
         System.out.println("Clic en el cuadrado " + columna + ", " + fila);
         System.out.println("Elección: "+DatosCompartidos.getAnadir());
@@ -66,6 +67,7 @@ public class Game {
         }
     }
 
+
     private void addIndividuo(Square square){
         if (square.getIndividuos().getNumeroElementos() < 3) {
             Individuo individuoNuevo;
@@ -83,6 +85,7 @@ public class Game {
             System.out.println("Se ha añadido un individuo con id: " + individuoNuevo.getID());
         }
     }
+
 
     // Metes el cuadrado y el tipo de recurso que quieres añadir y te lo añade
     private void addRecursos(Square square, int tipo){
@@ -106,6 +109,7 @@ public class Game {
         return idCeldaAleatoria;
     }
 
+
     // Actualiza todos los cuadrados del tablero
     public void actualizarTablero(){
         int tamañoTablero = tablero.getSquares().getNumeroElementos();
@@ -115,6 +119,7 @@ public class Game {
             identificador++;
         }
     }
+
 
     // Actualiza todas las celdas del square
     private void actualizarSquare(Square square){
@@ -170,6 +175,7 @@ public class Game {
             tablero.getSquare(i).setRecursos(new ListaSimple<>());
         }
     }
+
 
     // Generar un tablero aleatorio
     public void crearTableroAleatorio(){
@@ -228,6 +234,7 @@ public class Game {
         }
     }
 
+
     // Devuelve una celda aleatoria de las que NO estan ocupadas
     private int celdaAleatoria(Square square){
         Integer identificador = 0;
@@ -255,6 +262,7 @@ public class Game {
             }
         }
     }
+
 
     // Poner las celdas en las que había individuos transparentes (porque todos los individuos se mueven)
     private void clearIndividuos(){
@@ -887,5 +895,10 @@ public class Game {
     ///////////////// OTROS MÉTODOS ////////////////
     public static Tablero getTablero() {
         return tablero;
+    }
+
+    public void turno(){
+        actualizarVidas();
+        actualizarRecursos();
     }
 }

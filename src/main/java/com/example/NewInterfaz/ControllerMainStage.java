@@ -1,6 +1,5 @@
 package com.example.NewInterfaz;
 
-import com.example.EstructurasDeDatos.ListaSimple;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -272,7 +271,7 @@ public class ControllerMainStage {
         configStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
 
         configStage.show();
-        System.out.println("Como Jugar abierto");
+        log.info("Acceso a interfaz 'ComoJugar'");
     }
 
     @FXML
@@ -425,9 +424,9 @@ public class ControllerMainStage {
                     DatosCompartidos.setTurnoJuego(turno);
                     turnoContador.setText(String.valueOf(turno));
                     game.actualizarVidas();
-                    //game.moverIndividuos();
-                    game.actualizarIndividuos();
                     game.actualizarRecursos();
+                    game.moverIndividuos();
+                    game.actualizarIndividuos();
                     game.actualizarTablero();
                 } else {
                     System.out.println("Juego pausado");
