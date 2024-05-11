@@ -4,36 +4,69 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewInterfaz.ControllerComoJugar">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewInterfaz.ControllerComoJugar">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b4b4b4" height="47.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="600.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b4b4b4" height="47.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="640.0" />
       <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIFE GAME" wrappingWidth="128.53668212890625">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <HBox alignment="CENTER" layoutY="339.0" prefHeight="47.0" prefWidth="600.0">
+      <ScrollPane layoutX="14.0" layoutY="58.0" prefHeight="307.0" prefWidth="621.0">
+         <content>
+            <HBox prefHeight="480.0" prefWidth="600.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     " wrappingWidth="16.435546875" />
+                  <VBox prefHeight="369.0" prefWidth="588.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenid@ al Juego de la Vida" textAlignment="CENTER" wrappingWidth="586.803373336792">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="1.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="En este juego tendrás la oprtunidad de crear tu propia simulacion de individuos que, dependiendo de su tipo, interactuarán con el medio de una forma u otra para lograr sobrevivir." wrappingWidth="582.0000922679901" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Para empezar, hablamos de los individuos. La principal característica que va a diferenciar a nuestros individuos va a ser la forma en la que se mueven. Veamos los tres tipos:" wrappingWidth="584.0000922679901" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     • Individuos Básicos: El movimiento de estos individuos va a ser totalemnte aleatorio de entre las casillas " wrappingWidth="584.0000922679901" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       que tenga a su alrededor." wrappingWidth="537.3334052562714" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     • Individuos Normales: Este tipo de individuos, de entre todos los recursos, eligen uno al azar, que fijan " wrappingWidth="585.3334052562714" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       como objetivo, y hasta que no llegan a él, no cambian su rumbo. En el caso de que no hubiese recursos " wrappingWidth="585.3334052562714" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       y no tuviesen ningún recurso (ya inexistente) como objetivo, se moverán como si fuesen individuos " wrappingWidth="584.1367168426514" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       básicos hasta que encontrasen un nuevo objetivo." wrappingWidth="587.4700603485107" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     • Individuos Avanzados: Estos individuos son capaces de leer el tablero y elegir el recurso que más cerca" wrappingWidth="587.4700603485107" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       tengan. Una vez elegido, trazarán la ruta más corta y ventajosa hacia él." wrappingWidth="586.8034038543701" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" " />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aparte de moverse, a medida que vayan pasando los turnos los individuos van a tener posibilidad de reproducirse o clonarse, y dependerá de tí !!! Tendrás la opción de parametrizar la probabilidad de que estos puedan reproducirse o clonarse al empezar el juego, o en el transcurso del mismo cuando se pare la partida." wrappingWidth="587.4700603485107" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" " />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aparte de interactuar entre sí mismos, nuestros individuos serán capaces de interactuar con el medio consumiendo los recursos que se irán encontrando turno a turno. Estos, de forma obligatoria consumirán todos los recursos existentes en la celda en la que se encuentren. " wrappingWidth="586.8034038543701" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Es turno ahora de hablar de los recursos. Estos se posicionaran por el tablero como si de individuos se tratase pero no tendrán posibilidad de moverse. Poseerán unos turnos de vida (exactamente igual que los individuos) que determinaran cuantos turnos podrán ser consumidos por nuestros individuos. Como se acaba de mencionar, los recursos serán consumidos por nuestros individuos, y de la manera en la que afecten, la eligirás tu!! Como con la probabilidad de reproduccion de nuestros individuos, la forma en la que afecten los recursos podrá ser parametrizable al principio de la partida y en cualquier momento de la misma siempre y cuando este pausada. Veamos los tipos de recursos: " wrappingWidth="586.244140625" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     • Agua: Añadirá turnos de vida a nuestros individuos" wrappingWidth="587.2643127441406" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     • Comida: Añadirá turnos de vida a nuestros individuos" wrappingWidth="587.2643127441406" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     • Montaña: Restará turnos de vida a los individuos" wrappingWidth="587.2643127441406" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     • Biblioteca: Aumentará la probabilidad de reproducción de nuestros individuos" wrappingWidth="587.2643127441406" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     • Tesoro: Aumentará la probabilidad de clonación de nuestros individuos" wrappingWidth="587.2643127441406" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     • Pozo: Provoca la muerte instantánea del individuo que lo consume" wrappingWidth="587.2643127441406" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
+      <HBox alignment="CENTER" layoutX="20.0" layoutY="418.0" prefHeight="47.0" prefWidth="600.0">
          <children>
-            <Button fx:id="buttonVolver" mnemonicParsing="false" onMouseClicked="#volver" prefHeight="100.0" prefWidth="170.0" text="VOLVER">
+            <Button fx:id="buttonVolver" mnemonicParsing="false" onMouseClicked="#volver" prefHeight="102.0" prefWidth="170.0" text="VOLVER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
          </children>
       </HBox>
-      <ScrollPane layoutX="14.0" layoutY="62.0" prefHeight="265.0" prefWidth="571.0">
-         <content>
-            <HBox prefHeight="421.0" prefWidth="555.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     " />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-               </children>
-            </HBox>
-         </content>
-      </ScrollPane>
    </children>
 </AnchorPane>

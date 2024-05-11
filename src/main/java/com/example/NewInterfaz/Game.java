@@ -391,7 +391,21 @@ public class Game {
             }
             moverIndNormalDirigido(indNormal.getRecorrido(), indNormal);
         } else {
-
+            if (!indNormal.getRecorrido().isVacia()) { // Aunque no existan ya recursos, si el individuo tenía fijado un objetivo, llegará hasta él
+                moverIndNormalDirigido(indNormal.getRecorrido(), indNormal);
+            } else { // Si no hay más recursos y el individuo no tenía ningún objetivo fijado, se moverá como un individuo básico
+                int posicionCuadrado = posicionCuadrado(cuadrado);
+                if (posicionCuadrado == 0) {
+                    Integer movimiento = generarEnteroAleatorio(1, 8);   // Se genera el movimiento a realizar (véase el código numérico en README)
+                    moverIndBasicoCuadradoInterior(listaCuadrados, cuadrado, ind, movimiento);   // Se añade el individuo a la lista de individuos del nuevo cuadrado
+                } else if ((posicionCuadrado == 1) || (posicionCuadrado == 3) || (posicionCuadrado == 5) || (posicionCuadrado == 7)) {
+                    Integer movimiento = generarEnteroAleatorio(1, 3);
+                    moverIndBasicoCuadradoEsquina(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
+                } else {
+                    Integer movimiento = generarEnteroAleatorio(1, 5);
+                    moverIndBasicoCuadradoBorde(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
+                }
+            }
         }
     }
 
