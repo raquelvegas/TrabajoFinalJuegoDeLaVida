@@ -51,17 +51,17 @@ public class Game {
         if (DatosCompartidos.getAnadir() == 1) {
             addIndividuo(square);
         } else if (DatosCompartidos.getAnadir() == 2) {
-            addRecursos(square, 2);
+            addRecursos(square, 2.0);
         } else if (DatosCompartidos.getAnadir() == 3) {
-            addRecursos(square, 3);
+            addRecursos(square, 3.0);
         } else if (DatosCompartidos.getAnadir() == 4) {
-            addRecursos(square, 4);
+            addRecursos(square, 4.0);
         } else if (DatosCompartidos.getAnadir() == 5) {
-            addRecursos(square, 5);
+            addRecursos(square, 5.0);
         } else if (DatosCompartidos.getAnadir() == 6) {
-            addRecursos(square, 6);
+            addRecursos(square, 6.0);
         } else if (DatosCompartidos.getAnadir() == 7) {
-            addRecursos(square, 7);
+            addRecursos(square, 7.0);
         } else {
             System.out.println("No has seleccionado el tipo");
         }
@@ -75,12 +75,15 @@ public class Game {
             int tipo = generarEnteroAleatorio(0, 2); // Generar aleatorio de tipo
 //            if (tipo == 0) {
 //                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
+//                Double tipoIndividuo = 1.1;
 //            } else if (tipo == 1) {
                 individuoNuevo = new IndNormal(new ArbolBinario<>(null));
+                Double tipoIndividuo = 1.2;
 //            } else {
 //                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
+//            Double tipoIndividuo = 1.3;
 //            }
-            addTipo(square, 1); // Añado una celda de tipo 1 al square donde se añade el individuo
+            addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
             System.out.println("Se ha añadido un individuo con id: " + individuoNuevo.getID());
         }
@@ -88,7 +91,7 @@ public class Game {
 
 
     // Metes el cuadrado y el tipo de recurso que quieres añadir y te lo añade
-    private void addRecursos(Square square, int tipo){
+    private void addRecursos(Square square, Double tipo){
         if(square.getRecursos().getNumeroElementos() <3){
             Recurso recursoNuevo = new Recurso(tipo, square);
             int idCeldaAleatoria = addTipo(square, tipo);
@@ -101,7 +104,7 @@ public class Game {
 
 
     // Mete en una celda aleatoria el tipo de individuo/recurso que haya
-    private int addTipo (Square square, Integer tipo){
+    private int addTipo (Square square, Double tipo){
         int idCeldaAleatoria = celdaAleatoria(square);
         square.getCelda(idCeldaAleatoria).setTipo(tipo);
         square.getCelda(idCeldaAleatoria).setOcupado(true);
@@ -134,9 +137,26 @@ public class Game {
     // Según el tipo de cada celda poner el color correspondiente
     private void actualizarCelda(Celda celda) {
         if (celda.isOcupado()) {
-            switch (celda.getTipo()) {
+            double tipo = celda.getTipo();
+            int tipoEntero = (int) tipo;
+            int subtipo = (int) ((tipo - 1)*10+1);
+
+            switch (tipoEntero) {
                 case 1: //Individuo
-                    celda.setColor(Color.BLACK);
+                    switch (subtipo) {
+                        case 1: // Tipo 1.1
+                            // Código para el tipo 1.1
+                            celda.setColor(Color.DARKGRAY);
+                            break;
+                        case 2: // Tipo 1.2
+                            // Código para el tipo 1.2
+                            celda.setColor(Color.PINK);
+                            break;
+                        case 3: // Tipo 1.3
+                            // Código para el tipo 1.3
+                            celda.setColor(Color.PURPLE);
+                            break;
+                    }
                     break;
                 case 2: //Agua - Azul
                     celda.setColor(Color.web("#0404e2"));
@@ -168,7 +188,7 @@ public class Game {
         int tamañoTablero = tablero.getSquares().getNumeroElementos();
         for (int i = 0; i < tamañoTablero; i++) {
             for (int j = 0; j<6; j++){
-                tablero.getSquare(i).getCelda(j).setTipo(0);
+                tablero.getSquare(i).getCelda(j).setTipo(0.0);
                 tablero.getSquare(i).getCelda(j).setOcupado(false); // asegurarse de marcar la celda como no ocupada
             }
             tablero.getSquare(i).setIndividuos(new ListaSimple<>());
@@ -182,19 +202,19 @@ public class Game {
         Integer numeroCuadrados = tablero.getSquares().getNumeroElementos();
         if (numeroCuadrados == 1) {
             addIndividuo(tablero.getSquare(0));
-            int tipoRecurso = generarEnteroAleatorio(2, 7);
-            addRecursos(tablero.getSquare(0), tipoRecurso);
+            int tipoRecurso = generarEnteroAleatorio((int)2.0, (int)7.0);
+            addRecursos(tablero.getSquare(0), (double) tipoRecurso);
         } else if (numeroCuadrados == 2) {
             int numerocuadrado = generarEnteroAleatorio(0, 1);
             addIndividuo(tablero.getSquare(numerocuadrado));
             int numerocuadrado2 = generarEnteroAleatorio(0, 1);
             addIndividuo(tablero.getSquare(numerocuadrado2));
             int tipoRecurso = generarEnteroAleatorio(2, 7);
-            addRecursos(tablero.getSquare(numerocuadrado), tipoRecurso);
+            addRecursos(tablero.getSquare(numerocuadrado), (double) tipoRecurso);
             int tipoRecurso2 = generarEnteroAleatorio(2, 7);
-            addRecursos(tablero.getSquare(numerocuadrado2), tipoRecurso2);
+            addRecursos(tablero.getSquare(numerocuadrado2), (double) tipoRecurso2);
             int tipoRecurso3 = generarEnteroAleatorio(2, 7);
-            addRecursos(tablero.getSquare(numerocuadrado), tipoRecurso3);
+            addRecursos(tablero.getSquare(numerocuadrado), (double) tipoRecurso3);
         } else {
             int numIndividuos = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 2);
             int numAgua = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
@@ -209,27 +229,27 @@ public class Game {
             }
             for (int i = 0; i < numAgua; i++) {
                 int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
-                addRecursos(tablero.getSquare(idSquareAleatorio), 2);
+                addRecursos(tablero.getSquare(idSquareAleatorio), 2.0);
             }
             for (int i = 0; i < numComida; i++) {
                 int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
-                addRecursos(tablero.getSquare(idSquareAleatorio), 3);
+                addRecursos(tablero.getSquare(idSquareAleatorio), 3.0);
             }
             for (int i = 0; i < numMontana; i++) {
                 int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
-                addRecursos(tablero.getSquare(idSquareAleatorio), 4);
+                addRecursos(tablero.getSquare(idSquareAleatorio), 4.0);
             }
             for (int i = 0; i < numBiblioteca; i++) {
                 int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
-                addRecursos(tablero.getSquare(idSquareAleatorio), 5);
+                addRecursos(tablero.getSquare(idSquareAleatorio), 5.0);
             }
             for (int i = 0; i < numTesoro; i++) {
                 int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
-                addRecursos(tablero.getSquare(idSquareAleatorio), 6);
+                addRecursos(tablero.getSquare(idSquareAleatorio), 6.0);
             }
             for (int i = 0; i < numPozo; i++) {
                 int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
-                addRecursos(tablero.getSquare(idSquareAleatorio), 7);
+                addRecursos(tablero.getSquare(idSquareAleatorio), 7.0);
             }
         }
     }
@@ -258,7 +278,7 @@ public class Game {
         for (int i = 0; i < tamanoTablero; i++) {
             int numIndividuos = tablero.getSquare(i).getIndividuos().getNumeroElementos();
             for (int j = 0; j < numIndividuos; j++){
-                addTipo(tablero.getSquare(i), 1);
+                addTipo(tablero.getSquare(i), 1.1);
             }
         }
     }
@@ -270,7 +290,7 @@ public class Game {
         for (int i = 0; i < tamanoTablero; i++) {
             for (int j = 0; j < 6; j++) {
                 if(tablero.getSquare(i).getCelda(j).getTipo() == 1){
-                    tablero.getSquare(i).getCelda(j).setTipo(0);
+                    tablero.getSquare(i).getCelda(j).setTipo(0.0);
                     tablero.getSquare(i).getCelda(j).setOcupado(false);
                     System.out.println("ELIMINADO");
                 }
@@ -289,7 +309,7 @@ public class Game {
             if (recurso.getTiempoVida() == 0){
                 int idSquareRecurso = DatosCompartidos.getListaRecursos().getDato(i).getSquare().getID();
                 int idCeldaRecurso = DatosCompartidos.getListaRecursos().getDato(i).getCelda();
-                tablero.getSquare(idSquareRecurso).getCelda(idCeldaRecurso).setTipo(0);
+                tablero.getSquare(idSquareRecurso).getCelda(idCeldaRecurso).setTipo(0.0);
                 tablero.getSquare(idSquareRecurso).getCelda(idCeldaRecurso).setOcupado(false);
                 for (int j = 0; j < 3; j++) {
                     if (tablero.getSquare(idSquareRecurso).getRecursos().getDato(j)==recurso){

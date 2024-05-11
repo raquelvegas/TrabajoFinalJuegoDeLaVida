@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 
 public class Celda extends StackPane {
     private int x, y;
-    private Integer tipo = 0;
+    private double tipo = 0;
     private int id;
     private boolean ocupado;
 
@@ -22,11 +22,11 @@ public class Celda extends StackPane {
 
 
 
-    public void setTipo(Integer tipo) {
+    public void setTipo(Double tipo) {
         this.tipo = tipo;
     }
 
-    public Integer getTipo() {
+    public Double getTipo() {
         return tipo;
     }
 

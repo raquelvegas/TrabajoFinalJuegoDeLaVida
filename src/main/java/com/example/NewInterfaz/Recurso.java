@@ -1,13 +1,13 @@
 package com.example.NewInterfaz;
 
 public class Recurso {
-    private int tipoRecurso;
+    private Double tipoRecurso;
     private int tiempoVida;
     private int efecto;
     private Square square;
     private int celda;
 
-    public Recurso(int tipoRecurso, Square square) {
+    public Recurso(Double tipoRecurso, Square square) {
         this.tipoRecurso = tipoRecurso;
         this.square = square;
         if (tipoRecurso == 2){
@@ -31,12 +31,12 @@ public class Recurso {
         }
     }
 
-    public int getTipoRecurso() {
+    public Double getTipoRecurso() {
         return tipoRecurso;
     }
 
     public void setTipoRecurso(int tipoRecurso) {
-        this.tipoRecurso = tipoRecurso;
+        this.tipoRecurso = (double) tipoRecurso;
     }
 
     public int getTiempoVida() {
