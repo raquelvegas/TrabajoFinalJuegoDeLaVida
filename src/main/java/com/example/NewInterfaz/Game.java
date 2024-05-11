@@ -278,7 +278,15 @@ public class Game {
         for (int i = 0; i < tamanoTablero; i++) {
             int numIndividuos = tablero.getSquare(i).getIndividuos().getNumeroElementos();
             for (int j = 0; j < numIndividuos; j++){
-                addTipo(tablero.getSquare(i), 1.1);
+                Double tipoIndividuo = (double) tablero.getSquare(i).getIndividuos().getDato(j).getTipo();
+                if (tipoIndividuo == 1.1){
+                    addTipo(tablero.getSquare(i), 1.1);
+                } else if (tipoIndividuo == 1.2) {
+                    addTipo(tablero.getSquare(i), 1.2);
+                } else if (tipoIndividuo == 1.3) {
+                    addTipo(tablero.getSquare(i), 1.3);
+                }
+
             }
         }
     }
@@ -289,7 +297,8 @@ public class Game {
         int tamanoTablero = tablero.getSquares().getNumeroElementos();
         for (int i = 0; i < tamanoTablero; i++) {
             for (int j = 0; j < 6; j++) {
-                if(tablero.getSquare(i).getCelda(j).getTipo() == 1){
+                Double tipo = tablero.getSquare(i).getCelda(j).getTipo();
+                if(tipo == 1.1 || tipo == 1.2 || tipo == 1.3){
                     tablero.getSquare(i).getCelda(j).setTipo(0.0);
                     tablero.getSquare(i).getCelda(j).setOcupado(false);
                     System.out.println("ELIMINADO");
