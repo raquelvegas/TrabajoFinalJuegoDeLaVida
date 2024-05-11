@@ -3,7 +3,6 @@ package com.example.NewInterfaz;
 import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.ListaEnlazada;
 import com.example.EstructurasDeDatos.ListaSimple;
-import com.example.NewInterfaz.Individuos.IndBasico;
 import com.example.NewInterfaz.Individuos.IndNormal;
 import com.example.NewInterfaz.Individuos.Individuo;
 import javafx.scene.Node;
@@ -85,6 +84,7 @@ public class Game {
         }
     }
 
+    // Metes el cuadrado y el tipo de recurso que quieres añadir y te lo añade
     private void addRecursos(Square square, int tipo){
         if(square.getRecursos().getNumeroElementos() <3){
             Recurso recursoNuevo = new Recurso(tipo, square);
@@ -96,6 +96,8 @@ public class Game {
         }
     }
 
+
+    // Mete en una celda aleatoria el tipo de individuo/recurso que haya
     private int addTipo (Square square, Integer tipo){
         int idCeldaAleatoria = celdaAleatoria(square);
         square.getCelda(idCeldaAleatoria).setTipo(tipo);
@@ -104,6 +106,7 @@ public class Game {
         return idCeldaAleatoria;
     }
 
+    // Actualiza todos los cuadrados del tablero
     public void actualizarTablero(){
         int tamañoTablero = tablero.getSquares().getNumeroElementos();
         Integer identificador = 0;
@@ -113,6 +116,7 @@ public class Game {
         }
     }
 
+    // Actualiza todas las celdas del square
     private void actualizarSquare(Square square){
         Integer identificador = 0;
         for (int i = 0; i < 6; i++) {
@@ -121,6 +125,8 @@ public class Game {
         }
     }
 
+
+    // Según el tipo de cada celda poner el color correspondiente
     private void actualizarCelda(Celda celda) {
         if (celda.isOcupado()) {
             switch (celda.getTipo()) {
@@ -151,6 +157,8 @@ public class Game {
         }
     }
 
+
+    // Eliminar todo lo que hay en el tablero (Boton borrartablero)
     public void clearTablero(Tablero tablero){
         int tamañoTablero = tablero.getSquares().getNumeroElementos();
         for (int i = 0; i < tamañoTablero; i++) {
@@ -158,11 +166,12 @@ public class Game {
                 tablero.getSquare(i).getCelda(j).setTipo(0);
                 tablero.getSquare(i).getCelda(j).setOcupado(false); // asegurarse de marcar la celda como no ocupada
             }
-            tablero.getSquare(i).setIndividuos(new ListaSimple<Individuo>());
-            tablero.getSquare(i).setRecursos(new ListaSimple<Recurso>());
+            tablero.getSquare(i).setIndividuos(new ListaSimple<>());
+            tablero.getSquare(i).setRecursos(new ListaSimple<>());
         }
     }
 
+    // Generar un tablero aleatorio
     public void crearTableroAleatorio(){
         Integer numeroCuadrados = tablero.getSquares().getNumeroElementos();
         if (numeroCuadrados == 1) {
@@ -219,9 +228,10 @@ public class Game {
         }
     }
 
+    // Devuelve una celda aleatoria de las que NO estan ocupadas
     private int celdaAleatoria(Square square){
         Integer identificador = 0;
-        ListaSimple<Celda> listaCeldasLibres = new ListaSimple<Celda>();
+        ListaSimple<Celda> listaCeldasLibres = new ListaSimple<>();
         for (int i = 0; i < 6; i++) {
             if(!square.getCelda(identificador).isOcupado()){
                 listaCeldasLibres.add(square.getCelda(identificador));
@@ -233,6 +243,8 @@ public class Game {
         return celdaIdentificador;
     }
 
+
+    // Mira la lista de individuos y pone celdas de tipo 1 para cada individuo en la lista
     public void actualizarIndividuos(){
         clearIndividuos();
         int tamanoTablero = tablero.getSquares().getNumeroElementos();
@@ -244,6 +256,7 @@ public class Game {
         }
     }
 
+    // Poner las celdas en las que había individuos transparentes (porque todos los individuos se mueven)
     private void clearIndividuos(){
         int tamanoTablero = tablero.getSquares().getNumeroElementos();
         for (int i = 0; i < tamanoTablero; i++) {
@@ -257,9 +270,11 @@ public class Game {
         }
     }
 
+
+    // Comprobar si los recursos tienen tiempo de vida y sino eliminarlos
     public void actualizarRecursos(){
         int numRecursos = DatosCompartidos.getListaRecursos().getNumeroElementos();
-        ListaSimple<Recurso> listaDel = new ListaSimple<Recurso>();
+        ListaSimple<Recurso> listaDel = new ListaSimple<>();
 
         for (int i = 0; i < numRecursos; i++) {
             Recurso recurso = DatosCompartidos.getListaRecursos().getDato(i);
@@ -268,12 +283,19 @@ public class Game {
                 int idCeldaRecurso = DatosCompartidos.getListaRecursos().getDato(i).getCelda();
                 tablero.getSquare(idSquareRecurso).getCelda(idCeldaRecurso).setTipo(0);
                 tablero.getSquare(idSquareRecurso).getCelda(idCeldaRecurso).setOcupado(false);
+                for (int j = 0; j < 3; j++) {
+                    if (tablero.getSquare(idSquareRecurso).getRecursos().getDato(j)==recurso){
+                        tablero.getSquare(idSquareRecurso).getRecursos().del(j);
+                    }
+                }
                 listaDel.add(recurso);
             }
         }
         eliminarRecursos(listaDel);
     }
 
+
+    // Eliminar los recursos que no tienen tiempo de vida de la lista de DatosCompartidos
     private void eliminarRecursos(ListaSimple<Recurso> listaDel){
         int numRecursosDel = DatosCompartidos.getListaRecursos().getNumeroElementos();
         int numRecursos = DatosCompartidos.getListaRecursos().getNumeroElementos();
@@ -286,6 +308,8 @@ public class Game {
         }
     }
 
+
+    // Reducir los turnos de vida tanto de recursos como de individuos
     public void actualizarVidas(){
         int numIndividuos = DatosCompartidos.getListaIndividuos().getNumeroElementos();
         int numRecursos = DatosCompartidos.getListaRecursos().getNumeroElementos();
@@ -300,8 +324,10 @@ public class Game {
         }
     }
 
+
     ////////////// MOVIMIENTO DE INDIVIDUOS //////////////////
 
+    // Método principal para el movimiento de los individuos
     public void moverIndividuos() {
         ListaSimple<Integer> listaIdentificadoresIndMovidos = new ListaSimple<>();
         int contador = 0;
@@ -311,6 +337,8 @@ public class Game {
         }
     }
 
+
+    // Método cuadrado por cuadrado
     private void moverIndividuosCuadrado(ListaSimple<Square> listaCuadrados, Square cuadrado, ListaSimple<Integer> listaID) {
         ListaSimple<Individuo> individuosMovidosCuadrado = new ListaSimple<>(); // Se crea una lista donde se van a meter los individuos que esten en el cuadrado que ya se hayan movido
         while (!cuadrado.getIndividuos().isVacia()) {
@@ -354,15 +382,21 @@ public class Game {
     }
 
 
-    // Método para mover un individuo normal en un cuadrado interior
+    // Método principal para mover un individuo normal
     private void moverIndNormal(ListaSimple<Square> listaCuadrados, Square cuadrado, Individuo ind) {
         IndNormal indNormal = (IndNormal) ind;
-        if (indNormal.getRecorrido().isVacia()) {
-            buscarNuevoObjetivo(listaCuadrados, cuadrado, indNormal);
+        if (!DatosCompartidos.getListaRecursos().isVacia()) {
+            if (indNormal.getRecorrido().isVacia()) {
+                buscarNuevoObjetivo(listaCuadrados, cuadrado, indNormal);
+            }
+            moverIndNormalDirigido(indNormal.getRecorrido(), indNormal);
+        } else {
+
         }
-        moverIndNormalDirigido(indNormal.getRecorrido(),indNormal);
     }
 
+
+    // Método para buscar un objetivo random para un individuo normal
     private void buscarNuevoObjetivo(ListaSimple<Square> listaCuadrados, Square cuadrado, IndNormal ind) {
         int recursoRandom = generarEnteroAleatorio(0, DatosCompartidos.getListaRecursos().getNumeroElementos() - 1);
         Recurso objetivo = DatosCompartidos.getListaRecursos().getDato(recursoRandom);
@@ -398,11 +432,14 @@ public class Game {
         ind.setRecorrido(listaRecorrido);
     }
 
+
+    // Método para mover un individuo normal cuando ya tiene en objetivo fijado
     private void moverIndNormalDirigido(ListaEnlazada<Square> listaRecorrido, IndNormal ind){
         Square siguienteCuadrado = listaRecorrido.getPrimero().getData();
         siguienteCuadrado.getIndividuos().add(ind);
         listaRecorrido.del(0);
     }
+
 
     // Método para comprobar si el individuo ya se ha movido o no
     private boolean individuoYaMovido(Individuo ind, ListaSimple<Integer> lista) {
@@ -832,6 +869,8 @@ public class Game {
         nuevoCuadrado.getIndividuos().add(ind);
     }
 
+
+    ///////////////// OTROS MÉTODOS ////////////////
     public static Tablero getTablero() {
         return tablero;
     }
