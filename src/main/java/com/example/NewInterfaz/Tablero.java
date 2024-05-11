@@ -52,7 +52,8 @@ public class Tablero {
                 color = Color.web("#add8e6ff");
             }
             case "Natura" -> {
-                color = Color.web("#adf7b6");
+                //color = Color.web("#a2e4b8");
+                color = Color.web("#c0e6b2ff");
             }
             case "Tierra" -> {
                 color = Color.web("#fcf5c7");

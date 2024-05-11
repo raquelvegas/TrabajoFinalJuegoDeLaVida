@@ -235,8 +235,8 @@ public class ControllerMainStage {
     }
     @FXML
     void setEstiloNatura(ActionEvent event) {
-        tabPaneParametros.setStyle("-fx-background-color: #adf7b6;");
-        infoVBox.setStyle("-fx-background-color: #adf7b6;");
+        tabPaneParametros.setStyle("-fx-background-color: #c0e6b2ff;");
+        infoVBox.setStyle("-fx-background-color: #c0e6b2ff;");
         for (int i = 0; i< Game.getTablero().getSquares().getNumeroElementos(); i++){
             Square square = Game.getTablero().getSquare(i);
             Game.getTablero().setTheme(square,"Natura");

@@ -133,23 +133,23 @@ public class Game {
                 case 1: //Individuo
                     celda.setColor(Color.BLACK);
                     break;
-                case 2: //Agua
-                    celda.setColor(Color.BLUE);
+                case 2: //Agua - Azul
+                    celda.setColor(Color.web("#0404e2"));
                     break;
-                case 3: //Comida
-                    celda.setColor(Color.GREEN);
+                case 3: //Comida - Verde
+                    celda.setColor(Color.web("#00AD43"));
                     break;
-                case 4: //Montaña
-                    celda.setColor(Color.ORANGE);
+                case 4: //Montaña - Marrón
+                    celda.setColor(Color.web("#864332"));
                     break;
-                case 5: //Biblioteca
-                    celda.setColor(Color.BEIGE);
+                case 5: //Biblioteca - Naranja
+                    celda.setColor(Color.web("#fc4b08"));
                     break;
                 case 6: //Tesoro
-                    celda.setColor(Color.GOLD);
+                    celda.setColor(Color.web("#ffd700"));
                     break;
                 case 7: //Pozo
-                    celda.setColor(Color.RED);
+                    celda.setColor(Color.web("#ff0000"));
                     break;
             }
         } else {
