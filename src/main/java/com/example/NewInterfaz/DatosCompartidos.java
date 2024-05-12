@@ -28,13 +28,14 @@ public class DatosCompartidos {
     private static String pozoAparicion = "0";
     private static int anadir = 0;
     private static boolean anadirTab = false;
+    private static boolean contenidoCeldaTab = false;
     private static int numIndividuos = 0;
     private static int turnoJuego = 0;
     private static double velocidadJuego = 1;
     private static boolean gameIniciado = false;
     private static boolean tableroAleatorio = false;
-    private static ListaSimple<Recurso> listaRecursos= new ListaSimple<Recurso>();
-    private static ListaSimple<Individuo> listaIndividuos = new ListaSimple<Individuo>();
+    private static ListaSimple<Recurso> listaRecursos= new ListaSimple<>();
+    private static ListaSimple<Individuo> listaIndividuos = new ListaSimple<>();
     private static Game game = null;
 
 
@@ -228,6 +229,14 @@ public class DatosCompartidos {
 
     public static void setAnadirTab(boolean anadirTab) {
         DatosCompartidos.anadirTab = anadirTab;
+    }
+
+    public static boolean isContenidoCeldaTab() {
+        return contenidoCeldaTab;
+    }
+
+    public static void setContenidoCeldaTab(boolean contenidoCeldaTab) {
+        DatosCompartidos.contenidoCeldaTab = contenidoCeldaTab;
     }
 
     public static int getNumIndividuos() {

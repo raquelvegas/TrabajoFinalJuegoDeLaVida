@@ -41,7 +41,9 @@ public class ControllerMainStage {
             vidaUserText, probReproduccionText, probClonacionText, //Ajustes User
             aguaVidaText, bibliotecaVidaText, comidaVidaText, montanaVidaText, pozoVidaText, tesoroVidaText, // Vida Recursos
             aguaEfectoText, bibliotecaEfectoText, comidaEfectoText, montanaEfectoText, tesoroEfectoText, // Efecto Recursos
-            aguaAparicionText, bibliotecaAparicionText, comidaAparicionText, montanaAparicionText, pozoAparicionText, tesoroAparicionText; // Aparicion Recursos
+            aguaAparicionText, bibliotecaAparicionText, comidaAparicionText, montanaAparicionText, pozoAparicionText, tesoroAparicionText, // Aparicion Recursos
+            tipoCelda1, tipoCelda2, tipoCelda3, tipoCelda4, tipoCelda5, tipoCelda6, //contenidoCeldaTab
+            vidaCelda1, vidaCelda2, vidaCelda3, vidaCelda4, vidaCelda5, vidaCelda6; //contenidoCeldaTab
     @FXML
     private Slider vidaUserSlider, probReproduccionSlider, probClonacionSlider, //Ajustes User
             aguaVidaSlider, bibliotecaVidaSlider, comidaVidaSlider, montanaVidaSlider, pozoVidaSlider, tesoroVidaSlider, //Vida Recursos
@@ -66,7 +68,7 @@ public class ControllerMainStage {
     @FXML
     private Stage primaryStage, stage;
     @FXML
-    private Tab pauseTab, individuoTab, recursosParametrosTab, aparicionTab, anadirTab;
+    private Tab pauseTab, contenidoCeldaTab, individuoTab, recursosParametrosTab, aparicionTab, anadirTab;
     protected boolean gameStopped = true;
     protected boolean gameON = false;
     private Timeline controlLoop;
@@ -349,6 +351,10 @@ public class ControllerMainStage {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
+    public void actulizarCeldaSeleccionadaTab (){
+
+    }
     private void setImage (String path, ImageView imageView, GridPane gridPane){
         Image image = new Image(getClass().getClassLoader().getResourceAsStream(path));
         imageView.setImage(image);
@@ -489,10 +495,13 @@ public class ControllerMainStage {
                 if (newTab == anadirTab) {
                     // Si es la pestaña de añadir, establecer el valor de DatosCompartidos como true
                     DatosCompartidos.setAnadirTab(true);
+                } if (newTab == contenidoCeldaTab) {
+                    // Si es la pestaña de añadir, establecer el valor de DatosCompartidos como true
+                    DatosCompartidos.setContenidoCeldaTab(true);
                 } else {
                     // Si es cualquier otra pestaña, establecer el valor de DatosCompartidos como false
                     DatosCompartidos.setAnadirTab(false);
-                    radioIndividuo.setSelected(false);
+                    DatosCompartidos.setContenidoCeldaTab(false);                    radioIndividuo.setSelected(false);
                     radioAgua.setSelected(false);
                     radioComida.setSelected(false);
                     radioMontana.setSelected(false);
