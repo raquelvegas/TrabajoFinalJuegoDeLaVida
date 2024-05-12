@@ -40,8 +40,29 @@ public class Game {
                     }
                 }
                 actualizarTablero();
+            } else if(DatosCompartidos.isContenidoCeldaTab()) {
+                double x = event.getX();
+                double y = event.getY();
+                for (Node node : tablero.getChildren()) {
+                    if (node instanceof Square) {
+                        Square square = (Square) node;
+                        if (square.getBoundsInParent().contains(x, y)) {
+                            int columna = square.getX();
+                            int fila = square.getY();
+                            handleCeldaClick(columna, fila, square);
+                            break; // Salir del bucle una vez que se encuentre un cuadrado clicado
+                        }
+                    }
+                }
+                actualizarTablero();
             }
         });
+    }
+
+    private void handleCeldaClick(int columna, int fila, Square square) {
+        for (int i = 0; i < 6; i++ ){
+
+        }
     }
 
 
