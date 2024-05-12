@@ -146,15 +146,15 @@ public class Game {
                     switch (subtipo) {
                         case 1: // Tipo 1.1
                             // Código para el tipo 1.1
-                            celda.setColor(Color.DARKGRAY);
+                            celda.setColor(Color.web("#212121"));
                             break;
                         case 2: // Tipo 1.2
                             // Código para el tipo 1.2
-                            celda.setColor(Color.PINK);
+                            celda.setColor(Color.web("#616161"));
                             break;
                         case 3: // Tipo 1.3
                             // Código para el tipo 1.3
-                            celda.setColor(Color.PURPLE);
+                            celda.setColor(Color.web("#9e9e9e"));
                             break;
                     }
                     break;
@@ -170,10 +170,10 @@ public class Game {
                 case 5: //Biblioteca - Naranja
                     celda.setColor(Color.web("#fc4b08"));
                     break;
-                case 6: //Tesoro
+                case 6: //Tesoro - Amarillo
                     celda.setColor(Color.web("#ffd700"));
                     break;
-                case 7: //Pozo
+                case 7: //Pozo - Rojo
                     celda.setColor(Color.web("#ff0000"));
                     break;
             }
@@ -278,12 +278,12 @@ public class Game {
         for (int i = 0; i < tamanoTablero; i++) {
             int numIndividuos = tablero.getSquare(i).getIndividuos().getNumeroElementos();
             for (int j = 0; j < numIndividuos; j++){
-                Double tipoIndividuo = (double) tablero.getSquare(i).getIndividuos().getDato(j).getTipo();
-                if (tipoIndividuo == 1.1){
+                int tipoIndividuo = tablero.getSquare(i).getIndividuos().getDato(j).getTipo();
+                if (tipoIndividuo == 0){
                     addTipo(tablero.getSquare(i), 1.1);
-                } else if (tipoIndividuo == 1.2) {
+                } else if (tipoIndividuo == 1) {
                     addTipo(tablero.getSquare(i), 1.2);
-                } else if (tipoIndividuo == 1.3) {
+                } else if (tipoIndividuo == 2) {
                     addTipo(tablero.getSquare(i), 1.3);
                 }
 
