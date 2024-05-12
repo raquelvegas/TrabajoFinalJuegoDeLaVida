@@ -121,7 +121,9 @@ public class Game {
 //            }
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
+            DatosCompartidos.getListaIndividuos().add(individuoNuevo);
             System.out.println("Se ha añadido un individuo con id: " + individuoNuevo.getID());
+
         }
     }
 
@@ -345,7 +347,7 @@ public class Game {
 
 
     // Comprobar si los recursos tienen tiempo de vida y sino eliminarlos
-    public void actualizarRecursos(){
+    public void eliminarRecursos() {
         int numRecursos = DatosCompartidos.getListaRecursos().getNumeroElementos();
         ListaSimple<Recurso> listaDel = new ListaSimple<>();
 
@@ -382,6 +384,42 @@ public class Game {
     }
 
 
+    // Se va comprobando Square por Square si los individuos tienen turnos de vida o no y si no los tienen se eliminan del square en el que estén y se llama al siguiente método para eliminarlos de DatosCompartidos
+    public void eliminarIndividuos() {
+        ListaSimple<Square> listaCuadrados = tablero.getSquares();
+        ListaSimple<Individuo> listaDel = new ListaSimple<>();
+        for (int i = 0; i < listaCuadrados.getNumeroElementos(); i++) {
+            Square actual = listaCuadrados.getDato(i);
+            if (!actual.getIndividuos().isVacia()) {
+                int contador = 0;
+                while (contador < actual.getIndividuos().getNumeroElementos()) {
+                    if (actual.getIndividuos().getDato(contador).getTurnosVida() == 0) {
+                        listaDel.add(actual.getIndividuos().getDato(contador));
+                        actual.getIndividuos().del(contador);
+                    } else {
+                        contador++;
+                    }
+                }
+            }
+        }
+        if (!listaDel.isVacia()) {
+            eliminarIndividuos(listaDel);
+        }
+    }
+
+    // Se meten como argumento los individuos que no tienen turnos de vida y se eliminan de la lista de DatosCompartidos
+    private void eliminarIndividuos(ListaSimple<Individuo> individuos) {
+        ListaSimple<Individuo> indTotales = DatosCompartidos.getListaIndividuos();
+        for (int i = 0; i < individuos.getNumeroElementos(); i++) {
+            for (int j = 0; j < indTotales.getNumeroElementos(); j++) {
+                if (individuos.getDato(i).getID() == indTotales.getDato(j).getID()) {
+                    indTotales.del(j);
+                }
+            }
+        }
+    }
+
+
     // Reducir los turnos de vida tanto de recursos como de individuos
     public void actualizarVidas(){
         int numIndividuos = DatosCompartidos.getListaIndividuos().getNumeroElementos();
@@ -390,13 +428,13 @@ public class Game {
         for(int i = 0; i < numIndividuos; i++){
             int vida = DatosCompartidos.getListaIndividuos().getDato(i).getTurnosVida();
             DatosCompartidos.getListaIndividuos().getDato(i).setTurnosVida(vida-1);
+            System.out.println("Vida= " + DatosCompartidos.getListaIndividuos().getDato(i).getTurnosVida());
         }
         for(int i = 0; i < numRecursos; i++){
             int vida = DatosCompartidos.getListaRecursos().getDato(i).getTiempoVida();
             DatosCompartidos.getListaRecursos().getDato(i).setTiempoVida(vida-1);
         }
     }
-
 
     ////////////// MOVIMIENTO DE INDIVIDUOS //////////////////
 
@@ -957,12 +995,43 @@ public class Game {
 
 
     ///////////////// OTROS MÉTODOS ////////////////
+
+
+    // Actualiza las probabilidades de reproduccion y clonación de cada individuo
+    public void actualizarProbabilidades() {
+        ListaSimple<Individuo> indTotales = DatosCompartidos.getListaIndividuos();
+        for (int i = 0; i < indTotales.getNumeroElementos(); i++) {
+            Individuo actual = indTotales.getDato(i);
+
+            // Probabilidad de clonación
+            if (actual.getProbClon() >= 10) {
+                actual.setProbClon(actual.getProbClon() - 10);
+            } else if (actual.getProbClon() < 10) {
+                actual.setProbClon(0);
+            }
+
+            // Probabilidad de reproducción
+            if (actual.getProbRepr() >= 10) {
+                actual.setProbRepr(actual.getProbRepr() - 10);
+            } else if (actual.getProbRepr() < 10) {
+                actual.setProbRepr(0);
+            }
+        }
+    }
+
+
     public static Tablero getTablero() {
         return tablero;
     }
 
     public void turno(){
+        // 1º Actualizamos Vidas y porcentajes de individuos y eliminamos los que no tengan más turnos de vida
         actualizarVidas();
-        actualizarRecursos();
+        actualizarProbabilidades();
+        eliminarIndividuos();
+        actualizarIndividuos();
+
+        eliminarRecursos();
+        actualizarTablero();
     }
 }
