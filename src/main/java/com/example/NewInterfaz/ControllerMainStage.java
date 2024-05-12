@@ -495,7 +495,7 @@ public class ControllerMainStage {
                 if (newTab == anadirTab) {
                     // Si es la pestaña de añadir, establecer el valor de DatosCompartidos como true
                     DatosCompartidos.setAnadirTab(true);
-                } if (newTab == contenidoCeldaTab) {
+                } else if (newTab == contenidoCeldaTab) {
                     // Si es la pestaña de añadir, establecer el valor de DatosCompartidos como true
                     DatosCompartidos.setContenidoCeldaTab(true);
                 } else {
