@@ -1,6 +1,6 @@
 package com.example.NewInterfaz;
 
-import com.example.EstructurasDeDatos.ListaSimple;
+import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.NewInterfaz.Individuos.Individuo;
 
 public class DatosCompartidos {

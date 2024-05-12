@@ -9,7 +9,7 @@ public class Cola<TipoDato> {
         this.ultimo = null;
     }
 
-    private boolean isVacia() {
+    public boolean isVacia() {
         return primero == null;
     }
 

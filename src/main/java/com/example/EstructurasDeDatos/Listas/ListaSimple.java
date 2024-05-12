@@ -1,7 +1,5 @@
-package com.example.EstructurasDeDatos;
+package com.example.EstructurasDeDatos.Listas;
 
-
-import java.util.Objects;
 
 public class ListaSimple<Tipodato> {
     private ElementoLS<Tipodato>[] datos;
@@ -104,5 +102,34 @@ public class ListaSimple<Tipodato> {
 
     public Integer getNumeroElementos() {
         return numElem;
+    }
+
+    public ElementoLS<Tipodato> getElemento(int pos) {
+        if (pos < maximo && pos >= 0) {
+            return datos[pos];
+        } else {
+            return null;
+        }
+    }
+
+    public ListaSimple<Tipodato> voltear() {
+        ListaSimple<Tipodato> nuevaLista = new ListaSimple<>();
+        Integer contador=this.getNumeroElementos()-1;
+        while (contador>=0){
+            nuevaLista.add(this.getElemento(contador).getData());
+            contador--;
+        }
+        return nuevaLista;
+    }
+
+    public ListaSimple<Tipodato> copiaLista() {
+        ListaSimple<Tipodato> nuevaLista = new ListaSimple<>();
+        Integer contador=0;
+        while (contador<this.getNumeroElementos()){
+            nuevaLista.add(datos[contador].getData());
+            contador++;
+        }
+        nuevaLista.setMaximo(this.maximo);
+        return nuevaLista;
     }
 }

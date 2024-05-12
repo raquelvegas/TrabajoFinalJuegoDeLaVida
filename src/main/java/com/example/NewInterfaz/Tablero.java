@@ -1,8 +1,7 @@
 package com.example.NewInterfaz;
 
-import com.example.EstructurasDeDatos.ListaSimple;
+import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 

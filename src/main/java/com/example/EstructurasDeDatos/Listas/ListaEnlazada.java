@@ -1,4 +1,4 @@
-package com.example.EstructurasDeDatos;
+package com.example.EstructurasDeDatos.Listas;
 
 public class ListaEnlazada<T> {
     private ElementoLE<T> primero;

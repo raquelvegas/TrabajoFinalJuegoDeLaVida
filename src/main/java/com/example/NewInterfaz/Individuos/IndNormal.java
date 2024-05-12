@@ -1,7 +1,7 @@
 package com.example.NewInterfaz.Individuos;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
-import com.example.EstructurasDeDatos.ListaEnlazada;
+import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.NewInterfaz.Square;
 
 public class IndNormal extends Individuo{

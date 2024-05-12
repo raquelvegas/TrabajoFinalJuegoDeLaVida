@@ -1,8 +1,8 @@
 package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
-import com.example.EstructurasDeDatos.ListaEnlazada;
-import com.example.EstructurasDeDatos.ListaSimple;
+import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
+import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.NewInterfaz.Individuos.IndNormal;
 import com.example.NewInterfaz.Individuos.Individuo;
 import javafx.scene.Node;
@@ -396,7 +396,6 @@ public class Game {
                     }
                 } else if (ind.getTipo() == 1) { // Tipo Normal
                     moverIndNormal(listaCuadrados, cuadrado, ind);
-
                 } else {   // Tipo Avanzado
 
                     // FALTA ESTO
