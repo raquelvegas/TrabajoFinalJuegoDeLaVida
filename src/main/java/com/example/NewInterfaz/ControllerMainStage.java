@@ -41,8 +41,10 @@ public class ControllerMainStage {
             vidaUserText, probReproduccionText, probClonacionText, //Ajustes User
             aguaVidaText, bibliotecaVidaText, comidaVidaText, montanaVidaText, pozoVidaText, tesoroVidaText, // Vida Recursos
             aguaEfectoText, bibliotecaEfectoText, comidaEfectoText, montanaEfectoText, tesoroEfectoText, // Efecto Recursos
-            aguaAparicionText, bibliotecaAparicionText, comidaAparicionText, montanaAparicionText, pozoAparicionText, tesoroAparicionText, // Aparicion Recursos
-            tipoCelda1, tipoCelda2, tipoCelda3, tipoCelda4, tipoCelda5, tipoCelda6, //contenidoCeldaTab
+            aguaAparicionText, bibliotecaAparicionText, comidaAparicionText, montanaAparicionText, pozoAparicionText, tesoroAparicionText; // Aparicion Recursos
+
+    @FXML
+    private static Text tipoCelda1, tipoCelda2, tipoCelda3, tipoCelda4, tipoCelda5, tipoCelda6, //contenidoCeldaTab
             vidaCelda1, vidaCelda2, vidaCelda3, vidaCelda4, vidaCelda5, vidaCelda6; //contenidoCeldaTab
     @FXML
     private Slider vidaUserSlider, probReproduccionSlider, probClonacionSlider, //Ajustes User
@@ -68,7 +70,9 @@ public class ControllerMainStage {
     @FXML
     private Stage primaryStage, stage;
     @FXML
-    private Tab pauseTab, contenidoCeldaTab, individuoTab, recursosParametrosTab, aparicionTab, anadirTab;
+    private Tab contenidoCeldaTab;
+    @FXML
+    private Tab pauseTab, individuoTab, recursosParametrosTab, aparicionTab, anadirTab;
     protected boolean gameStopped = true;
     protected boolean gameON = false;
     private Timeline controlLoop;
@@ -352,9 +356,46 @@ public class ControllerMainStage {
         this.stage = stage;
     }
 
-    public void actulizarCeldaSeleccionadaTab (){
+    public static void actulizarCeldaSeleccionadaTab(){
+        tipoCelda1.setText(traducirTipo(CeldaSeleccionada.getTipo1()));
+        tipoCelda2.setText(traducirTipo(CeldaSeleccionada.getTipo2()));
+        tipoCelda3.setText(traducirTipo(CeldaSeleccionada.getTipo3()));
+        tipoCelda4.setText(traducirTipo(CeldaSeleccionada.getTipo4()));
+        tipoCelda5.setText(traducirTipo(CeldaSeleccionada.getTipo5()));
+        tipoCelda6.setText(traducirTipo(CeldaSeleccionada.getTipo6()));
 
+        vidaCelda1.setText(CeldaSeleccionada.getVida1());
+        vidaCelda2.setText(CeldaSeleccionada.getVida2());
+        vidaCelda3.setText(CeldaSeleccionada.getVida3());
+        vidaCelda4.setText(CeldaSeleccionada.getVida4());
+        vidaCelda5.setText(CeldaSeleccionada.getVida5());
+        vidaCelda6.setText(CeldaSeleccionada.getVida6());
     }
+
+    public static String traducirTipo(String tipo){
+        String tipoTraducido = null;
+        if(tipo == "1.1"){
+            tipoTraducido = "individuo Básico";
+        } else if (tipo == "1.2"){
+            tipoTraducido = "individuo Normal";
+        } else if (tipo == "1.3"){
+            tipoTraducido = "individuo Avanzado";
+        } else if (tipo == "2"){
+            tipoTraducido = "Agua";
+        } else if (tipo == "3"){
+            tipoTraducido = "Comida";
+        } else if (tipo == "4"){
+            tipoTraducido = "Montaña";
+        } else if (tipo == "5"){
+            tipoTraducido = "Biblioteca";
+        } else if (tipo == "6"){
+            tipoTraducido = "Tesoro";
+        } else if (tipo == "7"){
+            tipoTraducido = "Pozo";
+        }
+        return tipoTraducido;
+    }
+
     private void setImage (String path, ImageView imageView, GridPane gridPane){
         Image image = new Image(getClass().getClassLoader().getResourceAsStream(path));
         imageView.setImage(image);
@@ -495,9 +536,11 @@ public class ControllerMainStage {
                 if (newTab == anadirTab) {
                     // Si es la pestaña de añadir, establecer el valor de DatosCompartidos como true
                     DatosCompartidos.setAnadirTab(true);
+                    DatosCompartidos.setContenidoCeldaTab(false);
                 } else if (newTab == contenidoCeldaTab) {
                     // Si es la pestaña de añadir, establecer el valor de DatosCompartidos como true
                     DatosCompartidos.setContenidoCeldaTab(true);
+                    DatosCompartidos.setAnadirTab(false);
                 } else {
                     // Si es cualquier otra pestaña, establecer el valor de DatosCompartidos como false
                     DatosCompartidos.setAnadirTab(false);
@@ -516,5 +559,4 @@ public class ControllerMainStage {
         inicializarBucleControl();
 
     }
-
 }

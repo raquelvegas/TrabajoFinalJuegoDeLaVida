@@ -59,9 +59,25 @@ public class Game {
     }
 
     private void handleCeldaClick(int columna, int fila, Square square) {
-        for (int i = 0; i < 6; i++ ){
+        CeldaSeleccionada.setTipo1("1.1");
+        CeldaSeleccionada.setVida1("1");
 
-        }
+        CeldaSeleccionada.setTipo2("1.2");
+        CeldaSeleccionada.setVida2("2");
+
+        CeldaSeleccionada.setTipo3("1.3");
+        CeldaSeleccionada.setVida3("3");
+
+        CeldaSeleccionada.setTipo4("2");
+        CeldaSeleccionada.setVida4("4");
+
+        CeldaSeleccionada.setTipo5("3");
+        CeldaSeleccionada.setVida5("5");
+
+        CeldaSeleccionada.setTipo6("4");
+        CeldaSeleccionada.setVida6("6");
+
+        ControllerMainStage.actulizarCeldaSeleccionadaTab();
     }
 
 

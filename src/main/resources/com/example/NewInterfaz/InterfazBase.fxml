@@ -174,7 +174,7 @@
                                           <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIEMPO DE VIDA:   " />
-                                                <Text fx:id="vidaCelda" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
+                                                <Text fx:id="vidaCelda3" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -261,7 +261,7 @@
                                           <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIEMPO DE VIDA:   " />
-                                                <Text fx:id="vidaCelda" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
+                                                <Text fx:id="vidaCelda2" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
                                              </children>
                                           </HBox>
                                        </children>
