@@ -110,6 +110,7 @@ public class ControllerMainStage {
             nuevaVelocidad = 1;
         }
         velocidadJuegoProperty.set(nuevaVelocidad);
+        log.info("Modificación de la velocidad del bucle de control");
     }
     @FXML
     void playGame(MouseEvent event) {
@@ -157,6 +158,7 @@ public class ControllerMainStage {
         setSlidersValue(DatosCompartidos::setVidaInicial, vidaUserSlider);
         setSlidersValue(DatosCompartidos::setProbReproduccion, probReproduccionSlider);
         setSlidersValue(DatosCompartidos::setProbClonacion, probClonacionSlider);
+        log.info("Modificación de los parámetros iniciales de los nuevos individuos");
     }
     @FXML
     void resetUser(MouseEvent event) {
@@ -177,6 +179,7 @@ public class ControllerMainStage {
         setSlidersValue(DatosCompartidos::setMontanaEfecto, montanaEfectoSlider);
         setSlidersValue(DatosCompartidos::setBibliotecaEfecto, bibliotecaEfectoSlider);
         setSlidersValue(DatosCompartidos::setTesoroEfecto, tesoroEfectoSlider);
+        log.info("Modificaciçon de los parámetros iniciales de los nuevos recursos");
     }
     @FXML
     void resetRecursosVida(MouseEvent event){
@@ -200,6 +203,7 @@ public class ControllerMainStage {
         setSlidersValue(DatosCompartidos::setBibliotecaAparicion, bibliotecaAparicionSlider);
         setSlidersValue(DatosCompartidos::setTesoroAparicion, tesoroAparicionSlider);
         setSlidersValue(DatosCompartidos::setPozoAparicion, pozoAparicionSlider);
+        log.info("Modificación de los turnos de aparición iniciales de los nuevos recursos");
     }
     @FXML
     void resetAparicionRecursos(MouseEvent event) {
@@ -271,7 +275,7 @@ public class ControllerMainStage {
         configStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
 
         configStage.show();
-        log.info("Acceso a interfaz 'ComoJugar'");
+        log.info("Acceso a pantalla 'ComoJugar'");
     }
 
     @FXML
