@@ -85,7 +85,6 @@ public class Game {
 
     private void handleSquareClick(int columna, int fila, Square square) {
         System.out.println("Clic en el cuadrado " + columna + ", " + fila);
-        System.out.println("Elección: "+DatosCompartidos.getAnadir());
         if (DatosCompartidos.getAnadir() == 1) {
             addIndividuo(square);
         } else if (DatosCompartidos.getAnadir() == 2) {
@@ -327,7 +326,6 @@ public class Game {
                 } else if (tipoIndividuo == 2) {
                     addTipo(tablero.getSquare(i), 1.3);
                 }
-
             }
         }
     }
@@ -446,6 +444,7 @@ public class Game {
     // Consumición de los recursos existentes en las celdas
     public void consumirRecursos() {
         ListaSimple<Square> listaCuadrados = tablero.getSquares();
+        ListaSimple<Individuo> listaDel = new ListaSimple<>(); // Lista de individuos borrados (que se tienen que borrar de la lista de datos compartidos)
         for (int i = 0; i < listaCuadrados.getNumeroElementos(); i++) {
             Square actual = listaCuadrados.getDato(i);
             if (!actual.getIndividuos().isVacia()) {
@@ -453,49 +452,51 @@ public class Game {
                     for (int ind = 0; ind < actual.getIndividuos().getNumeroElementos(); ind++) {
                         for (int rec = 0; rec < actual.getRecursos().getNumeroElementos(); rec++) {
                             if (actual.getRecursos().getDato(rec).getTipoRecurso() == 2) { // Agua
-                                consumirAgua(actual.getIndividuos().getDato(ind));
+                                consumirAgua(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
+                                System.out.println("Vida individuo= " + actual.getIndividuos().getDato(ind).getTurnosVida());
                             } else if (actual.getRecursos().getDato(rec).getTipoRecurso() == 3) { // Comida
-                                consumirComida(actual.getIndividuos().getDato(ind));
+                                consumirComida(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
                             } else if (actual.getRecursos().getDato(rec).getTipoRecurso() == 4) { // Montaña
-                                consumirMontana(actual.getIndividuos().getDato(ind));
+                                consumirMontana(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
                             } else if (actual.getRecursos().getDato(rec).getTipoRecurso() == 5) { // Biblioteca
-                                consumirBiblioteca(actual.getIndividuos().getDato(ind));
+                                consumirBiblioteca(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
                             } else if (actual.getRecursos().getDato(rec).getTipoRecurso() == 6) { // Tesoro
-                                consumirTesoro(actual.getIndividuos().getDato(ind));
+                                consumirTesoro(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
                             } else {
-
-                                // Falta acabar esto
-
+                                listaDel.add(actual.getIndividuos().getDato(ind));
+                                actual.getIndividuos().del(ind);
+                                ind--; // Para que vuelva a comprobar la posición en la que estaba
                             }
                         }
                     }
                 }
             }
         }
+        eliminarIndividuos(listaDel);
     }
 
-    private void consumirAgua(Individuo ind) {
-        int turnosExtra = Integer.parseInt(DatosCompartidos.getAguaEfecto());
+    private void consumirAgua(Individuo ind, Recurso rec) {
+        int turnosExtra = rec.getEfecto();
         ind.setTurnosVida(ind.getTurnosVida() + turnosExtra);
     }
 
-    private void consumirComida(Individuo ind) {
-        int turnosExtra = Integer.parseInt(DatosCompartidos.getComidaEfecto());
+    private void consumirComida(Individuo ind, Recurso rec) {
+        int turnosExtra = rec.getEfecto();
         ind.setTurnosVida(ind.getTurnosVida() + turnosExtra);
     }
 
-    private void consumirMontana(Individuo ind) {
-        int turnosMenos = Integer.parseInt(DatosCompartidos.getMontanaEfecto());
+    private void consumirMontana(Individuo ind, Recurso rec) {
+        int turnosMenos = rec.getEfecto();
         ind.setTurnosVida(ind.getTurnosVida() - turnosMenos);
     }
 
-    private void consumirBiblioteca(Individuo ind) {
-        int probabilidadAñadida = Integer.parseInt(DatosCompartidos.getBibliotecaEfecto());
+    private void consumirBiblioteca(Individuo ind, Recurso rec) {
+        int probabilidadAñadida = rec.getEfecto();
         ind.setProbRepr(ind.getProbRepr() + probabilidadAñadida);
     }
 
-    private void consumirTesoro(Individuo ind) {
-        int probabilidadAñadida = Integer.parseInt(DatosCompartidos.getTesoroEfecto());
+    private void consumirTesoro(Individuo ind, Recurso rec) {
+        int probabilidadAñadida = rec.getEfecto();
         ind.setProbClon(ind.getProbClon()+probabilidadAñadida);
     }
 
@@ -1101,6 +1102,7 @@ public class Game {
 
         // 3º Consumición de los recursos
         consumirRecursos();
+
 
         // Finalmente, pintamos el tablero restante
         actualizarTablero();
