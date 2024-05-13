@@ -98,6 +98,79 @@
                               </AnchorPane>
                           </content>
                         </Tab>
+                        <Tab fx:id="anadirTab" text="Añadir elementos">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox alignment="CENTER" layoutY="123.0" prefHeight="228.0" prefWidth="535.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="352.0" prefWidth="182.0">
+                                             <children>
+                                                <RadioButton fx:id="radioIndividuo" mnemonicParsing="false" onAction="#anadirElemento" text="INDIVIDUO" textAlignment="CENTER">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="anadir" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+                                                <RadioButton fx:id="radioAgua" mnemonicParsing="false" onAction="#anadirElemento" text="AGUA" textAlignment="CENTER" toggleGroup="$anadir">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </RadioButton>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+                                                <RadioButton fx:id="radioComida" mnemonicParsing="false" onAction="#anadirElemento" text="COMIDA" textAlignment="CENTER" toggleGroup="$anadir">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </RadioButton>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+                                                <RadioButton fx:id="radioMontana" mnemonicParsing="false" onAction="#anadirElemento" text="MONTAÑA" textAlignment="CENTER" toggleGroup="$anadir">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </RadioButton>
+                                             </children>
+                                          </VBox>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="            " />
+                                          <VBox alignment="CENTER_LEFT" prefHeight="395.0" prefWidth="182.0">
+                                             <children>
+                                                <RadioButton fx:id="radioBiblioteca" mnemonicParsing="false" onAction="#anadirElemento" text="BIBLIOTECA" textAlignment="CENTER" toggleGroup="$anadir">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </RadioButton>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+                                                <RadioButton fx:id="radioTesoro" mnemonicParsing="false" onAction="#anadirElemento" text="TESORO" toggleGroup="$anadir">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </RadioButton>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+                                                <RadioButton fx:id="radioPozo" mnemonicParsing="false" onAction="#anadirElemento" text="POZO" toggleGroup="$anadir">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </RadioButton>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <Button fx:id="clearTablero" layoutX="104.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#clear" prefHeight="58.0" prefWidth="328.0" text="BORRAR TABLERO">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </Button>
+                                    <Text layoutX="15.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ELIGE QUÉ QUIERES AÑADIR Y LUEGO SELECCIONA LAS CASILLAS QUE QUIERAS" textAlignment="CENTER" wrappingWidth="510.2562255859375">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </Text>
+                                 </children></AnchorPane>
+                          </content>
+                        </Tab>
                         <Tab fx:id="contenidoCeldaTab" text="Ver Contenido Celdas">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -709,7 +782,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab fx:id="aparicionTab" text="Porcentages de aparición">
+                        <Tab fx:id="aparicionTab" text="Porcentajes de aparición">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -877,79 +950,6 @@
                                  </children>
                               </AnchorPane>
                            </content>
-                        </Tab>
-                        <Tab fx:id="anadirTab" text="Añadir elementos">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <HBox alignment="CENTER" layoutY="123.0" prefHeight="228.0" prefWidth="535.0">
-                                       <children>
-                                          <VBox alignment="CENTER_LEFT" prefHeight="352.0" prefWidth="182.0">
-                                             <children>
-                                                <RadioButton fx:id="radioIndividuo" mnemonicParsing="false" onAction="#anadirElemento" text="INDIVIDUO" textAlignment="CENTER">
-                                                   <font>
-                                                      <Font size="24.0" />
-                                                   </font>
-                                                   <toggleGroup>
-                                                      <ToggleGroup fx:id="anadir" />
-                                                   </toggleGroup>
-                                                </RadioButton>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
-                                                <RadioButton fx:id="radioAgua" mnemonicParsing="false" onAction="#anadirElemento" text="AGUA" textAlignment="CENTER" toggleGroup="$anadir">
-                                                   <font>
-                                                      <Font size="24.0" />
-                                                   </font>
-                                                </RadioButton>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
-                                                <RadioButton fx:id="radioComida" mnemonicParsing="false" onAction="#anadirElemento" text="COMIDA" textAlignment="CENTER" toggleGroup="$anadir">
-                                                   <font>
-                                                      <Font size="24.0" />
-                                                   </font>
-                                                </RadioButton>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
-                                                <RadioButton fx:id="radioMontana" mnemonicParsing="false" onAction="#anadirElemento" text="MONTAÑA" textAlignment="CENTER" toggleGroup="$anadir">
-                                                   <font>
-                                                      <Font size="24.0" />
-                                                   </font>
-                                                </RadioButton>
-                                             </children>
-                                          </VBox>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="            " />
-                                          <VBox alignment="CENTER_LEFT" prefHeight="395.0" prefWidth="182.0">
-                                             <children>
-                                                <RadioButton fx:id="radioBiblioteca" mnemonicParsing="false" onAction="#anadirElemento" text="BIBLIOTECA" textAlignment="CENTER" toggleGroup="$anadir">
-                                                   <font>
-                                                      <Font size="24.0" />
-                                                   </font>
-                                                </RadioButton>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
-                                                <RadioButton fx:id="radioTesoro" mnemonicParsing="false" onAction="#anadirElemento" text="TESORO" toggleGroup="$anadir">
-                                                   <font>
-                                                      <Font size="24.0" />
-                                                   </font>
-                                                </RadioButton>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
-                                                <RadioButton fx:id="radioPozo" mnemonicParsing="false" onAction="#anadirElemento" text="POZO" toggleGroup="$anadir">
-                                                   <font>
-                                                      <Font size="24.0" />
-                                                   </font>
-                                                </RadioButton>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </HBox>
-                                    <Button fx:id="clearTablero" layoutX="104.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#clear" prefHeight="58.0" prefWidth="328.0" text="BORRAR TABLERO">
-                                       <font>
-                                          <Font size="21.0" />
-                                       </font>
-                                    </Button>
-                                    <Text layoutX="15.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ELIGE QUÉ QUIERES AÑADIR Y LUEGO SELECCIONA LAS CASILLAS QUE QUIERAS" textAlignment="CENTER" wrappingWidth="510.2562255859375">
-                                       <font>
-                                          <Font size="21.0" />
-                                       </font>
-                                    </Text>
-                                 </children></AnchorPane>
-                          </content>
                         </Tab>
                     </tabs>
                   </TabPane>

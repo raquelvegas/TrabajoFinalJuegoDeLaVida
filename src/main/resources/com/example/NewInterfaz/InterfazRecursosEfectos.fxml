@@ -106,12 +106,12 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fill="#666565" layoutX="216.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
+                  <Text fill="#666565" layoutX="216.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fill="#666565" layoutX="123.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                  <Text fill="#666565" layoutX="117.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
