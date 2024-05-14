@@ -7,6 +7,11 @@ public class ArbolBinario<TipoDato> {
         return raiz;
     }
 
+    public void setRaiz(TipoDato raiz) {
+        ElementoArbol<TipoDato> elem = new ElementoArbol<>(raiz);
+        this.raiz = elem;
+    }
+
     public ArbolBinario(TipoDato raiz) {
         this.raiz = new ElementoArbol<>(raiz);
         this.raiz.setNodoIzq(null);

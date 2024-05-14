@@ -154,10 +154,7 @@ public class ControllerMainStage {
     }
     @FXML
     void stopGame(MouseEvent event) {
-        game.moverIndividuos();
-        game.actualizarIndividuos();
-        game.eliminarRecursos();
-        game.actualizarTablero();
+        game.turno();
     }
     @FXML
     void aplicarUser(MouseEvent event){

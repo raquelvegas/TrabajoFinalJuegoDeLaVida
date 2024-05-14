@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Individuo {
+- ID: int
+- Generacion: int
+- TurnosVida: int
+- ProbRepr: int
+- ProbClon: int
+- acciones: Cola<<Integer>>
+- arbolGenealogico: ArbolBinario<<Individuo>>
++ {abstract}getTipo();
++ Individuo(arbolGenealogico: ArbolBinario<<Individuo>>)
++ getID(): int
++ setID(ID: int)
++ getGeneracion(): int
++ setGeneracion(gen: id)
++ getTurnosVida(): int
++ setTurnosVida(vida: int)
++ getPrbRepr(): int
++ setProbRepr(probRepr: int)
++ getProbClon(): int
++ setProbClon(probClon: int)
++ getAcciones(): Cola<<Integer>>
++ setAcciones(acciones: Cola<<Integer>>)
++ getArbolGenealogico(): ArbolBinario<<Individuo>>
++ setArbolGenealogico(arbol: ArbolBinario>>Individuo>>)
+}
+
+class IndBasico extends Individuo {
++ getTipo(): int
++ IndBasico(arbolGenealogico: ArbolBinario<<Individuo>>)
+}
+
+class IndNormal extends Individuo {
+- recorrido: ListaEnlazada<<Square>>
++ getTipo(): int
++ IndNormal(arbolGenealogico: ArbolBinario<<Individuo>>)
++ getRecorrido(): ListaEnlazada<<Square>>
++ setRecorrido(recorrido: ListaEnlazada<<Square>>)
+}
+
+class IndAvanzado extends Individuo {
++ getTipo(): int
++IndAvanzado(arbolGenealogico: ArbolBinario<<Individuo>>)
+}
+
+@enduml

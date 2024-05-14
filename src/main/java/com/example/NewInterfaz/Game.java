@@ -1,6 +1,7 @@
 package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
+import com.example.EstructurasDeDatos.ElementoArbol;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.NewInterfaz.Individuos.IndAvanzado;
@@ -111,16 +112,17 @@ public class Game {
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
             int tipo = generarEnteroAleatorio(0, 2); // Generar tipo aleatorio
             Double tipoIndividuo;
-            if (tipo == 0) {
-                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
-                tipoIndividuo = 1.1;
-            } else if (tipo == 1) {
+//            if (tipo == 0) {
+//                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
+//                tipoIndividuo = 1.1;
+//            } else if (tipo == 1) {
                 individuoNuevo = new IndNormal(new ArbolBinario<>(null));
+            individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo); // Añadimos individuonuevo al arbol para que sea la raíz
                 tipoIndividuo = 1.2;
-            } else {
-                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
-                tipoIndividuo = 1.3;
-            }
+//            } else {
+//                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
+//                tipoIndividuo = 1.3;
+//            }
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
             DatosCompartidos.getListaIndividuos().add(individuoNuevo);
@@ -499,6 +501,52 @@ public class Game {
         int probabilidadAñadida = rec.getEfecto();
         ind.setProbClon(ind.getProbClon()+probabilidadAñadida);
     }
+
+    private void reproduccion() {
+        ListaSimple<Square> listaCuadrados = tablero.getSquares();
+        for (int i = 0; i < listaCuadrados.getNumeroElementos(); i++) {
+            Square actual = listaCuadrados.getDato(i);
+            if (actual.getIndividuos().getNumeroElementos() == 2) {
+                Individuo ind1 = actual.getIndividuos().getPrimero();
+                Individuo ind2 = actual.getIndividuos().getDato(1);
+                int probRepr1 = ind1.getProbRepr();
+                int probRepr2 = ind2.getProbRepr();
+                if (generarEnteroAleatorio(0, 100) <= probRepr1 && generarEnteroAleatorio(0, 100) <= probRepr2) { //Reproducción
+                    Integer tipo1 = ind1.getTipo();
+                    Integer tipo2 = ind2.getTipo();
+                    Integer tipoGanador;
+                    if (tipo1.compareTo(tipo2) >= 0) { // El mayor tipo es tipo1
+                        tipoGanador = tipo1;
+                    } else { // El mayor tipo es tipo2
+                        tipoGanador = tipo2;
+                    }
+                    DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos() + 1);
+                    double tipoIndividuo;
+                    Individuo individuoNuevo;
+                    if (tipoGanador == 0) {
+                        individuoNuevo = new IndBasico(new ArbolBinario<>(null));
+                        tipoIndividuo = 1.1;
+                    } else if (tipoGanador == 1) {
+                        individuoNuevo = new IndNormal(new ArbolBinario<>(null));
+                        tipoIndividuo = 1.2;
+                    } else {
+                        individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
+                        tipoIndividuo = 1.3;
+                    }
+                    ArbolBinario<Individuo> nuevoArbol = new ArbolBinario<>(individuoNuevo, new ElementoArbol<>(ind1), new ElementoArbol<>(ind2));
+                    individuoNuevo.setArbolGenealogico(nuevoArbol);
+                    addTipo(actual, tipoIndividuo);
+                    actual.getIndividuos().add(individuoNuevo);
+                    DatosCompartidos.getListaIndividuos().add(individuoNuevo);
+                    System.out.println("Ha habido reproduccion entre los individuos " + ind1.getID() + " y " + ind2.getID() + ". Ahora hay " + DatosCompartidos.getNumIndividuos() + " individuos.");
+                } else { // Muerte de ambos individuos
+
+                }
+            }
+        }
+    }
+
+
 
     ////////////// MOVIMIENTO DE INDIVIDUOS //////////////////
 
@@ -1103,8 +1151,20 @@ public class Game {
         // 3º Consumición de los recursos
         consumirRecursos();
 
+        // 4º Reproduccion de los individuos
+        reproduccion();
+        actualizarIndividuos();
 
-        // Finalmente, pintamos el tablero restante
+        // 5º Clonación de los individuos
+
+
+        // 6º Evauación de que no haya más de tres individuos/recursos por casilla
+
+
+        // 7º Generación de nuevos recursos
+
+
+        // 7º Pitar el tablero restante
         actualizarTablero();
     }
 }
