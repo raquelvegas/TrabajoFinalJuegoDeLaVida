@@ -374,12 +374,11 @@ public class Game {
 
     // Eliminar los recursos que no tienen tiempo de vida de la lista de DatosCompartidos
     private void eliminarRecursos(ListaSimple<Recurso> listaDel){
-        int numRecursosDel = DatosCompartidos.getListaRecursos().getNumeroElementos();
-        int numRecursos = DatosCompartidos.getListaRecursos().getNumeroElementos();
-        for (int i = 0; i < numRecursosDel; i++){
-            for (int j = 0; j < numRecursos; j++){
-                if(listaDel.getDato(i) == DatosCompartidos.getListaRecursos().getDato(j)){
-                    DatosCompartidos.getListaRecursos().del(j);
+        ListaSimple<Recurso> recursosTotales = DatosCompartidos.getListaRecursos();
+        for (int i = 0; i < listaDel.getNumeroElementos(); i++) {
+            for (int j = 0; j < recursosTotales.getNumeroElementos(); j++) {
+                if (listaDel.getDato(i) == recursosTotales.getDato(j)) {
+                    recursosTotales.del(j);
                 }
             }
         }
