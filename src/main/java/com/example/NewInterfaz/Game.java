@@ -112,17 +112,17 @@ public class Game {
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
             int tipo = generarEnteroAleatorio(0, 2); // Generar tipo aleatorio
             Double tipoIndividuo;
-//            if (tipo == 0) {
-//                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
-//                tipoIndividuo = 1.1;
-//            } else if (tipo == 1) {
+            if (tipo == 0) {
+                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
+                tipoIndividuo = 1.1;
+            } else if (tipo == 1) {
                 individuoNuevo = new IndNormal(new ArbolBinario<>(null));
             individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo); // Añadimos individuonuevo al arbol para que sea la raíz
                 tipoIndividuo = 1.2;
-//            } else {
-//                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
-//                tipoIndividuo = 1.3;
-//            }
+            } else {
+                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
+                tipoIndividuo = 1.3;
+            }
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
             DatosCompartidos.getListaIndividuos().add(individuoNuevo);
@@ -181,7 +181,7 @@ public class Game {
         if (celda.isOcupado()) {
             double tipo = celda.getTipo();
             int tipoEntero = (int) tipo;
-            int subtipo = (int) ((tipo - 1)*10+1);
+            int subtipo = (int) ((tipo *10)-10);
 
             switch (tipoEntero) {
                 case 1: //Individuo
