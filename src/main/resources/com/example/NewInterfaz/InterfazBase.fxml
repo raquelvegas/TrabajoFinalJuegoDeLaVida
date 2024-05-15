@@ -175,7 +175,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <GridPane layoutX="46.0" layoutY="38.0" prefHeight="122.0" prefWidth="444.0">
+                                    <GridPane fx:id="squareAumentado" layoutX="46.0" layoutY="38.0" prefHeight="122.0" prefWidth="444.0">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -186,12 +186,12 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" width="149.0" GridPane.rowIndex="1" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" width="149.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" width="149.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" width="149.0" GridPane.columnIndex="1" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" width="149.0" GridPane.columnIndex="2" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" width="149.0" />
+                                          <Rectangle fx:id="celda1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" width="149.0" />
+                                          <Rectangle fx:id="celda2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" width="149.0" GridPane.rowIndex="1" />
+                                          <Rectangle fx:id="celda3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" width="149.0" GridPane.columnIndex="1" />
+                                          <Rectangle fx:id="celda4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" width="149.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Rectangle fx:id="celda5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" width="149.0" GridPane.columnIndex="2" />
+                                          <Rectangle fx:id="celda6" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" width="149.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                     <GridPane alignment="CENTER" layoutX="58.0" layoutY="205.0" prefHeight="91.0" prefWidth="165.0">
@@ -370,11 +370,11 @@
                                        </children>
                                     </GridPane>
                                     <Text layoutX="46.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celda 1" />
-                                    <Text layoutX="342.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celda 3" />
-                                    <Text layoutX="196.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celda 2" />
-                                    <Text layoutX="46.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celda 4" />
+                                    <Text layoutX="196.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celda 3" />
+                                    <Text layoutX="46.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celda 2" />
+                                    <Text layoutX="196.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celda 4" />
                                     <Text layoutX="342.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celda 6" />
-                                    <Text layoutX="196.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celda 5" />
+                                    <Text layoutX="342.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celda 5" />
                                  </children>
                               </AnchorPane>
                           </content>

@@ -21,6 +21,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -41,10 +43,8 @@ public class ControllerMainStage {
             vidaUserText, probReproduccionText, probClonacionText, //Ajustes User
             aguaVidaText, bibliotecaVidaText, comidaVidaText, montanaVidaText, pozoVidaText, tesoroVidaText, // Vida Recursos
             aguaEfectoText, bibliotecaEfectoText, comidaEfectoText, montanaEfectoText, tesoroEfectoText, // Efecto Recursos
-            aguaAparicionText, bibliotecaAparicionText, comidaAparicionText, montanaAparicionText, pozoAparicionText, tesoroAparicionText; // Aparicion Recursos
-
-    @FXML
-    private static Text tipoCelda1, tipoCelda2, tipoCelda3, tipoCelda4, tipoCelda5, tipoCelda6, //contenidoCeldaTab
+            aguaAparicionText, bibliotecaAparicionText, comidaAparicionText, montanaAparicionText, pozoAparicionText, tesoroAparicionText, // Aparicion Recursos
+            tipoCelda1, tipoCelda2, tipoCelda3, tipoCelda4, tipoCelda5, tipoCelda6, //contenidoCeldaTab
             vidaCelda1, vidaCelda2, vidaCelda3, vidaCelda4, vidaCelda5, vidaCelda6; //contenidoCeldaTab
     @FXML
     private Slider vidaUserSlider, probReproduccionSlider, probClonacionSlider, //Ajustes User
@@ -58,11 +58,13 @@ public class ControllerMainStage {
     @FXML
     private ToggleGroup anadir;
     @FXML
+    private Rectangle celda1, celda2, celda3, celda4, celda5, celda6; // Celdas del squareAumentado
+    @FXML
     static MediaPlayer mediaPlayer;
     @FXML
     private BorderPane basePane;
     @FXML
-    private GridPane centralGridPane, tableroJuego;
+    private GridPane centralGridPane, tableroJuego, squareAumentado;
     @FXML
     private TabPane tabPaneParametros;
     @FXML
@@ -77,8 +79,17 @@ public class ControllerMainStage {
     protected boolean gameON = false;
     private Timeline controlLoop;
     private Game game = DatosCompartidos.getGame();
+    private static ControllerMainStage instance;
 
     private static final Logger log = LogManager.getLogger(ControllerMainStage.class);
+
+    public ControllerMainStage() {
+        instance = this;
+    }
+
+    public static ControllerMainStage getInstance() {
+        return instance;
+    }
 
     ///////////////////////////////////BindingSliders////////////////////////////////////////////////////////////////////////////////
     protected IntegerProperty medidaVidaUser = new SimpleIntegerProperty(0);
@@ -220,6 +231,7 @@ public class ControllerMainStage {
 
     @FXML
     void setEstiloFuego(ActionEvent event) {
+        game.getTablero().setNewTheme("Fuego");
         tabPaneParametros.setStyle("-fx-background-color: #ffc09f;");
         infoVBox.setStyle("-fx-background-color: #ffc09f;");
         for (int i = 0; i< Game.getTablero().getSquares().getNumeroElementos(); i++){
@@ -230,6 +242,7 @@ public class ControllerMainStage {
     }
     @FXML
     void setEstiloAgua(ActionEvent event) {
+        game.getTablero().setNewTheme("Agua");
         tabPaneParametros.setStyle("-fx-background-color: #add8e6ff;");
         infoVBox.setStyle("-fx-background-color: #add8e6ff;");
         for (int i = 0; i< Game.getTablero().getSquares().getNumeroElementos(); i++){
@@ -241,6 +254,7 @@ public class ControllerMainStage {
     }
     @FXML
     void setEstiloNatura(ActionEvent event) {
+        game.getTablero().setNewTheme("Natura");
         tabPaneParametros.setStyle("-fx-background-color: #c0e6b2ff;");
         infoVBox.setStyle("-fx-background-color: #c0e6b2ff;");
         for (int i = 0; i< Game.getTablero().getSquares().getNumeroElementos(); i++){
@@ -250,9 +264,9 @@ public class ControllerMainStage {
         log.info("Cambio de color de visualización: Natura");
 
     }
-
     @FXML
     void setEstiloTierra(ActionEvent event) {
+        game.getTablero().setNewTheme("Tierra");
         tabPaneParametros.setStyle("-fx-background-color: #fcf5c7;");
         infoVBox.setStyle("-fx-background-color: #fcf5c7;");
         for (int i = 0; i< Game.getTablero().getSquares().getNumeroElementos(); i++){
@@ -353,7 +367,7 @@ public class ControllerMainStage {
         this.stage = stage;
     }
 
-    public static void actulizarCeldaSeleccionadaTab(){
+    public void actulizarCeldaSeleccionadaTab(){
         tipoCelda1.setText(traducirTipo(CeldaSeleccionada.getTipo1()));
         tipoCelda2.setText(traducirTipo(CeldaSeleccionada.getTipo2()));
         tipoCelda3.setText(traducirTipo(CeldaSeleccionada.getTipo3()));
@@ -361,36 +375,89 @@ public class ControllerMainStage {
         tipoCelda5.setText(traducirTipo(CeldaSeleccionada.getTipo5()));
         tipoCelda6.setText(traducirTipo(CeldaSeleccionada.getTipo6()));
 
-        vidaCelda1.setText(CeldaSeleccionada.getVida1());
-        vidaCelda2.setText(CeldaSeleccionada.getVida2());
-        vidaCelda3.setText(CeldaSeleccionada.getVida3());
-        vidaCelda4.setText(CeldaSeleccionada.getVida4());
-        vidaCelda5.setText(CeldaSeleccionada.getVida5());
-        vidaCelda6.setText(CeldaSeleccionada.getVida6());
+        vidaCelda1.setText(String.valueOf(CeldaSeleccionada.getVida1()));
+        vidaCelda2.setText(String.valueOf(CeldaSeleccionada.getVida2()));
+        vidaCelda3.setText(String.valueOf(CeldaSeleccionada.getVida3()));
+        vidaCelda4.setText(String.valueOf(CeldaSeleccionada.getVida4()));
+        vidaCelda5.setText(String.valueOf(CeldaSeleccionada.getVida5()));
+        vidaCelda6.setText(String.valueOf(CeldaSeleccionada.getVida6()));
+
+        celda1.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo1()));
+        celda2.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo2()));
+        celda3.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo3()));
+        celda4.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo4()));
+        celda5.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo5()));
+        celda6.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo6()));
     }
 
-    public static String traducirTipo(String tipo){
+    public static String traducirTipo(Double tipo){
         String tipoTraducido = null;
-        if(tipo == "1.1"){
+        if(tipo == 1.1){
             tipoTraducido = "individuo Básico";
-        } else if (tipo == "1.2"){
+        } else if (tipo == 1.2){
             tipoTraducido = "individuo Normal";
-        } else if (tipo == "1.3"){
+        } else if (tipo == 1.3){
             tipoTraducido = "individuo Avanzado";
-        } else if (tipo == "2"){
+        } else if (tipo == 2.0){
             tipoTraducido = "Agua";
-        } else if (tipo == "3"){
+        } else if (tipo == 3.0){
             tipoTraducido = "Comida";
-        } else if (tipo == "4"){
+        } else if (tipo == 4.0){
             tipoTraducido = "Montaña";
-        } else if (tipo == "5"){
+        } else if (tipo == 5.0){
             tipoTraducido = "Biblioteca";
-        } else if (tipo == "6"){
+        } else if (tipo == 6.0){
             tipoTraducido = "Tesoro";
-        } else if (tipo == "7"){
+        } else if (tipo == 7.0){
             tipoTraducido = "Pozo";
         }
         return tipoTraducido;
+    }
+
+    public Color pintarSquareAumentado (Double tipo){
+        int tipoEntero = tipo.intValue();
+        int subtipo = (int) ((tipo *10)-10);
+        Color color = null;
+
+        switch (tipoEntero) {
+            case 1: //Individuo
+                switch (subtipo) {
+                    case 1: // Tipo 1.1
+                        // Código para el tipo 1.1
+                        color = Color.web("#212121");
+                        break;
+                    case 2: // Tipo 1.2
+                        // Código para el tipo 1.2
+                        color = Color.web("#616161");
+                        break;
+                    case 3: // Tipo 1.3
+                        // Código para el tipo 1.3
+                        color = Color.web("#9e9e9e");
+                        break;
+                }
+                break;
+            case 2: //Agua - Azul
+                color = Color.web("#0404e2");
+                break;
+            case 3: //Comida - Verde
+                color = Color.web("#00AD43");
+                break;
+            case 4: //Montaña - Marrón
+                color = Color.web("#864332");
+                break;
+            case 5: //Biblioteca - Naranja
+                color = Color.web("#fc4b08");
+                break;
+            case 6: //Tesoro - Amarillo
+                color = Color.web("#ffd700");
+                break;
+            case 7: //Pozo - Rojo
+                color = Color.web("#ff0000");
+                break;
+            default: //Transparente
+                color = Color.TRANSPARENT;
+        }
+        return color;
     }
 
     private void setImage (String path, ImageView imageView, GridPane gridPane){
@@ -521,6 +588,13 @@ public class ControllerMainStage {
 
         tabPaneParametros.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloAgua.css").toExternalForm());
         infoVBox.getStylesheets().add(getClass().getResource("/EstiloFondo/estiloAgua.css").toExternalForm());
+        squareAumentado.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
+        celda1.setFill(Color.TRANSPARENT);
+        celda2.setFill(Color.TRANSPARENT);
+        celda3.setFill(Color.TRANSPARENT);
+        celda4.setFill(Color.TRANSPARENT);
+        celda5.setFill(Color.TRANSPARENT);
+        celda6.setFill(Color.TRANSPARENT);
 
         tabPaneParametros.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
             if (newTab != null) {

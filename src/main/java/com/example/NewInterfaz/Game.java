@@ -17,13 +17,17 @@ import java.util.Random;
 public class Game {
     public static Tablero tablero;
     private boolean game;
+    private ControllerMainStage controller;
 
     public Game(GridPane tablero){
         this.tablero = new Tablero(tablero, "Agua");
         this.game = true;
+        this.controller = ControllerMainStage.getInstance();
         addEventHandlers(this.tablero.tableroJuego);
 
     }
+
+
 
 
     private void addEventHandlers(GridPane tablero) {
@@ -62,25 +66,25 @@ public class Game {
     }
 
     private void handleCeldaClick(int columna, int fila, Square square) {
-        CeldaSeleccionada.setTipo1("1.1");
-        CeldaSeleccionada.setVida1("1");
+        CeldaSeleccionada.setTipo1(square.getCelda(0).getTipo());
+        CeldaSeleccionada.setVida1(1.0);
 
-        CeldaSeleccionada.setTipo2("1.2");
-        CeldaSeleccionada.setVida2("2");
+        CeldaSeleccionada.setTipo2(square.getCelda(1).getTipo());
+        CeldaSeleccionada.setVida2(2.0);
 
-        CeldaSeleccionada.setTipo3("1.3");
-        CeldaSeleccionada.setVida3("3");
+        CeldaSeleccionada.setTipo3(square.getCelda(2).getTipo());
+        CeldaSeleccionada.setVida3(3.0);
 
-        CeldaSeleccionada.setTipo4("2");
-        CeldaSeleccionada.setVida4("4");
+        CeldaSeleccionada.setTipo4(square.getCelda(3).getTipo());
+        CeldaSeleccionada.setVida4(4.0);
 
-        CeldaSeleccionada.setTipo5("3");
-        CeldaSeleccionada.setVida5("5");
+        CeldaSeleccionada.setTipo5(square.getCelda(4).getTipo());
+        CeldaSeleccionada.setVida5(5.0);
 
-        CeldaSeleccionada.setTipo6("4");
-        CeldaSeleccionada.setVida6("6");
+        CeldaSeleccionada.setTipo6(square.getCelda(5).getTipo());
+        CeldaSeleccionada.setVida6(6.0);
 
-        ControllerMainStage.actulizarCeldaSeleccionadaTab();
+        controller.actulizarCeldaSeleccionadaTab();
     }
 
 

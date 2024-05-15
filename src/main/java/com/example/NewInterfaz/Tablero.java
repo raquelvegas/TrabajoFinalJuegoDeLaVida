@@ -62,6 +62,14 @@ public class Tablero {
 
     }
 
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setNewTheme(String theme) {
+        this.theme = theme;
+    }
+
     public ListaSimple<Square> getSquares() {
         return squares;
     }
