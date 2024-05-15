@@ -607,12 +607,26 @@ public class Game {
     private void moverIndNormal(ListaSimple<Square> listaCuadrados, Square cuadrado, Individuo ind) {
         IndNormal indNormal = (IndNormal) ind;
         if (!DatosCompartidos.getListaRecursos().isVacia()) {
-            if (indNormal.getRecorrido().isVacia()) {
+            if (indNormal.getRecorrido().getNumeroElementos() <= 0) {
                 buscarNuevoObjetivo(listaCuadrados, cuadrado, indNormal);
+                if (indNormal.getRecorrido().getNumeroElementos() <= 0) {
+                    int posicionCuadrado = posicionCuadrado(cuadrado);
+                    if (posicionCuadrado == 0) {
+                        Integer movimiento = generarEnteroAleatorio(1, 8);   // Se genera el movimiento a realizar (véase el código numérico en README)
+                        moverIndBasicoCuadradoInterior(listaCuadrados, cuadrado, ind, movimiento);   // Se añade el individuo a la lista de individuos del nuevo cuadrado
+                    } else if ((posicionCuadrado == 1) || (posicionCuadrado == 3) || (posicionCuadrado == 5) || (posicionCuadrado == 7)) {
+                        Integer movimiento = generarEnteroAleatorio(1, 3);
+                        moverIndBasicoCuadradoEsquina(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
+                    } else {
+                        Integer movimiento = generarEnteroAleatorio(1, 5);
+                        moverIndBasicoCuadradoBorde(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
+                    }
+                }
+            } else {
+                moverIndNormalDirigido(indNormal.getRecorrido(), indNormal);
             }
-            moverIndNormalDirigido(indNormal.getRecorrido(), indNormal);
         } else {
-            if (!indNormal.getRecorrido().isVacia()) { // Aunque no existan ya recursos, si el individuo tenía fijado un objetivo, llegará hasta él
+            if (indNormal.getRecorrido().getNumeroElementos() <= 0) { // Aunque no existan ya recursos, si el individuo tenía fijado un objetivo, llegará hasta él
                 moverIndNormalDirigido(indNormal.getRecorrido(), indNormal);
             } else { // Si no hay más recursos y el individuo no tenía ningún objetivo fijado, se moverá como un individuo básico
                 int posicionCuadrado = posicionCuadrado(cuadrado);
@@ -635,36 +649,51 @@ public class Game {
     private void buscarNuevoObjetivo(ListaSimple<Square> listaCuadrados, Square cuadrado, IndNormal ind) {
         int recursoRandom = generarEnteroAleatorio(0, DatosCompartidos.getListaRecursos().getNumeroElementos() - 1);
         Recurso objetivo = DatosCompartidos.getListaRecursos().getDato(recursoRandom);
-        ListaEnlazada<Square> listaRecorrido = new ListaEnlazada<>();
-        int coordXObjetivo = objetivo.getSquare().getX();
-        while (cuadrado.getX() != coordXObjetivo) {
-            Integer coordXCuadrado = cuadrado.getX();
-            int comparacion = coordXCuadrado.compareTo(coordXObjetivo);
-            if (comparacion > 0) {
-                Square siguienteCuadrado = listaCuadrados.getDato(cuadrado.getID() - Integer.parseInt(DatosCompartidos.getAltoMatriz()));
-                listaRecorrido.add(siguienteCuadrado);
-                cuadrado = siguienteCuadrado;
+        if ((DatosCompartidos.getListaRecursos().getNumeroElementos() == 1) && (cuadrado.getID() == objetivo.getSquare().getID())) {
+            int posicionCuadrado = posicionCuadrado(cuadrado);
+            if (posicionCuadrado == 0) {
+                Integer movimiento = generarEnteroAleatorio(1, 8);   // Se genera el movimiento a realizar (véase el código numérico en README)
+                moverIndBasicoCuadradoInterior(listaCuadrados, cuadrado, ind, movimiento);   // Se añade el individuo a la lista de individuos del nuevo cuadrado
+            } else if ((posicionCuadrado == 1) || (posicionCuadrado == 3) || (posicionCuadrado == 5) || (posicionCuadrado == 7)) {
+                Integer movimiento = generarEnteroAleatorio(1, 3);
+                moverIndBasicoCuadradoEsquina(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
             } else {
-                Square siguienteCuadrado = listaCuadrados.getDato(cuadrado.getID() + Integer.parseInt(DatosCompartidos.getAltoMatriz()));
-                listaRecorrido.add(siguienteCuadrado);
-                cuadrado = siguienteCuadrado;
+                Integer movimiento = generarEnteroAleatorio(1, 5);
+                moverIndBasicoCuadradoBorde(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
             }
-        }
-        int coordYObjetivo = objetivo.getSquare().getY();
-        while (cuadrado.getY() != coordYObjetivo) {
-            Integer coordYCuadrado = cuadrado.getY();
-            int comparacion = coordYCuadrado.compareTo(coordYObjetivo);
-            if (comparacion > 0) {
-                Square siguienteCuadrado = listaCuadrados.getDato(cuadrado.getID() - 1);
-                listaRecorrido.add(siguienteCuadrado);
-                cuadrado = siguienteCuadrado;
-            } else {
-                Square siguienteCuadrado = listaCuadrados.getDato(cuadrado.getID() + 1);
-                listaRecorrido.add(siguienteCuadrado);
-                cuadrado = siguienteCuadrado;
+        } else {
+
+            ListaEnlazada<Square> listaRecorrido = new ListaEnlazada<>();
+            int coordXObjetivo = objetivo.getSquare().getX();
+            while (cuadrado.getX() != coordXObjetivo) {
+                Integer coordXCuadrado = cuadrado.getX();
+                int comparacion = coordXCuadrado.compareTo(coordXObjetivo);
+                if (comparacion > 0) {
+                    Square siguienteCuadrado = listaCuadrados.getDato(cuadrado.getID() - Integer.parseInt(DatosCompartidos.getAltoMatriz()));
+                    listaRecorrido.add(siguienteCuadrado);
+                    cuadrado = siguienteCuadrado;
+                } else {
+                    Square siguienteCuadrado = listaCuadrados.getDato(cuadrado.getID() + Integer.parseInt(DatosCompartidos.getAltoMatriz()));
+                    listaRecorrido.add(siguienteCuadrado);
+                    cuadrado = siguienteCuadrado;
+                }
             }
+            int coordYObjetivo = objetivo.getSquare().getY();
+            while (cuadrado.getY() != coordYObjetivo) {
+                Integer coordYCuadrado = cuadrado.getY();
+                int comparacion = coordYCuadrado.compareTo(coordYObjetivo);
+                if (comparacion > 0) {
+                    Square siguienteCuadrado = listaCuadrados.getDato(cuadrado.getID() - 1);
+                    listaRecorrido.add(siguienteCuadrado);
+                    cuadrado = siguienteCuadrado;
+                } else {
+                    Square siguienteCuadrado = listaCuadrados.getDato(cuadrado.getID() + 1);
+                    listaRecorrido.add(siguienteCuadrado);
+                    cuadrado = siguienteCuadrado;
+                }
+            }
+            ind.setRecorrido(listaRecorrido);
         }
-        ind.setRecorrido(listaRecorrido);
     }
 
 
@@ -1145,10 +1174,10 @@ public class Game {
         actualizarIndividuos();
 
         // 2ª Movimiento de individuos
-        moverIndividuos();
+//        moverIndividuos();
 
         // 3º Consumición de los recursos
-        consumirRecursos();
+//        consumirRecursos();
 
         // 4º Reproduccion de los individuos
         reproduccion();

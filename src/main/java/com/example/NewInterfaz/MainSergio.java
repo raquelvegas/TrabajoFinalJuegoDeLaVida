@@ -3,7 +3,7 @@ package com.example.NewInterfaz;
 import java.util.Random;
 
 public class MainSergio {
-    private static int generarEnteroAleatorio(int min, int max) {
+    private static  int generarEnteroAleatorio(int min, int max) {
         Random random = new Random();
         int rango = max - min + 1;
         int numeroAleatorio = random.nextInt(rango) + min;
