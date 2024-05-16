@@ -1,17 +1,26 @@
     package com.example.NewInterfaz;
 
+    import javafx.animation.KeyFrame;
+    import javafx.animation.KeyValue;
+    import javafx.animation.Timeline;
     import javafx.application.Application;
+    import javafx.event.ActionEvent;
+    import javafx.event.EventHandler;
     import javafx.fxml.FXMLLoader;
     import javafx.scene.Group;
     import javafx.scene.Parent;
     import javafx.scene.Scene;
     import javafx.scene.control.Alert;
     import javafx.scene.control.ButtonType;
+    import javafx.scene.control.ProgressBar;
     import javafx.scene.image.Image;
     import javafx.scene.image.ImageView;
+    import javafx.scene.layout.StackPane;
+    import javafx.scene.layout.VBox;
     import javafx.stage.Modality;
     import javafx.stage.Stage;
     import javafx.stage.StageStyle;
+    import javafx.util.Duration;
     import org.apache.logging.log4j.LogManager;
     import org.apache.logging.log4j.Logger;
 
@@ -26,6 +35,31 @@
         @Override
         public void start(Stage primaryStage) throws IOException {
             log.info("Inicio de la ejecución");
+
+            ImageView logoImageView = new ImageView(new Image("IconLifeGame.png"));
+            logoImageView.setFitWidth(400);
+            logoImageView.setFitHeight(400);
+            logoImageView.setOpacity(0); // Empieza invisible
+
+            ProgressBar progressBar = new ProgressBar(0);
+            progressBar.setPrefWidth(400);
+
+            VBox vBox = new VBox();
+            vBox.getChildren().addAll(logoImageView, progressBar);
+            vBox.setAlignment(javafx.geometry.Pos.CENTER);
+
+            StackPane root = new StackPane();
+            root.getChildren().add(vBox);
+            root.setStyle("-fx-background-color: black;");
+
+            Scene scene = new Scene(root, 800, 600);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Cargando...");
+            primaryStage.setResizable(false);
+            primaryStage.setMaximized(true);
+            primaryStage.setOnCloseRequest(event -> event.consume());
+
+
             URL fxmlUrl1 = getClass().getResource("InterfazBase.fxml");
             FXMLLoader loader = new FXMLLoader(fxmlUrl1);
             Parent root1 = loader.load();
@@ -39,15 +73,16 @@
             backgroundImageView.fitHeightProperty().bind(primaryStage.heightProperty());
 
             Group rootGroup = new Group(backgroundImageView, root1);
+            Stage mainStage = new Stage();
 
-            primaryStage.setScene(new Scene(rootGroup));
-            primaryStage.setMaximized(true); // Pantalla completa
+            mainStage.setScene(new Scene(rootGroup));
+            mainStage.setMaximized(true); // Pantalla completa
             //primaryStage.setFullScreen(true);
-            primaryStage.setResizable(false); // Evitar que la ventana sea redimensionable
+            mainStage.setResizable(false); // Evitar que la ventana sea redimensionable
 
             //Para el EXIT
             ControllerMainStage controller = loader.getController();
-            controller.setStage(primaryStage);
+            controller.setStage(mainStage);
 
 
             URL fxmlUrl2 = getClass().getResource("InterfazInicioJuego.fxml");
@@ -63,7 +98,7 @@
             optionStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
 
 
-            primaryStage.setOnCloseRequest(event -> {
+            mainStage.setOnCloseRequest(event -> {
                 // Mostrar alerta
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Confirmar salida");
@@ -72,7 +107,7 @@
 
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.OK) {
-                    primaryStage.close(); //si se acepta se cierra
+                    mainStage.close(); //si se acepta se cierra
                 } else {
                     // Si el usuario cancela, se consume el evento para evitar que la ventana se cierre
                     event.consume();
@@ -80,8 +115,20 @@
                 log.info("Fin de la ejecución");
             });
 
-            primaryStage.show();
+
+            mainStage.show();
             optionStage.show();
+            primaryStage.show();
+            Timeline timeline = new Timeline(
+                    new KeyFrame(Duration.seconds(0), new KeyValue(logoImageView.opacityProperty(), 0)),
+                    new KeyFrame(Duration.seconds(1), new KeyValue(logoImageView.opacityProperty(), 1)),
+                    new KeyFrame(Duration.seconds(3), new KeyValue(progressBar.progressProperty(), 1)),
+                    new KeyFrame(Duration.seconds(3), event -> {
+                        primaryStage.close();
+
+                    })
+            );
+            timeline.play();
     }
 
 

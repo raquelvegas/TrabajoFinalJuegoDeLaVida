@@ -67,26 +67,102 @@ public class Game {
 
     private void handleCeldaClick(int columna, int fila, Square square) {
         CeldaSeleccionada.setTipo1(square.getCelda(0).getTipo());
-        CeldaSeleccionada.setVida1(1.0);
-
         CeldaSeleccionada.setTipo2(square.getCelda(1).getTipo());
-        CeldaSeleccionada.setVida2(2.0);
-
         CeldaSeleccionada.setTipo3(square.getCelda(2).getTipo());
-        CeldaSeleccionada.setVida3(3.0);
-
         CeldaSeleccionada.setTipo4(square.getCelda(3).getTipo());
-        CeldaSeleccionada.setVida4(4.0);
-
         CeldaSeleccionada.setTipo5(square.getCelda(4).getTipo());
-        CeldaSeleccionada.setVida5(5.0);
-
         CeldaSeleccionada.setTipo6(square.getCelda(5).getTipo());
-        CeldaSeleccionada.setVida6(6.0);
+
+        ListaSimple<Individuo> listaIndividuos = square.getIndividuos();
+        ListaSimple<Recurso> listaRecursos = square.getRecursos();
+
+        CeldaSeleccionada.setVida1(getVidasCeldas(square,1,square.getCelda(0).getTipo(),listaIndividuos,listaRecursos));
+        CeldaSeleccionada.setVida2(getVidasCeldas(square,2,square.getCelda(1).getTipo(),listaIndividuos,listaRecursos));
+        CeldaSeleccionada.setVida3(getVidasCeldas(square,3,square.getCelda(2).getTipo(),listaIndividuos,listaRecursos));
+        CeldaSeleccionada.setVida4(getVidasCeldas(square,4,square.getCelda(3).getTipo(),listaIndividuos,listaRecursos));
+        CeldaSeleccionada.setVida5(getVidasCeldas(square,5,square.getCelda(4).getTipo(),listaIndividuos,listaRecursos));
+        CeldaSeleccionada.setVida6(getVidasCeldas(square,6,square.getCelda(5).getTipo(),listaIndividuos,listaRecursos));
 
         controller.actulizarCeldaSeleccionadaTab();
     }
 
+    private double getVidasCeldas(Square square, int celda, Double tipo, ListaSimple<Individuo> indLista, ListaSimple<Recurso> recLista) {
+        double vida = 0.0;
+        if (tipo == 1.1 || tipo == 1.2 || tipo == 1.3) {
+            // Buscar el individuo por ID en la lista de todos los individuos
+            for (int i = 0; i < DatosCompartidos.getListaIndividuos().getNumeroElementos(); i++) {
+                Individuo individuo = DatosCompartidos.getListaIndividuos().getDato(i);
+                if (individuo.getID() == tipo.intValue()) {
+                    vida = individuo.getTurnosVida();
+                    indLista.del(0);
+                    break; // Salir del bucle cuando se encuentra el individuo
+                }
+            }
+        } else if (tipo >= 2.0 && tipo <= 7.0) {
+            // Buscar el recurso por tipo en la lista de recursos del square
+            for (int i = 0; i < recLista.getNumeroElementos(); i++) {
+                Recurso recurso = recLista.getDato(i);
+                if (recurso.getTipoRecurso().equals(tipo)) {
+                    vida = recurso.getTiempoVida();
+                    recLista.del(i); // Eliminar el recurso de la lista
+                    break; // Salir del bucle cuando se encuentra el recurso
+                }
+            }
+        }
+        return vida;
+    }
+
+
+//    private double getVidasCeldas(Square square, int celda, Double tipo, ListaSimple<Individuo> indLista, ListaSimple<Recurso> recLista) {
+//        double vida = 0.0;
+//        if (tipo == 1.1 || tipo == 1.2 || tipo == 1.3) {
+//            // Buscar el id en la lista de todos los individuos
+//            for (int i = 0; i < DatosCompartidos.getListaIndividuos().getNumeroElementos(); i++) {
+//                Individuo individuo = DatosCompartidos.getListaIndividuos().getDato(i);
+//                if (individuo.getID() == tipo.intValue()) {
+//                    vida = individuo.getTurnosVida();
+//                    indLista.del(0);
+//                    break; // Terminar la búsqueda una vez encontrado el individuo
+//                }
+//            }
+//        } else if (tipo >= 2.0 && tipo <= 7.0) {
+//            // Buscar el recurso en la lista de recursos del square
+//            for (int i = 0; i < recLista.getNumeroElementos(); i++) {
+//                Recurso recurso = recLista.getDato(i);
+//                if (recurso.getTipoRecurso() == tipo.intValue()) {
+//                    vida = recurso.getTiempoVida();
+//                    recLista.del(i);
+//                    break; // Terminar la búsqueda una vez encontrado el recurso
+//                }
+//            }
+//        }
+//        return vida;
+//    }
+
+
+
+//    private double getVidasCeldas (Square square, int celda, Double tipo, ListaSimple<Individuo> indLista, ListaSimple<Recurso> recLista){
+//        double vida = 0.0;
+//        if (tipo == 1.1 || tipo == 1.2 || tipo == 1.3){
+//            int pos = 0;
+//            for (int i = 0; indLista.getDato(0).getID() != DatosCompartidos.getListaIndividuos().getDato(i).getID(); i++){
+//                pos = i;
+//            }
+//            vida = DatosCompartidos.getListaIndividuos().getDato(pos).getTurnosVida();
+//            indLista.del(0);
+//        } else if (tipo == 2.0 || tipo == 3.0 || tipo == 4.0 || tipo == 5.0 || tipo == 6.0 || tipo == 7.0) {
+//            Double tipoRecursoBuscar = square.getCelda(celda).getTipo();
+//            int pos = 0;
+//            for (int i = 0; tipoRecursoBuscar != recLista.getDato(i).getTipoRecurso(); i++){
+//                pos = i;
+//            }
+//            vida = recLista.getDato(pos).getTiempoVida();
+//            recLista.del(pos);
+//        } else {
+//            vida = 0.0;
+//        }
+//        return vida;
+//    }
 
     private void handleSquareClick(int columna, int fila, Square square) {
         System.out.println("Clic en el cuadrado " + columna + ", " + fila);
