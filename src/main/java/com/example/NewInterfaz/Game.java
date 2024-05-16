@@ -290,7 +290,8 @@ public class Game {
                     celda.setColor(Color.web("#864332"));
                     break;
                 case 5: //Biblioteca - Naranja
-                    celda.setColor(Color.web("#fc4b08"));
+                    celda.setColor(Color.web("#fa8072"));
+//                    celda.setColor(Color.web("#fc4b08"));
                     break;
                 case 6: //Tesoro - Amarillo
                     celda.setColor(Color.web("#ffd700"));
@@ -374,6 +375,50 @@ public class Game {
                 addRecursos(tablero.getSquare(idSquareAleatorio), 7.0);
             }
         }
+    }
+
+    // Aparición de recursos durante la partida
+    public void aparicionRecursos(){
+         for (int i = 0; i < tablero.getSquares().getNumeroElementos(); i++){
+             // Agua
+             if (revisionAparicion(Integer.parseInt(DatosCompartidos.getAguaAparicion()))){
+                 addRecursos(tablero.getSquare(i), 2.0);
+             }
+
+             // Comida
+             if (revisionAparicion(Integer.parseInt(DatosCompartidos.getComidaAparicion()))){
+                 addRecursos(tablero.getSquare(i), 3.0);
+             }
+
+             // Montaña
+             if (revisionAparicion(Integer.parseInt(DatosCompartidos.getMontanaAparicion()))){
+                 addRecursos(tablero.getSquare(i), 4.0);
+             }
+
+             // Biblioteca
+             if (revisionAparicion(Integer.parseInt(DatosCompartidos.getBibliotecaAparicion()))){
+                 addRecursos(tablero.getSquare(i), 5.0);
+             }
+
+             // Tesoro
+             if (revisionAparicion(Integer.parseInt(DatosCompartidos.getTesoroAparicion()))){
+                 addRecursos(tablero.getSquare(i), 6.0);
+             }
+
+             // Pozo
+             if (revisionAparicion(Integer.parseInt(DatosCompartidos.getPozoAparicion()))){
+                 addRecursos(tablero.getSquare(i), 7.0);
+             }
+         }
+    }
+
+    public boolean revisionAparicion(int recursoAparicion){
+        int porcentaje = generarEnteroAleatorio(0,100);
+        boolean aparicion = false;
+            if (porcentaje < recursoAparicion){
+                aparicion = true;
+            }
+        return aparicion;
     }
 
 
@@ -1251,6 +1296,7 @@ public class Game {
         actualizarProbabilidades();
         eliminarIndividuos();
         eliminarRecursos();
+        aparicionRecursos();
         actualizarIndividuos();
 
         // 2ª Movimiento de individuos

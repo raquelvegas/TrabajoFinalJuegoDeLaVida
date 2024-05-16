@@ -79,6 +79,7 @@
             mainStage.setMaximized(true); // Pantalla completa
             //primaryStage.setFullScreen(true);
             mainStage.setResizable(false); // Evitar que la ventana sea redimensionable
+            mainStage.setOpacity(0);
 
             //Para el EXIT
             ControllerMainStage controller = loader.getController();
@@ -91,6 +92,7 @@
             Stage optionStage = new Stage();
             optionStage.setScene(new Scene(root2));
             optionStage.setResizable(true); // Evitar que la ventana sea redimensionable
+            optionStage.setOpacity(0);
             optionStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
             optionStage.initOwner(primaryStage);
 
@@ -125,7 +127,8 @@
                     new KeyFrame(Duration.seconds(3), new KeyValue(progressBar.progressProperty(), 1)),
                     new KeyFrame(Duration.seconds(3), event -> {
                         primaryStage.close();
-
+                        optionStage.setOpacity(1);
+                        mainStage.setOpacity(1);
                     })
             );
             timeline.play();
