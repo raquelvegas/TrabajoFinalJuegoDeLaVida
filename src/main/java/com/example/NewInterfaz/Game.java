@@ -34,8 +34,6 @@ public class Game {
     }
 
 
-
-
     private void addEventHandlers(GridPane tablero) {
         tablero.setOnMouseClicked(event -> {
             if(DatosCompartidos.isAnadirTab()) {
@@ -60,9 +58,7 @@ public class Game {
                     if (node instanceof Square) {
                         Square square = (Square) node;
                         if (square.getBoundsInParent().contains(x, y)) {
-                            int columna = square.getX();
-                            int fila = square.getY();
-                            handleCeldaClick(columna, fila, square);
+                            handleCeldaClick(square);
                             break; // Salir del bucle una vez que se encuentre un cuadrado clicado
                         }
                     }
@@ -71,7 +67,7 @@ public class Game {
         });
     }
 
-    private void handleCeldaClick(int columna, int fila, Square square) {
+    private void handleCeldaClick(Square square) {
         CeldaSeleccionada.setTipo1(square.getCelda(0).getTipo());
         CeldaSeleccionada.setTipo2(square.getCelda(1).getTipo());
         CeldaSeleccionada.setTipo3(square.getCelda(2).getTipo());
@@ -79,8 +75,8 @@ public class Game {
         CeldaSeleccionada.setTipo5(square.getCelda(4).getTipo());
         CeldaSeleccionada.setTipo6(square.getCelda(5).getTipo());
 
-        ListaSimple<Individuo> listaIndividuos = square.getIndividuos();
-        ListaSimple<Recurso> listaRecursos = square.getRecursos();
+        ListaSimple<Individuo> listaIndividuos = square.getIndividuos().copiaLista();
+        ListaSimple<Recurso> listaRecursos = square.getRecursos().copiaLista();
 
         CeldaSeleccionada.setVida1(getVidasCeldas(square,1,square.getCelda(0).getTipo(),listaIndividuos,listaRecursos));
         CeldaSeleccionada.setVida2(getVidasCeldas(square,2,square.getCelda(1).getTipo(),listaIndividuos,listaRecursos));
@@ -117,58 +113,6 @@ public class Game {
         }
         return vida;
     }
-
-
-//    private double getVidasCeldas(Square square, int celda, Double tipo, ListaSimple<Individuo> indLista, ListaSimple<Recurso> recLista) {
-//        double vida = 0.0;
-//        if (tipo == 1.1 || tipo == 1.2 || tipo == 1.3) {
-//            // Buscar el id en la lista de todos los individuos
-//            for (int i = 0; i < DatosCompartidos.getListaIndividuos().getNumeroElementos(); i++) {
-//                Individuo individuo = DatosCompartidos.getListaIndividuos().getDato(i);
-//                if (individuo.getID() == tipo.intValue()) {
-//                    vida = individuo.getTurnosVida();
-//                    indLista.del(0);
-//                    break; // Terminar la búsqueda una vez encontrado el individuo
-//                }
-//            }
-//        } else if (tipo >= 2.0 && tipo <= 7.0) {
-//            // Buscar el recurso en la lista de recursos del square
-//            for (int i = 0; i < recLista.getNumeroElementos(); i++) {
-//                Recurso recurso = recLista.getDato(i);
-//                if (recurso.getTipoRecurso() == tipo.intValue()) {
-//                    vida = recurso.getTiempoVida();
-//                    recLista.del(i);
-//                    break; // Terminar la búsqueda una vez encontrado el recurso
-//                }
-//            }
-//        }
-//        return vida;
-//    }
-
-
-
-//    private double getVidasCeldas (Square square, int celda, Double tipo, ListaSimple<Individuo> indLista, ListaSimple<Recurso> recLista){
-//        double vida = 0.0;
-//        if (tipo == 1.1 || tipo == 1.2 || tipo == 1.3){
-//            int pos = 0;
-//            for (int i = 0; indLista.getDato(0).getID() != DatosCompartidos.getListaIndividuos().getDato(i).getID(); i++){
-//                pos = i;
-//            }
-//            vida = DatosCompartidos.getListaIndividuos().getDato(pos).getTurnosVida();
-//            indLista.del(0);
-//        } else if (tipo == 2.0 || tipo == 3.0 || tipo == 4.0 || tipo == 5.0 || tipo == 6.0 || tipo == 7.0) {
-//            Double tipoRecursoBuscar = square.getCelda(celda).getTipo();
-//            int pos = 0;
-//            for (int i = 0; tipoRecursoBuscar != recLista.getDato(i).getTipoRecurso(); i++){
-//                pos = i;
-//            }
-//            vida = recLista.getDato(pos).getTiempoVida();
-//            recLista.del(pos);
-//        } else {
-//            vida = 0.0;
-//        }
-//        return vida;
-//    }
 
     private void handleSquareClick(int columna, int fila, Square square) {
         System.out.println("Clic en el cuadrado " + columna + ", " + fila);
@@ -675,7 +619,6 @@ public class Game {
             }
         }
     }
-
 
 
     ////////////// MOVIMIENTO DE INDIVIDUOS //////////////////
