@@ -696,11 +696,14 @@ public class Game {
 
                 if (i > 0) {
                     Square cuadradoIzq = tablero.getSquare(i - 1, j);
+                    Vertice<Square> otroVertice = new Vertice<>(cuadradoIzq);
                     int pesoArista = calcularPesoArista(actual, cuadradoIzq);
-                    grafoTablero.addArista(new Arista(actual,cuadradoIzq,pesoArista));
+                    grafoTablero.addArista(new Arista(vertice,otroVertice,pesoArista));
                 }
+
             }
         }
+        return grafoTablero;
     }
 
     private int calcularPesoArista(Square cuadrado1, Square cuadrado2) {
