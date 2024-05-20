@@ -3,13 +3,12 @@ package com.example.EstructurasDeDatos.Grafos;
 
 import com.example.EstructurasDeDatos.Cola;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
-import com.example.NewInterfaz.Square;
 
 /***
  * Implementación de un Grafo Simple en el que no se permiten aristas que vayan de un vértice a uno mismo, ni la existencia simultanea de dos aristas que unan los mismos nodos en el mismo sentido
  */
-public class Grafo {
-    private ListaSimple<Vertice> vertices = new ListaSimple<>();
+public class Grafo<TipoDato> {
+    private ListaSimple<Vertice<TipoDato>> vertices = new ListaSimple<>();
 
     private ListaSimple<Arista> aristas = new ListaSimple<>();
 
@@ -147,7 +146,7 @@ public class Grafo {
         return caminos;
     }
 
-    public ListaSimple<Vertice> getVertices() {
+    public ListaSimple<Vertice<TipoDato>> getVertices() {
         return vertices;
     }
 
@@ -155,7 +154,7 @@ public class Grafo {
         return aristas;
     }
 
-    public void setVertices(ListaSimple<Vertice> vertices) {
+    public void setVertices(ListaSimple<Vertice<TipoDato>> vertices) {
         this.vertices = vertices;
     }
 

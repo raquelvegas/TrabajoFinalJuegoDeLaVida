@@ -2,6 +2,7 @@ package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.ElementoArbol;
+import com.example.EstructurasDeDatos.Grafos.Grafo;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.NewInterfaz.Individuos.IndAvanzado;
@@ -11,6 +12,8 @@ import com.example.NewInterfaz.Individuos.Individuo;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Random;
 
@@ -18,6 +21,9 @@ public class Game {
     public static Tablero tablero;
     private boolean game;
     private ControllerMainStage controller;
+
+    private static final Logger log = LogManager.getLogger(ControllerTableroPropiedades.class);
+
 
     public Game(GridPane tablero){
         this.tablero = new Tablero(tablero, "Agua");
@@ -192,17 +198,17 @@ public class Game {
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
             int tipo = generarEnteroAleatorio(0, 2); // Generar tipo aleatorio
             Double tipoIndividuo;
-            if (tipo == 0) {
+//            if (tipo == 0) {
                 individuoNuevo = new IndBasico(new ArbolBinario<>(null));
                 tipoIndividuo = 1.1;
-            } else if (tipo == 1) {
+//            } else if (tipo == 1) {
                 individuoNuevo = new IndNormal(new ArbolBinario<>(null));
                 individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo); // Añadimos individuonuevo al arbol para que sea la raíz
                 tipoIndividuo = 1.2;
-            } else {
-                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
-                tipoIndividuo = 1.3;
-            }
+//            } else {
+//                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
+//                tipoIndividuo = 1.3;
+//            }
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
             DatosCompartidos.getListaIndividuos().add(individuoNuevo);
@@ -693,17 +699,7 @@ public class Game {
             if (!individuoYaMovido(ind, listaID)) {   // Compruebo si el individuo a mover se ha movido ya en este turno o no
 
                 if (ind.getTipo() == 0) {   // Tipo Básico
-                    int posicionCuadrado = posicionCuadrado(cuadrado);
-                    if (posicionCuadrado == 0) {
-                        Integer movimiento = generarEnteroAleatorio(1, 8);   // Se genera el movimiento a realizar (véase el código numérico en README)
-                        moverIndBasicoCuadradoInterior(listaCuadrados, cuadrado, ind, movimiento);   // Se añade el individuo a la lista de individuos del nuevo cuadrado
-                    } else if ((posicionCuadrado == 1) || (posicionCuadrado == 3) || (posicionCuadrado == 5) || (posicionCuadrado == 7)) {
-                        Integer movimiento = generarEnteroAleatorio(1, 3);
-                        moverIndBasicoCuadradoEsquina(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
-                    } else {
-                        Integer movimiento = generarEnteroAleatorio(1, 5);
-                        moverIndBasicoCuadradoBorde(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
-                    }
+                    moverIndBasico(cuadrado, listaCuadrados, ind);
                 } else if (ind.getTipo() == 1) { // Tipo Normal
                     moverIndNormal(listaCuadrados, cuadrado, ind);
                 } else {   // Tipo Avanzado
@@ -728,43 +724,62 @@ public class Game {
     }
 
 
+    // Metodo principal para mover individuos Avanzados
+    private void moverIndAvanzado(Square cuadrado, ListaSimple<Square> listaCuadrados, Individuo ind) {
+        ListaSimple<Recurso> listaRecursosTotales = DatosCompartidos.getListaRecursos();
+        ListaSimple<Recurso> recursosPositivos = new ListaSimple<>(); // Se instancia una lista de recursos benefiiosos para el individuo
+        for (int i = 0; i < listaRecursosTotales.getNumeroElementos(); i++) {
+            if (listaRecursosTotales.getDato(i).getTipoRecurso() != 4 && listaRecursosTotales.getDato(i).getTipoRecurso() != 7) { // Se comprueba que el recurso a añadir no sea un recurso perjudicial para el individuo
+                recursosPositivos.add(listaRecursosTotales.getDato(i));
+            }
+        }
+        if (recursosPositivos.isVacia()) {
+            moverIndBasico(cuadrado, listaCuadrados, ind);
+        } else {
+
+        }
+    }
+
+    // Método para crear un grafo a partir del tablero actual
+    private Grafo<Square> crearGrafoTablero(){
+        Grafo<Square> grafoTablero = new Grafo<>();
+        int efectoMontaña = Integer.parseInt(DatosCompartidos.getMontanaEfecto());
+
+    }
+
+    // Método principal para mover un individuo básico
+    private void moverIndBasico(Square cuadrado, ListaSimple<Square> listaCuadrados, Individuo ind) {
+        int posicionCuadrado = posicionCuadrado(cuadrado);
+        if (posicionCuadrado == 0) {
+            Integer movimiento = generarEnteroAleatorio(1, 8);   // Se genera el movimiento a realizar (véase el código numérico en README)
+            moverIndBasicoCuadradoInterior(listaCuadrados, cuadrado, ind, movimiento);   // Se añade el individuo a la lista de individuos del nuevo cuadrado
+        } else if ((posicionCuadrado == 1) || (posicionCuadrado == 3) || (posicionCuadrado == 5) || (posicionCuadrado == 7)) {
+            Integer movimiento = generarEnteroAleatorio(1, 3);
+            moverIndBasicoCuadradoEsquina(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
+        } else {
+            Integer movimiento = generarEnteroAleatorio(1, 5);
+            moverIndBasicoCuadradoBorde(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
+        }
+    }
+
+
     // Método principal para mover un individuo normal
     private void moverIndNormal(ListaSimple<Square> listaCuadrados, Square cuadrado, Individuo ind) {
         IndNormal indNormal = (IndNormal) ind;
         if (!DatosCompartidos.getListaRecursos().isVacia()) {
-            if (indNormal.getRecorrido().getNumeroElementos() <= 0) {
+            if (indNormal.getRecorrido().isVacia()) {
                 buscarNuevoObjetivo(listaCuadrados, cuadrado, indNormal);
-                if (indNormal.getRecorrido().getNumeroElementos() <= 0) {
-                    int posicionCuadrado = posicionCuadrado(cuadrado);
-                    if (posicionCuadrado == 0) {
-                        Integer movimiento = generarEnteroAleatorio(1, 8);   // Se genera el movimiento a realizar (véase el código numérico en README)
-                        moverIndBasicoCuadradoInterior(listaCuadrados, cuadrado, ind, movimiento);   // Se añade el individuo a la lista de individuos del nuevo cuadrado
-                    } else if ((posicionCuadrado == 1) || (posicionCuadrado == 3) || (posicionCuadrado == 5) || (posicionCuadrado == 7)) {
-                        Integer movimiento = generarEnteroAleatorio(1, 3);
-                        moverIndBasicoCuadradoEsquina(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
-                    } else {
-                        Integer movimiento = generarEnteroAleatorio(1, 5);
-                        moverIndBasicoCuadradoBorde(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
-                    }
+                if (!indNormal.getRecorrido().isVacia()) {
+                    moverIndNormalDirigido(indNormal.getRecorrido(), indNormal);
                 }
             } else {
                 moverIndNormalDirigido(indNormal.getRecorrido(), indNormal);
             }
         } else {
-            if (indNormal.getRecorrido().getNumeroElementos() <= 0) { // Aunque no existan ya recursos, si el individuo tenía fijado un objetivo, llegará hasta él
+            if (!indNormal.getRecorrido().isVacia()) { // Aunque no existan ya recursos, si el individuo tenía fijado un objetivo, llegará hasta él
                 moverIndNormalDirigido(indNormal.getRecorrido(), indNormal);
             } else { // Si no hay más recursos y el individuo no tenía ningún objetivo fijado, se moverá como un individuo básico
-                int posicionCuadrado = posicionCuadrado(cuadrado);
-                if (posicionCuadrado == 0) {
-                    Integer movimiento = generarEnteroAleatorio(1, 8);   // Se genera el movimiento a realizar (véase el código numérico en README)
-                    moverIndBasicoCuadradoInterior(listaCuadrados, cuadrado, ind, movimiento);   // Se añade el individuo a la lista de individuos del nuevo cuadrado
-                } else if ((posicionCuadrado == 1) || (posicionCuadrado == 3) || (posicionCuadrado == 5) || (posicionCuadrado == 7)) {
-                    Integer movimiento = generarEnteroAleatorio(1, 3);
-                    moverIndBasicoCuadradoEsquina(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
-                } else {
-                    Integer movimiento = generarEnteroAleatorio(1, 5);
-                    moverIndBasicoCuadradoBorde(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
-                }
+                moverIndBasico(cuadrado, tablero.getSquares(), ind);
             }
         }
     }
@@ -786,8 +801,8 @@ public class Game {
                 Integer movimiento = generarEnteroAleatorio(1, 5);
                 moverIndBasicoCuadradoBorde(listaCuadrados, cuadrado, ind, movimiento, posicionCuadrado);
             }
+            ind.getRecorrido().vaciar();
         } else {
-
             ListaEnlazada<Square> listaRecorrido = new ListaEnlazada<>();
             int coordXObjetivo = objetivo.getSquare().getX();
             while (cuadrado.getX() != coordXObjetivo) {
@@ -1317,7 +1332,7 @@ public class Game {
         // 7º Generación de nuevos recursos
         aparicionRecursos();
 
-        // 7º Pitar el tablero restante
+        // 7º Pintar el tablero restante
         actualizarTablero();
     }
 }
