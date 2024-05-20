@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -69,6 +70,9 @@ public class ControllerMainStage {
     private TabPane tabPaneParametros;
     @FXML
     private VBox infoVBox;
+    @FXML
+    private HBox contenidoTipo1, contenidoTipo2, contenidoTipo3, contenidoTipo4, contenidoTipo5, contenidoTipo6,
+            contenidoVida1, contenidoVida2, contenidoVida3, contenidoVida4, contenidoVida5, contenidoVida6;
     @FXML
     private Stage primaryStage, stage;
     @FXML
@@ -368,19 +372,83 @@ public class ControllerMainStage {
     }
 
     public void actulizarCeldaSeleccionadaTab(){
-        tipoCelda1.setText(traducirTipo(CeldaSeleccionada.getTipo1()));
-        tipoCelda2.setText(traducirTipo(CeldaSeleccionada.getTipo2()));
-        tipoCelda3.setText(traducirTipo(CeldaSeleccionada.getTipo3()));
-        tipoCelda4.setText(traducirTipo(CeldaSeleccionada.getTipo4()));
-        tipoCelda5.setText(traducirTipo(CeldaSeleccionada.getTipo5()));
-        tipoCelda6.setText(traducirTipo(CeldaSeleccionada.getTipo6()));
+        //Celda 1
+        String tipo1 = traducirTipo(CeldaSeleccionada.getTipo1());
+        if (tipo1 == "Vacio") {
+            contenidoTipo1.setVisible(false);
+            contenidoVida1.setVisible(false);
+        } else {
+            contenidoTipo1.setVisible(true);
+            contenidoVida1.setVisible(true);
 
-        vidaCelda1.setText(String.valueOf(CeldaSeleccionada.getVida1()));
-        vidaCelda2.setText(String.valueOf(CeldaSeleccionada.getVida2()));
-        vidaCelda3.setText(String.valueOf(CeldaSeleccionada.getVida3()));
-        vidaCelda4.setText(String.valueOf(CeldaSeleccionada.getVida4()));
-        vidaCelda5.setText(String.valueOf(CeldaSeleccionada.getVida5()));
-        vidaCelda6.setText(String.valueOf(CeldaSeleccionada.getVida6()));
+            tipoCelda1.setText(tipo1);
+            vidaCelda1.setText(String.valueOf(CeldaSeleccionada.getVida1()));
+        }
+
+        //Celda 2
+        String tipo2 = traducirTipo(CeldaSeleccionada.getTipo2());
+        if (tipo2 == "Vacio") {
+            contenidoTipo2.setVisible(false);
+            contenidoVida2.setVisible(false);
+        } else {
+            contenidoTipo2.setVisible(true);
+            contenidoVida2.setVisible(true);
+
+            tipoCelda2.setText(tipo2);
+            vidaCelda2.setText(String.valueOf(CeldaSeleccionada.getVida2()));
+        }
+
+        //Celda 3
+        String tipo3 = traducirTipo(CeldaSeleccionada.getTipo3());
+        if (tipo3 == "Vacio") {
+            contenidoTipo3.setVisible(false);
+            contenidoVida3.setVisible(false);
+        } else {
+            contenidoTipo3.setVisible(true);
+            contenidoVida3.setVisible(true);
+
+            tipoCelda3.setText(tipo3);
+            vidaCelda3.setText(String.valueOf(CeldaSeleccionada.getVida3()));
+        }
+
+        //Celda 4
+        String tipo4 = traducirTipo(CeldaSeleccionada.getTipo4());
+        if (tipo4 == "Vacio") {
+            contenidoTipo4.setVisible(false);
+            contenidoVida4.setVisible(false);
+        } else {
+            contenidoTipo4.setVisible(true);
+            contenidoVida4.setVisible(true);
+
+            tipoCelda4.setText(tipo4);
+            vidaCelda4.setText(String.valueOf(CeldaSeleccionada.getVida4()));
+        }
+
+        //Celda 5
+        String tipo5 = traducirTipo(CeldaSeleccionada.getTipo5());
+        if (tipo5 == "Vacio") {
+            contenidoTipo5.setVisible(false);
+            contenidoVida5.setVisible(false);
+        } else {
+            contenidoTipo5.setVisible(true);
+            contenidoVida5.setVisible(true);
+
+            tipoCelda5.setText(tipo5);
+            vidaCelda5.setText(String.valueOf(CeldaSeleccionada.getVida5()));
+        }
+
+        //Celda 6
+        String tipo6 = traducirTipo(CeldaSeleccionada.getTipo6());
+        if (tipo6 == "Vacio") {
+            contenidoTipo6.setVisible(false);
+            contenidoVida6.setVisible(false);
+        } else {
+            contenidoTipo6.setVisible(true);
+            contenidoVida6.setVisible(true);
+
+            tipoCelda6.setText(tipo6);
+            vidaCelda6.setText(String.valueOf(CeldaSeleccionada.getVida6()));
+        }
 
         celda1.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo1()));
         celda2.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo2()));
@@ -391,13 +459,13 @@ public class ControllerMainStage {
     }
 
     public static String traducirTipo(Double tipo){
-        String tipoTraducido = null;
+        String tipoTraducido;
         if(tipo == 1.1){
-            tipoTraducido = "individuo Básico";
+            tipoTraducido = "Individuo Básico";
         } else if (tipo == 1.2){
-            tipoTraducido = "individuo Normal";
+            tipoTraducido = "Individuo Normal";
         } else if (tipo == 1.3){
-            tipoTraducido = "individuo Avanzado";
+            tipoTraducido = "Individuo Avanzado";
         } else if (tipo == 2.0){
             tipoTraducido = "Agua";
         } else if (tipo == 3.0){
@@ -410,6 +478,8 @@ public class ControllerMainStage {
             tipoTraducido = "Tesoro";
         } else if (tipo == 7.0){
             tipoTraducido = "Pozo";
+        } else {
+            tipoTraducido = "Vacio";
         }
         return tipoTraducido;
     }

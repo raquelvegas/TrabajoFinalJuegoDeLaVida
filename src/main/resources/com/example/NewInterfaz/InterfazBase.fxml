@@ -209,13 +209,13 @@
                                                 <Font name="System Bold" size="17.0" />
                                              </font>
                                           </Text>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                          <HBox fx:id="contenidoTipo1" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIPO:   " />
                                                 <Text fx:id="tipoCelda1" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
                                              </children>
                                           </HBox>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                          <HBox fx:id="contenidoVida1" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIEMPO DE VIDA:   " />
                                                 <Text fx:id="vidaCelda1" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
@@ -238,13 +238,13 @@
                                                 <Font name="System Bold" size="17.0" />
                                              </font>
                                           </Text>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                          <HBox fx:id="contenidoTipo3" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIPO:   " />
                                                 <Text fx:id="tipoCelda3" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
                                              </children>
                                           </HBox>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                          <HBox fx:id="contenidoVida3" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIEMPO DE VIDA:   " />
                                                 <Text fx:id="vidaCelda3" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
@@ -267,13 +267,13 @@
                                                 <Font name="System Bold" size="17.0" />
                                              </font>
                                           </Text>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                          <HBox fx:id="contenidoVida6" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIEMPO DE VIDA:   " />
                                                 <Text fx:id="vidaCelda6" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
                                              </children>
                                           </HBox>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                          <HBox fx:id="contenidoTipo6" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIPO:   " />
                                                 <Text fx:id="tipoCelda6" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
@@ -296,13 +296,13 @@
                                                 <Font name="System Bold" size="17.0" />
                                              </font>
                                           </Text>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                          <HBox fx:id="contenidoTipo5" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIPO:   " />
                                                 <Text fx:id="tipoCelda5" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
                                              </children>
                                           </HBox>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                          <HBox fx:id="contenidoVida5" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIEMPO DE VIDA:   " />
                                                 <Text fx:id="vidaCelda5" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
@@ -325,13 +325,13 @@
                                                 <Font name="System Bold" size="17.0" />
                                              </font>
                                           </Text>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                          <HBox fx:id="contenidoTipo2" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIPO:   " />
                                                 <Text fx:id="tipoCelda2" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
                                              </children>
                                           </HBox>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                          <HBox fx:id="contenidoVida2" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIEMPO DE VIDA:   " />
                                                 <Text fx:id="vidaCelda2" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
@@ -354,14 +354,14 @@
                                                 <Font name="System Bold" size="17.0" />
                                              </font>
                                           </Text>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                          <HBox fx:id="contenidoTipo4" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIPO:   " />
                                                 <Text fx:id="tipoCelda4" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" />
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                          <HBox fx:id="contenidoVida4" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TIEMPO DE VIDA:   " />
                                                 <Text fx:id="vidaCelda4" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacío" />

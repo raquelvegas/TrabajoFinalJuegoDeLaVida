@@ -3,6 +3,7 @@ package com.example.NewInterfaz.Individuos;
 import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.Cola;
 import com.example.NewInterfaz.DatosCompartidos;
+import com.example.NewInterfaz.Square;
 
 public abstract class Individuo {
     private int ID;
@@ -12,6 +13,8 @@ public abstract class Individuo {
     private int ProbClon;
     private Cola<Integer> acciones;
     private ArbolBinario<Individuo> arbolGenealogico;
+    private int celda;
+    private Square square;
 
     public abstract int getTipo();
 
@@ -79,5 +82,21 @@ public abstract class Individuo {
 
     public void setArbolGenealogico(ArbolBinario<Individuo> arbolGenealogico) {
         this.arbolGenealogico = arbolGenealogico;
+    }
+
+    public int getCelda() {
+        return celda;
+    }
+
+    public void setCelda(int celda) {
+        this.celda = celda;
+    }
+
+    public Square getSquare() {
+        return square;
+    }
+
+    public void setSquare(Square square) {
+        this.square = square;
     }
 }
