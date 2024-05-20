@@ -691,16 +691,17 @@ public class Game {
         Grafo<Square> grafoTablero = new Grafo<>();
         for (int i = 0; i < Integer.parseInt(DatosCompartidos.getAnchoMatriz()); i++) {
             for (int j = 0; j < Integer.parseInt(DatosCompartidos.getAltoMatriz()); j++) {
-                Square actual = tablero.getSquare(i, j);
+                Square actual = tablero.getSquare(j, i);
                 Vertice<Square> verticeAct = new Vertice<>(actual);
                 grafoTablero.addVertice(verticeAct);
 
                 int pesoHaciaAct = calcularPesoArista(actual);
-                if (i > 0) {
-                    Square cuadradoIzq = tablero.getSquare(i - 1, j);
+                if (j > 0) {
+                    Square cuadradoIzq = tablero.getSquare(j - 1, i);
                     Vertice<Square> verticeIzq = new Vertice<>(cuadradoIzq);
                     int pesoAct_Izq = calcularPesoArista(cuadradoIzq);
                     try {
+                        grafoTablero.addVertice(verticeIzq);
                         grafoTablero.addArista(new Arista(verticeAct, verticeIzq, pesoAct_Izq));
                     } catch (NonValidLink ex) {
                         ex.printStackTrace();
@@ -713,8 +714,8 @@ public class Game {
                         log.error("Error en la introducción de una nueva arista");
                     }
                 }
-                if (j > 0) {
-                    Square cuadradoArr = tablero.getSquare(i, j - 1);
+                if (i > 0) {
+                    Square cuadradoArr = tablero.getSquare(j, i - 1);
                     Vertice<Square> verticeArr = new Vertice<>(cuadradoArr);
                     int pesoAct_Arr = calcularPesoArista(cuadradoArr);
                     try {
@@ -730,8 +731,8 @@ public class Game {
                         log.error("Error en la introducción de una nueva arista");
                     }
                 }
-                if ((i > 0) && (j > 0)) {
-                    Square cuadradoDiagIzq = tablero.getSquare(i - 1, j - 1);
+                if ((j > 0) && (i > 0)) {
+                    Square cuadradoDiagIzq = tablero.getSquare(j - 1, i - 1);
                     Vertice<Square> verticeDiagoIzq = new Vertice<>(cuadradoDiagIzq);
                     int pesoAct_Diag = calcularPesoArista(cuadradoDiagIzq);
                     try {
@@ -747,8 +748,8 @@ public class Game {
                         log.error("Error en la introducción de una nueva arista");
                     }
                 }
-                if ((i > 0) && (j < Integer.parseInt(DatosCompartidos.getAnchoMatriz()))) {
-                    Square cuadradoDiagDch = tablero.getSquare(i - 1, j + 1);
+                if ((j > 0) && (i < Integer.parseInt(DatosCompartidos.getAnchoMatriz()))) {
+                    Square cuadradoDiagDch = tablero.getSquare(j - 1, i + 1);
                     Vertice<Square> verticeDiagoDch = new Vertice<>(cuadradoDiagDch);
                     int pesoAct_Diag = calcularPesoArista(cuadradoDiagDch);
                     try {
