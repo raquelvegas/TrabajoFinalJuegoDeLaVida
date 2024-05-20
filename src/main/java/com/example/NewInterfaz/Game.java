@@ -197,7 +197,7 @@ public class Game {
                 tipoIndividuo = 1.1;
             } else if (tipo == 1) {
                 individuoNuevo = new IndNormal(new ArbolBinario<>(null));
-            individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo); // Añadimos individuonuevo al arbol para que sea la raíz
+                individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo); // Añadimos individuonuevo al arbol para que sea la raíz
                 tipoIndividuo = 1.2;
             } else {
                 individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
@@ -1296,14 +1296,13 @@ public class Game {
         actualizarProbabilidades();
         eliminarIndividuos();
         eliminarRecursos();
-        aparicionRecursos();
         actualizarIndividuos();
 
         // 2ª Movimiento de individuos
-//        moverIndividuos();
+        moverIndividuos();
 
         // 3º Consumición de los recursos
-//        consumirRecursos();
+        consumirRecursos();
 
         // 4º Reproduccion de los individuos
         reproduccion();
@@ -1316,7 +1315,7 @@ public class Game {
 
 
         // 7º Generación de nuevos recursos
-
+        aparicionRecursos();
 
         // 7º Pitar el tablero restante
         actualizarTablero();

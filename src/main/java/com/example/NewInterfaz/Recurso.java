@@ -35,7 +35,7 @@ public class Recurso {
         return tipoRecurso;
     }
 
-    public void setTipoRecurso(int tipoRecurso) {
+    public void setTipoRecurso(Double tipoRecurso) {
         this.tipoRecurso = (double) tipoRecurso;
     }
 
