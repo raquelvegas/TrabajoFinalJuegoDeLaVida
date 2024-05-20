@@ -7,6 +7,7 @@ import com.example.EstructurasDeDatos.Grafos.Grafo;
 import com.example.EstructurasDeDatos.Grafos.Vertice;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
+import com.example.Excepciones.NonValidLink;
 import com.example.NewInterfaz.Individuos.IndAvanzado;
 import com.example.NewInterfaz.Individuos.IndBasico;
 import com.example.NewInterfaz.Individuos.IndNormal;
@@ -145,15 +146,15 @@ public class Game {
             int tipo = generarEnteroAleatorio(0, 2); // Generar tipo aleatorio
             Double tipoIndividuo;
 //            if (tipo == 0) {
-                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
-                tipoIndividuo = 1.1;
+//                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
+//                tipoIndividuo = 1.1;
 //            } else if (tipo == 1) {
-                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
-                individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo); // Añadimos individuonuevo al arbol para que sea la raíz
-                tipoIndividuo = 1.2;
+//                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
+//                individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo); // Añadimos individuonuevo al arbol para que sea la raíz
+//                tipoIndividuo = 1.2;
 //            } else {
-//                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
-//                tipoIndividuo = 1.3;
+                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
+                tipoIndividuo = 1.3;
 //            }
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
@@ -649,8 +650,7 @@ public class Game {
                     moverIndNormal(listaCuadrados, cuadrado, ind);
                 } else {   // Tipo Avanzado
 
-                    // FALTA ESTO
-
+                    moverIndAvanzado(cuadrado,listaCuadrados,ind);
                 }
                 listaID.add(ind.getID()); // Se añade el ID del individuo a la lista de identificadores de los individuos que se han movido
             } else {
@@ -681,35 +681,97 @@ public class Game {
         if (recursosPositivos.isVacia()) {
             moverIndBasico(cuadrado, listaCuadrados, ind);
         } else {
-
+            Grafo<Square> grafo = crearGrafoTablero();
+            System.out.println(grafo.printCodigoGrafo());
         }
     }
 
     // Método para crear un grafo a partir del tablero actual
     private Grafo<Square> crearGrafoTablero(){
         Grafo<Square> grafoTablero = new Grafo<>();
-        for (int i = 0; i < Integer.parseInt(DatosCompartidos.getAltoMatriz()); i++) {
-            for (int j = 0; j < Integer.parseInt(DatosCompartidos.getAnchoMatriz()); j++) {
+        for (int i = 0; i < Integer.parseInt(DatosCompartidos.getAnchoMatriz()); i++) {
+            for (int j = 0; j < Integer.parseInt(DatosCompartidos.getAltoMatriz()); j++) {
                 Square actual = tablero.getSquare(i, j);
-                Vertice<Square> vertice = new Vertice<>(actual);
-                grafoTablero.addVertice(vertice);
+                Vertice<Square> verticeAct = new Vertice<>(actual);
+                grafoTablero.addVertice(verticeAct);
 
+                int pesoHaciaAct = calcularPesoArista(actual);
                 if (i > 0) {
                     Square cuadradoIzq = tablero.getSquare(i - 1, j);
-                    Vertice<Square> otroVertice = new Vertice<>(cuadradoIzq);
-                    int pesoArista = calcularPesoArista(actual, cuadradoIzq);
-                    grafoTablero.addArista(new Arista(vertice,otroVertice,pesoArista));
+                    Vertice<Square> verticeIzq = new Vertice<>(cuadradoIzq);
+                    int pesoAct_Izq = calcularPesoArista(cuadradoIzq);
+                    try {
+                        grafoTablero.addArista(new Arista(verticeAct, verticeIzq, pesoAct_Izq));
+                    } catch (NonValidLink ex) {
+                        ex.printStackTrace();
+                        log.error("Error al introducir una nueva arista");
+                    }
+                    try {
+                        grafoTablero.addArista(new Arista(verticeIzq, verticeAct, pesoHaciaAct));
+                    } catch (NonValidLink ex) {
+                        ex.printStackTrace();
+                        log.error("Error en la introducción de una nueva arista");
+                    }
                 }
-
+                if (j > 0) {
+                    Square cuadradoArr = tablero.getSquare(i, j - 1);
+                    Vertice<Square> verticeArr = new Vertice<>(cuadradoArr);
+                    int pesoAct_Arr = calcularPesoArista(cuadradoArr);
+                    try {
+                        grafoTablero.addArista(new Arista(verticeAct, verticeArr, pesoAct_Arr));
+                    } catch (NonValidLink ex) {
+                        ex.printStackTrace();
+                        log.error("Error al introducir una nueva arista");
+                    }
+                    try {
+                        grafoTablero.addArista(new Arista(verticeArr, verticeAct, pesoHaciaAct));
+                    } catch (NonValidLink ex) {
+                        ex.printStackTrace();
+                        log.error("Error en la introducción de una nueva arista");
+                    }
+                }
+                if ((i > 0) && (j > 0)) {
+                    Square cuadradoDiagIzq = tablero.getSquare(i - 1, j - 1);
+                    Vertice<Square> verticeDiagoIzq = new Vertice<>(cuadradoDiagIzq);
+                    int pesoAct_Diag = calcularPesoArista(cuadradoDiagIzq);
+                    try {
+                        grafoTablero.addArista(new Arista(verticeAct, verticeDiagoIzq, pesoAct_Diag));
+                    } catch (NonValidLink ex) {
+                        ex.printStackTrace();
+                        log.error("Error al introducir una nueva arista");
+                    }
+                    try {
+                        grafoTablero.addArista(new Arista(verticeDiagoIzq, verticeAct, pesoHaciaAct));
+                    } catch (NonValidLink ex) {
+                        ex.printStackTrace();
+                        log.error("Error en la introducción de una nueva arista");
+                    }
+                }
+                if ((i > 0) && (j < Integer.parseInt(DatosCompartidos.getAnchoMatriz()))) {
+                    Square cuadradoDiagDch = tablero.getSquare(i - 1, j + 1);
+                    Vertice<Square> verticeDiagoDch = new Vertice<>(cuadradoDiagDch);
+                    int pesoAct_Diag = calcularPesoArista(cuadradoDiagDch);
+                    try {
+                        grafoTablero.addArista(new Arista(verticeAct, verticeDiagoDch, pesoAct_Diag));
+                    } catch (NonValidLink ex) {
+                        ex.printStackTrace();
+                        log.error("Error al introducir una nueva arista");
+                    }
+                    try {
+                        grafoTablero.addArista(new Arista(verticeDiagoDch, verticeAct, pesoHaciaAct));
+                    } catch (NonValidLink ex) {
+                        ex.printStackTrace();
+                        log.error("Error en la introducción de una nueva arista");
+                    }
+                }
             }
         }
         return grafoTablero;
     }
 
-    private int calcularPesoArista(Square cuadrado1, Square cuadrado2) {
+    private int calcularPesoArista(Square cuadrado1) {
         int peso = 1;
         peso = añadirPesoObstaculo(peso, cuadrado1);
-        peso = añadirPesoObstaculo(peso, cuadrado2);
         return peso;
     }
 

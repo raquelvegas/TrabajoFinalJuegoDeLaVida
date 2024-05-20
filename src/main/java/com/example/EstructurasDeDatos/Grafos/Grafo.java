@@ -35,6 +35,22 @@ public class Grafo<TipoDato> {
             a.getVerticeFin().addAristaVAntecesor(a);
         }
     }
+    public String printCodigoGrafo() {
+        char com = '"';
+        String codigo = "digraph regexp {\nfontname=" + com + "Helvetica,Arial,sans-serif" + com + "\nnode [fontname=" + com + "Helvetica,Arial,sans-serif" + com + "]\nedge [fontname=" + com + "Helvetica,Arial,sans-serif" + com + "]";
+        Integer contadorV = 0;
+        while (contadorV < vertices.getNumeroElementos()) {
+            codigo += "\nn" + vertices.getElemento(contadorV).getData() + " [label=" + com + vertices.getElemento(contadorV).getData() + com + "];";
+            contadorV++;
+        }
+        Integer contadorA = 0;
+        while (contadorA < aristas.getNumeroElementos()) {
+            codigo += "\nn" + aristas.getElemento(contadorA).getData().getVerticeIni() + " -> n" + aristas.getElemento(contadorA).getData().getVerticeFin() + " [label=" + com + aristas.getElemento(contadorA).getData().getPeso() + com + "];";
+            contadorA++;
+        }
+        codigo += "\n}";
+        return codigo;
+    }
 
     private boolean validarArista(Arista a) throws NonValidLink {
         Vertice vertice1 = a.getVerticeIni();
