@@ -10,4 +10,6 @@ module com.example.eljuegodelavida {
     opens com.example.NewInterfaz to javafx.fxml;
     exports com.example.NewInterfaz.Individuos;
     opens com.example.NewInterfaz.Individuos to javafx.fxml;
+
+    exports com.example.EstructurasDeDatos to javafx.graphics;
 }
