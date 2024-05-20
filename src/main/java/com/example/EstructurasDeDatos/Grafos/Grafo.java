@@ -60,22 +60,22 @@ public class Grafo<TipoDato> {
         return lista;
     }
 
-    public String printCodigoGrafo() {
-        char com = '"';
-        String codigo = "digraph regexp {\nfontname=" + com + "Helvetica,Arial,sans-serif" + com + "\nnode [fontname=" + com + "Helvetica,Arial,sans-serif" + com + "]\nedge [fontname=" + com + "Helvetica,Arial,sans-serif" + com + "]";
-        Integer contadorV = 0;
-        while (contadorV < vertices.getNumeroElementos()) {
-            codigo += "\nn" + vertices.getElemento(contadorV).getData().getID() + " [label=" + com + vertices.getElemento(contadorV).getData().getID() + com + "];";
-            contadorV++;
-        }
-        Integer contadorA = 0;
-        while (contadorA < aristas.getNumeroElementos()) {
-            codigo += "\nn" + aristas.getElemento(contadorA).getData().getVerticeIni().getID() + " -> n" + aristas.getElemento(contadorA).getData().getVerticeFin().getID() + " [label=" + com + aristas.getElemento(contadorA).getData().getPeso() + com + "];";
-            contadorA++;
-        }
-        codigo += "\n}";
-        return codigo;
-    }
+//    public String printCodigoGrafo() {
+//        char com = '"';
+//        String codigo = "digraph regexp {\nfontname=" + com + "Helvetica,Arial,sans-serif" + com + "\nnode [fontname=" + com + "Helvetica,Arial,sans-serif" + com + "]\nedge [fontname=" + com + "Helvetica,Arial,sans-serif" + com + "]";
+//        Integer contadorV = 0;
+//        while (contadorV < vertices.getNumeroElementos()) {
+//            codigo += "\nn" + vertices.getElemento(contadorV).getData().getID() + " [label=" + com + vertices.getElemento(contadorV).getData().getID() + com + "];";
+//            contadorV++;
+//        }
+//        Integer contadorA = 0;
+//        while (contadorA < aristas.getNumeroElementos()) {
+//            codigo += "\nn" + aristas.getElemento(contadorA).getData().getVerticeIni().getID() + " -> n" + aristas.getElemento(contadorA).getData().getVerticeFin().getID() + " [label=" + com + aristas.getElemento(contadorA).getData().getPeso() + com + "];";
+//            contadorA++;
+//        }
+//        codigo += "\n}";
+//        return codigo;
+//    }
     // Métodos para sacar los caminos mínimos
 
 

@@ -4,14 +4,12 @@ package com.example.EstructurasDeDatos.Grafos;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
 
 public class Vertice<TipoDato> {
-    private Integer ID;
 
     private TipoDato dato;
     private ListaSimple<Arista> aristasVAntecesores;
     private ListaSimple<Arista> aristasVHijos;
 
-    public Vertice(Integer ID,TipoDato dato) {
-        this.ID=ID;
+    public Vertice(TipoDato dato) {
         this.dato = dato;
         this.aristasVHijos = new ListaSimple<>();
         this.aristasVAntecesores = new ListaSimple<>();
@@ -33,13 +31,7 @@ public class Vertice<TipoDato> {
         this.dato = dato;
     }
 
-    public Integer getID() {
-        return ID;
-    }
 
-    public void setID(Integer ID) {
-        this.ID = ID;
-    }
     public ListaSimple<Arista> getAristasVAntecesores() {
         return aristasVAntecesores;
     }

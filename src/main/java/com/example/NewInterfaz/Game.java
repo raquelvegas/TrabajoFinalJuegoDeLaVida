@@ -2,7 +2,9 @@ package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.ElementoArbol;
+import com.example.EstructurasDeDatos.Grafos.Arista;
 import com.example.EstructurasDeDatos.Grafos.Grafo;
+import com.example.EstructurasDeDatos.Grafos.Vertice;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.NewInterfaz.Individuos.IndAvanzado;
@@ -22,7 +24,7 @@ public class Game {
     private boolean game;
     private ControllerMainStage controller;
 
-    private static final Logger log = LogManager.getLogger(ControllerTableroPropiedades.class);
+    private static final Logger log = LogManager.getLogger(Game.class);
 
 
     public Game(GridPane tablero){
@@ -686,8 +688,43 @@ public class Game {
     // Método para crear un grafo a partir del tablero actual
     private Grafo<Square> crearGrafoTablero(){
         Grafo<Square> grafoTablero = new Grafo<>();
-        int efectoMontaña = Integer.parseInt(DatosCompartidos.getMontanaEfecto());
+        for (int i = 0; i < Integer.parseInt(DatosCompartidos.getAltoMatriz()); i++) {
+            for (int j = 0; j < Integer.parseInt(DatosCompartidos.getAnchoMatriz()); j++) {
+                Square actual = tablero.getSquare(i, j);
+                Vertice<Square> vertice = new Vertice<>(actual);
+                grafoTablero.addVertice(vertice);
 
+                if (i > 0) {
+                    Square cuadradoIzq = tablero.getSquare(i - 1, j);
+                    int pesoArista = calcularPesoArista(actual, cuadradoIzq);
+                    grafoTablero.addArista(new Arista(actual,cuadradoIzq,pesoArista));
+                }
+            }
+        }
+    }
+
+    private int calcularPesoArista(Square cuadrado1, Square cuadrado2) {
+        int peso = 1;
+        peso = añadirPesoObstaculo(peso, cuadrado1);
+        peso = añadirPesoObstaculo(peso, cuadrado2);
+        return peso;
+    }
+
+    private int añadirPesoObstaculo(int peso, Square cuadrado) {
+        for (int k = 0; k < cuadrado.getRecursos().getNumeroElementos(); k++) {
+            switch (cuadrado.getRecursos().getDato(k).getTipoRecurso().intValue()){
+                case 4:
+                    if (peso<Integer.MAX_VALUE/2){
+                        peso+=cuadrado.getRecursos().getDato(k).getEfecto();
+                    }
+                    break;
+                case 7:
+                    peso = Integer.MAX_VALUE/2;
+                default:
+                    log.info("El recurso supone un peso de 1");
+            }
+        }
+        return peso;
     }
 
     // Método principal para mover un individuo básico
