@@ -3,6 +3,9 @@ package com.example.EstructurasDeDatos.Grafos;
 
 import com.example.EstructurasDeDatos.Cola;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
+import com.example.Excepciones.NonValidLink;
+
+import java.util.Objects;
 
 /***
  * Implementación de un Grafo Simple en el que no se permiten aristas que vayan de un vértice a uno mismo, ni la existencia simultanea de dos aristas que unan los mismos nodos en el mismo sentido
@@ -19,15 +22,47 @@ public class Grafo<TipoDato> {
 
     // Métodos para la modificacion de los elementos del grafo
 
-    public void addVertice(Vertice v) {
+    public void addVertice(Vertice<TipoDato> v) {
         this.vertices.add(v);
     }
 
-    public void addArista(Arista a) {
-        this.aristas.add(a);
-        a.getVerticeIni().addAristaVHijo(a);
-        a.getVerticeFin().addAristaVAntecesor(a);
+    public void addArista(Arista a) throws NonValidLink {
+        if (Objects.equals(a.getVerticeFin().getDato(), a.getVerticeIni().getDato())) {
+            throw (new NonValidLink("ERROR. Una arista no puede unir un vértice consigo mismo."));
+        } else if (validarArista(a)) {
+            this.aristas.add(a);
+            a.getVerticeIni().addAristaVHijo(a);
+            a.getVerticeFin().addAristaVAntecesor(a);
+        }
+    }
 
+    private boolean validarArista(Arista a) throws NonValidLink {
+        Vertice vertice1 = a.getVerticeIni();
+        Vertice vertice2 = a.getVerticeFin();
+        boolean isVertice1 = false;
+        boolean isVertice2 = false;
+        Integer contador = 0;
+        while (contador < vertices.getNumeroElementos()) {
+            if (vertices.getElemento(contador).getData() == vertice1) {
+                isVertice1 = true;
+            }
+            if (vertices.getElemento(contador).getData() == vertice2) {
+                isVertice2 = true;
+            }
+            contador++;
+        }
+        if (isVertice1 && isVertice2) {
+            Integer contador2 = 0;
+            while (contador2 < aristas.getNumeroElementos()) {
+                if ((Objects.equals(aristas.getElemento(contador2).getData().getVerticeIni(), vertice1)) && (Objects.equals(aristas.getElemento(contador2).getData().getVerticeFin(), vertice2))) {
+                    throw (new NonValidLink("ERROR. Ya existe una arista uniendo estos dos vertices"));
+                }
+                contador2++;
+            }
+            return true;
+        } else {
+            throw (new NonValidLink("ERROR. Alguno de los vértices que une la arista no se encuentra en el grafo."));
+        }
     }
 
     // Metodos para sacar por la terminal datos legibles
@@ -59,23 +94,6 @@ public class Grafo<TipoDato> {
         }
         return lista;
     }
-
-//    public String printCodigoGrafo() {
-//        char com = '"';
-//        String codigo = "digraph regexp {\nfontname=" + com + "Helvetica,Arial,sans-serif" + com + "\nnode [fontname=" + com + "Helvetica,Arial,sans-serif" + com + "]\nedge [fontname=" + com + "Helvetica,Arial,sans-serif" + com + "]";
-//        Integer contadorV = 0;
-//        while (contadorV < vertices.getNumeroElementos()) {
-//            codigo += "\nn" + vertices.getElemento(contadorV).getData().getID() + " [label=" + com + vertices.getElemento(contadorV).getData().getID() + com + "];";
-//            contadorV++;
-//        }
-//        Integer contadorA = 0;
-//        while (contadorA < aristas.getNumeroElementos()) {
-//            codigo += "\nn" + aristas.getElemento(contadorA).getData().getVerticeIni().getID() + " -> n" + aristas.getElemento(contadorA).getData().getVerticeFin().getID() + " [label=" + com + aristas.getElemento(contadorA).getData().getPeso() + com + "];";
-//            contadorA++;
-//        }
-//        codigo += "\n}";
-//        return codigo;
-//    }
     // Métodos para sacar los caminos mínimos
 
 
@@ -93,7 +111,6 @@ public class Grafo<TipoDato> {
         this.dijkstra_inicializar(origen, distancias, colaPendientes);
         this.dijkstra_ejecucion(distancias, colaPendientes, verticesAnteriores);
         return this.dijkstra_resultados(distancias, verticesAnteriores);
-
     }
 
     private void dijkstra_inicializar(Vertice origen, Mapa<Vertice, Double> distancias, Cola<Vertice> colaPendientes) {
