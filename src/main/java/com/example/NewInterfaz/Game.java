@@ -77,27 +77,28 @@ public class Game {
         CeldaSeleccionada.setTipo5(square.getCelda(4).getTipo());
         CeldaSeleccionada.setTipo6(square.getCelda(5).getTipo());
 
+        ListaSimple<Individuo> listaIndividuos = square.getIndividuos().copiaLista();
         ListaSimple<Recurso> listaRecursos = square.getRecursos().copiaLista();
 
-        CeldaSeleccionada.setVida1(getVidasCeldas(square,1,square.getCelda(0).getTipo(),listaRecursos));
-        CeldaSeleccionada.setVida2(getVidasCeldas(square,2,square.getCelda(1).getTipo(),listaRecursos));
-        CeldaSeleccionada.setVida3(getVidasCeldas(square,3,square.getCelda(2).getTipo(),listaRecursos));
-        CeldaSeleccionada.setVida4(getVidasCeldas(square,4,square.getCelda(3).getTipo(),listaRecursos));
-        CeldaSeleccionada.setVida5(getVidasCeldas(square,5,square.getCelda(4).getTipo(),listaRecursos));
-        CeldaSeleccionada.setVida6(getVidasCeldas(square,6,square.getCelda(5).getTipo(),listaRecursos));
+        CeldaSeleccionada.setVida1(getVidasCeldas(square,1,square.getCelda(0).getTipo(),listaIndividuos,listaRecursos));
+        CeldaSeleccionada.setVida2(getVidasCeldas(square,2,square.getCelda(1).getTipo(),listaIndividuos,listaRecursos));
+        CeldaSeleccionada.setVida3(getVidasCeldas(square,3,square.getCelda(2).getTipo(),listaIndividuos,listaRecursos));
+        CeldaSeleccionada.setVida4(getVidasCeldas(square,4,square.getCelda(3).getTipo(),listaIndividuos,listaRecursos));
+        CeldaSeleccionada.setVida5(getVidasCeldas(square,5,square.getCelda(4).getTipo(),listaIndividuos,listaRecursos));
+        CeldaSeleccionada.setVida6(getVidasCeldas(square,6,square.getCelda(5).getTipo(),listaIndividuos,listaRecursos));
 
         controller.actulizarCeldaSeleccionadaTab();
     }
 
-    private double getVidasCeldas(Square square, int celda, Double tipo, ListaSimple<Recurso> recLista) {
+    private double getVidasCeldas(Square square, int celda, Double tipo, ListaSimple<Individuo> indLista, ListaSimple<Recurso> recLista) {
         double vida = 0.0;
         if (tipo == 1.1 || tipo == 1.2 || tipo == 1.3) {
             // Buscar el individuo por ID en la lista de todos los individuos
-            for (int i = 0; i < square.getIndividuos().getNumeroElementos(); i++) {
-                Individuo individuo = square.getIndividuos().getDato(i);
-                int celdaIndividuo = individuo.getCelda();
-                if (celda == celdaIndividuo+1) {
+            for (int i = 0; i < DatosCompartidos.getListaIndividuos().getNumeroElementos(); i++) {
+                Individuo individuo = DatosCompartidos.getListaIndividuos().getDato(i);
+                if (individuo.getID() == tipo.intValue()) {
                     vida = individuo.getTurnosVida();
+                    indLista.del(0);
                     break; // Salir del bucle cuando se encuentra el individuo
                 }
             }
@@ -154,8 +155,7 @@ public class Game {
 //                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
 //                tipoIndividuo = 1.3;
 //            }
-            int celda = addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
-            individuoNuevo.setCelda(celda);
+            addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
             DatosCompartidos.getListaIndividuos().add(individuoNuevo);
             System.out.println("Se ha añadido un individuo tipo " + tipoIndividuo + " con id: " + individuoNuevo.getID());
@@ -397,21 +397,13 @@ public class Game {
         for (int i = 0; i < tamanoTablero; i++) {
             int numIndividuos = tablero.getSquare(i).getIndividuos().getNumeroElementos();
             for (int j = 0; j < numIndividuos; j++){
-                Square square = tablero.getSquare(i);
-                int tipoIndividuo = square.getIndividuos().getDato(j).getTipo();
-                Individuo individuo = square.getIndividuos().getDato(j);
+                int tipoIndividuo = tablero.getSquare(i).getIndividuos().getDato(j).getTipo();
                 if (tipoIndividuo == 0){
-                    int celda = addTipo(square, 1.1);
-                    individuo.setCelda(celda);
-                    individuo.setSquare(square);
+                    addTipo(tablero.getSquare(i), 1.1);
                 } else if (tipoIndividuo == 1) {
-                    int celda = addTipo(square, 1.2);
-                    individuo.setCelda(celda);
-                    individuo.setSquare(square);
+                    addTipo(tablero.getSquare(i), 1.2);
                 } else if (tipoIndividuo == 2) {
-                    int celda = addTipo(square, 1.3);
-                    individuo.setCelda(celda);
-                    individuo.setSquare(square);
+                    addTipo(tablero.getSquare(i), 1.3);
                 }
             }
         }
@@ -694,22 +686,22 @@ public class Game {
     }
 
     // Método para crear un grafo a partir del tablero actual
-//    private Grafo<Square> crearGrafoTablero(){
-//        Grafo<Square> grafoTablero = new Grafo<>();
-//        for (int i = 0; i < Integer.parseInt(DatosCompartidos.getAltoMatriz()); i++) {
-//            for (int j = 0; j < Integer.parseInt(DatosCompartidos.getAnchoMatriz()); j++) {
-//                Square actual = tablero.getSquare(i, j);
-//                Vertice<Square> vertice = new Vertice<>(actual);
-//                grafoTablero.addVertice(vertice);
-//
-//                if (i > 0) {
-//                    Square cuadradoIzq = tablero.getSquare(i - 1, j);
-//                    int pesoArista = calcularPesoArista(actual, cuadradoIzq);
-//                    grafoTablero.addArista(new Arista(actual,cuadradoIzq,pesoArista));
-//                }
-//            }
-//        }
-//    }
+    private Grafo<Square> crearGrafoTablero(){
+        Grafo<Square> grafoTablero = new Grafo<>();
+        for (int i = 0; i < Integer.parseInt(DatosCompartidos.getAltoMatriz()); i++) {
+            for (int j = 0; j < Integer.parseInt(DatosCompartidos.getAnchoMatriz()); j++) {
+                Square actual = tablero.getSquare(i, j);
+                Vertice<Square> vertice = new Vertice<>(actual);
+                grafoTablero.addVertice(vertice);
+
+                if (i > 0) {
+                    Square cuadradoIzq = tablero.getSquare(i - 1, j);
+                    int pesoArista = calcularPesoArista(actual, cuadradoIzq);
+                    grafoTablero.addArista(new Arista(actual,cuadradoIzq,pesoArista));
+                }
+            }
+        }
+    }
 
     private int calcularPesoArista(Square cuadrado1, Square cuadrado2) {
         int peso = 1;
