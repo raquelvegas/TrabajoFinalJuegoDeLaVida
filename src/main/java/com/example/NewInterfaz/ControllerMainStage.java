@@ -450,6 +450,7 @@ public class ControllerMainStage {
             vidaCelda6.setText(String.valueOf(CeldaSeleccionada.getVida6()));
         }
 
+
         celda1.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo1()));
         celda2.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo2()));
         celda3.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo3()));
