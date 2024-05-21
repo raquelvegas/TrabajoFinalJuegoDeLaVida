@@ -26,13 +26,33 @@ public class Grafo<TipoDato> {
         this.vertices.add(v);
     }
 
-    public void addArista(Arista a) throws NonValidLink {
+    private void addArista(Arista a) throws NonValidLink {
         if (Objects.equals(a.getVerticeFin().getDato(), a.getVerticeIni().getDato())) {
             throw (new NonValidLink("ERROR. Una arista no puede unir un vértice consigo mismo."));
         } else if (validarArista(a)) {
             this.aristas.add(a);
             a.getVerticeIni().addAristaVHijo(a);
             a.getVerticeFin().addAristaVAntecesor(a);
+        }
+    }
+
+    public void addArista(TipoDato a, TipoDato b, int peso) {
+        Vertice<TipoDato> vIni = null;
+        Vertice<TipoDato> vFin = null;
+        for (int i = 0; i < vertices.getNumeroElementos(); i++) {
+            if (vertices.getDato(i).getDato() == a) {
+                vIni = vertices.getDato(i);
+            }
+            if (vertices.getDato(i).getDato() == b) {
+                vFin = vertices.getDato(i);
+            }
+        }
+        if (vIni != null && vFin != null) {
+            try {
+                addArista(new Arista(vIni, vFin, peso));
+            } catch (NonValidLink ex) {
+                ex.printStackTrace();
+            }
         }
     }
     public String printCodigoGrafo() {
@@ -113,13 +133,30 @@ public class Grafo<TipoDato> {
     // Métodos para sacar los caminos mínimos
 
 
-    public Camino getCaminoMinimo(Vertice origen, Vertice fin) {
-        Mapa<Vertice, Camino> caminos = this.dijkstra(origen);
+    private Vertice<TipoDato> getVertice(TipoDato a) {
+        for (int i = 0; i < vertices.getNumeroElementos(); i++) {
+            if (vertices.getDato(i).getDato() == a) {
+                return vertices.getDato(i);
+            }
+        }
+        return null;
+    }
+
+    public Camino getCaminoMinimo(TipoDato origen, TipoDato fin) {
+        Vertice<TipoDato> Vorigen = this.getVertice(origen);
+        Vertice<TipoDato> Vfin = this.getVertice(fin);
+
+        return getCaminoMinimo(Vorigen, Vfin);
+    }
+
+    private Camino getCaminoMinimo(Vertice origen, Vertice fin) {
+
+        Mapa<Vertice<TipoDato>, Camino> caminos = this.dijkstra(origen);
         Camino caminoCompleto = caminos.get(fin);
         return caminoCompleto;
     }
 
-    private Mapa<Vertice, Camino> dijkstra(Vertice origen) {
+    private Mapa<Vertice<TipoDato>, Camino> dijkstra(Vertice origen) {
         Mapa<Vertice, Double> distancias = new Mapa<>();
         Cola<Vertice> colaPendientes = new Cola<>();
         Mapa<Vertice, Vertice> verticesAnteriores = new Mapa<>();
@@ -159,8 +196,8 @@ public class Grafo<TipoDato> {
         }
     }
 
-    private Mapa<Vertice, Camino> dijkstra_resultados(Mapa<Vertice, Double> distancias, Mapa<Vertice, Vertice> verticesAnteriores) {
-        Mapa<Vertice, Camino> caminos = new Mapa<>();
+    private Mapa<Vertice<TipoDato>, Camino> dijkstra_resultados(Mapa<Vertice, Double> distancias, Mapa<Vertice, Vertice> verticesAnteriores) {
+        Mapa<Vertice<TipoDato>, Camino> caminos = new Mapa<>();
 
         Integer contador = 0;
         while (contador < verticesAnteriores.getIndices().getNumeroElementos()) {

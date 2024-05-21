@@ -1,53 +1,27 @@
 package com.example.EstructurasDeDatos;
 
+
+import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
+
 public class Cola<TipoDato> {
-    ElementoCola<TipoDato> primero;
-    ElementoCola<TipoDato> ultimo;
+    private ListaEnlazada<TipoDato> datos;
 
     public Cola() {
-        this.primero = null;
-        this.ultimo = null;
+        datos= new ListaEnlazada<>();
     }
 
     public boolean isVacia() {
-        return primero == null;
+        return datos.isVacia();
     }
 
     public void push(TipoDato dato) {
-        ElementoCola<TipoDato> elemento = new ElementoCola<>(dato);
-        if (!this.isVacia()) {
-            primero = elemento;
-        } else {
-            ultimo.setSiguiente(elemento);
-        }
-        ultimo = elemento;
+        datos.add(dato);
     }
 
     public TipoDato pop() {
-        if (this.isVacia()) {
-            return null;
-        } else {
-            TipoDato datoExpulsado = primero.getDato();
-            primero = primero.getSiguiente();
-            if (primero == null) {
-                ultimo = null;
-            }
-            return datoExpulsado;
-        }
+        TipoDato borrado = datos.getElemento(0).getData();
+        datos.del(0);
+        return borrado;
     }
 
-    public Integer getNumeroElementos() {
-        Integer contador = 0;
-        if (this.isVacia()) {
-            return contador;
-        } else {
-            ElementoCola<TipoDato> actual = primero;
-            contador++;
-            while (actual.getSiguiente() != null) {
-                contador++;
-                actual = actual.getSiguiente();
-            }
-            return contador;
-        }
-    }
 }
