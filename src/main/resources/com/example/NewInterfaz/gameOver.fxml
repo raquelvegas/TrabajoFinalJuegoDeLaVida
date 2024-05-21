@@ -3,10 +3,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewInterfaz.ControllerGameOver">
    <children>
       <ImageView fitHeight="589.0" fitWidth="1267.0" layoutX="-205.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,69 +23,109 @@
             <Image url="@../../../cuadroTexto.png" />
          </image>
       </ImageView>
-      <Text layoutX="310.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DE INDIVIDUOS : 0000000000000000" />
       <ImageView fitHeight="39.0" fitWidth="756.0" layoutX="27.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../cuadroTexto.png" />
          </image>
       </ImageView>
-      <Text layoutX="271.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DE REPRODUCCIONES: 0000000000000000" />
       <ImageView fitHeight="68.0" fitWidth="756.0" layoutX="27.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../cuadroTexto.png" />
          </image>
       </ImageView>
-      <Text layoutX="305.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DE CLONACIONES: 0000000000000000" />
       <ImageView fitHeight="49.0" fitWidth="437.0" layoutX="27.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../cuadroTextoPequeño.png" />
          </image>
       </ImageView>
-      <Text layoutX="88.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUO CON MÁS REPRODUCCIONES: 0" />
       <ImageView fitHeight="49.0" fitWidth="437.0" layoutX="27.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../cuadroTextoPequeño.png" />
          </image>
       </ImageView>
-      <Text layoutX="126.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUO MÁS LONGEVO: 0" />
       <ImageView fitHeight="49.0" fitWidth="437.0" layoutX="27.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../cuadroTextoPequeño.png" />
          </image>
       </ImageView>
-      <Text layoutX="93.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUO QUE MÁS AGUA HA BEBIDO: 0" />
       <ImageView fitHeight="49.0" fitWidth="437.0" layoutX="428.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../cuadroTextoPequeño.png" />
          </image>
       </ImageView>
-      <Text layoutX="500.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUO CON MÁS CLONACIONES: 0" />
       <ImageView fitHeight="49.0" fitWidth="437.0" layoutX="428.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../cuadroTextoPequeño.png" />
          </image>
       </ImageView>
-      <Text layoutX="495.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUO CON MÁS TIEMPO DE VIDA: 0" />
-      <ImageView fitHeight="49.0" fitWidth="437.0" layoutX="427.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="arbolesGenealogicos" fitHeight="49.0" fitWidth="437.0" layoutX="427.0" layoutY="401.0" onMouseClicked="#arbolGenealogico" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../cuadroTextoPequeño.png" />
          </image>
       </ImageView>
-      <Text layoutX="450.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HAZ CLICK AQUÍ PARA VER LOS ÁRBOLES GENEALÓGICOS" />
-      <ImageView fitHeight="82.0" fitWidth="320.0" layoutX="45.0" layoutY="474.0" pickOnBounds="true" preserveRatio="true">
+      <Text layoutX="450.0" layoutY="430.0" onMouseClicked="#arbolGenealogico" strokeType="OUTSIDE" strokeWidth="0.0" text="HAZ CLICK AQUÍ PARA VER LOS ÁRBOLES GENEALÓGICOS" />
+      <ImageView fx:id="volverJugar" fitHeight="82.0" fitWidth="320.0" layoutX="45.0" layoutY="474.0" onMouseClicked="#volverJugar" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../volverJugar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="82.0" fitWidth="320.0" layoutX="446.0" layoutY="474.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cerrarJuego" fitHeight="82.0" fitWidth="320.0" layoutX="446.0" layoutY="474.0" onMouseClicked="#cerrarJuego" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../cerrarJuego.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="31.0" layoutX="746.0" layoutY="435.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="49.0" fitWidth="51.0" layoutX="743.0" layoutY="422.0" onMouseClicked="#arbolGenealogico" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../flechaRaton.png" />
          </image>
       </ImageView>
+      <HBox alignment="CENTER" layoutX="37.0" layoutY="134.0" prefHeight="30.0" prefWidth="734.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DE INDIVIDUOS : " wrappingWidth="134.44802856445312" />
+            <Text fx:id="totalIndividuos" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="37.0" layoutY="185.0" prefHeight="30.0" prefWidth="734.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DE REPRODUCCIONES: " wrappingWidth="165.64804077148438" />
+            <Text fx:id="totalReproducciones" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="38.0" layoutY="236.0" prefHeight="30.0" prefWidth="734.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DE CLONACIONES: " wrappingWidth="145.64804077148438" />
+            <Text fx:id="totalClonaciones" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="38.0" layoutY="287.0" prefHeight="40.0" prefWidth="331.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUO CON MÁS REPRODUCCIONES: " wrappingWidth="228.84805607795715" />
+            <Text fx:id="masReproducciones" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="39.0" layoutY="343.0" prefHeight="42.0" prefWidth="331.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUO MÁS LONGEVO: " wrappingWidth="154.44803166389465" />
+            <Text fx:id="longevo" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="40.0" layoutY="402.0" prefHeight="42.0" prefWidth="331.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUO QUE MÁS AGUA HA BEBIDO: " wrappingWidth="226.04802560806274" />
+            <Text fx:id="masAgua" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="438.0" layoutY="291.0" prefHeight="34.0" prefWidth="331.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUO CON MÁS CLONACIONES: " wrappingWidth="209.24808049201965" />
+            <Text fx:id="masClonaciones" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="443.0" layoutY="344.0" prefHeight="42.0" prefWidth="331.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUO CON MÁS TIEMPO DE VIDA: " wrappingWidth="218.84805607795715" />
+            <Text fx:id="masClonaciones1" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

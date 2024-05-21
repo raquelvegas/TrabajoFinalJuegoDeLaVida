@@ -34,6 +34,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -168,8 +169,42 @@ public class ControllerMainStage {
         }
     }
     @FXML
-    void stopGame(MouseEvent event) {
+    void stopGame(MouseEvent event) throws IOException {
         game.turno();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Guardar Partida");
+        alert.setHeaderText("¿Quieres guardar tu partida?");
+        alert.setContentText("Elige tu opción.");
+
+        ButtonType buttonTypeYes = new ButtonType("Sí");
+        ButtonType buttonTypeNo = new ButtonType("No");
+
+        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonTypeYes){
+            // Acción a realizar si el usuario quiere guardar la partida
+            System.out.println("Partida guardada.");
+        } else {
+            // Acción a realizar si el usuario no quiere guardar la partida
+            System.out.println("Partida no guardada.");
+        }
+
+
+        URL fxmlUrl = getClass().getResource("gameOver.fxml");
+        Parent root = FXMLLoader.load(fxmlUrl);
+
+        Stage gameOverStage = new Stage();
+        gameOverStage.setScene(new Scene(root));
+        gameOverStage.setResizable(true); // Evitar que la ventana sea redimensionable
+        gameOverStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
+        gameOverStage.initOwner(primaryStage);
+
+        gameOverStage.initStyle(StageStyle.UNDECORATED);
+        gameOverStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
+
+        gameOverStage.show();
     }
     @FXML
     void aplicarUser(MouseEvent event){
