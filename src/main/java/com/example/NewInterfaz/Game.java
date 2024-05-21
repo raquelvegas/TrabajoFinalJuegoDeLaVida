@@ -17,6 +17,8 @@ import javafx.scene.paint.Color;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Random;
 
 public class Game {
@@ -142,7 +144,7 @@ public class Game {
         if (square.getIndividuos().getNumeroElementos() < 3) {
             Individuo individuoNuevo;
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
-            int tipo = generarEnteroAleatorio(0, 2); // Generar tipo aleatorio
+            int tipo = generarEnteroAleatorio(0, 1); // Generar tipo aleatorio
             Double tipoIndividuo;
 //            if (tipo == 0) {
 //                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
@@ -333,39 +335,39 @@ public class Game {
     public void aparicionRecursos(){
          for (int i = 0; i < tablero.getSquares().getNumeroElementos(); i++){
              // Agua
-             if (revisionAparicion(Integer.parseInt(DatosCompartidos.getAguaAparicion()))){
+             if (revisionAparicion(Double.parseDouble(DatosCompartidos.getAguaAparicion())/15)){
                  addRecursos(tablero.getSquare(i), 2.0);
              }
 
              // Comida
-             if (revisionAparicion(Integer.parseInt(DatosCompartidos.getComidaAparicion()))){
+             if (revisionAparicion(Double.parseDouble(DatosCompartidos.getComidaAparicion())/15)){
                  addRecursos(tablero.getSquare(i), 3.0);
              }
 
              // Montaña
-             if (revisionAparicion(Integer.parseInt(DatosCompartidos.getMontanaAparicion()))){
+             if (revisionAparicion(Double.parseDouble(DatosCompartidos.getMontanaAparicion())/15)){
                  addRecursos(tablero.getSquare(i), 4.0);
              }
 
              // Biblioteca
-             if (revisionAparicion(Integer.parseInt(DatosCompartidos.getBibliotecaAparicion()))){
+             if (revisionAparicion(Double.parseDouble(DatosCompartidos.getBibliotecaAparicion())/15)){
                  addRecursos(tablero.getSquare(i), 5.0);
              }
 
              // Tesoro
-             if (revisionAparicion(Integer.parseInt(DatosCompartidos.getTesoroAparicion()))){
+             if (revisionAparicion(Double.parseDouble(DatosCompartidos.getTesoroAparicion())/15)){
                  addRecursos(tablero.getSquare(i), 6.0);
              }
 
              // Pozo
-             if (revisionAparicion(Integer.parseInt(DatosCompartidos.getPozoAparicion()))){
+             if (revisionAparicion(Double.parseDouble(DatosCompartidos.getPozoAparicion())/15)){
                  addRecursos(tablero.getSquare(i), 7.0);
              }
          }
     }
 
-    public boolean revisionAparicion(int recursoAparicion){
-        int porcentaje = generarEnteroAleatorio(0,100);
+    public boolean revisionAparicion(double recursoAparicion){
+        double porcentaje = generarDoubleAleatorio(0,100);
         boolean aparicion = false;
             if (porcentaje < recursoAparicion){
                 aparicion = true;
@@ -531,15 +533,23 @@ public class Game {
                         for (int rec = 0; rec < actual.getRecursos().getNumeroElementos(); rec++) {
                             if (actual.getRecursos().getDato(rec).getTipoRecurso() == 2) { // Agua
                                 consumirAgua(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
-                                System.out.println("Vida individuo= " + actual.getIndividuos().getDato(ind).getTurnosVida());
+                                log.info("El individuo "+actual.getIndividuos().getDato(ind).getID()+" ha consumido agua en la casilla "+actual.getX()+", "+actual.getY());
                             } else if (actual.getRecursos().getDato(rec).getTipoRecurso() == 3) { // Comida
                                 consumirComida(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
+                                log.info("El individuo "+actual.getIndividuos().getDato(ind).getID()+" ha consumido comida en la casilla "+actual.getX()+", "+actual.getY());
+
                             } else if (actual.getRecursos().getDato(rec).getTipoRecurso() == 4) { // Montaña
                                 consumirMontana(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
+                                log.info("El individuo "+actual.getIndividuos().getDato(ind).getID()+" ha consumido montaña en la casilla "+actual.getX()+", "+actual.getY());
+
                             } else if (actual.getRecursos().getDato(rec).getTipoRecurso() == 5) { // Biblioteca
                                 consumirBiblioteca(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
+                                log.info("El individuo "+actual.getIndividuos().getDato(ind).getID()+" ha consumido biblioteca en la casilla "+actual.getX()+", "+actual.getY());
+
                             } else if (actual.getRecursos().getDato(rec).getTipoRecurso() == 6) { // Tesoro
                                 consumirTesoro(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
+                                log.info("El individuo "+actual.getIndividuos().getDato(ind).getID()+" ha consumido tesoro en la casilla "+actual.getX()+", "+actual.getY());
+
                             } else {
                                 listaDel.add(actual.getIndividuos().getDato(ind));
                                 actual.getIndividuos().del(ind);
@@ -644,11 +654,17 @@ public class Game {
             if (!individuoYaMovido(ind, listaID)) {   // Compruebo si el individuo a mover se ha movido ya en este turno o no
 
                 if (ind.getTipo() == 0) {   // Tipo Básico
+
                     moverIndBasico(cuadrado, listaCuadrados, ind);
+
                 } else if (ind.getTipo() == 1) { // Tipo Normal
+
                     moverIndNormal(listaCuadrados, cuadrado, ind);
+
                 } else {   // Tipo Avanzado
+
                     moverIndAvanzado(cuadrado,listaCuadrados,(IndAvanzado) ind);
+
                 }
                 listaID.add(ind.getID()); // Se añade el ID del individuo a la lista de identificadores de los individuos que se han movido
             } else {
@@ -778,12 +794,12 @@ public class Game {
                 case 4:
                     if (peso<Integer.MAX_VALUE/2){
                         peso+=cuadrado.getRecursos().getDato(k).getEfecto();
+                        log.info("Peso de la arista modificado por existencia de una montaña");
                     }
                     break;
                 case 7:
                     peso = Integer.MAX_VALUE/2;
-                default:
-                    log.info("El recurso supone un peso de 1");
+                    log.info("Peso de la arista modificado por existencia de un pozo");
             }
         }
         return peso;
@@ -941,6 +957,16 @@ public class Game {
         int rango = max - min + 1;
         int numeroAleatorio = random.nextInt(rango) + min;
         return numeroAleatorio;
+    }
+
+    private double generarDoubleAleatorio(double min, double max){
+        Random random = new Random();
+
+        double numeroAleatorio = min + (max-min)* random.nextDouble();
+        NumberFormat formatoDecimal = NumberFormat.getNumberInstance(Locale.US);
+        formatoDecimal.setMaximumFractionDigits(2);
+        String numeroFormateaado = formatoDecimal.format(numeroAleatorio);
+        return Double.parseDouble(numeroFormateaado);
     }
 
 
