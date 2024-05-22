@@ -24,4 +24,11 @@ public class Cola<TipoDato> {
         return borrado;
     }
 
+    public ListaEnlazada<TipoDato> getDatos() {
+        return datos;
+    }
+
+    public void setDatos(ListaEnlazada<TipoDato> datos) {
+        this.datos = datos;
+    }
 }

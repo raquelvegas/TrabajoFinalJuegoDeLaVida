@@ -132,4 +132,12 @@ public class ListaSimple<Tipodato> {
         nuevaLista.setMaximo(this.maximo);
         return nuevaLista;
     }
+
+    public void setDatos(ElementoLS<Tipodato>[] datos) {
+        this.datos = datos;
+    }
+
+    public void setNumElem(Integer numElem) {
+        this.numElem = numElem;
+    }
 }
