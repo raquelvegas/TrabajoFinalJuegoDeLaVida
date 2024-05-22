@@ -4,12 +4,11 @@ module com.example.eljuegodelavida {
     requires javafx.media;
     requires javafx.graphics;
     requires org.apache.logging.log4j;
+    requires com.google.gson;
 
 
     exports com.example.NewInterfaz;
-    opens com.example.NewInterfaz to javafx.fxml;
-    exports com.example.NewInterfaz.Individuos;
-    opens com.example.NewInterfaz.Individuos to javafx.fxml;
+    opens com.example.NewInterfaz to javafx.fxml, com.google.gson;
 
     exports com.example.EstructurasDeDatos to javafx.graphics;
 }

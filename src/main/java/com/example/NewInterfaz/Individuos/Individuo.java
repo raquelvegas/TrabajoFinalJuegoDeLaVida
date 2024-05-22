@@ -7,13 +7,21 @@ import com.example.NewInterfaz.Square;
 
 public abstract class Individuo {
     private int ID;
+
     private int Generacion;
+
     private int TurnosVida;
+
     private int ProbRepr;
+
     private int ProbClon;
+
     private Cola<Integer> acciones;
+
     private ArbolBinario<Individuo> arbolGenealogico;
+
     private int celda;
+
     private Square square;
 
     public abstract int getTipo();
