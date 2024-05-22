@@ -1,13 +1,18 @@
 package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
+import com.google.gson.annotations.Expose;
 import javafx.geometry.Insets;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 public class Tablero {
     GridPane tableroJuego;
+
+    @Expose
     String theme;
+
+    @Expose
     public ListaSimple<Square> squares = new ListaSimple<>();
 
     public Tablero(GridPane tableroJuego, String theme) {

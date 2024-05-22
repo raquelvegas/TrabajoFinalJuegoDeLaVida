@@ -1,8 +1,7 @@
-package com.example.GsonAdapters;
+package com.example.SaveInfo;
 
 import com.example.EstructurasDeDatos.Cola;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
-import com.example.NewInterfaz.ControllerIndividuoPropiedades;
 import com.google.gson.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

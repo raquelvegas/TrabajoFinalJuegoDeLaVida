@@ -4,24 +4,33 @@ import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.Cola;
 import com.example.NewInterfaz.DatosCompartidos;
 import com.example.NewInterfaz.Square;
+import com.google.gson.annotations.Expose;
 
 public abstract class Individuo {
+    @Expose
     private int ID;
 
+    @Expose
     private int Generacion;
 
+    @Expose
     private int TurnosVida;
 
+    @Expose
     private int ProbRepr;
 
+    @Expose
     private int ProbClon;
 
+    @Expose
     private Cola<Integer> acciones;
 
     private ArbolBinario<Individuo> arbolGenealogico;
 
+    @Expose
     private int celda;
 
+    @Expose
     private Square square;
 
     public abstract int getTipo();

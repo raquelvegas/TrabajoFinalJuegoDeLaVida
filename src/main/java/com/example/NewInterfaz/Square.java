@@ -2,17 +2,29 @@ package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.NewInterfaz.Individuos.Individuo;
+import com.google.gson.annotations.Expose;
 import javafx.scene.Node;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 public class Square extends StackPane {
 
+    @Expose
     private Integer x, y;
+
+    @Expose
     private boolean occupied;
+
+    @Expose
     private int ID;
+
+    @Expose
     private ListaSimple<Celda> celdas = new ListaSimple<>();
+
+    @Expose
     private ListaSimple<Individuo> individuos;
+
+    @Expose
     private ListaSimple<Recurso> recursos;
     GridPane gridPane;
 

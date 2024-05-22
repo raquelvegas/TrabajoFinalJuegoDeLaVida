@@ -1,10 +1,21 @@
 package com.example.NewInterfaz;
 
+import com.google.gson.annotations.Expose;
+
 public class Recurso {
+    @Expose
     private Double tipoRecurso;
+
+    @Expose
     private int tiempoVida;
+
+    @Expose
     private int efecto;
+
+    @Expose
     private Square square;
+
+    @Expose
     private int celda;
 
     public Recurso(Double tipoRecurso, Square square) {

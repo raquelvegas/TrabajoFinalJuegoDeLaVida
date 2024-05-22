@@ -1,11 +1,16 @@
 package com.example.EstructurasDeDatos.Listas;
 
 
+import com.google.gson.annotations.Expose;
+
 public class ListaSimple<Tipodato> {
+    @Expose
     private ElementoLS<Tipodato>[] datos;
 
+    @Expose
     private Integer maximo = 50000;
 
+    @Expose
     private Integer numElem;
 
     //////////////

@@ -9,6 +9,8 @@ module com.example.eljuegodelavida {
 
     exports com.example.NewInterfaz;
     opens com.example.NewInterfaz to javafx.fxml, com.google.gson;
+    opens com.example.SaveInfo to com.google.gson;
+    opens com.example.EstructurasDeDatos.Listas to com.google.gson;
 
     exports com.example.EstructurasDeDatos to javafx.graphics;
 }

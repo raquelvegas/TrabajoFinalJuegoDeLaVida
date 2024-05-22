@@ -1,8 +1,12 @@
 package com.example.EstructurasDeDatos.Listas;
 
+import com.google.gson.annotations.Expose;
+
 public class ListaEnlazada<T> {
+    @Expose
     private ElementoLE<T> primero;
 
+    @Expose
     private int numElem;
 
     ///////////////

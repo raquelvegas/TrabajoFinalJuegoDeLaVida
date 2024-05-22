@@ -2,8 +2,10 @@ package com.example.EstructurasDeDatos;
 
 
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
+import com.google.gson.annotations.Expose;
 
 public class Cola<TipoDato> {
+    @Expose
     private ListaEnlazada<TipoDato> datos;
 
     public Cola() {

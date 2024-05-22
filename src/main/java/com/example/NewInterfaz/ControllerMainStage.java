@@ -1,5 +1,6 @@
 package com.example.NewInterfaz;
 
+import com.example.SaveInfo.SaveInfo;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -186,6 +187,8 @@ public class ControllerMainStage {
         if (result.get() == buttonTypeYes){
             // Acción a realizar si el usuario quiere guardar la partida
             System.out.println("Partida guardada.");
+            SaveInfo informacion = new SaveInfo(DatosCompartidos.getAltoMatriz(),DatosCompartidos.getAnchoMatriz(),DatosCompartidos.getProbReproduccion(),DatosCompartidos.getProbClonacion(),DatosCompartidos.getVidaInicial(),DatosCompartidos.getAguaVida(),DatosCompartidos.getComidaVida(),DatosCompartidos.getMontanaVida(),DatosCompartidos.getTesoroVida(),DatosCompartidos.getBibliotecaVida(),DatosCompartidos.getPozoVida(),DatosCompartidos.getAguaEfecto(),DatosCompartidos.getComidaEfecto(),DatosCompartidos.getMontanaEfecto(),DatosCompartidos.getTesoroEfecto(),DatosCompartidos.getBibliotecaEfecto(),DatosCompartidos.getAguaAparicion(),DatosCompartidos.getComidaAparicion(),DatosCompartidos.getMontanaAparicion(),DatosCompartidos.getTesoroAparicion(),DatosCompartidos.getBibliotecaAparicion(),DatosCompartidos.getPozoAparicion(),DatosCompartidos.getAnadir(),DatosCompartidos.isAnadirTab(),DatosCompartidos.isContenidoCeldaTab(),DatosCompartidos.getNumIndividuos(),DatosCompartidos.getTurnoJuego(),DatosCompartidos.getVelocidadJuego(),DatosCompartidos.isGameIniciado(),DatosCompartidos.isTableroAleatorio(),DatosCompartidos.getListaRecursos(),DatosCompartidos.getListaIndividuos(),DatosCompartidos.getGame());
+            informacion.guardar("NuevoArchivo");
         } else {
             // Acción a realizar si el usuario no quiere guardar la partida
             System.out.println("Partida no guardada.");

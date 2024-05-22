@@ -1,4 +1,4 @@
-package com.example.GsonAdapters;
+package com.example.SaveInfo;
 
 
 import com.example.EstructurasDeDatos.Listas.ElementoLS;

@@ -11,6 +11,7 @@ import com.example.NewInterfaz.Individuos.IndAvanzado;
 import com.example.NewInterfaz.Individuos.IndBasico;
 import com.example.NewInterfaz.Individuos.IndNormal;
 import com.example.NewInterfaz.Individuos.Individuo;
+import com.google.gson.annotations.Expose;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -22,8 +23,13 @@ import java.util.Locale;
 import java.util.Random;
 
 public class Game {
+    @Expose
     public static Tablero tablero;
+
+    @Expose
     private boolean game;
+
+    @Expose
     private ControllerMainStage controller;
 
     private static final Logger log = LogManager.getLogger(Game.class);

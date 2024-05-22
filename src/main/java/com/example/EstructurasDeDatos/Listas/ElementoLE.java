@@ -1,7 +1,12 @@
 package com.example.EstructurasDeDatos.Listas;
 
+import com.google.gson.annotations.Expose;
+
 public class ElementoLE<TipoDato> {
+    @Expose
     private TipoDato data;
+
+    @Expose
     private ElementoLE<TipoDato> siguiente;
 
     ///////////////

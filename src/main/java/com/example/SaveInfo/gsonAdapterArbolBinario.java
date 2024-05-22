@@ -1,4 +1,4 @@
-package com.example.GsonAdapters;
+package com.example.SaveInfo;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
 
@@ -11,7 +11,7 @@ public class gsonAdapterArbolBinario implements JsonSerializer<ArbolBinario>, Js
     @Override
     public JsonElement serialize(ArbolBinario arbolBinario, Type type, JsonSerializationContext jsonSerializationContext) {
         JsonObject arbolJson = new JsonObject();
-        
+        return arbolJson;
     }
 
     @Override
