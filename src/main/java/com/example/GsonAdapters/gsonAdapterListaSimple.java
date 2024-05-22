@@ -12,7 +12,7 @@ public class gsonAdapterListaSimple implements JsonSerializer<ListaSimple>, Json
     @Override
     public JsonElement serialize(ListaSimple lista, Type type, JsonSerializationContext context) {
         JsonObject listaJson = new JsonObject();
-        listaJson.addProperty("maximo", lista.getMaximo());
+        listaJson.addProperty("maximo",lista.getMaximo());
         JsonArray jsonArray = new JsonArray();
         for (int i = 0; i < lista.getNumeroElementos(); i++) {
             jsonArray.add(context.serialize(lista.getElemento(i)).getAsJsonObject());
@@ -25,10 +25,18 @@ public class gsonAdapterListaSimple implements JsonSerializer<ListaSimple>, Json
     @Override
     public ListaSimple deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
-        for (JsonElement elemento : jsonObject.get("datos").getAsJsonArray()){
-            ElementoLS[]
+        int i = 0;
+        for (JsonElement elemento : jsonObject.get("datos").getAsJsonArray()) i++;
+        int maximo = context.deserialize(jsonObject.get("maximo").getAsJsonArray(),Integer.class);
+        ElementoLS[] arrayElementos = new ElementoLS[maximo];
+        for (int j = 0; j != i; j++) {
+            arrayElementos[j] = context.deserialize(jsonObject.get("datos").getAsJsonArray().get(j), ElementoLS.class);
         }
 
+        ListaSimple<?> listaSimple = new ListaSimple<>();
+        listaSimple.setDatos(arrayElementos);
+        listaSimple.setNumElem(context.deserialize(jsonObject.get("numElem").getAsJsonArray(),Integer.class));
+        return listaSimple;
     }
 
 }
