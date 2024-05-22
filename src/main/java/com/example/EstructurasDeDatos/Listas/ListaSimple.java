@@ -8,7 +8,7 @@ public class ListaSimple<Tipodato> {
     private ElementoLS<Tipodato>[] datos;
 
     @Expose
-    private Integer maximo = 50000;
+    private Integer maximo = 5000;
 
     @Expose
     private Integer numElem;

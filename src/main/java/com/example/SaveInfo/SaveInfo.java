@@ -420,10 +420,12 @@ public class SaveInfo {
     }
 
     public void guardar(String rutaArchivo) {
+        this.getListaIndividuos().setMaximo(this.getListaIndividuos().getNumeroElementos());
+        this.getListaRecursos().setMaximo(this.getListaRecursos().getNumeroElementos());
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Individuo.class, new gsonAdapterIndividuo())
                 .registerTypeAdapter(Cola.class, new gsonAdapterCola())
-                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
+//                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
                 .excludeFieldsWithoutExposeAnnotation()
                 .excludeFieldsWithModifiers(Modifier.STATIC)
                 .setPrettyPrinting()

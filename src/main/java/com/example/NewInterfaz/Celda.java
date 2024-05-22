@@ -1,5 +1,6 @@
 package com.example.NewInterfaz;
 
+import com.google.gson.annotations.Expose;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -8,9 +9,17 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
 public class Celda extends StackPane {
+
+    @Expose
     private int x, y;
+
+    @Expose
     private double tipo = 0;
+
+    @Expose
     private int id;
+
+    @Expose
     private boolean ocupado;
 
     public Celda(int x, int y) {

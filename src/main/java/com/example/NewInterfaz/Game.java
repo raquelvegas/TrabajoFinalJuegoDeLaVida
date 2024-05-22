@@ -690,28 +690,35 @@ public class Game {
 
     // Metodo principal para mover individuos Avanzados
     private void moverIndAvanzado(Square cuadrado, ListaSimple<Square> listaCuadrados, IndAvanzado ind) {
-        ListaSimple<Recurso> listaRecursosTotales = DatosCompartidos.getListaRecursos();
-        ListaSimple<Recurso> recursosPositivos = new ListaSimple<>(); // Se instancia una lista de recursos benefiiosos para el individuo
-        for (int i = 0; i < listaRecursosTotales.getNumeroElementos(); i++) {
-            if (listaRecursosTotales.getDato(i).getTipoRecurso() != 4 && listaRecursosTotales.getDato(i).getTipoRecurso() != 7) { // Se comprueba que el recurso a añadir no sea un recurso perjudicial para el individuo
-                recursosPositivos.add(listaRecursosTotales.getDato(i));
+        if (ind.getRecorrido().isVacia()) {
+            ListaSimple<Recurso> listaRecursosTotales = DatosCompartidos.getListaRecursos();
+            ListaSimple<Recurso> recursosPositivos = new ListaSimple<>(); // Se instancia una lista de recursos benefiiosos para el individuo
+            for (int i = 0; i < listaRecursosTotales.getNumeroElementos(); i++) {
+                if (listaRecursosTotales.getDato(i).getTipoRecurso() != 4 && listaRecursosTotales.getDato(i).getTipoRecurso() != 7) { // Se comprueba que el recurso a añadir no sea un recurso perjudicial para el individuo
+                    recursosPositivos.add(listaRecursosTotales.getDato(i));
+                }
             }
-        }
-        if (recursosPositivos.isVacia()) {
-            moverIndBasico(cuadrado, listaCuadrados, ind);
+            if (recursosPositivos.isVacia()) {
+                moverIndBasico(cuadrado, listaCuadrados, ind);
+            } else {
+                buscarRecorridoAvanzado(recursosPositivos, cuadrado, ind);
+                moverIndAvanzadoDirigido(ind);
+            }
         } else {
-            buscarRecorridoAvanzado(recursosPositivos, cuadrado, ind);
             moverIndAvanzadoDirigido(ind);
         }
     }
 
+
+    // Método para mover un individuo avanzado con recorrido
     private void moverIndAvanzadoDirigido(IndAvanzado ind){
-        ind.getRecorrido().del(0); // Eliminamos el primer cuadrado (en el que se encuentra el individuo)
         Square siguienteCuadrado = ind.getRecorrido().getPrimero().getData();
         siguienteCuadrado.getIndividuos().add(ind);
         ind.getRecorrido().del(0);
     }
 
+
+    // Método para buscar un recorrido de un individuo avanzado
     private void buscarRecorridoAvanzado(ListaSimple<Recurso> recursosPositivos, Square cuadrado, IndAvanzado ind) {
         Grafo<Square> grafo = crearGrafoTablero();  // Formamos un grafo con la situación actual del tablero
         ListaSimple<Camino> caminosMinimos = new ListaSimple<>();  // Lista de caminos mínimos hacia cada uno de los recursos ventajosos
@@ -734,13 +741,17 @@ public class Game {
         }
 
         ListaEnlazada<Square> recorrido = new ListaEnlazada<>();  // Lista de "Squares" por donde el individuo va a pasar para llegar a su destino
-
+        
         for (int t = 0; t < caminoFinal.getCamino().getNumeroElementos(); t++) {
-            recorrido.add((Square) caminoFinal.getCamino().getDato(t).getDato());
+            if (caminoFinal.getCamino().getDato(t).getDato() != cuadrado) {
+                recorrido.add((Square) caminoFinal.getCamino().getDato(t).getDato());
+            }
+
         }
 
         ind.setRecorrido(recorrido);
     }
+
 
     // Método para crear un grafo a partir del tablero actual
     private Grafo<Square> crearGrafoTablero(){
@@ -788,12 +799,16 @@ public class Game {
         return grafoTablero;
     }
 
+
+    // Método para calcular el peso de las aristas del grafo en función de los recursos que tenga
     private int calcularPesoArista(Square cuadrado1) {
         int peso = 1;
         peso = añadirPesoObstaculo(peso, cuadrado1);
         return peso;
     }
 
+
+    // Método para añadir peso a la arista si hay montañas o pozos
     private int añadirPesoObstaculo(int peso, Square cuadrado) {
         for (int k = 0; k < cuadrado.getRecursos().getNumeroElementos(); k++) {
             switch (cuadrado.getRecursos().getDato(k).getTipoRecurso().intValue()){
@@ -810,6 +825,7 @@ public class Game {
         }
         return peso;
     }
+
 
     // Método principal para mover un individuo básico
     private void moverIndBasico(Square cuadrado, ListaSimple<Square> listaCuadrados, Individuo ind) {
