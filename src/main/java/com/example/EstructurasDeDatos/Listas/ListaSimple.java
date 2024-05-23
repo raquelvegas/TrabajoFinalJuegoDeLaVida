@@ -22,6 +22,7 @@ public class ListaSimple<Tipodato> {
 
     public ListaSimple(int max) {
         this.datos = new ElementoLS[max];
+        this.maximo = max;
         this.numElem=0;
     }
 
@@ -39,12 +40,6 @@ public class ListaSimple<Tipodato> {
         return getNumeroElementos() == 0;
     }
 
-    public void vaciar() {
-        while (!this.isVacia()) {
-            datos[0] = null;
-        }
-    }
-
     public void add(Tipodato el) {
         datos[numElem] = new ElementoLS<>(el);
         numElem++;
@@ -58,18 +53,6 @@ public class ListaSimple<Tipodato> {
                 datos[num_elem - 1] = null;
         }
         numElem--;
-    }
-
-    public Integer getPosicion(Tipodato data) {
-        int cont = 0;
-        Integer posicion = null;
-        while (cont < maximo && datos[cont] != null && posicion == null) {
-            if (datos[cont].getData() == data) {
-                posicion = cont;
-            }
-            cont++;
-        }
-        return posicion;
     }
 
     public Tipodato getPrimero() {
@@ -87,15 +70,6 @@ public class ListaSimple<Tipodato> {
         } else {
             return datos[numElem - 1].getData();
         }
-    }
-
-    private ElementoLS<Tipodato> getSiguiente(ElementoLS<Tipodato> el) {
-        ElementoLS<Tipodato> devolver = null;
-        for (int i = 0; i < maximo; i++) {
-            if (datos[i] != null && datos[i + 1] != null && datos[i].getData() == el.getData())
-                devolver = datos[i + 1];
-        }
-        return devolver;
     }
 
     public Tipodato getDato(int pos) {

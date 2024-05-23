@@ -55,22 +55,6 @@ public class Grafo<TipoDato> {
             }
         }
     }
-    public String printCodigoGrafo() {
-        char com = '"';
-        String codigo = "digraph regexp {\nfontname=" + com + "Helvetica,Arial,sans-serif" + com + "\nnode [fontname=" + com + "Helvetica,Arial,sans-serif" + com + "]\nedge [fontname=" + com + "Helvetica,Arial,sans-serif" + com + "]";
-        Integer contadorV = 0;
-        while (contadorV < vertices.getNumeroElementos()) {
-            codigo += "\nn" + vertices.getElemento(contadorV).getData() + " [label=" + com + vertices.getElemento(contadorV).getData() + com + "];";
-            contadorV++;
-        }
-        Integer contadorA = 0;
-        while (contadorA < aristas.getNumeroElementos()) {
-            codigo += "\nn" + aristas.getElemento(contadorA).getData().getVerticeIni() + " -> n" + aristas.getElemento(contadorA).getData().getVerticeFin() + " [label=" + com + aristas.getElemento(contadorA).getData().getPeso() + com + "];";
-            contadorA++;
-        }
-        codigo += "\n}";
-        return codigo;
-    }
 
     private boolean validarArista(Arista a) throws NonValidLink {
         Vertice vertice1 = a.getVerticeIni();
@@ -99,36 +83,6 @@ public class Grafo<TipoDato> {
         } else {
             throw (new NonValidLink("ERROR. Alguno de los vértices que une la arista no se encuentra en el grafo."));
         }
-    }
-
-    // Metodos para sacar por la terminal datos legibles
-
-    public String getStringVertices() {
-        int contador = 0;
-        String lista = "[";
-        while (contador < this.vertices.getNumeroElementos()) {
-            if (this.vertices.getElemento(contador + 1) != null) {
-                lista += this.vertices.getElemento(contador).getData().getDato() + ", ";
-            } else {
-                lista += this.vertices.getElemento(contador).getData().getDato() + "]";
-            }
-            contador++;
-        }
-        return lista;
-    }
-
-    public String getStringAristas() {
-        int contador = 0;
-        String lista = "[";
-        while (contador < this.aristas.getNumeroElementos()) {
-            if (this.aristas.getElemento(contador + 1) != null) {
-                lista += "{" + this.aristas.getElemento(contador).getData().getVerticeIni().getDato() + ", " + this.aristas.getElemento(contador).getData().getVerticeFin().getDato() + "}, ";
-            } else {
-                lista += "{" + this.aristas.getElemento(contador).getData().getVerticeIni().getDato() + ", " + this.aristas.getElemento(contador).getData().getVerticeFin().getDato() + "}]";
-            }
-            contador++;
-        }
-        return lista;
     }
     // Métodos para sacar los caminos mínimos
 
