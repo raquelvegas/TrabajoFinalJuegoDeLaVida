@@ -28,12 +28,6 @@ public abstract class Individuo {
     @Expose
     private ArbolBinario<Individuo> arbolGenealogico;
 
-    @Expose
-    private int celda;
-
-    @Expose
-    private Square square;
-
     public abstract int getTipo();
 
     public Individuo(ArbolBinario<Individuo> arbolGenealogico) {
@@ -100,21 +94,5 @@ public abstract class Individuo {
 
     public void setArbolGenealogico(ArbolBinario<Individuo> arbolGenealogico) {
         this.arbolGenealogico = arbolGenealogico;
-    }
-
-    public int getCelda() {
-        return celda;
-    }
-
-    public void setCelda(int celda) {
-        this.celda = celda;
-    }
-
-    public Square getSquare() {
-        return square;
-    }
-
-    public void setSquare(Square square) {
-        this.square = square;
     }
 }
