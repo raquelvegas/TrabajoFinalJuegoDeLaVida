@@ -170,42 +170,8 @@ public class ControllerMainStage {
         }
     }
     @FXML
-    void stopGame(MouseEvent event) throws IOException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Guardar Partida");
-        alert.setHeaderText("¿Quieres guardar tu partida?");
-        alert.setContentText("Elige tu opción.");
-
-        ButtonType buttonTypeYes = new ButtonType("Sí");
-        ButtonType buttonTypeNo = new ButtonType("No");
-
-        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == buttonTypeYes){
-            // Acción a realizar si el usuario quiere guardar la partida
-            SaveInfo informacion = new SaveInfo(DatosCompartidos.getAltoMatriz(),DatosCompartidos.getAnchoMatriz(),DatosCompartidos.getProbReproduccion(),DatosCompartidos.getProbClonacion(),DatosCompartidos.getVidaInicial(),DatosCompartidos.getAguaVida(),DatosCompartidos.getComidaVida(),DatosCompartidos.getMontanaVida(),DatosCompartidos.getTesoroVida(),DatosCompartidos.getBibliotecaVida(),DatosCompartidos.getPozoVida(),DatosCompartidos.getAguaEfecto(),DatosCompartidos.getComidaEfecto(),DatosCompartidos.getMontanaEfecto(),DatosCompartidos.getTesoroEfecto(),DatosCompartidos.getBibliotecaEfecto(),DatosCompartidos.getAguaAparicion(),DatosCompartidos.getComidaAparicion(),DatosCompartidos.getMontanaAparicion(),DatosCompartidos.getTesoroAparicion(),DatosCompartidos.getBibliotecaAparicion(),DatosCompartidos.getPozoAparicion(),DatosCompartidos.getAnadir(),DatosCompartidos.isAnadirTab(),DatosCompartidos.isContenidoCeldaTab(),DatosCompartidos.getNumIndividuos(),DatosCompartidos.getTurnoJuego(),DatosCompartidos.getVelocidadJuego(),DatosCompartidos.isGameIniciado(),DatosCompartidos.isTableroAleatorio(),DatosCompartidos.getListaRecursos(),DatosCompartidos.getListaIndividuos(),DatosCompartidos.getGame());
-            informacion.guardar("PartidaGuardada.json");
-            System.out.println("Partida guardada");
-        } else {
-            // Acción a realizar si el usuario no quiere guardar la partida
-            System.out.println("Partida no guardada.");
-        }
-
-
-        URL fxmlUrl = getClass().getResource("gameOver.fxml");
-        Parent root = FXMLLoader.load(fxmlUrl);
-
-        Stage gameOverStage = new Stage();
-        gameOverStage.setScene(new Scene(root));
-        gameOverStage.setResizable(true); // Evitar que la ventana sea redimensionable
-        gameOverStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
-        gameOverStage.initOwner(primaryStage);
-
-        gameOverStage.initStyle(StageStyle.UNDECORATED);
-        gameOverStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
-
-        gameOverStage.show();
+    void stopGame(MouseEvent event){
+        DatosCompartidos.setGameIniciado(false);
     }
     @FXML
     void aplicarUser(MouseEvent event){
@@ -647,13 +613,53 @@ public class ControllerMainStage {
                     turnoContador.setText(String.valueOf(turno));
                     game.turno();
                 } else {
-//                    System.out.println("Juego pausado");
+                    //Lógica cuando el juego está pausado
                 }
             } else if (DatosCompartidos.getTurnoJuego() == 0) {
-//                System.out.println("El juego aun no ha iniciado");
+                    //Lógica para cuando el juego aún no ha iniciado
             } else {
-//                System.out.println("Juego terminado");
+                //Lógica para cuando el juego termina
                 controlLoop.stop();
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Guardar Partida");
+                alert.setHeaderText("¿Quieres guardar tu partida?");
+                alert.setContentText("Elige tu opción.");
+
+                ButtonType buttonTypeYes = new ButtonType("Sí");
+                ButtonType buttonTypeNo = new ButtonType("No");
+
+                alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == buttonTypeYes){
+                    // Acción a realizar si el usuario quiere guardar la partida
+                    SaveInfo informacion = new SaveInfo(DatosCompartidos.getAltoMatriz(),DatosCompartidos.getAnchoMatriz(),DatosCompartidos.getProbReproduccion(),DatosCompartidos.getProbClonacion(),DatosCompartidos.getVidaInicial(),DatosCompartidos.getAguaVida(),DatosCompartidos.getComidaVida(),DatosCompartidos.getMontanaVida(),DatosCompartidos.getTesoroVida(),DatosCompartidos.getBibliotecaVida(),DatosCompartidos.getPozoVida(),DatosCompartidos.getAguaEfecto(),DatosCompartidos.getComidaEfecto(),DatosCompartidos.getMontanaEfecto(),DatosCompartidos.getTesoroEfecto(),DatosCompartidos.getBibliotecaEfecto(),DatosCompartidos.getAguaAparicion(),DatosCompartidos.getComidaAparicion(),DatosCompartidos.getMontanaAparicion(),DatosCompartidos.getTesoroAparicion(),DatosCompartidos.getBibliotecaAparicion(),DatosCompartidos.getPozoAparicion(),DatosCompartidos.getAnadir(),DatosCompartidos.isAnadirTab(),DatosCompartidos.isContenidoCeldaTab(),DatosCompartidos.getNumIndividuos(),DatosCompartidos.getTurnoJuego(),DatosCompartidos.getVelocidadJuego(),DatosCompartidos.isGameIniciado(),DatosCompartidos.isTableroAleatorio(),DatosCompartidos.getListaRecursos(),DatosCompartidos.getListaIndividuos(),DatosCompartidos.getGame());
+                    informacion.guardar("PartidaGuardada.json");
+                    System.out.println("Partida guardada");
+                } else {
+                    // Acción a realizar si el usuario no quiere guardar la partida
+                    System.out.println("Partida no guardada.");
+                }
+
+
+                URL fxmlUrl = getClass().getResource("gameOver.fxml");
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(fxmlUrl);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Stage gameOverStage = new Stage();
+                gameOverStage.setScene(new Scene(root));
+                gameOverStage.setResizable(true); // Evitar que la ventana sea redimensionable
+                gameOverStage.initModality(Modality.APPLICATION_MODAL); // Impide la interacción con la ventana principal
+                gameOverStage.initOwner(primaryStage);
+
+                gameOverStage.initStyle(StageStyle.UNDECORATED);
+                gameOverStage.getScene().getRoot().setStyle("-fx-border-width: 3px; -fx-border-color: black;");
+
+                gameOverStage.show();
             }
         }));
         controlLoop.setCycleCount(Animation.INDEFINITE);
