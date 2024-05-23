@@ -51,6 +51,7 @@ class ListaSimpleTest {
     @Test
     void getPrimero() {
         ListaSimple<Integer> lista1 = new ListaSimple<>();
+        assertNull(lista1.getPrimero());
         lista1.add(1);
         lista1.add(2);
         lista1.add(3);
@@ -60,6 +61,7 @@ class ListaSimpleTest {
     @Test
     void getUltimo() {
         ListaSimple<Integer> lista1 = new ListaSimple<>();
+        assertNull(lista1.getUltimo());
         lista1.add(1);
         lista1.add(2);
         lista1.add(3);
@@ -68,7 +70,9 @@ class ListaSimpleTest {
 
     @Test
     void getDato() {
-        ListaSimple<Integer> lista1 = new ListaSimple<>();
+        ListaSimple<Integer> lista1 = new ListaSimple<>(34);
+        assertNull(lista1.getDato(5));
+        assertNull(lista1.getDato(6876));
         lista1.add(1);
         lista1.add(2);
         lista1.add(3);
@@ -91,21 +95,43 @@ class ListaSimpleTest {
         lista1.add(2);
         lista1.add(3);
         assertEquals(1,lista1.getElemento(0).getData());
+        assertNull(lista1.getElemento(89003));
     }
 
     @Test
     void voltear() {
+        ListaSimple<Integer> lista1 = new ListaSimple<>();
+        lista1.add(1);
+        lista1.add(2);
+        lista1.add(3);
+        ListaSimple<Integer> lista2 = lista1.voltear();
+        assertEquals(3,lista2.getPrimero());
     }
 
     @Test
     void copiaLista() {
+        ListaSimple<Integer> lista1 = new ListaSimple<>();
+        lista1.add(1);
+        lista1.add(2);
+        lista1.add(3);
+        ListaSimple<Integer> lista2 = lista1.copiaLista();
+        assertEquals(lista1.getNumeroElementos(),lista2.getNumeroElementos());
     }
 
     @Test
     void setDatos() {
+        ListaSimple<Integer> lista1 = new ListaSimple<>();
+        ElementoLS[] datos = new ElementoLS[3];
+        datos[0]=new ElementoLS(2);
+        lista1.setDatos(datos);
+        assertEquals(2,lista1.getPrimero());
+
     }
 
     @Test
     void setNumElem() {
+        ListaSimple<Integer> lista1 = new ListaSimple<>();
+        lista1.setNumElem(78);
+        assertEquals(78,lista1.getNumeroElementos());
     }
 }
