@@ -108,4 +108,5 @@ public class Square extends StackPane {
         return celda;
     }
 
+
 }
