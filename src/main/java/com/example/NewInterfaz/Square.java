@@ -98,14 +98,26 @@ public class Square extends StackPane {
         this.recursos = recursos;
     }
 
+//    public Celda getCelda(int id) {
+//        Celda celda = null;
+//        for (int i = 0; i < 6; i++){
+//            if (celdas.getDato(i).getID() == id){
+//                celda = celdas.getDato(i);
+//            }
+//        }
+//        return celda;
+//    }
+
     public Celda getCelda(int id) {
-        Celda celda = null;
-        for (int i = 0; i < 6; i++){
-            if (celdas.getDato(i).getID() == id){
-                celda = celdas.getDato(i);
+        for (Node node : gridPane.getChildren()) {
+            if (node instanceof Celda) {
+                Celda celda = (Celda) node;
+                if (celda.getID() == id) {
+                    return celda;
+                }
             }
         }
-        return celda;
+        return null; // Si no se encuentra ninguna celda con el ID especificado
     }
 
 
