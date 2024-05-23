@@ -1,5 +1,6 @@
 package com.example.NewInterfaz;
 
+import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.NewInterfaz.Individuos.Individuo;
 
@@ -34,8 +35,8 @@ public class DatosCompartidos {
     private static double velocidadJuego = 1;
     private static boolean gameIniciado = false;
     private static boolean tableroAleatorio = false;
-    private static ListaSimple<Recurso> listaRecursos= new ListaSimple<>();
-    private static ListaSimple<Individuo> listaIndividuos = new ListaSimple<>();
+    private static ListaEnlazada<Recurso> listaRecursos= new ListaEnlazada<>();
+    private static ListaEnlazada<Individuo> listaIndividuos = new ListaEnlazada<>();
     private static Game game = null;
 
 
@@ -279,19 +280,19 @@ public class DatosCompartidos {
         DatosCompartidos.tableroAleatorio = tableroAleatorio;
     }
 
-    public static ListaSimple<Recurso> getListaRecursos() {
+    public static ListaEnlazada<Recurso> getListaRecursos() {
         return listaRecursos;
     }
 
-    public static void setListaRecursos(ListaSimple<Recurso> listaRecursos) {
+    public static void setListaRecursos(ListaEnlazada<Recurso> listaRecursos) {
         DatosCompartidos.listaRecursos = listaRecursos;
     }
 
-    public static ListaSimple<Individuo> getListaIndividuos() {
+    public static ListaEnlazada<Individuo> getListaIndividuos() {
         return listaIndividuos;
     }
 
-    public static void setListaIndividuos(ListaSimple<Individuo> listaIndividuos) {
+    public static void setListaIndividuos(ListaEnlazada<Individuo> listaIndividuos) {
         DatosCompartidos.listaIndividuos = listaIndividuos;
     }
 

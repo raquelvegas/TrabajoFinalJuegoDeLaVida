@@ -12,7 +12,6 @@ public class Recurso {
     @Expose
     private int efecto;
 
-    @Expose
     private Square square;
 
     @Expose

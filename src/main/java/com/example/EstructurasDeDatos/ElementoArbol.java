@@ -1,8 +1,15 @@
 package com.example.EstructurasDeDatos;
 
+import com.google.gson.annotations.Expose;
+
 public class ElementoArbol<TipoDato> {
+    @Expose
     private TipoDato dato;
+
+    @Expose
     private ElementoArbol<TipoDato> nodoIzq;
+
+    @Expose
     private ElementoArbol<TipoDato> nodoDch;
 
     public ElementoArbol(TipoDato dato) {

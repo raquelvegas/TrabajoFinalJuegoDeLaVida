@@ -11,10 +11,6 @@ public class ListaEnlazada<T> {
 
     ///////////////
 
-    public ListaEnlazada(ElementoLE<T> primero) {
-        this.primero = primero;
-    }
-
     public ListaEnlazada() {
     }
 

@@ -25,6 +25,7 @@ public abstract class Individuo {
     @Expose
     private Cola<Integer> acciones;
 
+    @Expose
     private ArbolBinario<Individuo> arbolGenealogico;
 
     @Expose

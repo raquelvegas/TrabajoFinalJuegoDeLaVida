@@ -20,6 +20,11 @@ public class ListaSimple<Tipodato> {
         this.numElem=0;
     }
 
+    public ListaSimple(int max) {
+        this.datos = new ElementoLS[max];
+        this.numElem=0;
+    }
+
     ////////////////
 
     public Integer getMaximo() {

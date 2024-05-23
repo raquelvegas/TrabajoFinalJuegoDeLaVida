@@ -1,6 +1,7 @@
 package com.example.SaveInfo;
 
 import com.example.EstructurasDeDatos.Cola;
+import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.NewInterfaz.DatosCompartidos;
 import com.example.NewInterfaz.Game;
@@ -111,15 +112,15 @@ public class SaveInfo {
     private boolean tableroAleatorio;
 
     @Expose
-    private ListaSimple<Recurso> listaRecursos;
+    private ListaEnlazada<Recurso> listaRecursos;
 
     @Expose
-    private ListaSimple<Individuo> listaIndividuos;
+    private ListaEnlazada<Individuo> listaIndividuos;
 
     @Expose
     private Game game;
 
-    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int anadir, boolean anadirTab, boolean contenidoCeldaTab, int numIndividuos, int turnoJuego, double velocidadJuego, boolean gameIniciado, boolean tableroAleatorio, ListaSimple<Recurso> listaRecursos, ListaSimple<Individuo> listaIndividuos, Game game) {
+    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int anadir, boolean anadirTab, boolean contenidoCeldaTab, int numIndividuos, int turnoJuego, double velocidadJuego, boolean gameIniciado, boolean tableroAleatorio, ListaEnlazada<Recurso> listaRecursos, ListaEnlazada<Individuo> listaIndividuos, Game game) {
         this.altoMatriz = altoMatriz;
         this.anchoMatriz = anchoMatriz;
         this.probReproduccion = probReproduccion;
@@ -395,19 +396,19 @@ public class SaveInfo {
         this.tableroAleatorio = tableroAleatorio;
     }
 
-    public ListaSimple<Recurso> getListaRecursos() {
+    public ListaEnlazada<Recurso> getListaRecursos() {
         return listaRecursos;
     }
 
-    public void setListaRecursos(ListaSimple<Recurso> listaRecursos) {
+    public void setListaRecursos(ListaEnlazada<Recurso> listaRecursos) {
         this.listaRecursos = listaRecursos;
     }
 
-    public ListaSimple<Individuo> getListaIndividuos() {
+    public ListaEnlazada<Individuo> getListaIndividuos() {
         return listaIndividuos;
     }
 
-    public void setListaIndividuos(ListaSimple<Individuo> listaIndividuos) {
+    public void setListaIndividuos(ListaEnlazada<Individuo> listaIndividuos) {
         this.listaIndividuos = listaIndividuos;
     }
 
@@ -420,8 +421,6 @@ public class SaveInfo {
     }
 
     public void guardar(String rutaArchivo) {
-        this.getListaIndividuos().setMaximo(this.getListaIndividuos().getNumeroElementos());
-        this.getListaRecursos().setMaximo(this.getListaRecursos().getNumeroElementos());
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Individuo.class, new gsonAdapterIndividuo())
                 .registerTypeAdapter(Cola.class, new gsonAdapterCola())

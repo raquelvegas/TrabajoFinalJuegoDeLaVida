@@ -103,7 +103,7 @@ public class Game {
         if (tipo == 1.1 || tipo == 1.2 || tipo == 1.3) {
             // Buscar el individuo por ID en la lista de todos los individuos
             for (int i = 0; i < DatosCompartidos.getListaIndividuos().getNumeroElementos(); i++) {
-                Individuo individuo = DatosCompartidos.getListaIndividuos().getDato(i);
+                Individuo individuo = DatosCompartidos.getListaIndividuos().getElemento(i).getData();
                 if (individuo.getID() == tipo.intValue()) {
                     vida = individuo.getTurnosVida();
                     indLista.del(0);
@@ -150,19 +150,19 @@ public class Game {
         if (square.getIndividuos().getNumeroElementos() < 3) {
             Individuo individuoNuevo;
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
-            int tipo = generarEnteroAleatorio(0, 1); // Generar tipo aleatorio
+            int tipo = generarEnteroAleatorio(0, 2); // Generar tipo aleatorio
             Double tipoIndividuo;
 //            if (tipo == 0) {
 //                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
 //                tipoIndividuo = 1.1;
 //            } else if (tipo == 1) {
-//                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
-//                individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo); // Añadimos individuonuevo al arbol para que sea la raíz
-//                tipoIndividuo = 1.2;
+                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
+                tipoIndividuo = 1.2;
 //            } else {
-                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
-                tipoIndividuo = 1.3;
+//                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
+//                tipoIndividuo = 1.3;
 //            }
+            individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo);
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
             DatosCompartidos.getListaIndividuos().add(individuoNuevo);
@@ -439,10 +439,10 @@ public class Game {
         ListaSimple<Recurso> listaDel = new ListaSimple<>();
 
         for (int i = 0; i < numRecursos; i++) {
-            Recurso recurso = DatosCompartidos.getListaRecursos().getDato(i);
+            Recurso recurso = DatosCompartidos.getListaRecursos().getElemento(i).getData();
             if (recurso.getTiempoVida() == 0){
-                int idSquareRecurso = DatosCompartidos.getListaRecursos().getDato(i).getSquare().getID();
-                int idCeldaRecurso = DatosCompartidos.getListaRecursos().getDato(i).getCelda();
+                int idSquareRecurso = DatosCompartidos.getListaRecursos().getElemento(i).getData().getSquare().getID();
+                int idCeldaRecurso = DatosCompartidos.getListaRecursos().getElemento(i).getData().getCelda();
                 tablero.getSquare(idSquareRecurso).getCelda(idCeldaRecurso).setTipo(0.0);
                 tablero.getSquare(idSquareRecurso).getCelda(idCeldaRecurso).setOcupado(false);
                 for (int j = 0; j < 3; j++) {
@@ -459,10 +459,10 @@ public class Game {
 
     // Eliminar los recursos que no tienen tiempo de vida de la lista de DatosCompartidos
     private void eliminarRecursos(ListaSimple<Recurso> listaDel){
-        ListaSimple<Recurso> recursosTotales = DatosCompartidos.getListaRecursos();
+        ListaEnlazada<Recurso> recursosTotales = DatosCompartidos.getListaRecursos();
         for (int i = 0; i < listaDel.getNumeroElementos(); i++) {
             for (int j = 0; j < recursosTotales.getNumeroElementos(); j++) {
-                if (listaDel.getDato(i) == recursosTotales.getDato(j)) {
+                if (listaDel.getDato(i) == recursosTotales.getElemento(j).getData()) {
                     recursosTotales.del(j);
                 }
             }
@@ -495,10 +495,10 @@ public class Game {
 
     // Se meten como argumento los individuos que no tienen turnos de vida y se eliminan de la lista de DatosCompartidos
     private void eliminarIndividuos(ListaSimple<Individuo> individuos) {
-        ListaSimple<Individuo> indTotales = DatosCompartidos.getListaIndividuos();
+        ListaEnlazada<Individuo> indTotales = DatosCompartidos.getListaIndividuos();
         for (int i = 0; i < individuos.getNumeroElementos(); i++) {
             for (int j = 0; j < indTotales.getNumeroElementos(); j++) {
-                if (individuos.getDato(i).getID() == indTotales.getDato(j).getID()) {
+                if (individuos.getDato(i).getID() == indTotales.getElemento(j).getData().getID()) {
                     indTotales.del(j);
                 }
             }
@@ -512,16 +512,16 @@ public class Game {
         int numRecursos = DatosCompartidos.getListaRecursos().getNumeroElementos();
 
         for(int i = 0; i < numIndividuos; i++){
-            int vida = DatosCompartidos.getListaIndividuos().getDato(i).getTurnosVida();
+            int vida = DatosCompartidos.getListaIndividuos().getElemento(i).getData().getTurnosVida();
             if (vida != 0) {
-            DatosCompartidos.getListaIndividuos().getDato(i).setTurnosVida(vida-1);
-                System.out.println("Vida= " + DatosCompartidos.getListaIndividuos().getDato(i).getTurnosVida());
+                DatosCompartidos.getListaIndividuos().getElemento(i).getData().setTurnosVida(vida - 1);
+                System.out.println("Vida= " + DatosCompartidos.getListaIndividuos().getElemento(i).getData().getTurnosVida());
             }
         }
         for(int i = 0; i < numRecursos; i++){
-            int vida = DatosCompartidos.getListaRecursos().getDato(i).getTiempoVida();
+            int vida = DatosCompartidos.getListaRecursos().getElemento(i).getData().getTiempoVida();
             if (vida != 0) {
-                DatosCompartidos.getListaRecursos().getDato(i).setTiempoVida(vida - 1);
+                DatosCompartidos.getListaRecursos().getElemento(i).getData().setTiempoVida(vida - 1);
             }
         }
     }
@@ -691,21 +691,37 @@ public class Game {
     // Metodo principal para mover individuos Avanzados
     private void moverIndAvanzado(Square cuadrado, ListaSimple<Square> listaCuadrados, IndAvanzado ind) {
         if (ind.getRecorrido().isVacia()) {
-            ListaSimple<Recurso> listaRecursosTotales = DatosCompartidos.getListaRecursos();
-            ListaSimple<Recurso> recursosPositivos = new ListaSimple<>(); // Se instancia una lista de recursos benefiiosos para el individuo
-            for (int i = 0; i < listaRecursosTotales.getNumeroElementos(); i++) {
-                if (listaRecursosTotales.getDato(i).getTipoRecurso() != 4 && listaRecursosTotales.getDato(i).getTipoRecurso() != 7) { // Se comprueba que el recurso a añadir no sea un recurso perjudicial para el individuo
-                    recursosPositivos.add(listaRecursosTotales.getDato(i));
+            if (ind.getSquare() != cuadrado) {
+                ListaEnlazada<Recurso> listaRecursosTotales = DatosCompartidos.getListaRecursos();
+                ListaSimple<Recurso> recursosPositivos = new ListaSimple<>(); // Se instancia una lista de recursos benefiiosos para el individuo
+                for (int i = 0; i < listaRecursosTotales.getNumeroElementos(); i++) {
+                    if (listaRecursosTotales.getElemento(i).getData().getTipoRecurso() != 4 && listaRecursosTotales.getElemento(i).getData().getTipoRecurso() != 7) { // Se comprueba que el recurso a añadir no sea un recurso perjudicial para el individuo
+                        recursosPositivos.add(listaRecursosTotales.getElemento(i).getData());
+                    }
                 }
-            }
-            if (recursosPositivos.isVacia()) {
-                moverIndBasico(cuadrado, listaCuadrados, ind);
-            } else {
                 buscarRecorridoAvanzado(recursosPositivos, cuadrado, ind);
                 moverIndAvanzadoDirigido(ind);
+            } else {
+                ListaEnlazada<Recurso> listaRecursosTotales = DatosCompartidos.getListaRecursos();
+                ListaSimple<Recurso> recursosPositivos = new ListaSimple<>(); // Se instancia una lista de recursos benefiiosos para el individuo
+                for (int i = 0; i < listaRecursosTotales.getNumeroElementos(); i++) {
+                    if (listaRecursosTotales.getElemento(i).getData().getTipoRecurso() != 4 && listaRecursosTotales.getElemento(i).getData().getTipoRecurso() != 7) { // Se comprueba que el recurso a añadir no sea un recurso perjudicial para el individuo
+                        recursosPositivos.add(listaRecursosTotales.getElemento(i).getData());
+                    }
+                }
+                if (recursosPositivos.isVacia()) {
+                    moverIndBasico(cuadrado, listaCuadrados, ind);
+                } else {
+                    buscarRecorridoAvanzado(recursosPositivos, cuadrado, ind);
+                    moverIndAvanzadoDirigido(ind);
+                }
             }
         } else {
-            moverIndAvanzadoDirigido(ind);
+            if (ind.getSquare() != cuadrado) {
+                moverIndAvanzadoDirigido(ind);
+            } else {
+                moverIndBasico(cuadrado, listaCuadrados, ind);
+            }
         }
     }
 
@@ -868,7 +884,7 @@ public class Game {
     // Método para buscar un objetivo random para un individuo normal
     private void buscarNuevoObjetivo(ListaSimple<Square> listaCuadrados, Square cuadrado, IndNormal ind) {
         int recursoRandom = generarEnteroAleatorio(0, DatosCompartidos.getListaRecursos().getNumeroElementos() - 1);
-        Recurso objetivo = DatosCompartidos.getListaRecursos().getDato(recursoRandom);
+        Recurso objetivo = DatosCompartidos.getListaRecursos().getElemento(recursoRandom).getData();
         if ((DatosCompartidos.getListaRecursos().getNumeroElementos() == 1) && (cuadrado.getID() == objetivo.getSquare().getID())) {
             int posicionCuadrado = posicionCuadrado(cuadrado);
             if (posicionCuadrado == 0) {
@@ -1369,9 +1385,9 @@ public class Game {
 
     // Actualiza las probabilidades de reproduccion y clonación de cada individuo
     public void actualizarProbabilidades() {
-        ListaSimple<Individuo> indTotales = DatosCompartidos.getListaIndividuos();
+        ListaEnlazada<Individuo> indTotales = DatosCompartidos.getListaIndividuos();
         for (int i = 0; i < indTotales.getNumeroElementos(); i++) {
-            Individuo actual = indTotales.getDato(i);
+            Individuo actual = indTotales.getElemento(i).getData();
 
             // Probabilidad de clonación
             if (actual.getProbClon() >= 10) {
@@ -1404,7 +1420,7 @@ public class Game {
         actualizarIndividuos();
 
         // 2ª Movimiento de individuos
-        moverIndividuos();
+//        moverIndividuos();
 
         // 3º Consumición de los recursos
         consumirRecursos();

@@ -19,7 +19,7 @@ public class Square extends StackPane {
     private int ID;
 
     @Expose
-    private ListaSimple<Celda> celdas = new ListaSimple<>();
+    private ListaSimple<Celda> celdas = new ListaSimple<>(6);
 
     @Expose
     private ListaSimple<Individuo> individuos;
@@ -29,8 +29,8 @@ public class Square extends StackPane {
     GridPane gridPane;
 
     public Square(int x, int y) {
-        this.individuos = new ListaSimple<>();
-        this.recursos = new ListaSimple<>();
+        this.individuos = new ListaSimple<>(3);
+        this.recursos = new ListaSimple<>(3);
         this.x = x;
         this.y = y;
         this.occupied = false;
