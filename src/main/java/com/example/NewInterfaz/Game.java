@@ -125,7 +125,6 @@ public class Game {
     }
 
     private void handleSquareClick(int columna, int fila, Square square) {
-        System.out.println("Clic en el cuadrado " + columna + ", " + fila);
         if (DatosCompartidos.getAnadir() == 1) {
             addIndividuo(square);
         } else if (DatosCompartidos.getAnadir() == 2) {
@@ -152,22 +151,21 @@ public class Game {
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
             int tipo = generarEnteroAleatorio(0, 2); // Generar tipo aleatorio
             Double tipoIndividuo;
-//            if (tipo == 0) {
-//                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
-//                tipoIndividuo = 1.1;
-//            } else if (tipo == 1) {
+            if (tipo == 0) {
+                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
+                tipoIndividuo = 1.1;
+            } else if (tipo == 1) {
                 individuoNuevo = new IndNormal(new ArbolBinario<>(null));
                 tipoIndividuo = 1.2;
-//            } else {
-//                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
-//                tipoIndividuo = 1.3;
-//            }
+            } else {
+                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
+                tipoIndividuo = 1.3;
+            }
             individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo);
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
+            log.info("Se ha añadido un individuo tipo " + tipoIndividuo + ", con ID " + individuoNuevo.getID() + ", al Square " + square.getX() + "," + square.getY());
             DatosCompartidos.getListaIndividuos().add(individuoNuevo);
-            System.out.println("Se ha añadido un individuo tipo " + tipoIndividuo + " con id: " + individuoNuevo.getID());
-
         }
     }
 
@@ -180,7 +178,7 @@ public class Game {
             square.getRecursos().add(recursoNuevo);
             recursoNuevo.setCelda(idCeldaAleatoria);
             DatosCompartidos.getListaRecursos().add(recursoNuevo);
-            System.out.println("Se ha añadido un recurso tipo: " + recursoNuevo.getTipoRecurso());
+            log.info("Se ha añadido un recurso de tipo " + tipo + " al square (" + square.getX() + ", " + square.getY() + ")");
         }
     }
 
@@ -669,7 +667,7 @@ public class Game {
 
                 } else {   // Tipo Avanzado
 
-                    moverIndAvanzado(cuadrado,listaCuadrados,(IndAvanzado) ind);
+                    moverIndAvanzado(cuadrado, (IndAvanzado) ind);
 
                 }
                 listaID.add(ind.getID()); // Se añade el ID del individuo a la lista de identificadores de los individuos que se han movido
@@ -689,39 +687,23 @@ public class Game {
 
 
     // Metodo principal para mover individuos Avanzados
-    private void moverIndAvanzado(Square cuadrado, ListaSimple<Square> listaCuadrados, IndAvanzado ind) {
+    private void moverIndAvanzado(Square cuadrado, IndAvanzado ind) {
+        ListaEnlazada<Recurso> listaRecursosTotales = DatosCompartidos.getListaRecursos();
+        ListaSimple<Recurso> recursosPositivos = new ListaSimple<>(); // Se instancia una lista de recursos benefiiosos para el individuo
+        for (int i = 0; i < listaRecursosTotales.getNumeroElementos(); i++) {
+            if (listaRecursosTotales.getElemento(i).getData().getTipoRecurso() != 4 && listaRecursosTotales.getElemento(i).getData().getTipoRecurso() != 7) { // Se comprueba que el recurso a añadir no sea un recurso perjudicial para el individuo
+                recursosPositivos.add(listaRecursosTotales.getElemento(i).getData());
+            }
+        }
         if (ind.getRecorrido().isVacia()) {
-            if (ind.getSquare() != cuadrado) {
-                ListaEnlazada<Recurso> listaRecursosTotales = DatosCompartidos.getListaRecursos();
-                ListaSimple<Recurso> recursosPositivos = new ListaSimple<>(); // Se instancia una lista de recursos benefiiosos para el individuo
-                for (int i = 0; i < listaRecursosTotales.getNumeroElementos(); i++) {
-                    if (listaRecursosTotales.getElemento(i).getData().getTipoRecurso() != 4 && listaRecursosTotales.getElemento(i).getData().getTipoRecurso() != 7) { // Se comprueba que el recurso a añadir no sea un recurso perjudicial para el individuo
-                        recursosPositivos.add(listaRecursosTotales.getElemento(i).getData());
-                    }
-                }
-                buscarRecorridoAvanzado(recursosPositivos, cuadrado, ind);
-                moverIndAvanzadoDirigido(ind);
+            if ((recursosPositivos.getNumeroElementos() == 1) && (!cuadrado.getRecursos().isVacia())) {
+                moverIndBasico(cuadrado, tablero.getSquares(), ind);
             } else {
-                ListaEnlazada<Recurso> listaRecursosTotales = DatosCompartidos.getListaRecursos();
-                ListaSimple<Recurso> recursosPositivos = new ListaSimple<>(); // Se instancia una lista de recursos benefiiosos para el individuo
-                for (int i = 0; i < listaRecursosTotales.getNumeroElementos(); i++) {
-                    if (listaRecursosTotales.getElemento(i).getData().getTipoRecurso() != 4 && listaRecursosTotales.getElemento(i).getData().getTipoRecurso() != 7) { // Se comprueba que el recurso a añadir no sea un recurso perjudicial para el individuo
-                        recursosPositivos.add(listaRecursosTotales.getElemento(i).getData());
-                    }
-                }
-                if (recursosPositivos.isVacia()) {
-                    moverIndBasico(cuadrado, listaCuadrados, ind);
-                } else {
-                    buscarRecorridoAvanzado(recursosPositivos, cuadrado, ind);
-                    moverIndAvanzadoDirigido(ind);
-                }
+                buscarRecorridoAvanzado(cuadrado, ind);
+                moverIndAvanzadoDirigido(ind);
             }
         } else {
-            if (ind.getSquare() != cuadrado) {
-                moverIndAvanzadoDirigido(ind);
-            } else {
-                moverIndBasico(cuadrado, listaCuadrados, ind);
-            }
+            moverIndAvanzadoDirigido(ind);
         }
     }
 
@@ -735,37 +717,46 @@ public class Game {
 
 
     // Método para buscar un recorrido de un individuo avanzado
-    private void buscarRecorridoAvanzado(ListaSimple<Recurso> recursosPositivos, Square cuadrado, IndAvanzado ind) {
-        Grafo<Square> grafo = crearGrafoTablero();  // Formamos un grafo con la situación actual del tablero
-        ListaSimple<Camino> caminosMinimos = new ListaSimple<>();  // Lista de caminos mínimos hacia cada uno de los recursos ventajosos
-        for (int j = 0; j < recursosPositivos.getNumeroElementos(); j++) {
-            Square cuadradoDestino = recursosPositivos.getDato(j).getSquare();
-            caminosMinimos.add(grafo.getCaminoMinimo(cuadrado, cuadradoDestino));
+    private void buscarRecorridoAvanzado(Square cuadrado, IndAvanzado ind) {
+        ListaEnlazada<Recurso> listaRecursosTotales = DatosCompartidos.getListaRecursos();
+        ListaSimple<Recurso> recursosPositivos = new ListaSimple<>(); // Se instancia una lista de recursos benefiiosos para el individuo
+        for (int i = 0; i < listaRecursosTotales.getNumeroElementos(); i++) {
+            if ((listaRecursosTotales.getElemento(i).getData().getTipoRecurso() != 4) && (listaRecursosTotales.getElemento(i).getData().getTipoRecurso() != 7) && (listaRecursosTotales.getElemento(i).getData().getSquare() != cuadrado)) { // Se comprueba que el recurso a añadir no sea un recurso perjudicial para el individuo
+                recursosPositivos.add(listaRecursosTotales.getElemento(i).getData());
+            }
         }
+        if (!recursosPositivos.isVacia()) {
+            Grafo<Square> grafo = crearGrafoTablero();  // Formamos un grafo con la situación actual del tablero
+            ListaSimple<Camino> caminosMinimos = new ListaSimple<>();  // Lista de caminos mínimos hacia cada uno de los recursos ventajosos
+            for (int j = 0; j < recursosPositivos.getNumeroElementos(); j++) {
+                Square cuadradoDestino = recursosPositivos.getDato(j).getSquare();
+                caminosMinimos.add(grafo.getCaminoMinimo(cuadrado, cuadradoDestino));
+            }
 
-        // De entre todos los caminos a todos los recursos posibles, buscamos el que tenga un menor peso
+            // De entre todos los caminos a todos los recursos posibles, buscamos el que tenga un menor peso
 
-        Camino caminoFinal = null;
-        for (int k = 0; k < caminosMinimos.getNumeroElementos(); k++) {
-            if (caminoFinal == null) {
-                caminoFinal = caminosMinimos.getDato(k);
-            } else {
-                if (caminoFinal.getPeso() > caminosMinimos.getDato(k).getPeso()) {
+            Camino caminoFinal = null;
+            for (int k = 0; k < caminosMinimos.getNumeroElementos(); k++) {
+                if (caminoFinal == null) {
                     caminoFinal = caminosMinimos.getDato(k);
+                } else {
+                    if (caminoFinal.getPeso() > caminosMinimos.getDato(k).getPeso()) {
+                        caminoFinal = caminosMinimos.getDato(k);
+                    }
                 }
             }
-        }
 
-        ListaEnlazada<Square> recorrido = new ListaEnlazada<>();  // Lista de "Squares" por donde el individuo va a pasar para llegar a su destino
-        
-        for (int t = 0; t < caminoFinal.getCamino().getNumeroElementos(); t++) {
-            if (caminoFinal.getCamino().getDato(t).getDato() != cuadrado) {
-                recorrido.add((Square) caminoFinal.getCamino().getDato(t).getDato());
+            ListaEnlazada<Square> recorrido = new ListaEnlazada<>();  // Lista de "Squares" por donde el individuo va a pasar para llegar a su destino
+
+            for (int t = 0; t < caminoFinal.getCamino().getNumeroElementos(); t++) {
+                if (caminoFinal.getCamino().getDato(t).getDato() != cuadrado) {
+                    recorrido.add((Square) caminoFinal.getCamino().getDato(t).getDato());
+                }
+
             }
 
+            ind.setRecorrido(recorrido);
         }
-
-        ind.setRecorrido(recorrido);
     }
 
 
@@ -1420,7 +1411,7 @@ public class Game {
         actualizarIndividuos();
 
         // 2ª Movimiento de individuos
-//        moverIndividuos();
+        moverIndividuos();
 
         // 3º Consumición de los recursos
         consumirRecursos();
