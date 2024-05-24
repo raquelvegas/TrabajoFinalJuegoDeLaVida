@@ -202,6 +202,7 @@ public class ControllerMainStage {
             event.consume();
         }
 
+
     }
     @FXML
     void aplicarUser(MouseEvent event){
