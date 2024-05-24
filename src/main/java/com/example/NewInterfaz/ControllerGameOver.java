@@ -185,4 +185,10 @@ public class ControllerGameOver {
             treeItem.getChildren().add(madre);
         }
     }
+
+
+    @FXML
+    public void initialize(){
+        totalIndividuos.setText(String.valueOf(DatosCompartidos.getNumIndividuos()));
+    }
 }

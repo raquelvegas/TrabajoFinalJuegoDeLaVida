@@ -655,6 +655,9 @@ public class ControllerMainStage {
                     turnoContador.setText(String.valueOf(turno));
                     game.turno();
                     actualizarTextVivos();
+//                    if (DatosCompartidos.getListaIndividuos().getNumeroElementos() == 1){
+//                        DatosCompartidos.setGameIniciado(false);
+//                    }
                 } else {
                     //Lógica cuando el juego está pausado
                     actualizarTextVivos();
@@ -664,8 +667,12 @@ public class ControllerMainStage {
                 actualizarTextVivos();
             } else {
                 //Lógica para cuando el juego termina
-
                 controlLoop.stop();
+                try {
+                    showGameOverStage();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }));
         controlLoop.setCycleCount(Animation.INDEFINITE);

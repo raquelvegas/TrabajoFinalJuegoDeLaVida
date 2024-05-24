@@ -1473,7 +1473,7 @@ public class Game {
         reproduccion();
 
         // 5º Clonación de los individuos
-        //clonacion();
+//        clonacion();
 
         // 6º Evauación de que no haya más de tres individuos/recursos por casilla
         limpiezaAglomeraciones();
