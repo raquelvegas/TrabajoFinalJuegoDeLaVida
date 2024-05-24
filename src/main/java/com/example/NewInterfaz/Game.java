@@ -105,7 +105,7 @@ public class Game {
         if (tipo == 1.1 || tipo == 1.2 || tipo == 1.3) {
             for (int i = 0; i < indLista.getNumeroElementos(); i++) {
                 Individuo individuo = indLista.getDato(i);
-                int tipoBuscado = (int) (tipo*10)-10;
+                int tipoBuscado = (int) (tipo*10)-10-1;
                 if (individuo.getTipo() == tipoBuscado) {
                     vida = individuo.getTurnosVida();
                     indLista.del(i);
