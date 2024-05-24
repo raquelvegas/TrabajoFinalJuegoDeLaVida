@@ -21,8 +21,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.text.NumberFormat;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Locale;
 import java.util.Random;
 
@@ -155,16 +153,16 @@ public class Game {
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
             int tipo = generarEnteroAleatorio(0, 2); // Generar tipo aleatorio
             Double tipoIndividuo;
-            if (tipo == 0) {
-                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
-                tipoIndividuo = 1.1;
-            } else if (tipo == 1) {
-                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
-                tipoIndividuo = 1.2;
-            } else {
+//            if (tipo == 0) {
+//                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
+//                tipoIndividuo = 1.1;
+//            } else if (tipo == 1) {
+//                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
+//                tipoIndividuo = 1.2;
+//            } else {
                 individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
                 tipoIndividuo = 1.3;
-            }
+//            }
             individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo);
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
@@ -653,16 +651,15 @@ public class Game {
                     Individuo individuoAClonar = squareActual.getIndividuos().getDato(0);
                     double tipoIndividuo = individuoAClonar.getTipo();
                     Individuo individuoNuevo;
-                    if ( tipoIndividuo == 1.1){
+                    if (tipoIndividuo == 0) {
                         individuoNuevo = new IndBasico(new ArbolBinario<>(null));
-                    } else if (tipoIndividuo == 1.2) {
+                    } else if (tipoIndividuo == 1) {
                         individuoNuevo = new IndNormal(new ArbolBinario<>(null));
                     } else {
                         individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
                     }
                     ArbolBinario<Individuo> nuevoArbol = new ArbolBinario<>(individuoNuevo, new ElementoArbol<>(individuoAClonar), null);
                     individuoNuevo.setArbolGenealogico(nuevoArbol);
-                    addTipo(squareActual, tipoIndividuo);
                     squareActual.getIndividuos().add(individuoNuevo);
                     DatosCompartidos.getListaIndividuos().add(individuoNuevo);
                 }
@@ -672,18 +669,23 @@ public class Game {
 
     private void limpiezaAglomeraciones() {
         for(int i = 0; i < tablero.getSquares().getNumeroElementos(); i++) {
-            ListaSimple<Individuo> individuos = tablero.getSquare(i).getIndividuos();
-            if(individuos.getNumeroElementos() > 3) {
-                int indAEliminar = 0;
-                int menorVida = individuos.getDato(0).getTurnosVida();
-
-                for (int j = 1; j < individuos.getNumeroElementos(); j++) {
-                    if(individuos.getDato(j).getTurnosVida() < menorVida) {
-                        indAEliminar = j;
-                        menorVida = individuos.getDato(j).getTurnosVida();
+            ListaSimple<Individuo> individuosCuadrado = tablero.getSquare(i).getIndividuos();
+            ListaSimple<Individuo> individuosAEliminar = new ListaSimple<>(21);  // Se pone 21 com omáximo porque como mucho puede haber 21 individuos que borrar
+            while (individuosCuadrado.getNumeroElementos() > 3) {
+                Individuo indMenorVida = individuosCuadrado.getPrimero();
+                int posIndEliminar = 0;
+                for (int j = 0; j < individuosCuadrado.getNumeroElementos(); j++) {
+                    if (indMenorVida.getTurnosVida()<individuosCuadrado.getDato(j).getTurnosVida()){
+                        posIndEliminar=j;
+                        indMenorVida=individuosCuadrado.getDato(j);
                     }
                 }
-                individuos.del(indAEliminar);
+                individuosAEliminar.add(individuosCuadrado.getDato(posIndEliminar));
+                individuosCuadrado.del(posIndEliminar);
+                log.info("Se ha eliminado el individuo "+individuosCuadrado.getDato(posIndEliminar).getID()+" por ser el que menos turnos de vida tenía");
+            }
+            if (!individuosAEliminar.isVacia()){
+                eliminarIndividuos(individuosAEliminar);
             }
         }
     }
@@ -1473,7 +1475,7 @@ public class Game {
         reproduccion();
 
         // 5º Clonación de los individuos
-//        clonacion();
+        clonacion();
 
         // 6º Evauación de que no haya más de tres individuos/recursos por casilla
         limpiezaAglomeraciones();

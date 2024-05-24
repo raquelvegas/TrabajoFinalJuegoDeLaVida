@@ -110,9 +110,6 @@ public class SaveInfo {
     private boolean gameIniciado;
 
     @Expose
-    private boolean tableroAleatorio;
-
-    @Expose
     private ListaEnlazada<Recurso> listaRecursos;
 
     @Expose
@@ -121,7 +118,7 @@ public class SaveInfo {
     @Expose
     private Game game;
 
-    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int anadir, boolean anadirTab, boolean contenidoCeldaTab, int numIndividuos, int turnoJuego, double velocidadJuego, boolean gameIniciado, boolean tableroAleatorio, ListaEnlazada<Recurso> listaRecursos, ListaEnlazada<Individuo> listaIndividuos, Game game) {
+    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int anadir, boolean anadirTab, boolean contenidoCeldaTab, int numIndividuos, int turnoJuego, double velocidadJuego, boolean gameIniciado, ListaEnlazada<Recurso> listaRecursos, ListaEnlazada<Individuo> listaIndividuos, Game game) {
         this.altoMatriz = altoMatriz;
         this.anchoMatriz = anchoMatriz;
         this.probReproduccion = probReproduccion;
@@ -151,7 +148,6 @@ public class SaveInfo {
         this.turnoJuego = turnoJuego;
         this.velocidadJuego = velocidadJuego;
         this.gameIniciado = gameIniciado;
-        this.tableroAleatorio = tableroAleatorio;
         this.listaRecursos = listaRecursos;
         this.listaIndividuos = listaIndividuos;
         this.game = game;
@@ -387,14 +383,6 @@ public class SaveInfo {
 
     public void setGameIniciado(boolean gameIniciado) {
         this.gameIniciado = gameIniciado;
-    }
-
-    public boolean isTableroAleatorio() {
-        return tableroAleatorio;
-    }
-
-    public void setTableroAleatorio(boolean tableroAleatorio) {
-        this.tableroAleatorio = tableroAleatorio;
     }
 
     public ListaEnlazada<Recurso> getListaRecursos() {

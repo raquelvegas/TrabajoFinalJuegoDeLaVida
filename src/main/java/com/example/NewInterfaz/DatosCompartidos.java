@@ -34,7 +34,6 @@ public class DatosCompartidos {
     private static int turnoJuego = 0;
     private static double velocidadJuego = 1;
     private static boolean gameIniciado = false;
-    private static boolean tableroAleatorio = false;
     private static ListaEnlazada<Recurso> listaRecursos= new ListaEnlazada<>();
     private static ListaEnlazada<Individuo> listaIndividuos = new ListaEnlazada<>();
     private static Game game = null;
@@ -270,14 +269,6 @@ public class DatosCompartidos {
 
     public static void setGameIniciado(boolean gameIniciado) {
         DatosCompartidos.gameIniciado = gameIniciado;
-    }
-
-    public static boolean isTableroAleatorio() {
-        return tableroAleatorio;
-    }
-
-    public static void setTableroAleatorio(boolean tableroAleatorio) {
-        DatosCompartidos.tableroAleatorio = tableroAleatorio;
     }
 
     public static ListaEnlazada<Recurso> getListaRecursos() {
