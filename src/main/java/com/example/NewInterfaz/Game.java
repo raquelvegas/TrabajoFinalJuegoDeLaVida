@@ -7,6 +7,8 @@ import com.example.EstructurasDeDatos.Grafos.Grafo;
 import com.example.EstructurasDeDatos.Grafos.Vertice;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
+import com.example.NewInterfaz.Grafo_Conocimiento.Acción;
+import com.example.NewInterfaz.Grafo_Conocimiento.Consumición;
 import com.example.NewInterfaz.Individuos.IndAvanzado;
 import com.example.NewInterfaz.Individuos.IndBasico;
 import com.example.NewInterfaz.Individuos.IndNormal;
@@ -543,7 +545,6 @@ public class Game {
                             } else if (actual.getRecursos().getDato(rec).getTipoRecurso() == 3) { // Comida
                                 consumirComida(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
                                 log.info("El individuo "+actual.getIndividuos().getDato(ind).getID()+" ha consumido comida en la casilla "+actual.getX()+", "+actual.getY());
-
                             } else if (actual.getRecursos().getDato(rec).getTipoRecurso() == 4) { // Montaña
                                 consumirMontana(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
                                 log.info("El individuo "+actual.getIndividuos().getDato(ind).getID()+" ha consumido montaña en la casilla "+actual.getX()+", "+actual.getY());
@@ -556,11 +557,13 @@ public class Game {
                                 consumirTesoro(actual.getIndividuos().getDato(ind), actual.getRecursos().getDato(rec));
                                 log.info("El individuo "+actual.getIndividuos().getDato(ind).getID()+" ha consumido tesoro en la casilla "+actual.getX()+", "+actual.getY());
 
-                            } else {
+                            } else {  // Pozo
                                 listaDel.add(actual.getIndividuos().getDato(ind));
                                 actual.getIndividuos().del(ind);
                                 ind--; // Para que vuelva a comprobar la posición en la que estaba
                             }
+                            Acción accion = new Consumición(DatosCompartidos.getTurnoJuego(),actual.getRecursos().getDato(rec));
+                            actual.getIndividuos().getDato(ind).getAcciones().push(accion);
                         }
                     }
                 }
@@ -698,7 +701,9 @@ public class Game {
             }
         }
         if (ind.getRecorrido().isVacia()) {
-            if ((recursosPositivos.getNumeroElementos() == 1) && (!cuadrado.getRecursos().isVacia())) {
+            if (recursosPositivos.isVacia()) {
+                moverIndBasico(cuadrado, tablero.getSquares(), ind);
+            } else if ((recursosPositivos.getNumeroElementos() == 1) && (!cuadrado.getRecursos().isVacia())) {
                 moverIndBasico(cuadrado, tablero.getSquares(), ind);
             } else {
                 buscarRecorridoAvanzado(cuadrado, ind);
