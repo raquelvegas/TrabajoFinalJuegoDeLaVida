@@ -43,14 +43,14 @@ public class ControllerMainStage {
             vidaUserText, probReproduccionText, probClonacionText, //Ajustes User
             aguaVidaText, bibliotecaVidaText, comidaVidaText, montanaVidaText, pozoVidaText, tesoroVidaText, // Vida Recursos
             aguaEfectoText, bibliotecaEfectoText, comidaEfectoText, montanaEfectoText, tesoroEfectoText, // Efecto Recursos
-            aguaAparicionText, bibliotecaAparicionText, comidaAparicionText, montanaAparicionText, pozoAparicionText, tesoroAparicionText, // Aparicion Recursos
+            aparicionInicialText, aguaAparicionText, bibliotecaAparicionText, comidaAparicionText, montanaAparicionText, pozoAparicionText, tesoroAparicionText, // Aparicion Recursos
             tipoCelda1, tipoCelda2, tipoCelda3, tipoCelda4, tipoCelda5, tipoCelda6, //contenidoCeldaTab
             vidaCelda1, vidaCelda2, vidaCelda3, vidaCelda4, vidaCelda5, vidaCelda6; //contenidoCeldaTab
     @FXML
     private Slider vidaUserSlider, probReproduccionSlider, probClonacionSlider, //Ajustes User
             aguaVidaSlider, bibliotecaVidaSlider, comidaVidaSlider, montanaVidaSlider, pozoVidaSlider, tesoroVidaSlider, //Vida Recursos
             aguaEfectoSlider, bibliotecaEfectoSlider, comidaEfectoSlider, montanaEfectoSlider, tesoroEfectoSlider, //Efecto Recursos
-            aguaAparicionSlider, bibliotecaAparicionSlider, comidaAparicionSlider, montanaAparicionSlider, pozoAparicionSlider, tesoroAparicionSlider; // Aparicion Recursos
+            aparicionInicialSlider, aguaAparicionSlider, bibliotecaAparicionSlider, comidaAparicionSlider, montanaAparicionSlider, pozoAparicionSlider, tesoroAparicionSlider; // Aparicion Recursos
     @FXML
     private Button buttonVelocidad, buttonPlay, buttonPause, buttonStop, clearTablero; //Botones tablero
     @FXML
@@ -111,6 +111,7 @@ public class ControllerMainStage {
     protected IntegerProperty medidaMontanaEfecto = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaBibliotecaEfecto = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaTesoroEfecto = new SimpleIntegerProperty(0);
+    protected IntegerProperty medidaAparicionInicial = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaAguaAparicion = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaComidaAparicion = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaMontanaAparicion = new SimpleIntegerProperty(0);
@@ -250,6 +251,7 @@ public class ControllerMainStage {
     }
     @FXML
     void aplicarAparicionRecursos(MouseEvent event) {
+        setSlidersValue(DatosCompartidos::setAparicionInicial, aparicionInicialSlider);
         setSlidersValue(DatosCompartidos::setAguaAparicion, aguaAparicionSlider);
         setSlidersValue(DatosCompartidos::setComidaAparicion, comidaAparicionSlider);
         setSlidersValue(DatosCompartidos::setMontanaAparicion, montanaAparicionSlider);
@@ -260,6 +262,7 @@ public class ControllerMainStage {
     }
     @FXML
     void resetAparicionRecursos(MouseEvent event) {
+        getDatosCompartidosValueSlider(DatosCompartidos::getAparicionInicial, aparicionInicialSlider);
         getDatosCompartidosValueSlider(DatosCompartidos::getAguaAparicion, aguaAparicionSlider);
         getDatosCompartidosValueSlider(DatosCompartidos::getComidaAparicion, comidaAparicionSlider);
         getDatosCompartidosValueSlider(DatosCompartidos::getMontanaAparicion, montanaAparicionSlider);
@@ -634,6 +637,7 @@ public class ControllerMainStage {
         getDatosCompartidosValueSlider(DatosCompartidos::getBibliotecaEfecto, bibliotecaEfectoSlider);
         getDatosCompartidosValueSlider(DatosCompartidos::getTesoroEfecto, tesoroEfectoSlider);
 
+        getDatosCompartidosValueSlider(DatosCompartidos::getAparicionInicial, aparicionInicialSlider);
         getDatosCompartidosValueSlider(DatosCompartidos::getAguaAparicion, aguaAparicionSlider);
         getDatosCompartidosValueSlider(DatosCompartidos::getComidaAparicion, comidaAparicionSlider);
         getDatosCompartidosValueSlider(DatosCompartidos::getMontanaAparicion, montanaAparicionSlider);
@@ -708,6 +712,7 @@ public class ControllerMainStage {
         initializeBindingSliders(montanaEfectoSlider, montanaEfectoText, medidaMontanaEfecto);
         initializeBindingSliders(bibliotecaEfectoSlider, bibliotecaEfectoText, medidaBibliotecaEfecto);
         initializeBindingSliders(tesoroEfectoSlider, tesoroEfectoText, medidaTesoroEfecto);
+        initializeBindingSliders(aparicionInicialSlider, aparicionInicialText, medidaAparicionInicial);
         initializeBindingSliders(aguaAparicionSlider, aguaAparicionText, medidaAguaAparicion);
         initializeBindingSliders(comidaAparicionSlider, comidaAparicionText, medidaComidaAparicion);
         initializeBindingSliders(montanaAparicionSlider, montanaAparicionText, medidaMontanaAparicion);

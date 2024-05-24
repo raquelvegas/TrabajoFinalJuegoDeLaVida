@@ -21,6 +21,7 @@ public class DatosCompartidos {
     private static String montanaEfecto = "0";
     private static String tesoroEfecto = "0";
     private static String bibliotecaEfecto = "0";
+    private static String aparicionInicial = "0";
     private static String aguaAparicion = "0";
     private static String comidaAparicion = "0";
     private static String montanaAparicion = "0";
@@ -165,6 +166,14 @@ public class DatosCompartidos {
 
     public static void setBibliotecaEfecto(String bibliotecaEfecto) {
         DatosCompartidos.bibliotecaEfecto = bibliotecaEfecto;
+    }
+
+    public static String getAparicionInicial() {
+        return aparicionInicial;
+    }
+
+    public static void setAparicionInicial(String aparicionInicial) {
+        DatosCompartidos.aparicionInicial = aparicionInicial;
     }
 
     public static String getAguaAparicion() {

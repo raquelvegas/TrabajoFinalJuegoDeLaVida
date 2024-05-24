@@ -17,14 +17,15 @@ import java.io.IOException;
 public class ControllerRecursosAparicion {
 
     @FXML
-    private Slider aguaAparicionSlider, bibliotecaAparicionSlider, comidaAparicionSlider,
+    private Slider aparicionInicialSlider, aguaAparicionSlider, bibliotecaAparicionSlider, comidaAparicionSlider,
             montanaAparicionSlider, pozoAparicionSlider, tesoroAparicionSlider;
     @FXML
-    private Text aguaAparicionText, bibliotecaAparicionText, comidaAparicionText,
+    private Text aparicionInicialText, aguaAparicionText, bibliotecaAparicionText, comidaAparicionText,
             montanaAparicionText, pozoAparicionText, tesoroAparicionText;
     @FXML
     private Button buttonSiguienteClear, getButtonSiguienteAleatorio;
 
+    protected IntegerProperty medidaAparicionInicial = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaAguaAparicion = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaComidaAparicion = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaMontanaAparicion = new SimpleIntegerProperty(0);
@@ -42,6 +43,7 @@ public class ControllerRecursosAparicion {
 
     @FXML
     void nextAleatorio(MouseEvent event) {
+        DatosCompartidos.setAparicionInicial(String.valueOf((int) aparicionInicialSlider.getValue()));
         DatosCompartidos.setAguaAparicion(String.valueOf((int) aguaAparicionSlider.getValue()));
         DatosCompartidos.setComidaAparicion(String.valueOf((int) comidaAparicionSlider.getValue()));
         DatosCompartidos.setMontanaAparicion(String.valueOf((int) montanaAparicionSlider.getValue()));
@@ -63,6 +65,7 @@ public class ControllerRecursosAparicion {
 
     @FXML
     void nextClear(MouseEvent event) {
+        DatosCompartidos.setAparicionInicial(String.valueOf((int) aparicionInicialSlider.getValue()));
         DatosCompartidos.setAguaAparicion(String.valueOf((int) aguaAparicionSlider.getValue()));
         DatosCompartidos.setComidaAparicion(String.valueOf((int) comidaAparicionSlider.getValue()));
         DatosCompartidos.setMontanaAparicion(String.valueOf((int) montanaAparicionSlider.getValue()));
@@ -80,6 +83,7 @@ public class ControllerRecursosAparicion {
 
     @FXML
     public void initialize(){
+        initializeBindingSliders(aparicionInicialSlider, aparicionInicialText, medidaAparicionInicial);
         initializeBindingSliders(aguaAparicionSlider,aguaAparicionText, medidaAguaAparicion);
         initializeBindingSliders(comidaAparicionSlider,comidaAparicionText, medidaComidaAparicion);
         initializeBindingSliders(montanaAparicionSlider,montanaAparicionText, medidaMontanaAparicion);

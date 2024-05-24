@@ -823,11 +823,11 @@
                                           <RowConstraints maxHeight="279.0000366210937" minHeight="10.0" prefHeight="98.19996948242186" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <HBox alignment="CENTER" prefHeight="70.0" prefWidth="538.0" GridPane.rowIndex="1">
+                                          <HBox alignment="CENTER" prefHeight="46.0" prefWidth="538.0" GridPane.rowIndex="1">
                                              <children>
-                                                <Button fx:id="buttonResetAparicionRecursos" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#resetAparicionRecursos" prefHeight="50.0" prefWidth="164.0" text="RESET" />
+                                                <Button fx:id="buttonResetAparicionRecursos" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#resetAparicionRecursos" prefHeight="34.0" prefWidth="164.0" text="RESET" />
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="                      " />
-                                                <Button fx:id="buttonAparicionRecursos" mnemonicParsing="false" onMouseClicked="#aplicarAparicionRecursos" prefHeight="50.0" prefWidth="164.0" text="APLICAR" />
+                                                <Button fx:id="buttonAparicionRecursos" mnemonicParsing="false" onMouseClicked="#aplicarAparicionRecursos" prefHeight="34.0" prefWidth="164.0" text="APLICAR" />
                                              </children>
                                           </HBox>
                                           <GridPane>
@@ -842,6 +842,31 @@
                                                 <VBox prefHeight="446.0" prefWidth="537.0">
                                                    <children>
                                                       <AnchorPane prefHeight="22.0" prefWidth="538.0" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" " textAlignment="CENTER" wrappingWidth="535.6723823547363">
+                                                         <font>
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <AnchorPane prefHeight="50.0" prefWidth="253.0">
+                                                         <children>
+                                                            <Slider fx:id="aparicionInicialSlider" layoutX="228.0" layoutY="10.0" prefHeight="34.0" prefWidth="190.0" showTickLabels="true" />
+                                                            <Text fx:id="aparicionInicialText" fill="#5e5d5d" layoutX="424.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="43.4749755859375">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fill="#5e5d5d" layoutX="467.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="33.8748779296875">
+                                                               <font>
+                                                                  <Font size="23.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text layoutX="41.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PORCENTAJE DE APARICIÓN INICIAL" textAlignment="CENTER" underline="true" wrappingWidth="186.7421875">
+                                                               <font>
+                                                                  <Font size="17.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </AnchorPane>
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AGUA" textAlignment="CENTER" underline="true" wrappingWidth="535.6723823547363">
                                                          <font>
                                                             <Font size="17.0" />
