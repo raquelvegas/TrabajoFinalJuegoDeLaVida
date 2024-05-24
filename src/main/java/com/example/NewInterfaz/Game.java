@@ -103,12 +103,12 @@ public class Game {
     private double getVidasCeldas(Square square, int celda, Double tipo, ListaSimple<Individuo> indLista, ListaSimple<Recurso> recLista) {
         double vida = 0.0;
         if (tipo == 1.1 || tipo == 1.2 || tipo == 1.3) {
-            // Buscar el individuo por ID en la lista de todos los individuos
-            for (int i = 0; i < DatosCompartidos.getListaIndividuos().getNumeroElementos(); i++) {
-                Individuo individuo = DatosCompartidos.getListaIndividuos().getElemento(i).getData();
-                if (individuo.getID() == tipo.intValue()) {
+            for (int i = 0; i < indLista.getNumeroElementos(); i++) {
+                Individuo individuo = indLista.getDato(i);
+                int tipoBuscado = (int) (tipo*10)-10;
+                if (individuo.getTipo() == tipoBuscado) {
                     vida = individuo.getTurnosVida();
-                    indLista.del(0);
+                    indLista.del(i);
                     break; // Salir del bucle cuando se encuentra el individuo
                 }
             }
