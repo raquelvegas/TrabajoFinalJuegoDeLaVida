@@ -153,16 +153,16 @@ public class Game {
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
             int tipo = generarEnteroAleatorio(0, 2); // Generar tipo aleatorio
             Double tipoIndividuo;
-//            if (tipo == 0) {
-//                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
-//                tipoIndividuo = 1.1;
-//            } else if (tipo == 1) {
-//                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
-//                tipoIndividuo = 1.2;
-//            } else {
+            if (tipo == 0) {
+                individuoNuevo = new IndBasico(new ArbolBinario<>(null));
+                tipoIndividuo = 1.1;
+            } else if (tipo == 1) {
+                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
+                tipoIndividuo = 1.2;
+            } else {
                 individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
                 tipoIndividuo = 1.3;
-//            }
+            }
             individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo);
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
@@ -300,13 +300,13 @@ public class Game {
             int tipoRecurso3 = generarEnteroAleatorio(2, 7);
             addRecursos(tablero.getSquare(numerocuadrado), (double) tipoRecurso3);
         } else {
-            int numIndividuos = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 2);
-            int numAgua = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
-            int numComida = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
-            int numMontana = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
-            int numBiblioteca = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
-            int numTesoro = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
-            int numPozo = generarEnteroAleatorio(numeroCuadrados / 5, numeroCuadrados / 5 + numeroCuadrados / 3);
+            int numIndividuos = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 2);
+            int numAgua = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 3);
+            int numComida = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 3);
+            int numMontana = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 3);
+            int numBiblioteca = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 3);
+            int numTesoro = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 3);
+            int numPozo = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 3);
             for (int i = 0; i < numIndividuos; i++) {
                 int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
                 addIndividuo(tablero.getSquare(idSquareAleatorio));
@@ -634,7 +634,13 @@ public class Game {
                     DatosCompartidos.getListaIndividuos().add(individuoNuevo);
                     System.out.println("Ha habido reproduccion entre los individuos " + ind1.getID() + " y " + ind2.getID() + ". Ahora hay " + DatosCompartidos.getNumIndividuos() + " individuos.");
                 } else { // Muerte de ambos individuos
-
+                    log.info("Se van a eliminar los individuos "+ind1.getID()+", "+ind2.getID()+" por la probabilidad de reproduccion");
+                    ListaSimple<Individuo> individuosAEliminar = new ListaSimple<>(2);
+                    individuosAEliminar.add(ind1);
+                    individuosAEliminar.add(ind2);
+                    actual.getIndividuos().del(0);
+                    actual.getIndividuos().del(0);
+                    eliminarIndividuos(individuosAEliminar);
                 }
             }
         }
