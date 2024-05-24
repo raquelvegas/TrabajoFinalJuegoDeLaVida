@@ -1,13 +1,13 @@
 package com.example.NewInterfaz;
 
+import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
+import com.example.EstructurasDeDatos.Listas.ListaSimple;
+import com.example.NewInterfaz.Individuos.Individuo;
 import com.example.SaveInfo.SaveInfo;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +42,7 @@ import java.util.function.Supplier;
 
 public class ControllerMainStage {
     @FXML
-    private Text turnoContador, vivosText, muertosText, playText, pauseText, //Información juego
+    private Text turnoContador, vivosText, playText, pauseText, //Información juego
             vidaUserText, probReproduccionText, probClonacionText, //Ajustes User
             aguaVidaText, bibliotecaVidaText, comidaVidaText, montanaVidaText, pozoVidaText, tesoroVidaText, // Vida Recursos
             aguaEfectoText, bibliotecaEfectoText, comidaEfectoText, montanaEfectoText, tesoroEfectoText, // Efecto Recursos
@@ -119,6 +119,7 @@ public class ControllerMainStage {
     protected IntegerProperty medidaTesoroAparicion = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaPozoAparicion = new SimpleIntegerProperty(0);
     protected DoubleProperty velocidadJuegoProperty = new SimpleDoubleProperty(1.0);
+    protected IntegerProperty medidaVivosProperty = new SimpleIntegerProperty(0);
 
     /////////////////////////////////////MouseEvents////////////////////////////////////////////////////
 
@@ -171,7 +172,7 @@ public class ControllerMainStage {
     }
     @FXML
     void stopGame(MouseEvent event) throws IOException {
-        controlLoop.stop();
+        controlLoop.pause();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Guardar Partida");
         alert.setHeaderText("¿Quieres guardar tu partida?");
@@ -190,11 +191,14 @@ public class ControllerMainStage {
             informacion.guardar("PartidaGuardada.json");
             System.out.println("Partida guardada");
             showGameOverStage();
+            controlLoop.stop();
         } else if (result.get() == buttonTypeNo) {
             // Acción a realizar si el usuario no quiere guardar la partida
             System.out.println("Partida no guardada.");
             showGameOverStage();
+            controlLoop.stop();
         } else {
+            controlLoop.play();
             event.consume();
         }
 
@@ -366,18 +370,15 @@ public class ControllerMainStage {
     void play(ActionEvent event) {
         mediaPlayer.play();
     }
-
     @FXML
     void pause(ActionEvent event) {
         mediaPlayer.pause();
     }
-
     @FXML
     void eraseUnaVezLaVida(ActionEvent event) {
         mediaPlayer.stop();
         insertSong("EraseUnaVezLaVida.mp3");
     }
-
     @FXML
     void laBamba(ActionEvent event) {
         mediaPlayer.stop();
@@ -412,7 +413,6 @@ public class ControllerMainStage {
 
         gameOverStage.show();
     }
-
     public void actulizarCeldaSeleccionadaTab(){
         //Celda 1
         String tipo1 = traducirTipo(CeldaSeleccionada.getTipo1());
@@ -500,7 +500,6 @@ public class ControllerMainStage {
         celda5.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo5()));
         celda6.setFill(pintarSquareAumentado(CeldaSeleccionada.getTipo6()));
     }
-
     public static String traducirTipo(Double tipo){
         String tipoTraducido;
         if(tipo == 1.1){
@@ -526,7 +525,6 @@ public class ControllerMainStage {
         }
         return tipoTraducido;
     }
-
     public Color pintarSquareAumentado (Double tipo){
         int tipoEntero = tipo.intValue();
         int subtipo = (int) ((tipo *10)-10);
@@ -572,7 +570,6 @@ public class ControllerMainStage {
         }
         return color;
     }
-
     private void setImage (String path, ImageView imageView, GridPane gridPane){
         Image image = new Image(getClass().getClassLoader().getResourceAsStream(path));
         imageView.setImage(image);
@@ -641,6 +638,10 @@ public class ControllerMainStage {
         getDatosCompartidosValueSlider(DatosCompartidos::getTesoroAparicion, tesoroAparicionSlider);
         getDatosCompartidosValueSlider(DatosCompartidos::getPozoAparicion, pozoAparicionSlider);
     }
+    private void actualizarTextVivos(){
+        int numIndVivos = DatosCompartidos.getListaIndividuos().getNumeroElementos();
+        vivosText.setText(String.valueOf(numIndVivos));
+    }
 
     private void inicializarBucleControl() {
         controlLoop = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
@@ -652,11 +653,14 @@ public class ControllerMainStage {
                     DatosCompartidos.setTurnoJuego(turno);
                     turnoContador.setText(String.valueOf(turno));
                     game.turno();
+                    actualizarTextVivos();
                 } else {
                     //Lógica cuando el juego está pausado
+                    actualizarTextVivos();
                 }
             } else if (DatosCompartidos.getTurnoJuego() == 0) {
-                    //Lógica para cuando el juego aún no ha iniciado
+                //Lógica para cuando el juego aún no ha iniciado
+                actualizarTextVivos();
             } else {
                 //Lógica para cuando el juego termina
 

@@ -986,22 +986,12 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VIVOS:">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUOS VIVOS:">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font></Text>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   " />
                               <Text fx:id="vivosText" strokeType="OUTSIDE" strokeWidth="0.0" text="0000">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font></Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="             " />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MUERTOS: ">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font></Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   " />
-                              <Text fx:id="muertosText" strokeType="OUTSIDE" strokeWidth="0.0" text="0000">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font></Text>

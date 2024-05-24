@@ -275,6 +275,8 @@ public class Game {
             tablero.getSquare(i).setIndividuos(new ListaSimple<>());
             tablero.getSquare(i).setRecursos(new ListaSimple<>());
         }
+        DatosCompartidos.getListaIndividuos().vaciar();
+        DatosCompartidos.getListaRecursos().vaciar();
     }
 
 

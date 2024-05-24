@@ -1,5 +1,8 @@
 package com.example.NewInterfaz;
 
+import com.example.EstructurasDeDatos.ArbolBinario;
+import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
+import com.example.NewInterfaz.Individuos.Individuo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -36,38 +39,21 @@ public class ControllerGameOver {
     @FXML
     void arbolGenealogico(MouseEvent event) throws IOException {
         Stage stage = new Stage();
+        VBox mainLayout = new VBox(10);
+        mainLayout.setAlignment(Pos.CENTER);
 
-        TreeItem<String> root = new TreeItem<>("Hijo");
+        ListaEnlazada<Individuo> listaIndividuos = DatosCompartidos.getListaIndividuos();
 
-        TreeView<String> treeView = new TreeView<>(root);
-        treeView.setShowRoot(true);
+        for (int i = 0; i < listaIndividuos.getNumeroElementos(); i++) {
+            Individuo individuo = listaIndividuos.getElemento(i).getData();
+            TreeItem<String> root = new TreeItem<>(String.valueOf(individuo.getID()));
+            buildTree(root, individuo.getArbolGenealogico());
 
-        TreeItem<String> branch1 = new TreeItem<>("Padre");
-        TreeItem<String> branch2 = new TreeItem<>("Madre");
-        TreeItem<String> branch3 = new TreeItem<>("Padre");
-        TreeItem<String> branch4 = new TreeItem<>("Madre");
-        TreeItem<String> branch5 = new TreeItem<>("Padre");
-        TreeItem<String> branch6 = new TreeItem<>("Madre");
-        TreeItem<String> branch7 = new TreeItem<>("Padre");
-        TreeItem<String> branch8 = new TreeItem<>("Madre");
-        TreeItem<String> branch9 = new TreeItem<>("Padre");
-        TreeItem<String> branch10 = new TreeItem<>("Madre");
-        TreeItem<String> branch11 = new TreeItem<>("Padre");
-        TreeItem<String> branch12 = new TreeItem<>("Madre");
-        TreeItem<String> branch13 = new TreeItem<>("Padre");
-        TreeItem<String> branch14 = new TreeItem<>("Madre");
-        TreeItem<String> branch15 = new TreeItem<>("Padre");
-        TreeItem<String> branch16 = new TreeItem<>("Madre");
+            TreeView<String> treeView = new TreeView<>(root);
+            treeView.setShowRoot(true);
 
-        TreeItem<String> leaf1 = new TreeItem<>("Abuelo paterno");
-        TreeItem<String> leaf2 = new TreeItem<>("Abuela paterna");
-        TreeItem<String> leaf3 = new TreeItem<>("Abuelo materno");
-        TreeItem<String> leaf4 = new TreeItem<>("Abuela materna");
-
-        root.getChildren().addAll(branch1, branch2, branch3, branch4, branch5, branch6, branch7, branch8
-                , branch9, branch10, branch11, branch12, branch13, branch14, branch15, branch16);
-        branch1.getChildren().addAll(leaf1, leaf2);
-        branch2.getChildren().addAll(leaf3, leaf4);
+            mainLayout.getChildren().add(treeView);
+        }
 
         Button volverButton = new Button("Volver");
         volverButton.setOnAction(e -> stage.close());
@@ -77,10 +63,9 @@ public class ControllerGameOver {
         Region spacerDown = new Region();
         spacerDown.setPrefHeight(10); // Espacio entre el botón y el final del stage
 
-        VBox layout = new VBox(10, treeView, spacerUp, volverButton, spacerDown); // 10 es el espaciado entre los elementos del VBox
-        layout.setAlignment(Pos.CENTER); // Centra el contenido del VBox
+        mainLayout.getChildren().addAll(spacerUp, volverButton, spacerDown);
 
-        Scene scene = new Scene(layout, 400, 400);
+        Scene scene = new Scene(mainLayout, 400, 600);
         stage.setScene(scene);
         stage.setTitle("Árbol genealógico general");
 
@@ -167,4 +152,26 @@ public class ControllerGameOver {
     void cerrarJuego(MouseEvent event) {
         System.exit(0);
     }
+
+
+    private void buildTree(TreeItem<String> treeItem, ArbolBinario<Individuo> arbol) {
+        if (arbol == null) {
+            return;
+        }
+
+        if (arbol.getRaiz().getNodoDch()!= null){
+            Individuo indPadre = arbol.getRaiz().getNodoDch().getDato();
+            TreeItem<String> padre = new TreeItem<>(String.valueOf(indPadre.getID()));
+            buildTree(padre, indPadre.getArbolGenealogico());
+            treeItem.getChildren().add(padre);
+        }
+
+        if (arbol.getRaiz().getNodoIzq()!= null){
+            Individuo indMadre = arbol.getRaiz().getNodoIzq().getDato();
+            TreeItem<String> madre = new TreeItem<>(String.valueOf(indMadre.getID()));
+            buildTree(madre, indMadre.getArbolGenealogico());
+            treeItem.getChildren().add(madre);
+        }
+    }
+
 }

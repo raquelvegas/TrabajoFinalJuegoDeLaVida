@@ -22,6 +22,7 @@ public class ListaEnlazada<T> {
 
     public void vaciar() {
         primero = null;
+        numElem = 0;
     }
 
     private void add(ElementoLE<T> el) {
