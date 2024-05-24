@@ -84,16 +84,44 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <Text fx:id="pauseText" fontSmoothingType="LCD" layoutX="2.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PARA PODER MODIFICAR LOS ATRIBUTOS, PAUSE LA PARTIDA" textAlignment="CENTER" visible="false" wrappingWidth="530.5856800079346">
+                                    <Text fx:id="pauseText" fontSmoothingType="LCD" layoutX="2.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PARA PODER MODIFICAR LOS ATRIBUTOS, PAUSE LA PARTIDA" textAlignment="CENTER" wrappingWidth="530.5856800079346">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="playText" fontSmoothingType="LCD" layoutX="2.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MODIFICA LOS ATRIBUTOS QUE DESEES ¿CONSEGUIRÁS ENCONTRAR EL EQUILIBRIO?" textAlignment="CENTER" wrappingWidth="530.5856800079346">
+                                    <Text fx:id="playText" fontSmoothingType="LCD" layoutX="2.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MODIFICA LOS ATRIBUTOS QUE DESEES ¿CONSEGUIRÁS ENCONTRAR EL EQUILIBRIO?" textAlignment="CENTER" visible="false" wrappingWidth="530.5856800079346">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
                                     </Text>
+                                    <AnchorPane fx:id="codigoColor" layoutX="31.0" layoutY="155.0" prefHeight="372.0" prefWidth="474.0">
+                                       <children>
+                                          <Line endX="301.7999572753906" endY="-1.52587890625E-5" layoutX="136.0" layoutY="14.0" startX="-106.2000503540039" startY="-1.52587890625E-5" />
+                                          <Text layoutX="143.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CÓDIGO DE COLOR">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Text>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#212121" height="39.0" layoutX="29.0" layoutY="86.0" stroke="BLACK" strokeType="INSIDE" width="122.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="39.0" layoutX="324.0" layoutY="270.0" stroke="BLACK" strokeType="INSIDE" width="122.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GOLD" height="39.0" layoutX="176.0" layoutY="270.0" stroke="BLACK" strokeType="INSIDE" width="122.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="SALMON" height="39.0" layoutX="29.0" layoutY="270.0" stroke="BLACK" strokeType="INSIDE" width="122.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#864332" height="39.0" layoutX="324.0" layoutY="178.0" stroke="BLACK" strokeType="INSIDE" width="122.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ad43" height="39.0" layoutX="176.0" layoutY="178.0" stroke="BLACK" strokeType="INSIDE" width="122.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0404e2" height="39.0" layoutX="29.0" layoutY="178.0" stroke="BLACK" strokeType="INSIDE" width="122.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9e9e" height="39.0" layoutX="324.0" layoutY="86.0" stroke="BLACK" strokeType="INSIDE" width="122.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#616161" height="39.0" layoutX="176.0" layoutY="86.0" stroke="BLACK" strokeType="INSIDE" width="122.0" />
+                                          <Text layoutX="61.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ind. Básico" />
+                                          <Text layoutX="348.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ind. Avanzado" />
+                                          <Text layoutX="206.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ind. Normal" />
+                                          <Text layoutX="76.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agua" />
+                                          <Text layoutX="217.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comida" />
+                                          <Text layoutX="361.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montaña" />
+                                          <Text layoutX="60.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biblioteca" />
+                                          <Text layoutX="215.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesoro" />
+                                          <Text layoutX="372.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pozo" />
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </AnchorPane>
                           </content>
