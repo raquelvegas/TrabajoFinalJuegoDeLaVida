@@ -29,7 +29,7 @@ public class Square extends StackPane {
     GridPane gridPane;
 
     public Square(int x, int y) {
-        this.individuos = new ListaSimple<>(3);
+        this.individuos = new ListaSimple<>(24);
         this.recursos = new ListaSimple<>(3);
         this.x = x;
         this.y = y;

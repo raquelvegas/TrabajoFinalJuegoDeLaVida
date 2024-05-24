@@ -41,6 +41,14 @@ public class ControllerGameOver {
         Stage stage = new Stage();
         VBox mainLayout = new VBox(10);
         mainLayout.setAlignment(Pos.CENTER);
+        mainLayout.setStyle("-fx-padding: 10;");
+
+        VBox treesLayout = new VBox(10);
+        treesLayout.setAlignment(Pos.CENTER);
+
+        ScrollPane scrollPane = new ScrollPane(treesLayout);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setPrefViewportHeight(500);  // Puedes ajustar esta altura según tus necesidades
 
         ListaEnlazada<Individuo> listaIndividuos = DatosCompartidos.getListaIndividuos();
 
@@ -51,8 +59,13 @@ public class ControllerGameOver {
 
             TreeView<String> treeView = new TreeView<>(root);
             treeView.setShowRoot(true);
+            treeView.setMinHeight(Region.USE_PREF_SIZE);
 
-            mainLayout.getChildren().add(treeView);
+            VBox treeContainer = new VBox(treeView);
+            treeContainer.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-padding: 10; -fx-background-color: white;");
+            treeContainer.setAlignment(Pos.CENTER);
+
+            treesLayout.getChildren().add(treeContainer);
         }
 
         Button volverButton = new Button("Volver");
@@ -63,7 +76,7 @@ public class ControllerGameOver {
         Region spacerDown = new Region();
         spacerDown.setPrefHeight(10); // Espacio entre el botón y el final del stage
 
-        mainLayout.getChildren().addAll(spacerUp, volverButton, spacerDown);
+        mainLayout.getChildren().addAll(scrollPane, spacerUp, volverButton, spacerDown);
 
         Scene scene = new Scene(mainLayout, 400, 600);
         stage.setScene(scene);
@@ -153,25 +166,23 @@ public class ControllerGameOver {
         System.exit(0);
     }
 
-
     private void buildTree(TreeItem<String> treeItem, ArbolBinario<Individuo> arbol) {
         if (arbol == null) {
             return;
         }
 
-        if (arbol.getRaiz().getNodoDch()!= null){
+        if (arbol.getRaiz().getNodoDch() != null) {
             Individuo indPadre = arbol.getRaiz().getNodoDch().getDato();
             TreeItem<String> padre = new TreeItem<>(String.valueOf(indPadre.getID()));
             buildTree(padre, indPadre.getArbolGenealogico());
             treeItem.getChildren().add(padre);
         }
 
-        if (arbol.getRaiz().getNodoIzq()!= null){
+        if (arbol.getRaiz().getNodoIzq() != null) {
             Individuo indMadre = arbol.getRaiz().getNodoIzq().getDato();
             TreeItem<String> madre = new TreeItem<>(String.valueOf(indMadre.getID()));
             buildTree(madre, indMadre.getArbolGenealogico());
             treeItem.getChildren().add(madre);
         }
     }
-
 }

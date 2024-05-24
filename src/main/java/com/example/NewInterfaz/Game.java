@@ -21,6 +21,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.text.NumberFormat;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Locale;
 import java.util.Random;
 
@@ -637,6 +639,24 @@ public class Game {
                 } else { // Muerte de ambos individuos
 
                 }
+            }
+        }
+    }
+
+    private void limpiezaAglomeraciones() {
+        for(int i = 0; i < tablero.getSquares().getNumeroElementos(); i++) {
+            ListaSimple<Individuo> individuos = tablero.getSquare(i).getIndividuos();
+            if(individuos.getNumeroElementos() > 3) {
+                int indAEliminar = 0;
+                int menorVida = individuos.getDato(0).getTurnosVida();
+
+                for (int j = 1; j < individuos.getNumeroElementos(); j++) {
+                    if(individuos.getDato(j).getTurnosVida() < menorVida) {
+                        indAEliminar = j;
+                        menorVida = individuos.getDato(j).getTurnosVida();
+                    }
+                }
+                individuos.del(indAEliminar);
             }
         }
     }
@@ -1431,7 +1451,7 @@ public class Game {
 
 
         // 6º Evauación de que no haya más de tres individuos/recursos por casilla
-
+        limpiezaAglomeraciones();
 
         // 7º Generación de nuevos recursos
         aparicionRecursos();
