@@ -17,10 +17,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
@@ -76,6 +73,8 @@ public class ControllerMainStage {
     private HBox contenidoTipo1, contenidoTipo2, contenidoTipo3, contenidoTipo4, contenidoTipo5, contenidoTipo6,
             contenidoVida1, contenidoVida2, contenidoVida3, contenidoVida4, contenidoVida5, contenidoVida6;
     @FXML
+    private AnchorPane codigoColor;
+    @FXML
     private Stage primaryStage, stage;
     @FXML
     private Tab contenidoCeldaTab;
@@ -119,7 +118,6 @@ public class ControllerMainStage {
     protected IntegerProperty medidaTesoroAparicion = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaPozoAparicion = new SimpleIntegerProperty(0);
     protected DoubleProperty velocidadJuegoProperty = new SimpleDoubleProperty(1.0);
-    protected IntegerProperty medidaVivosProperty = new SimpleIntegerProperty(0);
 
     /////////////////////////////////////MouseEvents////////////////////////////////////////////////////
 
@@ -148,8 +146,10 @@ public class ControllerMainStage {
             this.recursosParametrosTab.setDisable(true);
             this.aparicionTab.setDisable(true);
             this.anadirTab.setDisable(true);
+            this.contenidoCeldaTab.setDisable(true);
             this.pauseTab.setDisable(false);
             this.pauseText.setVisible(true);
+            this.codigoColor.setVisible(true);
             this.playText.setVisible(false);
             log.info("Reanudar el juego");
         }
@@ -164,8 +164,10 @@ public class ControllerMainStage {
             this.recursosParametrosTab.setDisable(false);
             this.aparicionTab.setDisable(false);
             this.anadirTab.setDisable(false);
+            this.contenidoCeldaTab.setDisable(false);
             this.pauseTab.setDisable(true);
             this.pauseText.setVisible(false);
+            this.codigoColor.setVisible(false);
             this.playText.setVisible(true);
             log.info("Pausar el juego");
         }
@@ -689,6 +691,7 @@ public class ControllerMainStage {
         pauseTab.setDisable(true);
         this.pauseText.setVisible(false);
         this.playText.setVisible(true);
+        this.codigoColor.setVisible(false);
         this.buttonVelocidad.setDisable(true);
 
         initializeBindingSliders(vidaUserSlider,vidaUserText, medidaVidaUser);

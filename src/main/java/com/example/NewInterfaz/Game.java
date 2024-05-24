@@ -253,7 +253,6 @@ public class Game {
                     break;
                 case 5: //Biblioteca - Naranja
                     celda.setColor(Color.web("#fa8072"));
-//                    celda.setColor(Color.web("#fc4b08"));
                     break;
                 case 6: //Tesoro - Amarillo
                     celda.setColor(Color.web("#ffd700"));
