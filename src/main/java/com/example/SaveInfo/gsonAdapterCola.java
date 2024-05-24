@@ -17,13 +17,13 @@ public class gsonAdapterCola implements JsonSerializer<Cola>, JsonDeserializer<C
     public Cola deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         Cola<?> cola = new Cola<>();
         cola.setDatos(context.deserialize(jsonElement, ListaEnlazada.class));
-        log.trace("Deserialización de la cola");
+        log.info("Deserialización de la cola");
         return cola;
     }
 
     @Override
     public JsonElement serialize(Cola cola, Type type, JsonSerializationContext jsonSerializationContext) {
-        log.trace("Serialización de la cola");
+        log.info("Serialización de la cola");
         return jsonSerializationContext.serialize(cola.getDatos());
     }
 }

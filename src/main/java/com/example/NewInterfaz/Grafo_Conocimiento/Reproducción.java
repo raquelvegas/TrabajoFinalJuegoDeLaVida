@@ -9,4 +9,9 @@ public class Reproducción extends Acción{
         super(turno);
         this.IdPareja = pareja;
     }
+
+    @Override
+    public int getTipo() {
+        return 2;
+    }
 }

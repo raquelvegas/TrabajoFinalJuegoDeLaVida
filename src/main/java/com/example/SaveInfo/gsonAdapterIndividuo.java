@@ -17,7 +17,7 @@ public class gsonAdapterIndividuo implements JsonSerializer<Individuo>, JsonDese
 
     @Override
     public JsonElement serialize(Individuo ind, Type type, JsonSerializationContext context) {
-        log.trace("Serializando individuo " + ind.getID() + " a json.");
+        log.info("Serializando individuo " + ind.getID() + " a json.");
         JsonObject individuo = new JsonObject();
         individuo.addProperty("Tipo", ind.getTipo());
         individuo.add("Data", context.serialize(ind));
@@ -26,7 +26,7 @@ public class gsonAdapterIndividuo implements JsonSerializer<Individuo>, JsonDese
 
     @Override
     public Individuo deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-        log.trace("Deserializando de json a individuo.");
+        log.info("Deserializando de json a individuo.");
         JsonObject indNuevo = jsonElement.getAsJsonObject();
         if (indNuevo.get("Tipo").getAsString().contains("0")) {
             return jsonDeserializationContext.deserialize(indNuevo.get("Data"), IndBasico.class);

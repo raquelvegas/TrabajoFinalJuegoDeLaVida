@@ -5,6 +5,7 @@ import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.NewInterfaz.DatosCompartidos;
 import com.example.NewInterfaz.Game;
+import com.example.NewInterfaz.Grafo_Conocimiento.Acción;
 import com.example.NewInterfaz.Individuos.Individuo;
 import com.example.NewInterfaz.Recurso;
 import com.google.gson.Gson;
@@ -424,6 +425,7 @@ public class SaveInfo {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Individuo.class, new gsonAdapterIndividuo())
                 .registerTypeAdapter(Cola.class, new gsonAdapterCola())
+                .registerTypeAdapter(Acción.class, new gsonAdapterAccion())
 //                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
                 .excludeFieldsWithoutExposeAnnotation()
                 .excludeFieldsWithModifiers(Modifier.STATIC)
