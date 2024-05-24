@@ -643,6 +643,33 @@ public class Game {
         }
     }
 
+    private void clonacion(){
+        for(int i = 0; i < tablero.getSquares().getNumeroElementos(); i++) {
+            Square squareActual = tablero.getSquare(i);
+            if (squareActual.getIndividuos().getNumeroElementos() == 1) {
+                int numAleatorio = generarEnteroAleatorio(0,100);
+                if (numAleatorio < Integer.parseInt(DatosCompartidos.getProbClonacion())){
+                    DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
+                    Individuo individuoAClonar = squareActual.getIndividuos().getDato(0);
+                    double tipoIndividuo = individuoAClonar.getTipo();
+                    Individuo individuoNuevo;
+                    if ( tipoIndividuo == 1.1){
+                        individuoNuevo = new IndBasico(new ArbolBinario<>(null));
+                    } else if (tipoIndividuo == 1.2) {
+                        individuoNuevo = new IndNormal(new ArbolBinario<>(null));
+                    } else {
+                        individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
+                    }
+                    ArbolBinario<Individuo> nuevoArbol = new ArbolBinario<>(individuoNuevo, new ElementoArbol<>(individuoAClonar), null);
+                    individuoNuevo.setArbolGenealogico(nuevoArbol);
+                    addTipo(squareActual, tipoIndividuo);
+                    squareActual.getIndividuos().add(individuoNuevo);
+                    DatosCompartidos.getListaIndividuos().add(individuoNuevo);
+                }
+            }
+        }
+    }
+
     private void limpiezaAglomeraciones() {
         for(int i = 0; i < tablero.getSquares().getNumeroElementos(); i++) {
             ListaSimple<Individuo> individuos = tablero.getSquare(i).getIndividuos();
@@ -1435,7 +1462,6 @@ public class Game {
         actualizarProbabilidades();
         eliminarIndividuos();
         eliminarRecursos();
-        actualizarIndividuos();
 
         // 2ª Movimiento de individuos
         moverIndividuos();
@@ -1445,10 +1471,9 @@ public class Game {
 
         // 4º Reproduccion de los individuos
         reproduccion();
-        actualizarIndividuos();
 
         // 5º Clonación de los individuos
-
+        //clonacion();
 
         // 6º Evauación de que no haya más de tres individuos/recursos por casilla
         limpiezaAglomeraciones();
@@ -1457,6 +1482,7 @@ public class Game {
         aparicionRecursos();
 
         // 7º Pintar el tablero restante
+        actualizarIndividuos();
         actualizarTablero();
     }
 }
