@@ -563,7 +563,7 @@ public class Game {
                                 ind--; // Para que vuelva a comprobar la posición en la que estaba
                             }
                             Acción accion = new Consumición(DatosCompartidos.getTurnoJuego(),actual.getRecursos().getDato(rec));
-                            actual.getIndividuos().getDato(ind).getAcciones().push(accion);
+//                            actual.getIndividuos().getDato(ind).getAcciones().push(accion);
                         }
                     }
                 }
