@@ -97,6 +97,10 @@ public class ControllerMainStage {
         return instance;
     }
 
+    public GridPane getTableroJuego() {
+        return tableroJuego;
+    }
+
     ///////////////////////////////////BindingSliders////////////////////////////////////////////////////////////////////////////////
     protected IntegerProperty medidaVidaUser = new SimpleIntegerProperty(0);
     protected IntegerProperty medidaReproduccion = new SimpleIntegerProperty(0);
