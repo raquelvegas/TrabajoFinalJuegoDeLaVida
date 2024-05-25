@@ -13,4 +13,11 @@ public class Consumición extends Accion {
         this.rec = tipoRecurso;
     }
 
+    public Recurso getRec() {
+        return rec;
+    }
+
+    public void setRec(Recurso rec) {
+        this.rec = rec;
+    }
 }

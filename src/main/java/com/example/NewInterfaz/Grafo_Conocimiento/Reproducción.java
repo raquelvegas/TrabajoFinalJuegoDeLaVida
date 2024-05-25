@@ -16,4 +16,20 @@ public class Reproducción extends Accion {
     public int getTipo() {
         return 2;
     }
+
+    public int getIdPareja() {
+        return IdPareja;
+    }
+
+    public void setIdPareja(int idPareja) {
+        IdPareja = idPareja;
+    }
+
+    public int getIdNuevoIndividuo() {
+        return IdNuevoIndividuo;
+    }
+
+    public void setIdNuevoIndividuo(int idNuevoIndividuo) {
+        IdNuevoIndividuo = idNuevoIndividuo;
+    }
 }

@@ -50,6 +50,14 @@ public class ControllerInicioJuego {
     }
 
     private void transladarInfo(SaveInfo info){
+        for (int i = 0; i < info.getGame().getTablero().getSquares().getNumeroElementos(); i++) {
+            Square cuadrado = info.getGame().getTablero().getSquares().getDato(i);
+            if (!cuadrado.getRecursos().isVacia()) {
+                for (int j = 0; j < cuadrado.getRecursos().getNumeroElementos(); j++) {
+                    cuadrado.getRecursos().getDato(j).setSquare(cuadrado);
+                }
+            }
+        }
         DatosCompartidos.setAltoMatriz(info.getAltoMatriz());
         DatosCompartidos.setAnchoMatriz(info.getAnchoMatriz());
         DatosCompartidos.setProbReproduccion(info.getProbReproduccion());

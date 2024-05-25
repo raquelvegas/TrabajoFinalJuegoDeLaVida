@@ -175,6 +175,8 @@ public class ControllerMainStage {
     }
     @FXML
     void stopGame(MouseEvent event) throws IOException {
+        /////////// Creación del grafo y extracción de la información /////////
+
         controlLoop.pause();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Guardar Partida");

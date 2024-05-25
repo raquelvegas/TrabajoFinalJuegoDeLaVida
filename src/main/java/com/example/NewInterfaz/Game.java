@@ -164,7 +164,7 @@ public class Game {
             individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo.getID());
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
-            GrafoConocimiento.addVertices(individuoNuevo);
+            GrafoConocimiento.addVertices(individuoNuevo.getID());
             log.info("Se ha añadido un individuo tipo " + tipoIndividuo + ", con ID " + individuoNuevo.getID() + ", al Square " + square.getX() + "," + square.getY());
             DatosCompartidos.getListaIndividuos().add(individuoNuevo);
         }
@@ -645,7 +645,7 @@ public class Game {
                     actual.getIndividuos().add(individuoNuevo);
                     DatosCompartidos.getListaIndividuos().add(individuoNuevo);
                     // Metemos en el Grafo de Conocimiento el nuevo individuo
-                    GrafoConocimiento.addVertices(individuoNuevo);
+                    GrafoConocimiento.addVertices(individuoNuevo.getID());
 
                     // Actualizamos las listas de acciones de ambos individuos
                     Accion accionInd1 = new Reproducción(DatosCompartidos.getTurnoJuego(),ind2.getID(), individuoNuevo.getID());
@@ -688,7 +688,7 @@ public class Game {
                     squareActual.getIndividuos().add(individuoNuevo);
                     DatosCompartidos.getListaIndividuos().add(individuoNuevo);
                     // Actualización del grafo de conocimiento añadiendo el nuevo individuo
-                    GrafoConocimiento.addVertices(individuoNuevo);
+                    GrafoConocimiento.addVertices(individuoNuevo.getID());
 
                     // Actualización de la lista de acciones del individuo clonado
                     Accion nuevaAccion = new Clonación(DatosCompartidos.getTurnoJuego(),individuoNuevo.getID());

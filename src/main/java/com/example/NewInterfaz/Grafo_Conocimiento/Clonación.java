@@ -12,4 +12,12 @@ public class Clonación extends Accion {
     public int getTipo() {
         return 3;
     }
+
+    public int getIdNuevoIndividuo() {
+        return IdNuevoIndividuo;
+    }
+
+    public void setIdNuevoIndividuo(int idNuevoIndividuo) {
+        IdNuevoIndividuo = idNuevoIndividuo;
+    }
 }
