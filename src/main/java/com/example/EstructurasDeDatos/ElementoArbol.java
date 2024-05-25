@@ -16,6 +16,16 @@ public class ElementoArbol<TipoDato> {
         this.dato = dato;
     }
 
+    public ElementoArbol() {
+
+    }
+
+    public void setDatos(ElementoArbol<TipoDato> elemento) {
+        this.dato = elemento.getDato();
+        this.nodoDch = elemento.getNodoDch();
+        this.nodoIzq = elemento.getNodoIzq();
+    }
+
     public ElementoArbol<TipoDato> getNodoIzq() {
         return nodoIzq;
     }

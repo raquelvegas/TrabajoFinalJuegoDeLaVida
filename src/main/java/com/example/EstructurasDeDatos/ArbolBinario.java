@@ -3,6 +3,10 @@ package com.example.EstructurasDeDatos;
 public class ArbolBinario<TipoDato> {
     private ElementoArbol<TipoDato> raiz;
 
+    public ArbolBinario() {
+
+    }
+
     public ElementoArbol<TipoDato> getRaiz() {
         return raiz;
     }

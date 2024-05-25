@@ -359,7 +359,7 @@ public class Game {
         }
     }
 
-    private void aparicionRecursos2() {
+    private void aparicionRecursos() {
         Double probGeneral = Double.valueOf(DatosCompartidos.getAparicionInicial());
         for (int i = 0; i < tablero.getSquares().getNumeroElementos(); i++) {
             if (generarDoubleAleatorio(0, 100) < probGeneral) {
@@ -386,50 +386,6 @@ public class Game {
                 }
             }
         }
-    }
-
-    // Aparición de recursos durante la partida
-    public void aparicionRecursos(){
-         for (int i = 0; i < tablero.getSquares().getNumeroElementos(); i++){
-             // Agua
-             if (revisionAparicion(Double.parseDouble(DatosCompartidos.getAguaAparicion())/15)){
-                 addRecursos(tablero.getSquare(i), 2.0);
-             }
-
-             // Comida
-             if (revisionAparicion(Double.parseDouble(DatosCompartidos.getComidaAparicion())/15)){
-                 addRecursos(tablero.getSquare(i), 3.0);
-             }
-
-             // Montaña
-             if (revisionAparicion(Double.parseDouble(DatosCompartidos.getMontanaAparicion())/15)){
-                 addRecursos(tablero.getSquare(i), 4.0);
-             }
-
-             // Biblioteca
-             if (revisionAparicion(Double.parseDouble(DatosCompartidos.getBibliotecaAparicion())/15)){
-                 addRecursos(tablero.getSquare(i), 5.0);
-             }
-
-             // Tesoro
-             if (revisionAparicion(Double.parseDouble(DatosCompartidos.getTesoroAparicion())/15)){
-                 addRecursos(tablero.getSquare(i), 6.0);
-             }
-
-             // Pozo
-             if (revisionAparicion(Double.parseDouble(DatosCompartidos.getPozoAparicion())/15)){
-                 addRecursos(tablero.getSquare(i), 7.0);
-             }
-         }
-    }
-
-    public boolean revisionAparicion(double recursoAparicion){
-        double porcentaje = generarDoubleAleatorio(0,100);
-        boolean aparicion = false;
-            if (porcentaje < recursoAparicion){
-                aparicion = true;
-            }
-        return aparicion;
     }
 
 
@@ -684,6 +640,8 @@ public class Game {
                     System.out.println("Ha habido reproduccion entre los individuos " + ind1.getID() + " y " + ind2.getID() + ". Ahora hay " + DatosCompartidos.getNumIndividuos() + " individuos.");
                 } else { // Muerte de ambos individuos
                     log.info("Se van a eliminar los individuos "+ind1.getID()+", "+ind2.getID()+" por la probabilidad de reproduccion");
+//                    System.out.println("Probabilidad de reproduccion 1: "+ind1.getProbRepr());
+//                    System.out.println("Probabilidad de reproducción 2: "+ind1.getProbRepr());
                     ListaSimple<Individuo> individuosAEliminar = new ListaSimple<>(2);
                     individuosAEliminar.add(ind1);
                     individuosAEliminar.add(ind2);
@@ -736,8 +694,8 @@ public class Game {
                     }
                 }
                 individuosAEliminar.add(individuosCuadrado.getDato(posIndEliminar));
-                individuosCuadrado.del(posIndEliminar);
                 log.info("Se ha eliminado el individuo "+individuosCuadrado.getDato(posIndEliminar).getID()+" por ser el que menos turnos de vida tenía");
+                individuosCuadrado.del(posIndEliminar);
             }
             if (!individuosAEliminar.isVacia()){
                 eliminarIndividuos(individuosAEliminar);
@@ -1521,7 +1479,7 @@ public class Game {
         eliminarRecursos();
 
         // 2ª Movimiento de individuos
-        moverIndividuos();
+//        moverIndividuos();
 
         // 3º Consumición de los recursos
         consumirRecursos();
@@ -1536,7 +1494,7 @@ public class Game {
         limpiezaAglomeraciones();
 
         // 7º Generación de nuevos recursos
-        aparicionRecursos2();
+        aparicionRecursos();
 
         // 7º Pintar el tablero restante
         actualizarIndividuos();

@@ -54,7 +54,7 @@ public class ControllerGameOver {
 
         for (int i = 0; i < listaIndividuos.getNumeroElementos(); i++) {
             Individuo individuo = listaIndividuos.getElemento(i).getData();
-            TreeItem<String> root = new TreeItem<>(String.valueOf(individuo.getID()));
+            TreeItem<String> root = new TreeItem<>("Ind #"+String.valueOf(individuo.getID()));
             buildTree(root, individuo.getArbolGenealogico());
 
             TreeView<String> treeView = new TreeView<>(root);
@@ -173,14 +173,14 @@ public class ControllerGameOver {
 
         if (arbol.getRaiz().getNodoDch() != null) {
             Individuo indPadre = arbol.getRaiz().getNodoDch().getDato();
-            TreeItem<String> padre = new TreeItem<>(String.valueOf(indPadre.getID()));
+            TreeItem<String> padre = new TreeItem<>("Ind #"+String.valueOf(indPadre.getID()));
             buildTree(padre, indPadre.getArbolGenealogico());
             treeItem.getChildren().add(padre);
         }
 
         if (arbol.getRaiz().getNodoIzq() != null) {
             Individuo indMadre = arbol.getRaiz().getNodoIzq().getDato();
-            TreeItem<String> madre = new TreeItem<>(String.valueOf(indMadre.getID()));
+            TreeItem<String> madre = new TreeItem<>("Ind #"+String.valueOf(indMadre.getID()));
             buildTree(madre, indMadre.getArbolGenealogico());
             treeItem.getChildren().add(madre);
         }

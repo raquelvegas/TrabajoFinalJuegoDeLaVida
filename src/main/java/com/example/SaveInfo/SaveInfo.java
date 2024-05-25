@@ -1,6 +1,8 @@
 package com.example.SaveInfo;
 
+import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.Cola;
+import com.example.EstructurasDeDatos.ElementoArbol;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.NewInterfaz.Game;
 import com.example.NewInterfaz.Grafo_Conocimiento.Acción;
@@ -391,6 +393,8 @@ public class SaveInfo {
                 .registerTypeAdapter(Individuo.class, new gsonAdapterIndividuo())
                 .registerTypeAdapter(Cola.class, new gsonAdapterCola())
                 .registerTypeAdapter(Acción.class, new gsonAdapterAccion())
+                .registerTypeAdapter(ArbolBinario.class, new gsonAdapterArbolBinario())
+                .registerTypeAdapter(ElementoArbol.class, new gsonAdapterElementoArbol())
 //                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
                 .excludeFieldsWithoutExposeAnnotation()
 //                .excludeFieldsWithModifiers(Modifier.STATIC)
@@ -407,6 +411,8 @@ public class SaveInfo {
                 .registerTypeAdapter(Individuo.class, new gsonAdapterIndividuo())
                 .registerTypeAdapter(Cola.class, new gsonAdapterCola())
                 .registerTypeAdapter(Acción.class, new gsonAdapterAccion())
+                .registerTypeAdapter(ArbolBinario.class, new gsonAdapterArbolBinario())
+                .registerTypeAdapter(ElementoArbol.class, new gsonAdapterElementoArbol())
                 .excludeFieldsWithoutExposeAnnotation()
 //                .excludeFieldsWithModifiers(Modifier.STATIC)
                 .setPrettyPrinting()
