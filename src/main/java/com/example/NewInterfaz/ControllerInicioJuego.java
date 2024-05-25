@@ -3,6 +3,9 @@ package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
+import com.example.NewInterfaz.Individuos.IndAvanzado;
+import com.example.NewInterfaz.Individuos.IndNormal;
+import com.example.NewInterfaz.Individuos.Individuo;
 import com.example.SaveInfo.SaveInfo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -60,11 +63,35 @@ public class ControllerInicioJuego {
     }
 
     private void transladarInfo(SaveInfo info){
-        for (int i = 0; i < info.getGame().getTablero().getSquares().getNumeroElementos(); i++) {
-            Square cuadrado = info.getGame().getTablero().getSquares().getDato(i);
+        // Creación de la lista de recursos existentes
+        ListaEnlazada<Recurso> listaRecursos = new ListaEnlazada<>();
+        for (int i = 0; i < info.getCuadradosTablero().getNumeroElementos(); i++) {
+            Square cuadrado = info.getCuadradosTablero().getElemento(i).getData();
             if (!cuadrado.getRecursos().isVacia()) {
                 for (int j = 0; j < cuadrado.getRecursos().getNumeroElementos(); j++) {
                     cuadrado.getRecursos().getDato(j).setSquare(cuadrado);
+                    listaRecursos.add(cuadrado.getRecursos().getDato(j));
+                }
+            }
+        }
+
+        // Creación de la lista de individuos vivos
+        ListaEnlazada<Individuo> listaIndVivos = new ListaEnlazada<>();
+        for (int j = 0; j < info.getCuadradosTablero().getNumeroElementos(); j++) {
+            if (!info.getCuadradosTablero().getElemento(j).getData().getIndividuos().isVacia()) {
+                ListaSimple<Individuo> listaInd = info.getCuadradosTablero().getElemento(j).getData().getIndividuos();
+                for (int k = 0; k < listaInd.getNumeroElementos(); k++) {
+                    Individuo ind = listaInd.getDato(k);
+                    if (ind.getTipo() == 1) {
+                        IndNormal indN = (IndNormal) ind;
+                        indN.setRecorrido(new ListaEnlazada<>());
+                    } else if (ind.getTipo() == 2) {
+                        IndAvanzado indA = (IndAvanzado) ind;
+                        indA.setRecorrido(new ListaEnlazada<>());
+                    } else {
+                        log.info("Se trata de un individuo tipo básico, no hay que modificar su recorrido");
+                    }
+                    listaIndVivos.add(ind);
                 }
             }
         }
@@ -96,8 +123,8 @@ public class ControllerInicioJuego {
         DatosCompartidos.setNumIndividuos(info.getNumIndividuos());
         DatosCompartidos.setTurnoJuego(info.getTurnoJuego());
         DatosCompartidos.setGameIniciado(info.isGameIniciado());
-        DatosCompartidos.setListaRecursos(info.getListaRecursos());
-        DatosCompartidos.setListaIndividuos(info.getListaIndividuos());
+        DatosCompartidos.setListaRecursos(listaRecursos);
+        DatosCompartidos.setListaIndividuos(listaIndVivos);
         DatosCompartidos.setIndividuosMuertos(info.getIndividuosMuertos());
         DatosCompartidos.setCuadradosTablero(info.getCuadradosTablero());
         DatosCompartidos.setGame(info.getGame());

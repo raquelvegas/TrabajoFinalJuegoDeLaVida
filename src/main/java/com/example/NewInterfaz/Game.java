@@ -161,16 +161,16 @@ public class Game {
             DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
             int tipo = generarEnteroAleatorio(0, 2); // Generar tipo aleatorio
             Double tipoIndividuo;
-            if (tipo == 0) {
+//            if (tipo == 0) {
                 individuoNuevo = new IndBasico(new ArbolBinario<>(null));
                 tipoIndividuo = 1.1;
-            } else if (tipo == 1) {
-                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
-                tipoIndividuo = 1.2;
-            } else {
-                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
-                tipoIndividuo = 1.3;
-            }
+//            } else if (tipo == 1) {
+//                individuoNuevo = new IndNormal(new ArbolBinario<>(null));
+//                tipoIndividuo = 1.2;
+//            } else {
+//                individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
+//                tipoIndividuo = 1.3;
+//            }
             individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo.getID());
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);

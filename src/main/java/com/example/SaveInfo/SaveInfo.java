@@ -104,12 +104,6 @@ public class SaveInfo {
     private boolean gameIniciado;
 
     @Expose
-    private ListaEnlazada<Recurso> listaRecursos;
-
-    @Expose
-    private ListaEnlazada<Individuo> listaIndividuos;
-
-    @Expose
     private ListaEnlazada<Individuo> individuosMuertos;
 
     @Expose
@@ -119,7 +113,7 @@ public class SaveInfo {
     private Game game;
 
 
-    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aparicionInicial, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int numIndividuos, int turnoJuego, boolean gameIniciado, ListaEnlazada<Recurso> listaRecursos, ListaEnlazada<Individuo> listaIndividuos, ListaEnlazada<Individuo> individuosMuertos,ListaEnlazada<Square> cuadradosTablero, Game game) {
+    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aparicionInicial, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int numIndividuos, int turnoJuego, boolean gameIniciado, ListaEnlazada<Individuo> individuosMuertos,ListaEnlazada<Square> cuadradosTablero, Game game) {
         this.altoMatriz = altoMatriz;
         this.anchoMatriz = anchoMatriz;
         this.probReproduccion = probReproduccion;
@@ -146,8 +140,6 @@ public class SaveInfo {
         this.numIndividuos = numIndividuos;
         this.turnoJuego = turnoJuego;
         this.gameIniciado = gameIniciado;
-        this.listaRecursos = listaRecursos;
-        this.listaIndividuos = listaIndividuos;
         this.individuosMuertos = individuosMuertos;
         this.cuadradosTablero = cuadradosTablero;
         this.game = game;
@@ -375,22 +367,6 @@ public class SaveInfo {
 
     public void setGameIniciado(boolean gameIniciado) {
         this.gameIniciado = gameIniciado;
-    }
-
-    public ListaEnlazada<Recurso> getListaRecursos() {
-        return listaRecursos;
-    }
-
-    public void setListaRecursos(ListaEnlazada<Recurso> listaRecursos) {
-        this.listaRecursos = listaRecursos;
-    }
-
-    public ListaEnlazada<Individuo> getListaIndividuos() {
-        return listaIndividuos;
-    }
-
-    public void setListaIndividuos(ListaEnlazada<Individuo> listaIndividuos) {
-        this.listaIndividuos = listaIndividuos;
     }
 
     public Game getGame() {
