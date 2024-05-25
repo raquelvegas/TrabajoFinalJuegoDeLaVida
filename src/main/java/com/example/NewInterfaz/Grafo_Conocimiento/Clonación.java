@@ -8,7 +8,6 @@ public class Clonación extends Accion {
         IdNuevoIndividuo = idNuevoIndividuo;
     }
 
-
     @Override
     public int getTipo() {
         return 3;
