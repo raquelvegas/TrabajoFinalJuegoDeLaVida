@@ -214,8 +214,10 @@ public class ControllerGameOver {
     public void initialize(){
         Integer numeroReproducciones = GrafoConocimiento.getNumeroReproducciones();
         Integer numeroClonaciones = GrafoConocimiento.getNumeroClonaciones();
+        Integer idMayorReproducciones = GrafoConocimiento.getIndividuoMayorReproduccion();
         totalIndividuos.setText(String.valueOf(DatosCompartidos.getListaIndividuos().getNumeroElementos()));
         totalReproducciones.setText(String.valueOf(numeroReproducciones));
         totalClonaciones.setText(String.valueOf(numeroClonaciones));
+        masReproducciones.setText(String.valueOf(idMayorReproducciones));
     }
 }

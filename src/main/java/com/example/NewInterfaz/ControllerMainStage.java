@@ -693,6 +693,7 @@ public class ControllerMainStage {
             } else {
                 //Lógica para cuando el juego termina
                 controlLoop.stop();
+                mediaPlayer.stop();
                 try {
                     showGameOverStage();
                 } catch (IOException e) {

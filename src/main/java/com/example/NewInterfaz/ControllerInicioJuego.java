@@ -60,6 +60,7 @@ public class ControllerInicioJuego {
             System.out.println(DatosCompartidos.getListaIndividuos().getElemento(i).getData().getArbolGenealogico());
         }
         cargarTablero(this.tableroJuego, "Agua");
+        ControllerMainStage.mediaPlayer.play();
     }
 
     private void transladarInfo(SaveInfo info){

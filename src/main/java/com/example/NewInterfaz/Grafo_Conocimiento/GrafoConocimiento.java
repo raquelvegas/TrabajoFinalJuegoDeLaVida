@@ -4,6 +4,7 @@ import com.example.EstructurasDeDatos.Cola;
 import com.example.EstructurasDeDatos.Grafos.Arista;
 import com.example.EstructurasDeDatos.Grafos.Grafo;
 import com.example.EstructurasDeDatos.Grafos.Vertice;
+import com.example.NewInterfaz.Individuos.Individuo;
 import com.example.NewInterfaz.Recurso;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -72,6 +73,28 @@ public class GrafoConocimiento {
             }
         }
         return contador;
+    }
+
+    public static Integer getIndividuoMayorReproduccion() {
+        Integer maximasReproducciones = 0;
+        Integer idIndividuoMayorReproducciones = 0;
+        for (int i = 0; i < grafoConocimiento.getVertices().getNumeroElementos(); i++) {
+            Vertice vertice = (Vertice) grafoConocimiento.getVertices().getDato(i);
+            if (vertice.getDato() instanceof Integer) {
+                Integer contadorReproducciones = 0;
+                for (int j = 0; j < vertice.getAristasVHijos().getNumeroElementos(); j++) {
+                    Arista arista = (Arista) vertice.getAristasVHijos().getDato(j);
+                    if (Objects.equals(arista.getAnotacion(), "Se reproduce con")) {
+                        contadorReproducciones++;
+                    }
+                }
+                if (contadorReproducciones > maximasReproducciones) {
+                    maximasReproducciones = contadorReproducciones;
+                    idIndividuoMayorReproducciones = (Integer) vertice.getDato();
+                }
+            }
+        }
+        return idIndividuoMayorReproducciones;
     }
 
     public void setGrafoConocimiento(Grafo grafoConocimiento) {
