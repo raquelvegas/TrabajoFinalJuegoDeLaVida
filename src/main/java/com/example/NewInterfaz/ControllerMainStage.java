@@ -1,13 +1,13 @@
 package com.example.NewInterfaz;
 
-import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
-import com.example.EstructurasDeDatos.Listas.ListaSimple;
-import com.example.NewInterfaz.Individuos.Individuo;
 import com.example.SaveInfo.SaveInfo;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.*;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -190,7 +190,7 @@ public class ControllerMainStage {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeYes){
             // Acción a realizar si el usuario quiere guardar la partida
-            SaveInfo informacion = new SaveInfo(DatosCompartidos.getAltoMatriz(),DatosCompartidos.getAnchoMatriz(),DatosCompartidos.getProbReproduccion(),DatosCompartidos.getProbClonacion(),DatosCompartidos.getVidaInicial(),DatosCompartidos.getAguaVida(),DatosCompartidos.getComidaVida(),DatosCompartidos.getMontanaVida(),DatosCompartidos.getTesoroVida(),DatosCompartidos.getBibliotecaVida(),DatosCompartidos.getPozoVida(),DatosCompartidos.getAguaEfecto(),DatosCompartidos.getComidaEfecto(),DatosCompartidos.getMontanaEfecto(),DatosCompartidos.getTesoroEfecto(),DatosCompartidos.getBibliotecaEfecto(),DatosCompartidos.getAguaAparicion(),DatosCompartidos.getComidaAparicion(),DatosCompartidos.getMontanaAparicion(),DatosCompartidos.getTesoroAparicion(),DatosCompartidos.getBibliotecaAparicion(),DatosCompartidos.getPozoAparicion(),DatosCompartidos.getAnadir(),DatosCompartidos.isAnadirTab(),DatosCompartidos.isContenidoCeldaTab(),DatosCompartidos.getNumIndividuos(),DatosCompartidos.getTurnoJuego(),DatosCompartidos.getVelocidadJuego(),DatosCompartidos.isGameIniciado(),DatosCompartidos.getListaRecursos(),DatosCompartidos.getListaIndividuos(),DatosCompartidos.getGame());
+            SaveInfo informacion = new SaveInfo(DatosCompartidos.getAltoMatriz(), DatosCompartidos.getAnchoMatriz(), DatosCompartidos.getProbReproduccion(), DatosCompartidos.getProbClonacion(), DatosCompartidos.getVidaInicial(), DatosCompartidos.getAguaVida(), DatosCompartidos.getComidaVida(), DatosCompartidos.getMontanaVida(), DatosCompartidos.getTesoroVida(), DatosCompartidos.getBibliotecaVida(), DatosCompartidos.getPozoVida(), DatosCompartidos.getAguaEfecto(), DatosCompartidos.getComidaEfecto(), DatosCompartidos.getMontanaEfecto(), DatosCompartidos.getTesoroEfecto(), DatosCompartidos.getBibliotecaEfecto(), DatosCompartidos.getAparicionInicial(), DatosCompartidos.getAguaAparicion(), DatosCompartidos.getComidaAparicion(), DatosCompartidos.getMontanaAparicion(), DatosCompartidos.getTesoroAparicion(), DatosCompartidos.getBibliotecaAparicion(), DatosCompartidos.getPozoAparicion(), DatosCompartidos.getNumIndividuos(), DatosCompartidos.getTurnoJuego(), DatosCompartidos.isGameIniciado(), DatosCompartidos.getListaRecursos(), DatosCompartidos.getListaIndividuos(), DatosCompartidos.getGame(), DatosCompartidos.getGame().getTablero());
             informacion.guardar("PartidaGuardada.json");
             System.out.println("Partida guardada");
             showGameOverStage();
@@ -651,7 +651,7 @@ public class ControllerMainStage {
     }
 
     private void inicializarBucleControl() {
-        controlLoop = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+        controlLoop = new Timeline(new KeyFrame(Duration.seconds(1.5), event -> {
             if (DatosCompartidos.isGameIniciado()) {
                 if (!gameStopped) {
                     // Lógica para continuar el juego

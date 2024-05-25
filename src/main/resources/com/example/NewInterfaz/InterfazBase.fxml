@@ -860,7 +860,7 @@
                                                                   <Font size="23.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text layoutX="41.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PORCENTAJE DE APARICIÓN INICIAL" textAlignment="CENTER" underline="true" wrappingWidth="186.7421875">
+                                                            <Text layoutX="41.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONTROLADOR GENERAL APARICIÓN" textAlignment="CENTER" underline="true" wrappingWidth="186.7421875">
                                                                <font>
                                                                   <Font size="17.0" />
                                                                </font>

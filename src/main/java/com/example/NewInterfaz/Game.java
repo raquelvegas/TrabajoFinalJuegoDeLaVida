@@ -31,7 +31,6 @@ public class Game {
     @Expose
     private boolean game;
 
-    @Expose
     private ControllerMainStage controller;
 
     private static final Logger log = LogManager.getLogger(Game.class);
@@ -300,40 +299,91 @@ public class Game {
             int tipoRecurso3 = generarEnteroAleatorio(2, 7);
             addRecursos(tablero.getSquare(numerocuadrado), (double) tipoRecurso3);
         } else {
-            int numIndividuos = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 2);
-            int numAgua = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 3);
-            int numComida = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 3);
-            int numMontana = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 3);
-            int numBiblioteca = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 3);
-            int numTesoro = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 3);
-            int numPozo = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 3);
+            int numIndividuos = generarEnteroAleatorio(numeroCuadrados / 10, numeroCuadrados / 10 + numeroCuadrados / 5);
+            int numAgua = generarEnteroAleatorio(numeroCuadrados / 15, numeroCuadrados / 15 + numeroCuadrados / 7);
+            int numComida = generarEnteroAleatorio(numeroCuadrados / 15, numeroCuadrados / 15 + numeroCuadrados / 7);
+            int numMontana = generarEnteroAleatorio(numeroCuadrados / 15, numeroCuadrados / 15 + numeroCuadrados / 7);
+            int numBiblioteca = generarEnteroAleatorio(numeroCuadrados / 15, numeroCuadrados / 15 + numeroCuadrados / 7);
+            int numTesoro = generarEnteroAleatorio(numeroCuadrados / 15, numeroCuadrados / 15 + numeroCuadrados / 7);
+            int numPozo = generarEnteroAleatorio(numeroCuadrados / 15, numeroCuadrados / 15 + numeroCuadrados / 7);
+            if (numIndividuos < 3) {
+                if (numeroCuadrados <= 4) {
+                    numIndividuos = 2;
+                } else {
+                    numIndividuos = 3;
+                }
+            }
             for (int i = 0; i < numIndividuos; i++) {
                 int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
                 addIndividuo(tablero.getSquare(idSquareAleatorio));
             }
-            for (int i = 0; i < numAgua; i++) {
+            if (numeroCuadrados < 7) {
+                int tipoRecurso = generarEnteroAleatorio(2, 7);
                 int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
-                addRecursos(tablero.getSquare(idSquareAleatorio), 2.0);
+                addRecursos(tablero.getSquare(idSquareAleatorio), (double) tipoRecurso);
+
+                int tipoRecurso2 = generarEnteroAleatorio(2, 7);
+                int idSquareAleatorio2 = generarEnteroAleatorio(0, numeroCuadrados - 1);
+
+                addRecursos(tablero.getSquare(idSquareAleatorio2), (double) tipoRecurso2);
+                int tipoRecurso3 = generarEnteroAleatorio(2, 7);
+                int idSquareAleatorio3 = generarEnteroAleatorio(0, numeroCuadrados - 1);
+
+                addRecursos(tablero.getSquare(idSquareAleatorio3), (double) tipoRecurso3);
+            } else {
+                for (int i = 0; i < numAgua; i++) {
+                    int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                    addRecursos(tablero.getSquare(idSquareAleatorio), 2.0);
+                }
+                for (int i = 0; i < numComida; i++) {
+                    int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                    addRecursos(tablero.getSquare(idSquareAleatorio), 3.0);
+                }
+                for (int i = 0; i < numMontana; i++) {
+                    int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                    addRecursos(tablero.getSquare(idSquareAleatorio), 4.0);
+                }
+                for (int i = 0; i < numBiblioteca; i++) {
+                    int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                    addRecursos(tablero.getSquare(idSquareAleatorio), 5.0);
+                }
+                for (int i = 0; i < numTesoro; i++) {
+                    int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                    addRecursos(tablero.getSquare(idSquareAleatorio), 6.0);
+                }
+                for (int i = 0; i < numPozo; i++) {
+                    int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
+                    addRecursos(tablero.getSquare(idSquareAleatorio), 7.0);
+                }
             }
-            for (int i = 0; i < numComida; i++) {
-                int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
-                addRecursos(tablero.getSquare(idSquareAleatorio), 3.0);
-            }
-            for (int i = 0; i < numMontana; i++) {
-                int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
-                addRecursos(tablero.getSquare(idSquareAleatorio), 4.0);
-            }
-            for (int i = 0; i < numBiblioteca; i++) {
-                int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
-                addRecursos(tablero.getSquare(idSquareAleatorio), 5.0);
-            }
-            for (int i = 0; i < numTesoro; i++) {
-                int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
-                addRecursos(tablero.getSquare(idSquareAleatorio), 6.0);
-            }
-            for (int i = 0; i < numPozo; i++) {
-                int idSquareAleatorio = generarEnteroAleatorio(0, numeroCuadrados - 1);
-                addRecursos(tablero.getSquare(idSquareAleatorio), 7.0);
+        }
+    }
+
+    private void aparicionRecursos2() {
+        Double probGeneral = Double.valueOf(DatosCompartidos.getAparicionInicial());
+        for (int i = 0; i < tablero.getSquares().getNumeroElementos(); i++) {
+            if (generarDoubleAleatorio(0, 100) < probGeneral) {
+                Double aparAgua = Double.parseDouble(DatosCompartidos.getAguaAparicion());
+                Double aparComida = Double.parseDouble(DatosCompartidos.getComidaAparicion());
+                Double aparMontaña = Double.parseDouble(DatosCompartidos.getMontanaAparicion());
+                Double aparBiblioteca = Double.parseDouble(DatosCompartidos.getBibliotecaAparicion());
+                Double aparTesoro = Double.parseDouble(DatosCompartidos.getTesoroAparicion());
+                Double aparPozo = Double.parseDouble(DatosCompartidos.getPozoAparicion());
+                Double sumaTotal = aparAgua + aparComida + aparMontaña + aparBiblioteca + aparTesoro + aparPozo;
+                Double recursoFinal = generarDoubleAleatorio(0, sumaTotal);
+                if (recursoFinal < aparAgua) {
+                    addRecursos(tablero.getSquare(i), 2.0);
+                } else if (recursoFinal < aparAgua + aparComida) {
+                    addRecursos(tablero.getSquare(i), 3.0);
+                } else if (recursoFinal < aparAgua + aparComida + aparMontaña) {
+                    addRecursos(tablero.getSquare(i), 4.0);
+                } else if (recursoFinal < aparAgua + aparComida + aparMontaña + aparBiblioteca) {
+                    addRecursos(tablero.getSquare(i), 5.0);
+                } else if (recursoFinal < aparAgua + aparComida + aparMontaña + aparBiblioteca + aparTesoro) {
+                    addRecursos(tablero.getSquare(i), 6.0);
+                } else if (recursoFinal <= sumaTotal) {
+                    addRecursos(tablero.getSquare(i), 7.0);
+                }
             }
         }
     }
@@ -516,7 +566,6 @@ public class Game {
             int vida = DatosCompartidos.getListaIndividuos().getElemento(i).getData().getTurnosVida();
             if (vida != 0) {
                 DatosCompartidos.getListaIndividuos().getElemento(i).getData().setTurnosVida(vida - 1);
-                System.out.println("Vida= " + DatosCompartidos.getListaIndividuos().getElemento(i).getData().getTurnosVida());
             }
         }
         for(int i = 0; i < numRecursos; i++){
@@ -667,6 +716,7 @@ public class Game {
                     individuoNuevo.setArbolGenealogico(nuevoArbol);
                     squareActual.getIndividuos().add(individuoNuevo);
                     DatosCompartidos.getListaIndividuos().add(individuoNuevo);
+                    log.info("Se ha clonado el individuo " + individuoAClonar.getID() + " para generar el individuo " + individuoNuevo.getID());
                 }
             }
         }
@@ -1486,7 +1536,7 @@ public class Game {
         limpiezaAglomeraciones();
 
         // 7º Generación de nuevos recursos
-        aparicionRecursos();
+        aparicionRecursos2();
 
         // 7º Pintar el tablero restante
         actualizarIndividuos();

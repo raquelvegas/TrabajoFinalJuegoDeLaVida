@@ -2,18 +2,18 @@ package com.example.SaveInfo;
 
 import com.example.EstructurasDeDatos.Cola;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
-import com.example.EstructurasDeDatos.Listas.ListaSimple;
-import com.example.NewInterfaz.DatosCompartidos;
 import com.example.NewInterfaz.Game;
 import com.example.NewInterfaz.Grafo_Conocimiento.Acción;
 import com.example.NewInterfaz.Individuos.Individuo;
 import com.example.NewInterfaz.Recurso;
+import com.example.NewInterfaz.Tablero;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Modifier;
@@ -71,6 +71,9 @@ public class SaveInfo {
     private String bibliotecaEfecto;
 
     @Expose
+    private String aparicionInicial;
+
+    @Expose
     private String aguaAparicion;
 
     @Expose
@@ -89,22 +92,10 @@ public class SaveInfo {
     private String pozoAparicion;
 
     @Expose
-    private int anadir;
-
-    @Expose
-    private boolean anadirTab;
-
-    @Expose
-    private boolean contenidoCeldaTab;
-
-    @Expose
     private int numIndividuos;
 
     @Expose
     private int turnoJuego;
-
-    @Expose
-    private double velocidadJuego;
 
     @Expose
     private boolean gameIniciado;
@@ -118,7 +109,11 @@ public class SaveInfo {
     @Expose
     private Game game;
 
-    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int anadir, boolean anadirTab, boolean contenidoCeldaTab, int numIndividuos, int turnoJuego, double velocidadJuego, boolean gameIniciado, ListaEnlazada<Recurso> listaRecursos, ListaEnlazada<Individuo> listaIndividuos, Game game) {
+    @Expose
+    private Tablero tablero;
+
+
+    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aparicionInicial, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int numIndividuos, int turnoJuego, boolean gameIniciado, ListaEnlazada<Recurso> listaRecursos, ListaEnlazada<Individuo> listaIndividuos, Game game, Tablero tablero) {
         this.altoMatriz = altoMatriz;
         this.anchoMatriz = anchoMatriz;
         this.probReproduccion = probReproduccion;
@@ -135,22 +130,20 @@ public class SaveInfo {
         this.montanaEfecto = montanaEfecto;
         this.tesoroEfecto = tesoroEfecto;
         this.bibliotecaEfecto = bibliotecaEfecto;
+        this.aparicionInicial = aparicionInicial;
         this.aguaAparicion = aguaAparicion;
         this.comidaAparicion = comidaAparicion;
         this.montanaAparicion = montanaAparicion;
         this.tesoroAparicion = tesoroAparicion;
         this.bibliotecaAparicion = bibliotecaAparicion;
         this.pozoAparicion = pozoAparicion;
-        this.anadir = anadir;
-        this.anadirTab = anadirTab;
-        this.contenidoCeldaTab = contenidoCeldaTab;
         this.numIndividuos = numIndividuos;
         this.turnoJuego = turnoJuego;
-        this.velocidadJuego = velocidadJuego;
         this.gameIniciado = gameIniciado;
         this.listaRecursos = listaRecursos;
         this.listaIndividuos = listaIndividuos;
         this.game = game;
+        this.tablero=tablero;
     }
 
     public String getAltoMatriz() {
@@ -281,6 +274,14 @@ public class SaveInfo {
         this.bibliotecaEfecto = bibliotecaEfecto;
     }
 
+    public String getAparicionInicial() {
+        return aparicionInicial;
+    }
+
+    public void setAparicionInicial(String aparicionInicial) {
+        this.aparicionInicial = aparicionInicial;
+    }
+
     public String getAguaAparicion() {
         return aguaAparicion;
     }
@@ -329,30 +330,6 @@ public class SaveInfo {
         this.pozoAparicion = pozoAparicion;
     }
 
-    public int getAnadir() {
-        return anadir;
-    }
-
-    public void setAnadir(int anadir) {
-        this.anadir = anadir;
-    }
-
-    public boolean isAnadirTab() {
-        return anadirTab;
-    }
-
-    public void setAnadirTab(boolean anadirTab) {
-        this.anadirTab = anadirTab;
-    }
-
-    public boolean isContenidoCeldaTab() {
-        return contenidoCeldaTab;
-    }
-
-    public void setContenidoCeldaTab(boolean contenidoCeldaTab) {
-        this.contenidoCeldaTab = contenidoCeldaTab;
-    }
-
     public int getNumIndividuos() {
         return numIndividuos;
     }
@@ -367,14 +344,6 @@ public class SaveInfo {
 
     public void setTurnoJuego(int turnoJuego) {
         this.turnoJuego = turnoJuego;
-    }
-
-    public double getVelocidadJuego() {
-        return velocidadJuego;
-    }
-
-    public void setVelocidadJuego(double velocidadJuego) {
-        this.velocidadJuego = velocidadJuego;
     }
 
     public boolean isGameIniciado() {
@@ -409,6 +378,14 @@ public class SaveInfo {
         this.game = game;
     }
 
+    public Tablero getTablero() {
+        return tablero;
+    }
+
+    public void setTablero(Tablero tablero) {
+        this.tablero = tablero;
+    }
+
     public void guardar(String rutaArchivo) {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Individuo.class, new gsonAdapterIndividuo())
@@ -416,7 +393,7 @@ public class SaveInfo {
                 .registerTypeAdapter(Acción.class, new gsonAdapterAccion())
 //                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
                 .excludeFieldsWithoutExposeAnnotation()
-                .excludeFieldsWithModifiers(Modifier.STATIC)
+//                .excludeFieldsWithModifiers(Modifier.STATIC)
                 .setPrettyPrinting()
                 .create();
         try (FileWriter writer = new FileWriter(rutaArchivo)) {
@@ -425,5 +402,24 @@ public class SaveInfo {
             log.fatal("Error al guardar el archivo");
         }
     }
+    public static SaveInfo cargar(String rutaArchivo) {
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Individuo.class, new gsonAdapterIndividuo())
+                .registerTypeAdapter(Cola.class, new gsonAdapterCola())
+                .registerTypeAdapter(Acción.class, new gsonAdapterAccion())
+                .excludeFieldsWithoutExposeAnnotation()
+//                .excludeFieldsWithModifiers(Modifier.STATIC)
+                .setPrettyPrinting()
+                .create();
+        try (FileReader reader = new FileReader(rutaArchivo)) {
+            SaveInfo nuevosDatos = gson.fromJson(reader, SaveInfo.class);
+            return nuevosDatos;
+        } catch (IOException ex) {
+            log.error("Error al cargar la partida anterior");
+            return null;
+        }
+    }
+
+
 
 }

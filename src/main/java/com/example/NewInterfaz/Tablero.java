@@ -13,7 +13,7 @@ public class Tablero {
     String theme;
 
     @Expose
-    public ListaSimple<Square> squares = new ListaSimple<>();
+    public ListaSimple<Square> squares = new ListaSimple<>(400);
 
     public Tablero(GridPane tableroJuego, String theme) {
         this.tableroJuego = tableroJuego;
