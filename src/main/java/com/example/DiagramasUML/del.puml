@@ -1,0 +1,33 @@
+@startuml
+actor User
+participant "Game" as game
+participant "Tablero" as tablero
+participant "Square" as square
+participant "ListaSimple<Individuo>" as individuosCuadrado
+participant "ListaSimple<Individuo>" as individuosAEliminar
+participant "DatosCompartidos" as datosCompartidos
+participant "Logger" as log
+
+User -> game : limpiezaAglomeraciones()
+activate game
+game -> tablero : getSquares()
+tablero -> square : getIndividuos()
+activate square
+loop for each Square in tablero.getSquares()
+    game -> square : getIndividuos()
+    square -> individuosCuadrado : return individuosCuadrado
+    alt individuosCuadrado.getNumeroElementos() > 3 then
+        loop individuosCuadrado.getNumeroElementos() > 3
+            square -> individuosCuadrado : getPrimero()
+            individuosCuadrado -> individuo : return indMenorVida
+            square -> individuosCuadrado : del(posIndEliminar)
+            game -> individuosAEliminar : add(individuosCuadrado.getDato(posIndEliminar))
+        end
+        game -> datosCompartidos : eliminarIndividuos(individuosAEliminar)
+    else
+        square -> square : next Square
+    end
+end
+deactivate square
+deactivate game
+@enduml
