@@ -16,7 +16,7 @@ public class gsonAdapterAccion implements JsonSerializer<Acción>, JsonDeseriali
         log.info("Serializando Acción");
         JsonObject accion = new JsonObject();
         accion.addProperty("Tipo", src.getTipo());
-        accion.add("Data", context.serialize(src));
+//        accion.add("Data", context.serialize(src));
         return accion;
     }
 
