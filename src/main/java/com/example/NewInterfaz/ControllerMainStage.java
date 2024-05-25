@@ -181,15 +181,6 @@ public class ControllerMainStage {
     }
     @FXML
     void stopGame(MouseEvent event) throws IOException {
-        /////////// Modificación del grafo de conocimiento y extracción de la información /////////
-        for (int i = 0; i < DatosCompartidos.getListaIndividuos().getNumeroElementos(); i++) {
-            GrafoConocimiento.traducirColaAcciones(DatosCompartidos.getListaIndividuos().getElemento(i).getData().getID(),DatosCompartidos.getListaIndividuos().getElemento(i).getData().getAcciones());
-        }
-        for (int j = 0; j < DatosCompartidos.getIndividuosMuertos().getNumeroElementos(); j++) {
-            GrafoConocimiento.traducirColaAcciones(DatosCompartidos.getIndividuosMuertos().getElemento(j).getData().getID(),DatosCompartidos.getIndividuosMuertos().getElemento(j).getData().getAcciones());
-        }
-        ///////////////////////////////////////////////////////////////////////////////////////////
-
         System.out.println(DatosCompartidos.getListaIndividuos().getPrimero().getData().getAcciones().getDatos().getNumeroElementos());
         controlLoop.pause();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -424,6 +415,15 @@ public class ControllerMainStage {
         this.stage = stage;
     }
     private void showGameOverStage() throws IOException {
+        /////////// Modificación del grafo de conocimiento y extracción de la información /////////
+        for (int i = 0; i < DatosCompartidos.getListaIndividuos().getNumeroElementos(); i++) {
+            GrafoConocimiento.traducirColaAcciones(DatosCompartidos.getListaIndividuos().getElemento(i).getData().getID(),DatosCompartidos.getListaIndividuos().getElemento(i).getData().getAcciones());
+        }
+        for (int j = 0; j < DatosCompartidos.getIndividuosMuertos().getNumeroElementos(); j++) {
+            GrafoConocimiento.traducirColaAcciones(DatosCompartidos.getIndividuosMuertos().getElemento(j).getData().getID(),DatosCompartidos.getIndividuosMuertos().getElemento(j).getData().getAcciones());
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////
+
         mediaPlayer.stop();
         URL fxmlUrl = getClass().getResource("gameOver.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
@@ -693,7 +693,6 @@ public class ControllerMainStage {
             } else {
                 //Lógica para cuando el juego termina
                 controlLoop.stop();
-                mediaPlayer.stop();
                 try {
                     showGameOverStage();
                 } catch (IOException e) {

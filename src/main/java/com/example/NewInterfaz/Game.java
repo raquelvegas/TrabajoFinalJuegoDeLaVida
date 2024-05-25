@@ -1512,10 +1512,10 @@ public class Game {
     public void turno(){
 
         // 1º Actualizamos Vidas y porcentajes de individuos y eliminamos los que no tengan más turnos de vida
-        actualizarVidas();
-        actualizarProbabilidades();
-        eliminarIndividuos();
-        eliminarRecursos();
+        actualizarVidas(); // Restar turnos de vida
+        actualizarProbabilidades(); // Restyar probabilidadfes de los individuos
+        eliminarIndividuos(); // Eliminamos individuos sin turnos de vida
+        eliminarRecursos(); // Eliminamos recursos sin turnos de vida
 
         // 2ª Movimiento de individuos
         moverIndividuos();

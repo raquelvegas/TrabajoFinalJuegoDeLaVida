@@ -97,6 +97,53 @@ public class GrafoConocimiento {
         return idIndividuoMayorReproducciones;
     }
 
+    public static Integer getIndividuoMayorClonacion() {
+        Integer maximasClonaciones = 0;
+        Integer idIndividuoMaximasClonaciones = 0;
+        for (int i = 0; i < grafoConocimiento.getVertices().getNumeroElementos(); i++) {
+            Vertice vertice = (Vertice) grafoConocimiento.getVertices().getDato(i);
+            if (vertice.getDato() instanceof Integer) {
+                Integer contadorclonaciones = 0;
+                for (int j = 0; j < vertice.getAristasVHijos().getNumeroElementos(); j++) {
+                    Arista arista = (Arista) vertice.getAristasVHijos().getDato(j);
+                    if (Objects.equals(arista.getAnotacion(), "Se clona para generar el individuo")) {
+                        contadorclonaciones++;
+                    }
+                }
+                if (contadorclonaciones > maximasClonaciones) {
+                    maximasClonaciones = contadorclonaciones;
+                    idIndividuoMaximasClonaciones = (Integer) vertice.getDato();
+                }
+            }
+        }
+        return idIndividuoMaximasClonaciones;
+    }
+
+    public static Integer getIndividuoMayorAgua() {
+        Integer maximaAguaBebida = 0;
+        Integer idIndividuoMasAgua = 0;
+        for (int i = 0; i < grafoConocimiento.getVertices().getNumeroElementos(); i++) {
+            Vertice vertice = (Vertice) grafoConocimiento.getVertices().getDato(i);
+            if (vertice.getDato() instanceof Integer) {
+                Integer contadorBeberAgua = 0;
+                for (int j = 0; j < vertice.getAristasVHijos().getNumeroElementos(); j++) {
+                    Arista arista = (Arista) vertice.getAristasVHijos().getDato(j);
+                    if (Objects.equals(arista.getAnotacion(), "Consume")) {
+                        Recurso rec = (Recurso) arista.getVerticeFin().getDato();
+                        if (rec.getTipoRecurso()==2.0){
+                            contadorBeberAgua++;
+                        }
+                    }
+                }
+                if (contadorBeberAgua>maximaAguaBebida){
+                    maximaAguaBebida=contadorBeberAgua;
+                    idIndividuoMasAgua=(Integer) vertice.getDato();
+                }
+            }
+        }
+        return idIndividuoMasAgua;
+    }
+
     public void setGrafoConocimiento(Grafo grafoConocimiento) {
         this.grafoConocimiento = grafoConocimiento;
     }
