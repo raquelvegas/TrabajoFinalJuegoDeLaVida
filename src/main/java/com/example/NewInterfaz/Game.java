@@ -8,7 +8,9 @@ import com.example.EstructurasDeDatos.Grafos.Vertice;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.NewInterfaz.Grafo_Conocimiento.Acción;
+import com.example.NewInterfaz.Grafo_Conocimiento.Clonación;
 import com.example.NewInterfaz.Grafo_Conocimiento.Consumición;
+import com.example.NewInterfaz.Grafo_Conocimiento.Reproducción;
 import com.example.NewInterfaz.Individuos.IndAvanzado;
 import com.example.NewInterfaz.Individuos.IndBasico;
 import com.example.NewInterfaz.Individuos.IndNormal;
@@ -566,8 +568,9 @@ public class Game {
                                 actual.getIndividuos().del(ind);
                                 ind--; // Para que vuelva a comprobar la posición en la que estaba
                             }
-                            Acción accion = new Consumición(DatosCompartidos.getTurnoJuego(),actual.getRecursos().getDato(rec));
-//                            actual.getIndividuos().getDato(ind).getAcciones().push(accion);
+
+                            Consumición accion = new Consumición(DatosCompartidos.getTurnoJuego(),actual.getRecursos().getDato(rec));
+                            actual.getIndividuos().getDato(ind).getAcciones().push(accion);
                         }
                     }
                 }
@@ -637,6 +640,8 @@ public class Game {
                     addTipo(actual, tipoIndividuo);
                     actual.getIndividuos().add(individuoNuevo);
                     DatosCompartidos.getListaIndividuos().add(individuoNuevo);
+                    ind1.getAcciones().push(new Reproducción(DatosCompartidos.getTurnoJuego(),ind2.getID(), individuoNuevo.getID()));
+                    ind2.getAcciones().push(new Reproducción(DatosCompartidos.getTurnoJuego(), ind1.getID(), individuoNuevo.getID()));
                     System.out.println("Ha habido reproduccion entre los individuos " + ind1.getID() + " y " + ind2.getID() + ". Ahora hay " + DatosCompartidos.getNumIndividuos() + " individuos.");
                 } else { // Muerte de ambos individuos
                     log.info("Se van a eliminar los individuos "+ind1.getID()+", "+ind2.getID()+" por la probabilidad de reproduccion");
@@ -674,6 +679,7 @@ public class Game {
                     individuoNuevo.setArbolGenealogico(nuevoArbol);
                     squareActual.getIndividuos().add(individuoNuevo);
                     DatosCompartidos.getListaIndividuos().add(individuoNuevo);
+                    individuoAClonar.getAcciones().push(new Clonación(DatosCompartidos.getTurnoJuego(),individuoNuevo.getID()));
                     log.info("Se ha clonado el individuo " + individuoAClonar.getID() + " para generar el individuo " + individuoNuevo.getID());
                 }
             }
@@ -1479,7 +1485,7 @@ public class Game {
         eliminarRecursos();
 
         // 2ª Movimiento de individuos
-//        moverIndividuos();
+        moverIndividuos();
 
         // 3º Consumición de los recursos
         consumirRecursos();
