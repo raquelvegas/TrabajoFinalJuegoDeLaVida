@@ -2,7 +2,6 @@ package com.example.NewInterfaz;
 
 
 import com.example.EstructurasDeDatos.Cola;
-import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.NewInterfaz.Grafo_Conocimiento.Acción;
 import com.example.NewInterfaz.Individuos.Individuo;
 import com.example.SaveInfo.SaveInfo;
@@ -18,8 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -31,8 +28,6 @@ import java.io.IOException;
 import java.net.URL;
 
 public class ControllerInicioJuego {
-
-    Game game = DatosCompartidos.getGame();
 
     private Stage primaryStage; // Referencia al Stage principal
 
@@ -61,7 +56,6 @@ public class ControllerInicioJuego {
         for(int i=0;i<DatosCompartidos.getListaIndividuos().getNumeroElementos();i++){
             System.out.println(DatosCompartidos.getListaIndividuos().getElemento(i).getData().getArbolGenealogico());
         }
-        cargarTablero(game.getTableroGrid(),"Agua");
     }
 
     private void transladarInfo(SaveInfo info){
@@ -119,40 +113,5 @@ public class ControllerInicioJuego {
 
         configStage.show();
         log.info("Inicio de una nueva partida");
-    }
-
-    private void cargarTablero(GridPane tableroJuego, String theme) {
-        int alto = Integer.parseInt(DatosCompartidos.getAltoMatriz());
-        int ancho = Integer.parseInt(DatosCompartidos.getAnchoMatriz());
-        ListaSimple<Square> squaresCargar = game.getTablero().getSquares().copiaLista();
-        int identificador = 0;
-
-        for (int i = 0; i < ancho; i++) {
-            for (int j = 0; j < alto; j++) {
-                Square squareCargar = squaresCargar.getDato(0);
-                Square square = new Square(i, j);
-                square.setID(identificador);
-
-                for (int k = 0; k < 6; k++) {
-                    Celda celdaCargar = squareCargar.getCelda(k);
-                    Celda celda = square.getCelda(k);
-                    celda.setTipo(celdaCargar.getTipo());
-                    celda.setOcupado(celdaCargar.isOcupado());
-                }
-
-                square.setIndividuos(squareCargar.getIndividuos().copiaLista());
-                square.setRecursos(squareCargar.getRecursos().copiaLista());
-                square.setPrefHeight(100);
-                square.setPrefWidth(100);
-                square.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-
-                game.getTablero().setTheme(square, theme);
-                tableroJuego.add(square, i, j);
-                game.getTablero().getSquares().add(square);
-                identificador++;
-                squaresCargar.del(0);
-            }
-        }
-        game.actualizarTablero();
     }
 }

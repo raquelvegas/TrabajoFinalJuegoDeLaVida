@@ -1,7 +1,7 @@
 package com.example.NewInterfaz.Grafo_Conocimiento;
 
 
-public class Reproducción extends Acción{
+public class Reproducción extends Accion {
 
     private int IdPareja;
     private int IdNuevoIndividuo;
@@ -15,5 +15,21 @@ public class Reproducción extends Acción{
     @Override
     public int getTipo() {
         return 2;
+    }
+
+    public int getIdPareja() {
+        return IdPareja;
+    }
+
+    public void setIdPareja(int idPareja) {
+        IdPareja = idPareja;
+    }
+
+    public int getIdNuevoIndividuo() {
+        return IdNuevoIndividuo;
+    }
+
+    public void setIdNuevoIndividuo(int idNuevoIndividuo) {
+        IdNuevoIndividuo = idNuevoIndividuo;
     }
 }
