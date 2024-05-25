@@ -22,7 +22,7 @@ public abstract class Individuo {
     @Expose
     private int ProbClon;
 
-    @Expose
+//    @Expose
     private Cola<Accion> acciones;
 
     @Expose

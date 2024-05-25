@@ -25,7 +25,7 @@ public class GrafoConocimiento {
             Accion accion = colaAcciones.pop();
             if (accion.getTipo() == 1) { // Consumición
                 Consumición cons = (Consumición) accion;
-                Recurso recursoConsumido = cons.getRec();
+                Recurso recursoConsumido = cons.getRecursoConsumido();
                 addArista(id, recursoConsumido, "Consume");
             } else if (accion.getTipo() == 2) { // Reproducción
                 Reproducción repr = (Reproducción) accion;

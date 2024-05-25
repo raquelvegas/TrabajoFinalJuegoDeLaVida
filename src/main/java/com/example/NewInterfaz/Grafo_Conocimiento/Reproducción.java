@@ -1,9 +1,13 @@
 package com.example.NewInterfaz.Grafo_Conocimiento;
 
 
+import com.google.gson.annotations.Expose;
+
 public class Reproducción extends Accion {
 
+    @Expose
     private int IdPareja;
+    @Expose
     private int IdNuevoIndividuo;
 
     public Reproducción(int turno, int pareja, int IdNuevo) {

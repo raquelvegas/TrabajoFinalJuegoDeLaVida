@@ -37,6 +37,7 @@ public class DatosCompartidos {
     private static boolean gameIniciado = false;
     private static ListaEnlazada<Recurso> listaRecursos= new ListaEnlazada<>();
     private static ListaEnlazada<Individuo> listaIndividuos = new ListaEnlazada<>();
+    private static ListaEnlazada<Individuo> individuosMuertos = new ListaEnlazada<>();
     private static Game game = null;
 
 
@@ -296,6 +297,14 @@ public class DatosCompartidos {
         DatosCompartidos.listaIndividuos = listaIndividuos;
     }
 
+    public static ListaEnlazada<Individuo> getIndividuosMuertos() {
+        return individuosMuertos;
+    }
+
+    public static void setIndividuosMuertos(ListaEnlazada<Individuo> individuosMuertos) {
+        DatosCompartidos.individuosMuertos = individuosMuertos;
+    }
+
     public static Game getGame() {
         return game;
     }
@@ -303,4 +312,6 @@ public class DatosCompartidos {
     public static void setGame(Game game) {
         DatosCompartidos.game = game;
     }
+
+
 }

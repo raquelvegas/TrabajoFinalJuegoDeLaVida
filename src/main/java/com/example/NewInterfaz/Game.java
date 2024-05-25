@@ -283,6 +283,7 @@ public class Game {
             tablero.getSquare(i).setRecursos(new ListaSimple<>());
         }
         DatosCompartidos.getListaIndividuos().vaciar();
+        DatosCompartidos.getIndividuosMuertos().vaciar();
         DatosCompartidos.getListaRecursos().vaciar();
     }
 
@@ -513,6 +514,8 @@ public class Game {
         for (int i = 0; i < individuos.getNumeroElementos(); i++) {
             for (int j = 0; j < indTotales.getNumeroElementos(); j++) {
                 if (individuos.getDato(i).getID() == indTotales.getElemento(j).getData().getID()) {
+                    // Eliminamos el individuo de la lista de individuos vivios y lo añadimos a la de los muertos
+                    DatosCompartidos.getIndividuosMuertos().add(indTotales.getElemento(j).getData());
                     indTotales.del(j);
                 }
             }

@@ -1,15 +1,7 @@
 package com.example.NewInterfaz;
 
 
-import com.example.EstructurasDeDatos.Cola;
-
-import com.example.NewInterfaz.Individuos.Individuo;
 import com.example.SaveInfo.SaveInfo;
-import com.example.SaveInfo.gsonAdapterAccion;
-import com.example.SaveInfo.gsonAdapterCola;
-import com.example.SaveInfo.gsonAdapterIndividuo;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,7 +15,6 @@ import javafx.stage.StageStyle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 
@@ -49,16 +40,24 @@ public class ControllerInicioJuego {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+
+        // Cargar la partida desde un archivo JSon
         SaveInfo datosCargados = SaveInfo.cargar("PartidaGuardada.json");
-        System.out.println("Numero de cuadrados: "+datosCargados.getTablero().getSquares().getNumeroElementos());
         transladarInfo(datosCargados);
-        System.out.println("Datos Cargados");
         for(int i=0;i<DatosCompartidos.getListaIndividuos().getNumeroElementos();i++){
             System.out.println(DatosCompartidos.getListaIndividuos().getElemento(i).getData().getArbolGenealogico());
         }
     }
 
     private void transladarInfo(SaveInfo info){
+        for (int i = 0; i < info.getGame().getTablero().getSquares().getNumeroElementos(); i++) {
+            Square cuadrado = info.getGame().getTablero().getSquares().getDato(i);
+            if (!cuadrado.getRecursos().isVacia()) {
+                for (int j = 0; j < cuadrado.getRecursos().getNumeroElementos(); j++) {
+                    cuadrado.getRecursos().getDato(j).setSquare(cuadrado);
+                }
+            }
+        }
         DatosCompartidos.setAltoMatriz(info.getAltoMatriz());
         DatosCompartidos.setAnchoMatriz(info.getAnchoMatriz());
         DatosCompartidos.setProbReproduccion(info.getProbReproduccion());

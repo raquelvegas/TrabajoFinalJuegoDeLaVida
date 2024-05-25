@@ -183,8 +183,10 @@ public class ControllerGameOver {
                 }
                 contador++;
             }
-            buildTree(padre, indPadre.getArbolGenealogico());
-            treeItem.getChildren().add(padre);
+            if (indPadre != null) {
+                buildTree(padre, indPadre.getArbolGenealogico());
+                treeItem.getChildren().add(padre);
+            }
         }
 
         if (arbol.getRaiz().getNodoIzq() != null) {
@@ -199,8 +201,10 @@ public class ControllerGameOver {
                 }
                 contador++;
             }
-            buildTree(madre, indMadre.getArbolGenealogico());
-            treeItem.getChildren().add(madre);
+            if (indMadre != null) {
+                buildTree(madre, indMadre.getArbolGenealogico());
+                treeItem.getChildren().add(madre);
+            }
         }
     }
 

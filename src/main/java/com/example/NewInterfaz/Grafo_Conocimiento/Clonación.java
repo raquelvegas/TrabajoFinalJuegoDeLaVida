@@ -1,6 +1,9 @@
 package com.example.NewInterfaz.Grafo_Conocimiento;
 
+import com.google.gson.annotations.Expose;
+
 public class Clonación extends Accion {
+    @Expose
     private int IdNuevoIndividuo;
 
     public Clonación(int turno, int idNuevoIndividuo) {

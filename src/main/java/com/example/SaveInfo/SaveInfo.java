@@ -4,6 +4,7 @@ import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.Cola;
 import com.example.EstructurasDeDatos.ElementoArbol;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
+import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.NewInterfaz.Game;
 import com.example.NewInterfaz.Grafo_Conocimiento.Accion;
 import com.example.NewInterfaz.Individuos.Individuo;
@@ -108,13 +109,16 @@ public class SaveInfo {
     private ListaEnlazada<Individuo> listaIndividuos;
 
     @Expose
+    private ListaEnlazada<Individuo> individuosMuertos;
+
+    @Expose
     private Game game;
 
     @Expose
     private Tablero tablero;
 
 
-    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aparicionInicial, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int numIndividuos, int turnoJuego, boolean gameIniciado, ListaEnlazada<Recurso> listaRecursos, ListaEnlazada<Individuo> listaIndividuos, Game game, Tablero tablero) {
+    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aparicionInicial, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int numIndividuos, int turnoJuego, boolean gameIniciado, ListaEnlazada<Recurso> listaRecursos, ListaEnlazada<Individuo> listaIndividuos, ListaEnlazada<Individuo> individuosMuertos, Game game, Tablero tablero) {
         this.altoMatriz = altoMatriz;
         this.anchoMatriz = anchoMatriz;
         this.probReproduccion = probReproduccion;
@@ -143,6 +147,7 @@ public class SaveInfo {
         this.gameIniciado = gameIniciado;
         this.listaRecursos = listaRecursos;
         this.listaIndividuos = listaIndividuos;
+        this.individuosMuertos = individuosMuertos;
         this.game = game;
         this.tablero=tablero;
     }
@@ -394,8 +399,8 @@ public class SaveInfo {
                 .registerTypeAdapter(Accion.class, new gsonAdapterAccion())
                 .registerTypeAdapter(ArbolBinario.class, new gsonAdapterArbolBinario())
                 .registerTypeAdapter(ElementoArbol.class, new gsonAdapterElementoArbol())
+//                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
                 .excludeFieldsWithoutExposeAnnotation()
-//                .excludeFieldsWithModifiers(Modifier.STATIC)
                 .setPrettyPrinting()
                 .create();
         try (FileWriter writer = new FileWriter(rutaArchivo)) {
@@ -411,8 +416,8 @@ public class SaveInfo {
                 .registerTypeAdapter(Accion.class, new gsonAdapterAccion())
                 .registerTypeAdapter(ArbolBinario.class, new gsonAdapterArbolBinario())
                 .registerTypeAdapter(ElementoArbol.class, new gsonAdapterElementoArbol())
+//                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
                 .excludeFieldsWithoutExposeAnnotation()
-//                .excludeFieldsWithModifiers(Modifier.STATIC)
                 .setPrettyPrinting()
                 .create();
         try (FileReader reader = new FileReader(rutaArchivo)) {

@@ -16,12 +16,16 @@ public class gsonAdapterAccion implements JsonSerializer<Accion>, JsonDeserializ
         log.info("Serializando Accion");
         JsonObject accion = new JsonObject();
         accion.addProperty("Tipo", src.getTipo());
-//        accion.add("Data", context.serialize(src));
+        accion.add("Data", context.serialize(src));
         return accion;
     }
 
     @Override
     public Accion deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        JsonObject accion = json.getAsJsonObject();
+        if (accion.has("Hola")){
+
+        }
         return null;
     }
 }

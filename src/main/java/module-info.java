@@ -12,6 +12,7 @@ module com.example.eljuegodelavida {
     opens com.example.SaveInfo to com.google.gson;
     opens com.example.EstructurasDeDatos.Listas to com.google.gson;
     opens com.example.NewInterfaz.Individuos to com.google.gson;
+    opens com.example.NewInterfaz.Grafo_Conocimiento to com.google.gson;
 
     exports com.example.EstructurasDeDatos to javafx.graphics;
 }

@@ -121,6 +121,10 @@ public class ListaSimple<Tipodato> {
         this.datos = datos;
     }
 
+    public ElementoLS<Tipodato>[] getDatos() {
+        return datos;
+    }
+
     public void setNumElem(Integer numElem) {
         this.numElem = numElem;
     }

@@ -1,23 +1,25 @@
 package com.example.NewInterfaz.Grafo_Conocimiento;
 
 import com.example.NewInterfaz.Recurso;
+import com.google.gson.annotations.Expose;
 
 public class Consumición extends Accion {
-    private Recurso rec;
+    @Expose
+    private Recurso recursoConsumido;
 
     public int getTipo(){
         return 1;
     }
     public Consumición(int turno, Recurso tipoRecurso) {
         super(turno);
-        this.rec = tipoRecurso;
+        this.recursoConsumido = tipoRecurso;
     }
 
-    public Recurso getRec() {
-        return rec;
+    public Recurso getRecursoConsumido() {
+        return recursoConsumido;
     }
 
-    public void setRec(Recurso rec) {
-        this.rec = rec;
+    public void setRecursoConsumido(Recurso recursoConsumido) {
+        this.recursoConsumido = recursoConsumido;
     }
 }
