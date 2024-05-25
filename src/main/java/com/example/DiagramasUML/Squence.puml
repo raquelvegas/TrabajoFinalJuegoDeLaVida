@@ -6,8 +6,9 @@ participant Game
 participant DatosCompartidos
 participant Individuo
 participant Recurso
-participant Square
 participant Tablero
+participant Square
+participant Celda
 
 User -> ControllerMainStage: playGame(event)
 activate ControllerMainStage
@@ -24,7 +25,6 @@ ControllerMainStage -> ControllerMainStage: setDisable(false) {pauseTab}
 ControllerMainStage -> ControllerMainStage: setVisible(true) {pauseText}
 ControllerMainStage -> ControllerMainStage: setVisible(true) {codigoColor}
 ControllerMainStage -> ControllerMainStage: setVisible(false) {playText}
-ControllerMainStage -> log: info("Reanudar el juego")
 deactivate ControllerMainStage
 
 
@@ -32,7 +32,7 @@ ControllerMainStage -> DatosCompartidos: isGameIniciado()
 activate ControllerMainStage
 ControllerMainStage -> DatosCompartidos: getTurnoJuego()
 ControllerMainStage -> DatosCompartidos: setTurnoJuego(turno + 1)
-ControllerMainStage -> turnoContador: setText(turno + 1)
+ControllerMainStage -> DatosCompartidos: setText(turno + 1)
 ControllerMainStage -> Game: turno()
 activate Game
 
@@ -279,7 +279,7 @@ Game -> Tablero : getSquares()
 
 loop for each Square in listaCuadrados
     Game -> Tablero : getDato(i)
-    tablero -> Square : return square
+    Tablero -> Square : return square
     activate Square
     alt square.getIndividuos().getNumeroElementos() == 1
         Game -> Square : getDato(0)
@@ -320,6 +320,125 @@ alt for each square in squares
 end
 deactivate Square
 deactivate Game
+
+
+Game -> Game: aparicionRecursos()
+activate Game
+Game -> DatosCompartidos: getAparicionInicial()
+DatosCompartidos --> Game: probGeneral
+loop i < tablero.getSquares().getNumeroElementos()
+    Game -> Game: generarDoubleAleatorio(0, 100)
+    alt probGeneral condition
+        Game -> DatosCompartidos: getAguaAparicion()
+        Game -> DatosCompartidos: getComidaAparicion()
+        Game -> DatosCompartidos: getMontanaAparicion()
+        Game -> DatosCompartidos: getBibliotecaAparicion()
+        Game -> DatosCompartidos: getTesoroAparicion()
+        Game -> DatosCompartidos: getPozoAparicion()
+        Game -> Game: generarDoubleAleatorio(0, sumaTotal)
+        Game -> Tablero: getSquare(i)
+        Tablero -> Square: return square
+        activate Square
+        alt recursoFinal < aparAgua
+            Game -> Square: addRecursos(square, 2.0)
+        else recursoFinal < aparAgua + aparComida
+            Game -> Square: addRecursos(square, 3.0)
+        else recursoFinal < aparAgua + aparComida + aparMontaña
+            Game -> Square: addRecursos(square, 4.0)
+        else recursoFinal < aparAgua + aparComida + aparMontaña + aparBiblioteca
+            Game -> Square: addRecursos(square, 5.0)
+        else recursoFinal < aparAgua + aparComida + aparMontaña + aparBiblioteca + aparTesoro
+            Game -> Square: addRecursos(square, 6.0)
+        else recursoFinal <= sumaTotal
+            Game -> Square: addRecursos(square, 7.0)
+        end
+    end
+end
+deactivate Square
+deactivate Game
+
+
+Game -> Game: actualizarIndividuos()
+activate Game
+Game -> Game: clearIndividuos()
+activate Game
+Game -> Tablero: getSquares()
+loop for each Square in Tablero
+    Game -> Tablero: getSquare(i)
+    Tablero -> Square: return square
+    activate Square
+    loop for each Celda in Square
+        Game -> Square: getCelda(j)
+        Square -> Celda: return celda
+        activate Celda
+        Game -> Celda: getTipo()
+        Game -> Celda: setTipo(0.0)
+        Game -> Celda: setOcupado(false)
+        deactivate Celda
+        deactivate Square
+    end
+end
+deactivate Game
+
+loop for each Square in Tablero
+    Game -> Tablero: getSquare(i)
+    Tablero -> Square: return square
+    activate Square
+    loop for each Individuo in Square
+        Game -> Square: getIndividuos()
+        loop for each Individuo in Individuos
+            Game -> Square: getDato(j)
+            Square -> Individuo: return individuo
+            activate Individuo
+            Game -> Individuo: getTipoIndividuo()
+            alt tipoIndividuo == 0
+                Game -> Square: addTipo(1.1)
+            else tipoIndividuo == 1
+                Game -> Square: addTipo(1.2)
+            else tipoIndividuo == 2
+                Game -> Square: addTipo(1.3)
+            end
+        end
+    end
+    deactivate Individuo
+    deactivate Square
+end
+deactivate Tablero
+deactivate Game
+
+
+Game -> Game: actualizarTablero()
+activate Game
+Game -> Tablero: getSquares()
+loop for each square in tablero
+    Game -> Tablero: getSquare(i)
+    Tablero -> Square: return square
+    activate Square
+    loop for each celda in square
+        Game -> Square: getCelda(j)
+        Square -> Celda: return celda
+        activate Celda
+        Game -> Celda: isOcupado()
+
+        alt celda ocupada
+            Game -> Celda: getTipo()
+            Game -> Celda: setColor(Color)
+        else
+            Game -> Celda: setColor(Color.TRANSPARENT)
+        end
+        deactivate Celda
+    end
+    deactivate Square
+end
+deactivate Game
+deactivate Game
+
+
+ControllerMainStage -> ControllerMainStage: actualizarTextVivos()
+ControllerMainStage -> DatosCompartidos: getListaIndividuos
+alt if tamañoLista == 1
+    ControllerMainStage -> DatosCompartidos: setGameIniciado(false)
+end
 
 deactivate ControllerMainStage
 @enduml
