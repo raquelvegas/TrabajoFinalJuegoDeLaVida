@@ -40,10 +40,10 @@ public class ControllerInicioJuego {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+
+        // Cargar la partida desde un archivo JSon
         SaveInfo datosCargados = SaveInfo.cargar("PartidaGuardada.json");
-        System.out.println("Numero de cuadrados: "+datosCargados.getTablero().getSquares().getNumeroElementos());
         transladarInfo(datosCargados);
-        System.out.println("Datos Cargados");
         for(int i=0;i<DatosCompartidos.getListaIndividuos().getNumeroElementos();i++){
             System.out.println(DatosCompartidos.getListaIndividuos().getElemento(i).getData().getArbolGenealogico());
         }
