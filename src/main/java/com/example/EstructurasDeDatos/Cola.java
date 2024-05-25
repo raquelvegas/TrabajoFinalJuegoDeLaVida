@@ -12,6 +12,13 @@ public class Cola<TipoDato> {
         datos= new ListaEnlazada<>();
     }
 
+    public Cola<TipoDato> copiaCola(){
+        ListaEnlazada<TipoDato> datosCopiados = datos.copiaLista();
+        Cola<TipoDato> nuevaCola = new Cola<>();
+        nuevaCola.setDatos(datosCopiados);
+        return nuevaCola;
+    }
+
     public boolean isVacia() {
         return datos.isVacia();
     }

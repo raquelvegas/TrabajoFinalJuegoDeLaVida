@@ -1,6 +1,7 @@
 package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
+import com.example.NewInterfaz.Grafo_Conocimiento.GrafoConocimiento;
 import com.example.SaveInfo.SaveInfo;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -180,13 +181,22 @@ public class ControllerMainStage {
     }
     @FXML
     void stopGame(MouseEvent event) throws IOException {
-        /////////// Creación del grafo y extracción de la información /////////
+        /////////// Modificación del grafo de conocimiento y extracción de la información /////////
+        for (int i = 0; i < DatosCompartidos.getListaIndividuos().getNumeroElementos(); i++) {
+            GrafoConocimiento.traducirColaAcciones(DatosCompartidos.getListaIndividuos().getElemento(i).getData().getID(),DatosCompartidos.getListaIndividuos().getElemento(i).getData().getAcciones());
+        }
+        for (int j = 0; j < DatosCompartidos.getIndividuosMuertos().getNumeroElementos(); j++) {
+            GrafoConocimiento.traducirColaAcciones(DatosCompartidos.getIndividuosMuertos().getElemento(j).getData().getID(),DatosCompartidos.getIndividuosMuertos().getElemento(j).getData().getAcciones());
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////
+
+        System.out.println(DatosCompartidos.getListaIndividuos().getPrimero().getData().getAcciones().getDatos().getNumeroElementos());
         controlLoop.pause();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Guardar Partida");
         alert.setHeaderText("¿Quieres guardar tu partida?");
         alert.setContentText("Elige tu opción.");
-
+        System.out.println("Partida Finalizada");
         ButtonType buttonTypeYes = new ButtonType("Sí");
         ButtonType buttonTypeNo = new ButtonType("No");
         ButtonType buttonTypeCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);

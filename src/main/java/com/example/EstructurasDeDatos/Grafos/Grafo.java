@@ -33,11 +33,15 @@ public class Grafo<TipoDato> {
 
     private void addArista(Arista a) throws NonValidLink {
         if (Objects.equals(a.getVerticeFin().getDato(), a.getVerticeIni().getDato())) {
+            log.info("No llega ni a intentar validar la arista");
             throw (new NonValidLink("ERROR. Una arista no puede unir un vértice consigo mismo."));
         } else if (validarArista(a)) {
             this.aristas.add(a);
+            log.info("Arista añadida al grafo");
             a.getVerticeIni().addAristaVHijo(a);
             a.getVerticeFin().addAristaVAntecesor(a);
+        } else {
+            log.info("Error en el método validarArista()");
         }
     }
 
@@ -100,13 +104,6 @@ public class Grafo<TipoDato> {
             contador++;
         }
         if (isVertice1 && isVertice2) {
-            Integer contador2 = 0;
-            while (contador2 < aristas.getNumeroElementos()) {
-                if ((Objects.equals(aristas.getElemento(contador2).getData().getVerticeIni(), vertice1)) && (Objects.equals(aristas.getElemento(contador2).getData().getVerticeFin(), vertice2))) {
-                    throw (new NonValidLink("ERROR. Ya existe una arista uniendo estos dos vertices"));
-                }
-                contador2++;
-            }
             return true;
         } else {
             throw (new NonValidLink("ERROR. Alguno de los vértices que une la arista no se encuentra en el grafo."));

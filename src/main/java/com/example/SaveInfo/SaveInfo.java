@@ -113,7 +113,7 @@ public class SaveInfo {
     private Game game;
 
 
-    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aparicionInicial, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int numIndividuos, int turnoJuego, boolean gameIniciado, ListaEnlazada<Individuo> individuosMuertos,ListaEnlazada<Square> cuadradosTablero, Game game) {
+    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aparicionInicial, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int numIndividuos, int turnoJuego, boolean gameIniciado, ListaEnlazada<Individuo> individuosMuertos, ListaEnlazada<Square> cuadradosTablero, Game game) {
         this.altoMatriz = altoMatriz;
         this.anchoMatriz = anchoMatriz;
         this.probReproduccion = probReproduccion;

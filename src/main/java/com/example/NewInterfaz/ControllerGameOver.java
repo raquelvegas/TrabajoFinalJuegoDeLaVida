@@ -2,6 +2,7 @@ package com.example.NewInterfaz;
 
 import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
+import com.example.NewInterfaz.Grafo_Conocimiento.GrafoConocimiento;
 import com.example.NewInterfaz.Individuos.Individuo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +32,7 @@ public class ControllerGameOver {
     @FXML
     private ImageView arbolesGenealogicos, cerrarJuego, volverJugar;
     @FXML
-    private Text longevo, masAgua, masClonaciones, masClonaciones1, masReproducciones, totalClonaciones,
+    private Text longevo, masAgua, masClonaciones, masVida, masReproducciones, totalClonaciones,
             totalIndividuos, totalReproducciones;
     private Stage primaryStage; // Referencia al Stage principal
 
@@ -211,6 +212,10 @@ public class ControllerGameOver {
 
     @FXML
     public void initialize(){
-        totalIndividuos.setText(String.valueOf(DatosCompartidos.getNumIndividuos()));
+        Integer numeroReproducciones = GrafoConocimiento.getNumeroReproducciones();
+        Integer numeroClonaciones = GrafoConocimiento.getNumeroClonaciones();
+        totalIndividuos.setText(String.valueOf(DatosCompartidos.getListaIndividuos().getNumeroElementos()));
+        totalReproducciones.setText(String.valueOf(numeroReproducciones));
+        totalClonaciones.setText(String.valueOf(numeroClonaciones));
     }
 }

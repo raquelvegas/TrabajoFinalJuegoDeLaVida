@@ -81,19 +81,19 @@
       </ImageView>
       <HBox alignment="CENTER" layoutX="37.0" layoutY="134.0" prefHeight="30.0" prefWidth="734.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DE INDIVIDUOS : " wrappingWidth="134.44802856445312" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NUMERO TOTAL DE INDIVIDUOS VIVOS: " wrappingWidth="221.11468821763992" />
             <Text fx:id="totalIndividuos" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
          </children>
       </HBox>
       <HBox alignment="CENTER" layoutX="37.0" layoutY="185.0" prefHeight="30.0" prefWidth="734.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DE REPRODUCCIONES: " wrappingWidth="165.64804077148438" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NUMERO TOTAL DE REPRODUCCIONES: " wrappingWidth="216.98138546943665" />
             <Text fx:id="totalReproducciones" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
          </children>
       </HBox>
       <HBox alignment="CENTER" layoutX="38.0" layoutY="236.0" prefHeight="30.0" prefWidth="734.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DE CLONACIONES: " wrappingWidth="145.64804077148438" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NUMERO TOTAL DE CLONACIONES: " wrappingWidth="196.31466805934906" />
             <Text fx:id="totalClonaciones" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
          </children>
       </HBox>
@@ -124,7 +124,7 @@
       <HBox alignment="CENTER" layoutX="443.0" layoutY="344.0" prefHeight="42.0" prefWidth="331.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INDIVIDUO CON MÁS TIEMPO DE VIDA: " wrappingWidth="218.84805607795715" />
-            <Text fx:id="masClonaciones1" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+            <Text fx:id="masVida" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
          </children>
       </HBox>
    </children>
