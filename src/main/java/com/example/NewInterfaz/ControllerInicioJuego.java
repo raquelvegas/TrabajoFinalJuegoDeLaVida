@@ -2,7 +2,7 @@ package com.example.NewInterfaz;
 
 
 import com.example.EstructurasDeDatos.Cola;
-import com.example.NewInterfaz.Grafo_Conocimiento.Acción;
+
 import com.example.NewInterfaz.Individuos.Individuo;
 import com.example.SaveInfo.SaveInfo;
 import com.example.SaveInfo.gsonAdapterAccion;
