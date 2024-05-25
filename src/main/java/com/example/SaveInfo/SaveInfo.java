@@ -9,6 +9,7 @@ import com.example.NewInterfaz.Game;
 import com.example.NewInterfaz.Grafo_Conocimiento.Accion;
 import com.example.NewInterfaz.Individuos.Individuo;
 import com.example.NewInterfaz.Recurso;
+import com.example.NewInterfaz.Square;
 import com.example.NewInterfaz.Tablero;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -112,13 +113,13 @@ public class SaveInfo {
     private ListaEnlazada<Individuo> individuosMuertos;
 
     @Expose
-    private Game game;
+    private ListaEnlazada<Square> cuadradosTablero;
 
     @Expose
-    private Tablero tablero;
+    private Game game;
 
 
-    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aparicionInicial, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int numIndividuos, int turnoJuego, boolean gameIniciado, ListaEnlazada<Recurso> listaRecursos, ListaEnlazada<Individuo> listaIndividuos, ListaEnlazada<Individuo> individuosMuertos, Game game, Tablero tablero) {
+    public SaveInfo(String altoMatriz, String anchoMatriz, String probReproduccion, String probClonacion, String vidaInicial, String aguaVida, String comidaVida, String montanaVida, String tesoroVida, String bibliotecaVida, String pozoVida, String aguaEfecto, String comidaEfecto, String montanaEfecto, String tesoroEfecto, String bibliotecaEfecto, String aparicionInicial, String aguaAparicion, String comidaAparicion, String montanaAparicion, String tesoroAparicion, String bibliotecaAparicion, String pozoAparicion, int numIndividuos, int turnoJuego, boolean gameIniciado, ListaEnlazada<Recurso> listaRecursos, ListaEnlazada<Individuo> listaIndividuos, ListaEnlazada<Individuo> individuosMuertos,ListaEnlazada<Square> cuadradosTablero, Game game) {
         this.altoMatriz = altoMatriz;
         this.anchoMatriz = anchoMatriz;
         this.probReproduccion = probReproduccion;
@@ -148,8 +149,24 @@ public class SaveInfo {
         this.listaRecursos = listaRecursos;
         this.listaIndividuos = listaIndividuos;
         this.individuosMuertos = individuosMuertos;
+        this.cuadradosTablero = cuadradosTablero;
         this.game = game;
-        this.tablero=tablero;
+    }
+
+    public ListaEnlazada<Individuo> getIndividuosMuertos() {
+        return individuosMuertos;
+    }
+
+    public void setIndividuosMuertos(ListaEnlazada<Individuo> individuosMuertos) {
+        this.individuosMuertos = individuosMuertos;
+    }
+
+    public ListaEnlazada<Square> getCuadradosTablero() {
+        return cuadradosTablero;
+    }
+
+    public void setCuadradosTablero(ListaEnlazada<Square> cuadradosTablero) {
+        this.cuadradosTablero = cuadradosTablero;
     }
 
     public String getAltoMatriz() {
@@ -384,14 +401,6 @@ public class SaveInfo {
         this.game = game;
     }
 
-    public Tablero getTablero() {
-        return tablero;
-    }
-
-    public void setTablero(Tablero tablero) {
-        this.tablero = tablero;
-    }
-
     public void guardar(String rutaArchivo) {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Individuo.class, new gsonAdapterIndividuo())
@@ -399,7 +408,7 @@ public class SaveInfo {
                 .registerTypeAdapter(Accion.class, new gsonAdapterAccion())
                 .registerTypeAdapter(ArbolBinario.class, new gsonAdapterArbolBinario())
                 .registerTypeAdapter(ElementoArbol.class, new gsonAdapterElementoArbol())
-                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
+//                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
                 .excludeFieldsWithoutExposeAnnotation()
                 .setPrettyPrinting()
                 .create();
@@ -416,7 +425,7 @@ public class SaveInfo {
                 .registerTypeAdapter(Accion.class, new gsonAdapterAccion())
                 .registerTypeAdapter(ArbolBinario.class, new gsonAdapterArbolBinario())
                 .registerTypeAdapter(ElementoArbol.class, new gsonAdapterElementoArbol())
-                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
+//                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
                 .excludeFieldsWithoutExposeAnnotation()
                 .setPrettyPrinting()
                 .create();

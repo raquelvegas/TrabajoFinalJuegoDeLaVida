@@ -20,6 +20,14 @@ public class ListaEnlazada<T> {
         return getNumeroElementos() == 0;
     }
 
+    public ListaEnlazada<T> copiaLista() {
+        ListaEnlazada<T> nuevaLista = new ListaEnlazada<>();
+        for (int i = 0; i < numElem; i++) {
+            nuevaLista.add(this.getElemento(i).getData());
+        }
+        return nuevaLista;
+    }
+
     public void vaciar() {
         primero = null;
         numElem = 0;

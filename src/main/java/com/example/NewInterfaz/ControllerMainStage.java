@@ -1,6 +1,6 @@
 package com.example.NewInterfaz;
 
-import com.example.EstructurasDeDatos.Listas.ListaSimple;
+import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.SaveInfo.SaveInfo;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -181,7 +181,6 @@ public class ControllerMainStage {
     @FXML
     void stopGame(MouseEvent event) throws IOException {
         /////////// Creación del grafo y extracción de la información /////////
-
         controlLoop.pause();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Guardar Partida");
@@ -197,7 +196,9 @@ public class ControllerMainStage {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeYes){
             // Accion a realizar si el usuario quiere guardar la partida
-            SaveInfo informacion = new SaveInfo(DatosCompartidos.getAltoMatriz(), DatosCompartidos.getAnchoMatriz(), DatosCompartidos.getProbReproduccion(), DatosCompartidos.getProbClonacion(), DatosCompartidos.getVidaInicial(), DatosCompartidos.getAguaVida(), DatosCompartidos.getComidaVida(), DatosCompartidos.getMontanaVida(), DatosCompartidos.getTesoroVida(), DatosCompartidos.getBibliotecaVida(), DatosCompartidos.getPozoVida(), DatosCompartidos.getAguaEfecto(), DatosCompartidos.getComidaEfecto(), DatosCompartidos.getMontanaEfecto(), DatosCompartidos.getTesoroEfecto(), DatosCompartidos.getBibliotecaEfecto(), DatosCompartidos.getAparicionInicial(), DatosCompartidos.getAguaAparicion(), DatosCompartidos.getComidaAparicion(), DatosCompartidos.getMontanaAparicion(), DatosCompartidos.getTesoroAparicion(), DatosCompartidos.getBibliotecaAparicion(), DatosCompartidos.getPozoAparicion(), DatosCompartidos.getNumIndividuos(), DatosCompartidos.getTurnoJuego(), DatosCompartidos.isGameIniciado(), DatosCompartidos.getListaRecursos(), DatosCompartidos.getListaIndividuos(), DatosCompartidos.getIndividuosMuertos(), DatosCompartidos.getGame(), DatosCompartidos.getGame().getTablero());
+            ListaEnlazada<Square> listaCuadrados = game.generarEnlazadaSquares();
+            DatosCompartidos.setCuadradosTablero(listaCuadrados);
+            SaveInfo informacion = new SaveInfo(DatosCompartidos.getAltoMatriz(), DatosCompartidos.getAnchoMatriz(), DatosCompartidos.getProbReproduccion(), DatosCompartidos.getProbClonacion(), DatosCompartidos.getVidaInicial(), DatosCompartidos.getAguaVida(), DatosCompartidos.getComidaVida(), DatosCompartidos.getMontanaVida(), DatosCompartidos.getTesoroVida(), DatosCompartidos.getBibliotecaVida(), DatosCompartidos.getPozoVida(), DatosCompartidos.getAguaEfecto(), DatosCompartidos.getComidaEfecto(), DatosCompartidos.getMontanaEfecto(), DatosCompartidos.getTesoroEfecto(), DatosCompartidos.getBibliotecaEfecto(), DatosCompartidos.getAparicionInicial(), DatosCompartidos.getAguaAparicion(), DatosCompartidos.getComidaAparicion(), DatosCompartidos.getMontanaAparicion(), DatosCompartidos.getTesoroAparicion(), DatosCompartidos.getBibliotecaAparicion(), DatosCompartidos.getPozoAparicion(), DatosCompartidos.getNumIndividuos(), DatosCompartidos.getTurnoJuego(), DatosCompartidos.isGameIniciado(), DatosCompartidos.getListaRecursos(), DatosCompartidos.getListaIndividuos(), DatosCompartidos.getIndividuosMuertos(), DatosCompartidos.getCuadradosTablero(), DatosCompartidos.getGame());
             informacion.guardar("PartidaGuardada.json");
             System.out.println("Partida guardada");
             showGameOverStage();

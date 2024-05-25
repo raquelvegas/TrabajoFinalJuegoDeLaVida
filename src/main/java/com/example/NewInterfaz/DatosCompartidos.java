@@ -38,8 +38,17 @@ public class DatosCompartidos {
     private static ListaEnlazada<Recurso> listaRecursos= new ListaEnlazada<>();
     private static ListaEnlazada<Individuo> listaIndividuos = new ListaEnlazada<>();
     private static ListaEnlazada<Individuo> individuosMuertos = new ListaEnlazada<>();
+    private static ListaEnlazada<Square> cuadradosTablero = new ListaEnlazada<>();
     private static Game game = null;
 
+
+    public static ListaEnlazada<Square> getCuadradosTablero() {
+        return cuadradosTablero;
+    }
+
+    public static void setCuadradosTablero(ListaEnlazada<Square> cuadradosTablero) {
+        DatosCompartidos.cuadradosTablero = cuadradosTablero;
+    }
 
     public static String getAltoMatriz() {
         return altoMatriz;

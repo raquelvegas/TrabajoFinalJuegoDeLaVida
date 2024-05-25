@@ -1,6 +1,7 @@
 package com.example.NewInterfaz;
 
 
+import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.SaveInfo.SaveInfo;
 import javafx.fxml.FXML;
@@ -51,7 +52,7 @@ public class ControllerInicioJuego {
         // Cargar la partida desde un archivo JSon
         SaveInfo datosCargados = SaveInfo.cargar("PartidaGuardada.json");
         transladarInfo(datosCargados);
-        System.out.println(datosCargados.getGame().getTablero().getSquares().getNumeroElementos());
+        System.out.println(datosCargados.getCuadradosTablero().getNumeroElementos());
         for(int i=0;i<DatosCompartidos.getListaIndividuos().getNumeroElementos();i++){
             System.out.println(DatosCompartidos.getListaIndividuos().getElemento(i).getData().getArbolGenealogico());
         }
@@ -97,6 +98,8 @@ public class ControllerInicioJuego {
         DatosCompartidos.setGameIniciado(info.isGameIniciado());
         DatosCompartidos.setListaRecursos(info.getListaRecursos());
         DatosCompartidos.setListaIndividuos(info.getListaIndividuos());
+        DatosCompartidos.setIndividuosMuertos(info.getIndividuosMuertos());
+        DatosCompartidos.setCuadradosTablero(info.getCuadradosTablero());
         DatosCompartidos.setGame(info.getGame());
     }
     @FXML
@@ -126,12 +129,12 @@ public class ControllerInicioJuego {
     private void cargarTablero(GridPane tableroJuego, String theme) {
         int alto = Integer.parseInt(DatosCompartidos.getAltoMatriz());
         int ancho = Integer.parseInt(DatosCompartidos.getAnchoMatriz());
-        ListaSimple<Square> squaresCargar = game.getTablero().getSquares().copiaLista();
+        ListaEnlazada<Square> squaresCargar = DatosCompartidos.getCuadradosTablero();
         int identificador = 0;
 
         for (int i = 0; i < ancho; i++) {
             for (int j = 0; j < alto; j++) {
-                Square squareCargar = squaresCargar.getDato(0);
+                Square squareCargar = squaresCargar.getElemento(0).getData();
                 Square square = new Square(i, j);
                 square.setID(identificador);
 

@@ -45,6 +45,14 @@ public class Game {
 
     }
 
+    public ListaEnlazada<Square> generarEnlazadaSquares() {
+        ListaEnlazada<Square> listaCuadrados = new ListaEnlazada<>();
+        for (int i = 0; i < getTablero().getSquares().getNumeroElementos(); i++) {
+            listaCuadrados.add(getTablero().getSquare(i));
+        }
+        return listaCuadrados;
+    }
+
 
     private void addEventHandlers(GridPane tablero) {
         tablero.setOnMouseClicked(event -> {

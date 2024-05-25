@@ -12,7 +12,6 @@ public class Tablero {
     @Expose
     String theme;
 
-    @Expose
     public ListaSimple<Square> squares = new ListaSimple<>(400);
 
     public Tablero(GridPane tableroJuego, String theme) {
