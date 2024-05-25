@@ -56,7 +56,7 @@ public class ControllerInicioJuego {
         for(int i=0;i<DatosCompartidos.getListaIndividuos().getNumeroElementos();i++){
             System.out.println(DatosCompartidos.getListaIndividuos().getElemento(i).getData().getArbolGenealogico());
         }
-        cargarTablero(tableroJuego, "Agua");
+        cargarTablero(this.tableroJuego, "Agua");
     }
 
     private void transladarInfo(SaveInfo info){

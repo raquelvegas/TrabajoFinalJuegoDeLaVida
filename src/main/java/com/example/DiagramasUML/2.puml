@@ -1,0 +1,50 @@
+@startuml
+actor User
+
+participant ControllerMainStage
+participant Game
+participant DatosCompartidos
+participant Individuo
+participant Recurso
+participant Tablero
+participant Square
+participant Celda
+
+activate ControllerMainStage
+Game -> Game: eliminarIndividuos()
+activate Game
+Game -> Tablero: getSquares()
+loop for each square in Squares
+    Game -> Tablero: getDato(i)
+    Tablero -> Square: return square
+    Game -> Square: getIndividuos()
+    activate Square
+    alt if !isVacia()
+        loop for each individuo in getIndividuos
+            Game -> Square: getDato(contador)
+            Square -> Individuo: return individuo
+            alt if getTurnoVida() <= 0
+                Game -> Game: listadel.add(individuo)
+                Game -> Square: del(contador)
+            else
+                Game -> Game: contador ++
+            end
+        end
+    end
+    deactivate
+end
+Game -> Game: eliminarIndividuos(listaDel)
+Game -> DatosCompartidos: getListaIndividuos()
+activate DatosCompartidos
+loop for individuos in listaDel
+    Game -> Game: listaDel.getDato(i).getID()
+    loop for individuos in ListaIndividuos
+        Game -> DatosCompartidos: getDato(j).getID()
+        alt sus IDs coinciden
+            Game -> DatosCompartidos: del(individuo)
+            deactivate DatosCompartidos
+        end
+    end
+end
+deactivate Game
+@enduml
