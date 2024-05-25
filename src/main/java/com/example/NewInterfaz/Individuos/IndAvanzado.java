@@ -8,7 +8,7 @@ public class IndAvanzado extends Individuo{
 
     private ListaEnlazada<Square> recorrido = new ListaEnlazada<>();
 
-    public IndAvanzado(ArbolBinario<Individuo> arbolGenealogico) {
+    public IndAvanzado(ArbolBinario<Integer> arbolGenealogico) {
         super(arbolGenealogico);
     }
 

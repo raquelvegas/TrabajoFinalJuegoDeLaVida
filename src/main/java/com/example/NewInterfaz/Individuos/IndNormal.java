@@ -6,7 +6,7 @@ import com.example.NewInterfaz.Square;
 
 public class IndNormal extends Individuo{
     private ListaEnlazada<Square> recorrido = new ListaEnlazada<>();
-    public IndNormal(ArbolBinario<Individuo> arbolGenealogico) {
+    public IndNormal(ArbolBinario<Integer> arbolGenealogico) {
         super(arbolGenealogico);
     }
 

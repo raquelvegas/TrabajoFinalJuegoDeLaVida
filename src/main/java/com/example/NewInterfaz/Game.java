@@ -162,7 +162,7 @@ public class Game {
                 individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
                 tipoIndividuo = 1.3;
             }
-            individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo);
+            individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo.getID());
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
             log.info("Se ha añadido un individuo tipo " + tipoIndividuo + ", con ID " + individuoNuevo.getID() + ", al Square " + square.getX() + "," + square.getY());
@@ -632,7 +632,7 @@ public class Game {
                         individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
                         tipoIndividuo = 1.3;
                     }
-                    ArbolBinario<Individuo> nuevoArbol = new ArbolBinario<>(individuoNuevo, new ElementoArbol<>(ind1), new ElementoArbol<>(ind2));
+                    ArbolBinario<Integer> nuevoArbol = new ArbolBinario<>(individuoNuevo.getID(), new ElementoArbol<>(ind1.getID()), new ElementoArbol<>(ind2.getID()));
                     individuoNuevo.setArbolGenealogico(nuevoArbol);
                     addTipo(actual, tipoIndividuo);
                     actual.getIndividuos().add(individuoNuevo);
@@ -670,7 +670,7 @@ public class Game {
                     } else {
                         individuoNuevo = new IndAvanzado(new ArbolBinario<>(null));
                     }
-                    ArbolBinario<Individuo> nuevoArbol = new ArbolBinario<>(individuoNuevo, new ElementoArbol<>(individuoAClonar), null);
+                    ArbolBinario<Integer> nuevoArbol = new ArbolBinario<>(individuoNuevo.getID(), new ElementoArbol<>(individuoAClonar.getID()), null);
                     individuoNuevo.setArbolGenealogico(nuevoArbol);
                     squareActual.getIndividuos().add(individuoNuevo);
                     DatosCompartidos.getListaIndividuos().add(individuoNuevo);

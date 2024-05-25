@@ -27,11 +27,11 @@ public abstract class Individuo {
     private Cola<Acción> acciones;
 
     @Expose
-    private ArbolBinario<Individuo> arbolGenealogico;
+    private ArbolBinario<Integer> arbolGenealogico;
 
     public abstract int getTipo();
 
-    public Individuo(ArbolBinario<Individuo> arbolGenealogico) {
+    public Individuo(ArbolBinario<Integer> arbolGenealogico) {
         this.ID = DatosCompartidos.getNumIndividuos();
         Generacion = DatosCompartidos.getTurnoJuego();
         TurnosVida = Integer.parseInt(DatosCompartidos.getVidaInicial());
@@ -89,11 +89,11 @@ public abstract class Individuo {
         this.acciones = acciones;
     }
 
-    public ArbolBinario<Individuo> getArbolGenealogico() {
+    public ArbolBinario<Integer> getArbolGenealogico() {
         return arbolGenealogico;
     }
 
-    public void setArbolGenealogico(ArbolBinario<Individuo> arbolGenealogico) {
+    public void setArbolGenealogico(ArbolBinario<Integer> arbolGenealogico) {
         this.arbolGenealogico = arbolGenealogico;
     }
 }

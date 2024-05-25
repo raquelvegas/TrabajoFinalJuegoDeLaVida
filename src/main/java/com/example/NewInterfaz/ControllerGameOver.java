@@ -166,21 +166,39 @@ public class ControllerGameOver {
         System.exit(0);
     }
 
-    private void buildTree(TreeItem<String> treeItem, ArbolBinario<Individuo> arbol) {
+    private void buildTree(TreeItem<String> treeItem, ArbolBinario<Integer> arbol) {
         if (arbol == null) {
             return;
         }
 
         if (arbol.getRaiz().getNodoDch() != null) {
-            Individuo indPadre = arbol.getRaiz().getNodoDch().getDato();
-            TreeItem<String> padre = new TreeItem<>("Ind #"+String.valueOf(indPadre.getID()));
+            Integer IDPadre = arbol.getRaiz().getNodoDch().getDato();
+            TreeItem<String> padre = new TreeItem<>("Ind #" + String.valueOf(IDPadre));
+            ListaEnlazada<Individuo> listaIndividuosTotales = DatosCompartidos.getListaIndividuos();
+            Individuo indPadre = null;
+            Integer contador = 0;
+            while (indPadre == null && contador < listaIndividuosTotales.getNumeroElementos()) {
+                if (listaIndividuosTotales.getElemento(contador).getData().getID() == IDPadre) {
+                    indPadre = listaIndividuosTotales.getElemento(contador).getData();
+                }
+                contador++;
+            }
             buildTree(padre, indPadre.getArbolGenealogico());
             treeItem.getChildren().add(padre);
         }
 
         if (arbol.getRaiz().getNodoIzq() != null) {
-            Individuo indMadre = arbol.getRaiz().getNodoIzq().getDato();
-            TreeItem<String> madre = new TreeItem<>("Ind #"+String.valueOf(indMadre.getID()));
+            Integer IDMadre = arbol.getRaiz().getNodoIzq().getDato();
+            TreeItem<String> madre = new TreeItem<>("Ind #"+String.valueOf(IDMadre));
+            ListaEnlazada<Individuo> listaIndividuosTotales = DatosCompartidos.getListaIndividuos();
+            Individuo indMadre = null;
+            Integer contador = 0;
+            while (indMadre == null && contador < listaIndividuosTotales.getNumeroElementos()) {
+                if (listaIndividuosTotales.getElemento(contador).getData().getID() == IDMadre) {
+                    indMadre = listaIndividuosTotales.getElemento(contador).getData();
+                }
+                contador++;
+            }
             buildTree(madre, indMadre.getArbolGenealogico());
             treeItem.getChildren().add(madre);
         }
