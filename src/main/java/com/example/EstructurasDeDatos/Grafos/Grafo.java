@@ -88,12 +88,13 @@ public class Grafo<TipoDato> {
 
 
     private Vertice<TipoDato> getVertice(TipoDato a) {
+        Vertice<TipoDato> vertice = null;
         for (int i = 0; i < vertices.getNumeroElementos(); i++) {
             if (vertices.getDato(i).getDato() == a) {
-                return vertices.getDato(i);
+                vertice=vertices.getDato(i);
             }
         }
-        return null;
+        return vertice;
     }
 
     public Camino getCaminoMinimo(TipoDato origen, TipoDato fin) {

@@ -69,20 +69,6 @@ public class ListaEnlazada<T> {
         return numElem;
     }
 
-    public Integer getPosicion(ElementoLE<T> el) { // Devuelve null si no existe ese elemento
-        ElementoLE<T> inicial = primero;
-        Integer pos = null;
-        int contador = 0;
-        while (inicial != null) {
-            if (inicial.getData() == el.getData()) {
-                pos = contador;
-            }
-            contador++;
-            inicial = inicial.getSiguiente();
-        }
-        return pos;
-    }
-
     public ElementoLE<T> getPrimero() {
         return primero;
     }
@@ -96,18 +82,6 @@ public class ListaEnlazada<T> {
             return inicial;
         } else { // Si es una lista vacía devuelve null
             return null;
-        }
-    }
-
-    public ElementoLE<T> getSiguiente(ElementoLE<T> el) {
-        ElementoLE<T> inicial = primero;
-        if (isVacia() || getNumeroElementos() == 1 || getPosicion(el) == null) {
-            return null;
-        } else {
-            while (inicial.getData() != el.getData()) {
-                inicial = inicial.getSiguiente();
-            }
-            return inicial.getSiguiente();
         }
     }
 
