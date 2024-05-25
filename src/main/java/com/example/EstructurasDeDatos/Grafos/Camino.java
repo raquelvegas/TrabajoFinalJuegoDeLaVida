@@ -3,8 +3,8 @@ package com.example.EstructurasDeDatos.Grafos;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
 
 public class Camino {
-    ListaSimple<Vertice> camino;
-    double peso;
+    private ListaSimple<Vertice> camino;
+    private double peso;
 
     public Camino(ListaSimple<Vertice> camino, double peso) {
         this.camino = camino;

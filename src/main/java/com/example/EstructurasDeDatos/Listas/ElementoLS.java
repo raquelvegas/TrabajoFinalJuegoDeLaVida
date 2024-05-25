@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 
 public class ElementoLS<TipoDato> {
     @Expose
-    TipoDato data;
+    private TipoDato data;
 
     public ElementoLS(TipoDato dato) {
         this.setData(dato);
