@@ -42,7 +42,6 @@ public class Game {
         this.game = true;
         this.controller = ControllerMainStage.getInstance();
         addEventHandlers(this.tablero.tableroJuego);
-
     }
 
     public ListaEnlazada<Square> generarEnlazadaSquares() {
