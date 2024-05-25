@@ -680,9 +680,9 @@ public class ControllerMainStage {
                     turnoContador.setText(String.valueOf(turno));
                     game.turno();
                     actualizarTextVivos();
-//                    if (DatosCompartidos.getListaIndividuos().getNumeroElementos() == 1){
-//                        DatosCompartidos.setGameIniciado(false);
-//                    }
+                    if (DatosCompartidos.getListaIndividuos().getNumeroElementos() == 1){
+                        DatosCompartidos.setGameIniciado(false);
+                    }
                 } else {
                     //Lógica cuando el juego está pausado
                     actualizarTextVivos();

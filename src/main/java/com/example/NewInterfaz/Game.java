@@ -661,6 +661,7 @@ public class Game {
                     addTipo(actual, tipoIndividuo);
                     actual.getIndividuos().add(individuoNuevo);
                     DatosCompartidos.getListaIndividuos().add(individuoNuevo);
+
                     // Metemos en el Grafo de Conocimiento el nuevo individuo
                     GrafoConocimiento.addVertices(individuoNuevo.getID());
 
@@ -688,7 +689,7 @@ public class Game {
             Square squareActual = tablero.getSquare(i);
             if (squareActual.getIndividuos().getNumeroElementos() == 1) {
                 int numAleatorio = generarEnteroAleatorio(0,100);
-                if (numAleatorio < Integer.parseInt(DatosCompartidos.getProbClonacion())){
+                if (numAleatorio < squareActual.getIndividuos().getDato(0).getProbClon()){
                     DatosCompartidos.setNumIndividuos(DatosCompartidos.getNumIndividuos()+1);
                     Individuo individuoAClonar = squareActual.getIndividuos().getDato(0);
                     double tipoIndividuo = individuoAClonar.getTipo();
@@ -857,7 +858,6 @@ public class Game {
                 if (caminoFinal.getCamino().getDato(t).getDato() != cuadrado) {
                     recorrido.add((Square) caminoFinal.getCamino().getDato(t).getDato());
                 }
-
             }
 
             ind.setRecorrido(recorrido);

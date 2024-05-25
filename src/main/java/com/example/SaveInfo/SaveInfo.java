@@ -384,7 +384,6 @@ public class SaveInfo {
                 .registerTypeAdapter(Accion.class, new gsonAdapterAccion())
                 .registerTypeAdapter(ArbolBinario.class, new gsonAdapterArbolBinario())
                 .registerTypeAdapter(ElementoArbol.class, new gsonAdapterElementoArbol())
-//                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
                 .excludeFieldsWithoutExposeAnnotation()
                 .setPrettyPrinting()
                 .create();
@@ -401,7 +400,6 @@ public class SaveInfo {
                 .registerTypeAdapter(Accion.class, new gsonAdapterAccion())
                 .registerTypeAdapter(ArbolBinario.class, new gsonAdapterArbolBinario())
                 .registerTypeAdapter(ElementoArbol.class, new gsonAdapterElementoArbol())
-//                .registerTypeAdapter(ListaSimple.class, new gsonAdapterListaSimple())
                 .excludeFieldsWithoutExposeAnnotation()
                 .setPrettyPrinting()
                 .create();
