@@ -1,0 +1,19 @@
+@startuml
+class com.example.NewInterfaz.ControllerTableroPropiedades {
+- Slider altoSlider
+- Text altoText
+- Slider anchoSlider
+- Text anchoText
+- Button buttonSiguiente
+- Stage primaryStage
+# IntegerProperty medidaAncho
+# IntegerProperty medidaAlto
+- {static} Logger log
++ void setStage(Stage)
+~ void next(MouseEvent)
+# void initializeBindingSliders(Slider,Text,IntegerProperty)
++ void initialize()
+}
+
+
+@enduml

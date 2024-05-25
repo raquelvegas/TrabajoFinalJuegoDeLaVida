@@ -1,0 +1,8 @@
+@startuml
+class com.example.NewInterfaz.ControllerComoJugar {
+- Button buttonVolver
+~ void volver(MouseEvent)
+}
+
+
+@enduml

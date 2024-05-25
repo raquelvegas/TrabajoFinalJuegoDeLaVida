@@ -1,0 +1,74 @@
+@startuml
+class Grafo {
+- ListaSimple<Vertice<TipoDato>> vertices
+- ListaSimple<Arista> aristas
+- {static} Logger log
++ void addVertice(Vertice<TipoDato>)
+- void addArista(Arista)
++ void addArista(TipoDato,TipoDato,String)
++ void addArista(TipoDato,TipoDato,int)
+- boolean validarArista(Arista)
+- Vertice<TipoDato> getVertice(TipoDato)
++ String printCodigoGrafo()
++ Camino getCaminoMinimo(TipoDato,TipoDato)
+- Camino getCaminoMinimo(Vertice,Vertice)
+- Mapa<Vertice<TipoDato>,Camino> dijkstra(Vertice)
+- void dijkstra_inicializar(Vertice,Mapa<Vertice,Double>,Cola<Vertice>)
+- void dijkstra_ejecucion(Mapa<Vertice,Double>,Cola<Vertice>,Mapa<Vertice,Vertice>)
+- Mapa<Vertice<TipoDato>,Camino> dijkstra_resultados(Mapa<Vertice,Double>,Mapa<Vertice,Vertice>)
++ ListaSimple<Vertice<TipoDato>> getVertices()
++ ListaSimple<Arista> getAristas()
++ void setVertices(ListaSimple<Vertice<TipoDato>>)
++ void setAristas(ListaSimple<Arista>)
+}
+
+class Arista {
+- Vertice verticeIni
+- Vertice verticeFin
+- String anotacion
+- Integer peso
++ Vertice getVerticeIni()
++ void setVerticeIni(Vertice)
++ Vertice getVerticeFin()
++ void setVerticeFin(Vertice)
++ String getAnotacion()
++ void setAnotacion(String)
++ Integer getPeso()
++ void setPeso(Integer)
+}
+
+class Camino {
+~ ListaSimple<Vertice> camino
+~ double peso
++ ListaSimple<Vertice> getCamino()
++ double getPeso()
++ String toString()
+}
+
+class Mapa {
+~ ListaSimple<Dupla<T,E>> datos
++ boolean isVacio()
++ void add(T,E)
++ E get(T)
++ ListaSimple<T> getIndices()
+}
+
+class Vertice {
+- TipoDato dato
+- ListaSimple<Arista> aristasVAntecesores
+- ListaSimple<Arista> aristasVHijos
++ void addAristaVAntecesor(Arista)
++ void addAristaVHijo(Arista)
++ TipoDato getDato()
++ void setDato(TipoDato)
++ ListaSimple<Arista> getAristasVAntecesores()
++ void setAristasVAntecesores(ListaSimple<Arista>)
++ ListaSimple<Arista> getAristasVHijos()
++ void setAristasVHijos(ListaSimple<Arista>)
+}
+
+Arista--*Grafo
+Camino--*Grafo
+Mapa--*Grafo
+Vertice--*Grafo
+@enduml

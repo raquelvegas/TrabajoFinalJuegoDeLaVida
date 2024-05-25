@@ -1,0 +1,17 @@
+@startuml
+class com.example.NewInterfaz.ControllerInicioJuego {
+- Stage primaryStage
+- Game game
+- GridPane tableroJuego
+- Button buttonBuevaPartida
+- Button buttonCargarPartida
+- {static} Logger log
++ void setStage(Stage)
+~ void cargarPartida(MouseEvent)
+- void transladarInfo(SaveInfo)
+~ void nuevaPartida(MouseEvent)
+- void cargarTablero(GridPane,String)
+}
+
+
+@enduml

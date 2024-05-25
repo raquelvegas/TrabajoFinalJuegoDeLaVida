@@ -1,0 +1,42 @@
+@startuml
+class com.example.NewInterfaz.CeldaSeleccionada {
+- {static} Double tipo1
+- {static} Double vida1
+- {static} Double tipo2
+- {static} Double vida2
+- {static} Double tipo3
+- {static} Double vida3
+- {static} Double tipo4
+- {static} Double vida4
+- {static} Double tipo5
+- {static} Double vida5
+- {static} Double tipo6
+- {static} Double vida6
++ {static} Double getTipo1()
++ {static} void setTipo1(Double)
++ {static} Double getVida1()
++ {static} void setVida1(Double)
++ {static} Double getTipo2()
++ {static} void setTipo2(Double)
++ {static} Double getVida2()
++ {static} void setVida2(Double)
++ {static} Double getTipo3()
++ {static} void setTipo3(Double)
++ {static} Double getVida3()
++ {static} void setVida3(Double)
++ {static} Double getTipo4()
++ {static} void setTipo4(Double)
++ {static} Double getVida4()
++ {static} void setVida4(Double)
++ {static} Double getTipo5()
++ {static} void setTipo5(Double)
++ {static} Double getVida5()
++ {static} void setVida5(Double)
++ {static} Double getTipo6()
++ {static} void setTipo6(Double)
++ {static} Double getVida6()
++ {static} void setVida6(Double)
+}
+
+
+@enduml

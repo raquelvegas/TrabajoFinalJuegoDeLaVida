@@ -1,0 +1,12 @@
+@startuml
+class Dupla {
+- T clave
+- E dato
++ T getClave()
++ void setClave(T)
++ E getDato()
++ void setDato(E)
+}
+
+
+@enduml

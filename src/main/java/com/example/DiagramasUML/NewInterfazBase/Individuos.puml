@@ -1,0 +1,53 @@
+@startuml
+class IndBasico {
++ int getTipo()
+}
+
+abstract class Individuo {
+- int ID
+- int Generacion
+- int TurnosVida
+- int ProbRepr
+- int ProbClon
+- Cola<Accion> acciones
+- ArbolBinario<Integer> arbolGenealogico
++ {abstract}int getTipo()
++ int getID()
++ void setID(int)
++ int getGeneracion()
++ void setGeneracion(int)
++ int getTurnosVida()
++ void setTurnosVida(int)
++ int getProbRepr()
++ void setProbRepr(int)
++ int getProbClon()
++ void setProbClon(int)
++ Cola<Accion> getAcciones()
++ void setAcciones(Cola<Accion>)
++ ArbolBinario<Integer> getArbolGenealogico()
++ void setArbolGenealogico(ArbolBinario<Integer>)
+}
+
+
+class IndAvanzado {
+- ListaEnlazada<Square> recorrido
++ int getTipo()
++ ListaEnlazada<Square> getRecorrido()
++ void setRecorrido(ListaEnlazada<Square>)
+}
+
+
+class IndNormal {
+- ListaEnlazada<Square> recorrido
++ int getTipo()
++ ListaEnlazada<Square> getRecorrido()
++ void setRecorrido(ListaEnlazada<Square>)
+}
+
+
+
+
+Individuo <|-- IndBasico
+Individuo <|-- IndAvanzado
+Individuo <|-- IndNormal
+@enduml

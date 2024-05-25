@@ -1,0 +1,12 @@
+@startuml
+class com.example.NewInterfaz.MainInterfazBase {
+- {static} Logger log
++ void start(Stage)
++ {static} void main(String[])
+}
+
+
+
+
+javafx.application.Application <|-- com.example.NewInterfaz.MainInterfazBase
+@enduml

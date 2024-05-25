@@ -1,0 +1,31 @@
+@startuml
+class ListaSimple {
+- ElementoLS<Tipodato>[] datos
+- Integer maximo
+- Integer numElem
++ Integer getMaximo()
++ void setMaximo(Integer)
++ boolean isVacia()
++ void add(Tipodato)
++ void del(int)
++ Tipodato getPrimero()
++ Tipodato getUltimo()
++ Tipodato getDato(int)
++ Integer getNumeroElementos()
++ ElementoLS<Tipodato> getElemento(int)
++ ListaSimple<Tipodato> voltear()
++ ListaSimple<Tipodato> copiaLista()
++ void setDatos(ElementoLS<Tipodato>[])
++ ElementoLS<Tipodato>[] getDatos()
++ void setNumElem(Integer)
+}
+
+class ElementoLS {
+- TipoDato data
++ TipoDato getData()
++ void setData(TipoDato)
+}
+
+ElementoLS--*ListaSimple
+
+@enduml

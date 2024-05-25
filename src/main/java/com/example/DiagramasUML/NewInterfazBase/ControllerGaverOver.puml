@@ -1,0 +1,14 @@
+@startuml
+class com.example.NewInterfaz.ControllerGameOver {
+- ImageView arbolesGenealogicos
+- Text longevo
+- Stage primaryStage
+~ void arbolGenealogico(MouseEvent)
+~ void volverJugar(MouseEvent)
+~ void cerrarJuego(MouseEvent)
+- void buildTree(TreeItem<String>,ArbolBinario<Integer>)
++ void initialize()
+}
+
+
+@enduml

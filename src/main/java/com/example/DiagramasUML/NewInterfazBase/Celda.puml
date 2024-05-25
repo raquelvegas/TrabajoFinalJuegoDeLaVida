@@ -1,0 +1,20 @@
+@startuml
+class com.example.NewInterfaz.Celda {
+- int x
+- double tipo
+- int id
+- boolean ocupado
++ void setTipo(Double)
++ Double getTipo()
++ void setID(int)
++ int getID()
++ void setOcupado(boolean)
++ boolean isOcupado()
++ void setColor(Color)
+}
+
+
+
+
+javafx.scene.layout.StackPane <|-- com.example.NewInterfaz.Celda
+@enduml

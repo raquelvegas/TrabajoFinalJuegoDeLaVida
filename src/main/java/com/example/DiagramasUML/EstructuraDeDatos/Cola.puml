@@ -1,0 +1,13 @@
+@startuml
+class Cola {
+- ListaEnlazada<TipoDato> datos
++ Cola<TipoDato> copiaCola()
++ boolean isVacia()
++ void push(TipoDato)
++ TipoDato pop()
++ ListaEnlazada<TipoDato> getDatos()
++ void setDatos(ListaEnlazada<TipoDato>)
+}
+
+
+@enduml

@@ -1,0 +1,91 @@
+@startuml
+class com.example.NewInterfaz.ControllerMainStage {
+- Text turnoContador
+- Slider vidaUserSlider
+- Button buttonVelocidad
+- RadioButton radioIndividuo
+- ToggleGroup anadir
+- Rectangle celda1
+~ {static} MediaPlayer mediaPlayer
+- BorderPane basePane
+- GridPane centralGridPane
+- TabPane tabPaneParametros
+- VBox infoVBox
+- HBox contenidoTipo1
+- AnchorPane codigoColor
+- Stage primaryStage
+- Tab contenidoCeldaTab
+- Tab pauseTab
+# boolean gameStopped
+# boolean gameON
+- Timeline controlLoop
+- Game game
+- {static} ControllerMainStage instance
+- {static} Logger log
+# IntegerProperty medidaVidaUser
+# IntegerProperty medidaReproduccion
+# IntegerProperty medidaClonacion
+# IntegerProperty medidaAguaVida
+# IntegerProperty medidaComidaVida
+# IntegerProperty medidaMontanaVida
+# IntegerProperty medidaBibliotecaVida
+# IntegerProperty medidaTesoroVida
+# IntegerProperty medidaPozoVida
+# IntegerProperty medidaAguaEfecto
+# IntegerProperty medidaComidaEfecto
+# IntegerProperty medidaMontanaEfecto
+# IntegerProperty medidaBibliotecaEfecto
+# IntegerProperty medidaTesoroEfecto
+# IntegerProperty medidaAparicionInicial
+# IntegerProperty medidaAguaAparicion
+# IntegerProperty medidaComidaAparicion
+# IntegerProperty medidaMontanaAparicion
+# IntegerProperty medidaBibliotecaAparicion
+# IntegerProperty medidaTesoroAparicion
+# IntegerProperty medidaPozoAparicion
+# DoubleProperty velocidadJuegoProperty
++ {static} ControllerMainStage getInstance()
++ GridPane getTableroJuego()
+~ void speedGame(MouseEvent)
+~ void playGame(MouseEvent)
+~ void pauseGame(MouseEvent)
+~ void stopGame(MouseEvent)
+~ void aplicarUser(MouseEvent)
+~ void resetUser(MouseEvent)
+~ void aplicarRecursosVida(MouseEvent)
+~ void resetRecursosVida(MouseEvent)
+~ void aplicarAparicionRecursos(MouseEvent)
+~ void resetAparicionRecursos(MouseEvent)
+~ void setEstiloFuego(ActionEvent)
+~ void setEstiloAgua(ActionEvent)
+~ void setEstiloNatura(ActionEvent)
+~ void setEstiloTierra(ActionEvent)
+~ void comoJugar(ActionEvent)
+~ void anadirElemento(ActionEvent)
+~ void clear(MouseEvent)
+~ void play(ActionEvent)
+~ void pause(ActionEvent)
+~ void eraseUnaVezLaVida(ActionEvent)
+~ void laBamba(ActionEvent)
+# void initializeBindingSliders(Slider,Text,IntegerProperty)
+# void setSlidersValue(Consumer<String>,Slider)
+- void getDatosCompartidosValueSlider(Supplier<String>,Slider)
++ void setStage(Stage)
+- void showGameOverStage()
++ void actulizarCeldaSeleccionadaTab()
++ {static} String traducirTipo(Double)
++ Color pintarSquareAumentado(Double)
+- void setImage(String,ImageView,GridPane)
+# void initializeMedia()
+# void insertImage(ImageView,String)
+- void preserveRadio(ImageView,GridPane)
+# {static} void initializeAudio()
+# {static} void insertSong(String)
++ void updateAllSliders()
+- void actualizarTextVivos()
+- void inicializarBucleControl()
++ void initialize()
+}
+
+
+@enduml

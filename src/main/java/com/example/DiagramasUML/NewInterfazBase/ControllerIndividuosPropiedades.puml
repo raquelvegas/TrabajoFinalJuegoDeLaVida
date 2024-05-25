@@ -1,0 +1,17 @@
+@startuml
+class com.example.NewInterfaz.ControllerIndividuoPropiedades {
+- Button buttonAnterior
+- Slider vidaUserSlider
+- Text vidaUserText
+- Stage primaryStage
+# IntegerProperty medidaVida
+# IntegerProperty medidaProbReproduccion
+# IntegerProperty medidaProbClonacion
+- {static} Logger log
+~ void next(MouseEvent)
+# void initializeBindingSliders(Slider,Text,IntegerProperty)
++ void initialize()
+}
+
+
+@enduml

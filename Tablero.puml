@@ -1,0 +1,16 @@
+@startuml
+class com.example.NewInterfaz.Tablero {
+~ GridPane tableroJuego
+~ String theme
++ ListaSimple<Square> squares
+~ void makeBoard(GridPane,String)
++ void setTheme(Square,String)
++ String getTheme()
++ void setNewTheme(String)
++ ListaSimple<Square> getSquares()
++ Square getSquare(int)
++ Square getSquare(int,int)
+}
+
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+class ArbolBinario {
+- ElementoArbol<TipoDato> raiz
++ ElementoArbol<TipoDato> getRaiz()
++ void setRaiz(TipoDato)
++ void setRaizEl(ElementoArbol<TipoDato>)
++ void add(TipoDato)
++ String toString()
+}
+
+class ElementoArbol {
+- TipoDato dato
+- ElementoArbol<TipoDato> nodoIzq
+- ElementoArbol<TipoDato> nodoDch
++ void setDatos(ElementoArbol<TipoDato>)
++ ElementoArbol<TipoDato> getNodoIzq()
++ void setNodoIzq(ElementoArbol<TipoDato>)
++ ElementoArbol<TipoDato> getNodoDch()
++ void setNodoDch(ElementoArbol<TipoDato>)
++ TipoDato getDato()
+- Integer compararDatos(TipoDato,TipoDato)
++ void add(ElementoArbol<TipoDato>,TipoDato)
++ void setDato(TipoDato)
++ String toString()
+}
+
+ElementoArbol--*ArbolBinario
+
+@enduml

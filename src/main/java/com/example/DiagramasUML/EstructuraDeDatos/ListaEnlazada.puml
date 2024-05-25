@@ -1,0 +1,29 @@
+@startuml
+class ListaEnlazada {
+- ElementoLE<T> primero
+- int numElem
++ boolean isVacia()
++ ListaEnlazada<T> copiaLista()
++ void vaciar()
+- void add(ElementoLE<T>)
++ void add(T)
++ void del(int)
++ int getNumeroElementos()
++ ElementoLE<T> getPrimero()
++ ElementoLE<T> getUltimo()
++ ElementoLE<T> getElemento(int)
+}
+
+class ElementoLE {
+- TipoDato data
+- ElementoLE<TipoDato> siguiente
++ ElementoLE<TipoDato> getSiguiente()
++ void setSiguiente(ElementoLE<TipoDato>)
++ TipoDato getData()
++ void setData(TipoDato)
+}
+
+ElementoLE--*ListaEnlazada
+
+
+@enduml

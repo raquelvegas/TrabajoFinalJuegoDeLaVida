@@ -1,0 +1,21 @@
+@startuml
+class com.example.NewInterfaz.Recurso {
+- Double tipoRecurso
+- int tiempoVida
+- int efecto
+- Square square
+- int celda
++ Double getTipoRecurso()
++ void setTipoRecurso(Double)
++ int getTiempoVida()
++ void setTiempoVida(int)
++ int getEfecto()
++ void setEfecto(int)
++ Square getSquare()
++ void setSquare(Square)
++ int getCelda()
++ void setCelda(int)
+}
+
+
+@enduml

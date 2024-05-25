@@ -1,0 +1,28 @@
+@startuml
+class com.example.NewInterfaz.Square {
+- Integer x
+- boolean occupied
+- int ID
+- ListaSimple<Celda> celdas
+- ListaSimple<Individuo> individuos
+- ListaSimple<Recurso> recursos
+~ GridPane gridPane
++ String toString()
++ void setID(int)
++ int getID()
++ int getX()
++ int getY()
++ ListaSimple<Individuo> getIndividuos()
++ ListaSimple<Recurso> getRecursos()
++ void setIndividuos(ListaSimple<Individuo>)
++ void setRecursos(ListaSimple<Recurso>)
++ Celda getCelda(int)
++ ListaSimple<Celda> getCeldas()
++ void setCeldas(ListaSimple<Celda>)
+}
+
+
+
+
+com.example.NewInterfaz.StackPane <|-- com.example.NewInterfaz.Square
+@enduml

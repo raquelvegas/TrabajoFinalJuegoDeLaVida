@@ -1,0 +1,20 @@
+@startuml
+class com.example.NewInterfaz.ControllerRecursosVida {
+- Slider aguaVidaSlider
+- Text aguaVidaText
+- Button buttonSiguiente
+- Stage primaryStage
+# IntegerProperty medidaAguaVida
+# IntegerProperty medidaComidaVida
+# IntegerProperty medidaMontanaVida
+# IntegerProperty medidaBibliotecaVida
+# IntegerProperty medidaTesoroVida
+# IntegerProperty medidaPozoVida
+- {static} Logger log
+# void initializeBindingSliders(Slider,Text,IntegerProperty)
+~ void next(MouseEvent)
++ void initialize()
+}
+
+
+@enduml
