@@ -1,5 +1,6 @@
 package com.example.NewInterfaz;
 
+import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.SaveInfo.SaveInfo;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -406,6 +407,7 @@ public class ControllerMainStage {
         this.stage = stage;
     }
     private void showGameOverStage() throws IOException {
+        mediaPlayer.stop();
         URL fxmlUrl = getClass().getResource("gameOver.fxml");
         Parent root = FXMLLoader.load(fxmlUrl);
 

@@ -120,5 +120,11 @@ public class Square extends StackPane {
         return null; // Si no se encuentra ninguna celda con el ID especificado
     }
 
+    public ListaSimple<Celda> getCeldas() {
+        return celdas;
+    }
 
+    public void setCeldas(ListaSimple<Celda> celdas) {
+        this.celdas = celdas;
+    }
 }

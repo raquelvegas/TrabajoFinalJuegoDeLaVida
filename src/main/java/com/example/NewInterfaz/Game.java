@@ -27,6 +27,7 @@ import java.util.Locale;
 import java.util.Random;
 
 public class Game {
+    public GridPane tableroGrid;
     @Expose
     public static Tablero tablero;
 
@@ -39,6 +40,7 @@ public class Game {
 
 
     public Game(GridPane tablero){
+        this.tableroGrid = tablero;
         this.tablero = new Tablero(tablero, "Agua");
         this.game = true;
         this.controller = ControllerMainStage.getInstance();
@@ -1474,6 +1476,10 @@ public class Game {
 
     public static Tablero getTablero() {
         return tablero;
+    }
+
+    public GridPane getTableroGrid(){
+        return tableroGrid;
     }
 
     public void turno(){
