@@ -567,14 +567,17 @@ public class Game {
                                 log.info("El individuo "+actual.getIndividuos().getDato(ind).getID()+" ha consumido tesoro en la casilla "+actual.getX()+", "+actual.getY());
 
                             } else {  // Pozo
+                                Accion accion = new Consumición(DatosCompartidos.getTurnoJuego(),actual.getRecursos().getDato(rec));
+                                actual.getIndividuos().getDato(ind).getAcciones().push(accion);
                                 listaDel.add(actual.getIndividuos().getDato(ind));
                                 actual.getIndividuos().del(ind);
                                 ind--; // Para que vuelva a comprobar la posición en la que estaba
                             }
-
+                            if (actual.getRecursos().getDato(rec).getTipoRecurso() != 7) {
                             // Modificación de la cola de acciones del individuo
                             Accion accion = new Consumición(DatosCompartidos.getTurnoJuego(),actual.getRecursos().getDato(rec));
-                            actual.getIndividuos().getDato(ind).getAcciones().push(accion);
+                                actual.getIndividuos().getDato(ind).getAcciones().push(accion);
+                            }
                         }
                     }
                 }
