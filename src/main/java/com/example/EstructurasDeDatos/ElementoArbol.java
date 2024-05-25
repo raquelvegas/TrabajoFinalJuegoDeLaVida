@@ -69,4 +69,20 @@ public class ElementoArbol<TipoDato> {
         }
     }
 
+    public void setDato(TipoDato dato) {
+        this.dato = dato;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        string.append("{" + "dato= " + dato);
+        if (nodoIzq!=null){
+            string.append(", izq= "+nodoIzq.getDato());
+        }
+        if (nodoDch!=null){
+            string.append(", dch= "+nodoDch.getDato());
+        }
+        return String.valueOf(string);
+    }
 }

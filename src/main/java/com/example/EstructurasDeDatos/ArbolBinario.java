@@ -4,7 +4,6 @@ public class ArbolBinario<TipoDato> {
     private ElementoArbol<TipoDato> raiz;
 
     public ArbolBinario() {
-
     }
 
     public ElementoArbol<TipoDato> getRaiz() {
@@ -14,6 +13,10 @@ public class ArbolBinario<TipoDato> {
     public void setRaiz(TipoDato raiz) {
         ElementoArbol<TipoDato> elem = new ElementoArbol<>(raiz);
         this.raiz = elem;
+    }
+
+    public void setRaizEl(ElementoArbol<TipoDato> raiz) {
+        this.raiz = raiz;
     }
 
     public ArbolBinario(TipoDato raiz) {
@@ -34,5 +37,12 @@ public class ArbolBinario<TipoDato> {
         } else {
             raiz.add(raiz, a);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "ArbolBinario{" +
+                "raiz=" + raiz +
+                '}';
     }
 }

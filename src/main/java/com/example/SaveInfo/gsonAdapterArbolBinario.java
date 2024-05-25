@@ -17,7 +17,7 @@ public class gsonAdapterArbolBinario implements JsonSerializer<ArbolBinario>, Js
     @Override
     public ArbolBinario deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         ArbolBinario<?> arbol = new ArbolBinario<>();
-        arbol.setRaiz(jsonDeserializationContext.deserialize(jsonElement, ElementoArbol.class));
+        arbol.setRaizEl(jsonDeserializationContext.deserialize(jsonElement, ElementoArbol.class));
         return arbol;
     }
 }

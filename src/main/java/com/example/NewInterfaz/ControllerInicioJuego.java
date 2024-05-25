@@ -53,6 +53,9 @@ public class ControllerInicioJuego {
         System.out.println("Numero de cuadrados: "+datosCargados.getTablero().getSquares().getNumeroElementos());
         transladarInfo(datosCargados);
         System.out.println("Datos Cargados");
+        for(int i=0;i<DatosCompartidos.getListaIndividuos().getNumeroElementos();i++){
+            System.out.println(DatosCompartidos.getListaIndividuos().getElemento(i).getData().getArbolGenealogico());
+        }
     }
 
     private void transladarInfo(SaveInfo info){
