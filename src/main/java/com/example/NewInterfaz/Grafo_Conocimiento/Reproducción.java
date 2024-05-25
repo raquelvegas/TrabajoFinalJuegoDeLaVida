@@ -1,7 +1,7 @@
 package com.example.NewInterfaz.Grafo_Conocimiento;
 
 
-public class Reproducción extends Acción{
+public class Reproducción extends Accion {
 
     private int IdPareja;
     private int IdNuevoIndividuo;

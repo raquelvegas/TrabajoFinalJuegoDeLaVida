@@ -189,14 +189,14 @@ public class ControllerMainStage {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeYes){
-            // Acción a realizar si el usuario quiere guardar la partida
+            // Accion a realizar si el usuario quiere guardar la partida
             SaveInfo informacion = new SaveInfo(DatosCompartidos.getAltoMatriz(), DatosCompartidos.getAnchoMatriz(), DatosCompartidos.getProbReproduccion(), DatosCompartidos.getProbClonacion(), DatosCompartidos.getVidaInicial(), DatosCompartidos.getAguaVida(), DatosCompartidos.getComidaVida(), DatosCompartidos.getMontanaVida(), DatosCompartidos.getTesoroVida(), DatosCompartidos.getBibliotecaVida(), DatosCompartidos.getPozoVida(), DatosCompartidos.getAguaEfecto(), DatosCompartidos.getComidaEfecto(), DatosCompartidos.getMontanaEfecto(), DatosCompartidos.getTesoroEfecto(), DatosCompartidos.getBibliotecaEfecto(), DatosCompartidos.getAparicionInicial(), DatosCompartidos.getAguaAparicion(), DatosCompartidos.getComidaAparicion(), DatosCompartidos.getMontanaAparicion(), DatosCompartidos.getTesoroAparicion(), DatosCompartidos.getBibliotecaAparicion(), DatosCompartidos.getPozoAparicion(), DatosCompartidos.getNumIndividuos(), DatosCompartidos.getTurnoJuego(), DatosCompartidos.isGameIniciado(), DatosCompartidos.getListaRecursos(), DatosCompartidos.getListaIndividuos(), DatosCompartidos.getGame(), DatosCompartidos.getGame().getTablero());
             informacion.guardar("PartidaGuardada.json");
             System.out.println("Partida guardada");
             showGameOverStage();
             controlLoop.stop();
         } else if (result.get() == buttonTypeNo) {
-            // Acción a realizar si el usuario no quiere guardar la partida
+            // Accion a realizar si el usuario no quiere guardar la partida
             System.out.println("Partida no guardada.");
             showGameOverStage();
             controlLoop.stop();

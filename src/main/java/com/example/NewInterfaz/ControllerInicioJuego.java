@@ -1,15 +1,7 @@
 package com.example.NewInterfaz;
 
 
-import com.example.EstructurasDeDatos.Cola;
-import com.example.NewInterfaz.Grafo_Conocimiento.Acción;
-import com.example.NewInterfaz.Individuos.Individuo;
 import com.example.SaveInfo.SaveInfo;
-import com.example.SaveInfo.gsonAdapterAccion;
-import com.example.SaveInfo.gsonAdapterCola;
-import com.example.SaveInfo.gsonAdapterIndividuo;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,7 +15,6 @@ import javafx.stage.StageStyle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 

@@ -13,6 +13,13 @@ public class Arista {
         this.peso = peso;
     }
 
+    public Arista(Vertice verticeIni, Vertice verticeFin, String anotacion) {
+        this.verticeIni = verticeIni;
+        this.verticeFin = verticeFin;
+        this.anotacion = anotacion;
+        this.peso=1;
+    }
+
     public Arista(Vertice verticeIni, Vertice verticeFin, Integer peso) {
         this.verticeIni = verticeIni;
         this.verticeFin = verticeFin;

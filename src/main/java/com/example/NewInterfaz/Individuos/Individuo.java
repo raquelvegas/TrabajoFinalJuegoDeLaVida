@@ -3,8 +3,7 @@ package com.example.NewInterfaz.Individuos;
 import com.example.EstructurasDeDatos.ArbolBinario;
 import com.example.EstructurasDeDatos.Cola;
 import com.example.NewInterfaz.DatosCompartidos;
-import com.example.NewInterfaz.Grafo_Conocimiento.Acción;
-import com.example.NewInterfaz.Square;
+import com.example.NewInterfaz.Grafo_Conocimiento.Accion;
 import com.google.gson.annotations.Expose;
 
 public abstract class Individuo {
@@ -24,7 +23,7 @@ public abstract class Individuo {
     private int ProbClon;
 
     @Expose
-    private Cola<Acción> acciones;
+    private Cola<Accion> acciones;
 
     @Expose
     private ArbolBinario<Integer> arbolGenealogico;
@@ -81,11 +80,11 @@ public abstract class Individuo {
         ProbClon = probClon;
     }
 
-    public Cola<Acción> getAcciones() {
+    public Cola<Accion> getAcciones() {
         return acciones;
     }
 
-    public void setAcciones(Cola<Acción> acciones) {
+    public void setAcciones(Cola<Accion> acciones) {
         this.acciones = acciones;
     }
 

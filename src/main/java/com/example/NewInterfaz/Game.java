@@ -7,10 +7,7 @@ import com.example.EstructurasDeDatos.Grafos.Grafo;
 import com.example.EstructurasDeDatos.Grafos.Vertice;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
-import com.example.NewInterfaz.Grafo_Conocimiento.Acción;
-import com.example.NewInterfaz.Grafo_Conocimiento.Clonación;
-import com.example.NewInterfaz.Grafo_Conocimiento.Consumición;
-import com.example.NewInterfaz.Grafo_Conocimiento.Reproducción;
+import com.example.NewInterfaz.Grafo_Conocimiento.*;
 import com.example.NewInterfaz.Individuos.IndAvanzado;
 import com.example.NewInterfaz.Individuos.IndBasico;
 import com.example.NewInterfaz.Individuos.IndNormal;
@@ -167,6 +164,7 @@ public class Game {
             individuoNuevo.getArbolGenealogico().setRaiz(individuoNuevo.getID());
             addTipo(square, tipoIndividuo); // Añado una celda de tipo 1 al square donde se añade el individuo
             square.getIndividuos().add(individuoNuevo);
+            GrafoConocimiento.addVertices(individuoNuevo);
             log.info("Se ha añadido un individuo tipo " + tipoIndividuo + ", con ID " + individuoNuevo.getID() + ", al Square " + square.getX() + "," + square.getY());
             DatosCompartidos.getListaIndividuos().add(individuoNuevo);
         }
@@ -180,7 +178,12 @@ public class Game {
             int idCeldaAleatoria = addTipo(square, tipo);
             square.getRecursos().add(recursoNuevo);
             recursoNuevo.setCelda(idCeldaAleatoria);
+
+            // Actualización de la lista de DatosCompartidos
             DatosCompartidos.getListaRecursos().add(recursoNuevo);
+
+            // Actualización del grafo de conocimeinto
+            GrafoConocimiento.addVertices(recursoNuevo);
             log.info("Se ha añadido un recurso de tipo " + tipo + " al square (" + square.getX() + ", " + square.getY() + ")");
         }
     }
@@ -569,7 +572,8 @@ public class Game {
                                 ind--; // Para que vuelva a comprobar la posición en la que estaba
                             }
 
-                            Consumición accion = new Consumición(DatosCompartidos.getTurnoJuego(),actual.getRecursos().getDato(rec));
+                            // Modificación de la cola de acciones del individuo
+                            Accion accion = new Consumición(DatosCompartidos.getTurnoJuego(),actual.getRecursos().getDato(rec));
                             actual.getIndividuos().getDato(ind).getAcciones().push(accion);
                         }
                     }
@@ -640,13 +644,17 @@ public class Game {
                     addTipo(actual, tipoIndividuo);
                     actual.getIndividuos().add(individuoNuevo);
                     DatosCompartidos.getListaIndividuos().add(individuoNuevo);
-                    ind1.getAcciones().push(new Reproducción(DatosCompartidos.getTurnoJuego(),ind2.getID(), individuoNuevo.getID()));
-                    ind2.getAcciones().push(new Reproducción(DatosCompartidos.getTurnoJuego(), ind1.getID(), individuoNuevo.getID()));
+                    // Metemos en el Grafo de Conocimiento el nuevo individuo
+                    GrafoConocimiento.addVertices(individuoNuevo);
+
+                    // Actualizamos las listas de acciones de ambos individuos
+                    Accion accionInd1 = new Reproducción(DatosCompartidos.getTurnoJuego(),ind2.getID(), individuoNuevo.getID());
+                    Accion accionInd2 = new Reproducción(DatosCompartidos.getTurnoJuego(), ind1.getID(), individuoNuevo.getID());
+                    ind1.getAcciones().push(accionInd1);
+                    ind2.getAcciones().push(accionInd2);
                     System.out.println("Ha habido reproduccion entre los individuos " + ind1.getID() + " y " + ind2.getID() + ". Ahora hay " + DatosCompartidos.getNumIndividuos() + " individuos.");
                 } else { // Muerte de ambos individuos
                     log.info("Se van a eliminar los individuos "+ind1.getID()+", "+ind2.getID()+" por la probabilidad de reproduccion");
-//                    System.out.println("Probabilidad de reproduccion 1: "+ind1.getProbRepr());
-//                    System.out.println("Probabilidad de reproducción 2: "+ind1.getProbRepr());
                     ListaSimple<Individuo> individuosAEliminar = new ListaSimple<>(2);
                     individuosAEliminar.add(ind1);
                     individuosAEliminar.add(ind2);
@@ -679,7 +687,12 @@ public class Game {
                     individuoNuevo.setArbolGenealogico(nuevoArbol);
                     squareActual.getIndividuos().add(individuoNuevo);
                     DatosCompartidos.getListaIndividuos().add(individuoNuevo);
-                    individuoAClonar.getAcciones().push(new Clonación(DatosCompartidos.getTurnoJuego(),individuoNuevo.getID()));
+                    // Actualización del grafo de conocimiento añadiendo el nuevo individuo
+                    GrafoConocimiento.addVertices(individuoNuevo);
+
+                    // Actualización de la lista de acciones del individuo clonado
+                    Accion nuevaAccion = new Clonación(DatosCompartidos.getTurnoJuego(),individuoNuevo.getID());
+                    individuoAClonar.getAcciones().push(nuevaAccion);
                     log.info("Se ha clonado el individuo " + individuoAClonar.getID() + " para generar el individuo " + individuoNuevo.getID());
                 }
             }

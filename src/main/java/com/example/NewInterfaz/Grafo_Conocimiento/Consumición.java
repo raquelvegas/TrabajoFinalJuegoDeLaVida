@@ -2,7 +2,7 @@ package com.example.NewInterfaz.Grafo_Conocimiento;
 
 import com.example.NewInterfaz.Recurso;
 
-public class Consumición extends Acción{
+public class Consumición extends Accion {
     private Recurso rec;
 
     public int getTipo(){

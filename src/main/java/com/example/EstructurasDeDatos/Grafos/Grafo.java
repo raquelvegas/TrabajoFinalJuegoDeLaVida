@@ -4,6 +4,8 @@ package com.example.EstructurasDeDatos.Grafos;
 import com.example.EstructurasDeDatos.Cola;
 import com.example.EstructurasDeDatos.Listas.ListaSimple;
 import com.example.Excepciones.NonValidLink;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 
@@ -14,6 +16,9 @@ public class Grafo<TipoDato> {
     private ListaSimple<Vertice<TipoDato>> vertices = new ListaSimple<>();
 
     private ListaSimple<Arista> aristas = new ListaSimple<>();
+
+    private static final Logger log = LogManager.getLogger(Grafo.class);
+
 
     // Constructores
 
@@ -36,6 +41,27 @@ public class Grafo<TipoDato> {
         }
     }
 
+    public void addArista(TipoDato a, TipoDato b, String anotacion) {
+        Vertice<TipoDato> vIni = null;
+        Vertice<TipoDato> vFin = null;
+        for (int i = 0; i < vertices.getNumeroElementos(); i++) {
+            if (vertices.getDato(i).getDato() == a) {
+                vIni = vertices.getDato(i);
+            }
+            if (vertices.getDato(i).getDato() == b) {
+                vFin = vertices.getDato(i);
+            }
+        }
+        if (vIni != null && vFin != null) {
+            try {
+                addArista(new Arista(vIni, vFin, anotacion));
+            } catch (NonValidLink ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            log.error("Error en la introducción de los datos de los vértices que quieres unir");
+        }
+    }
     public void addArista(TipoDato a, TipoDato b, int peso) {
         Vertice<TipoDato> vIni = null;
         Vertice<TipoDato> vFin = null;
@@ -53,6 +79,8 @@ public class Grafo<TipoDato> {
             } catch (NonValidLink ex) {
                 ex.printStackTrace();
             }
+        } else {
+            log.error("Error en la introducción de los datos de los vértices que quieres unir");
         }
     }
 
@@ -95,6 +123,23 @@ public class Grafo<TipoDato> {
             }
         }
         return vertice;
+    }
+
+    public String printCodigoGrafo() {
+        char com = '"';
+        String codigo = "digraph regexp {\nfontname=" + com + "Helvetica,Arial,sans-serif" + com + "\nnode [fontname=" + com + "Helvetica,Arial,sans-serif" + com + "]\nedge [fontname=" + com + "Helvetica,Arial,sans-serif" + com + "]";
+        Integer contadorV = 0;
+        while (contadorV < vertices.getNumeroElementos()) {
+            codigo += "\nn" + vertices.getElemento(contadorV).getData().getDato() + " [label=" + com + vertices.getElemento(contadorV).getData().getDato() + com + "];";
+            contadorV++;
+        }
+        Integer contadorA = 0;
+        while (contadorA < aristas.getNumeroElementos()) {
+            codigo += "\nn" + aristas.getElemento(contadorA).getData().getVerticeIni().getDato() + " -> n" + aristas.getElemento(contadorA).getData().getVerticeFin().getDato() + " [label=" + com + aristas.getElemento(contadorA).getData().getAnotacion() + com + "];";
+            contadorA++;
+        }
+        codigo += "\n}";
+        return codigo;
     }
 
     public Camino getCaminoMinimo(TipoDato origen, TipoDato fin) {

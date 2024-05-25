@@ -5,7 +5,7 @@ import com.example.EstructurasDeDatos.Cola;
 import com.example.EstructurasDeDatos.ElementoArbol;
 import com.example.EstructurasDeDatos.Listas.ListaEnlazada;
 import com.example.NewInterfaz.Game;
-import com.example.NewInterfaz.Grafo_Conocimiento.Acción;
+import com.example.NewInterfaz.Grafo_Conocimiento.Accion;
 import com.example.NewInterfaz.Individuos.Individuo;
 import com.example.NewInterfaz.Recurso;
 import com.example.NewInterfaz.Tablero;
@@ -18,7 +18,6 @@ import org.apache.logging.log4j.Logger;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Modifier;
 
 public class SaveInfo {
 
@@ -392,7 +391,7 @@ public class SaveInfo {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Individuo.class, new gsonAdapterIndividuo())
                 .registerTypeAdapter(Cola.class, new gsonAdapterCola())
-                .registerTypeAdapter(Acción.class, new gsonAdapterAccion())
+                .registerTypeAdapter(Accion.class, new gsonAdapterAccion())
                 .registerTypeAdapter(ArbolBinario.class, new gsonAdapterArbolBinario())
                 .registerTypeAdapter(ElementoArbol.class, new gsonAdapterElementoArbol())
                 .excludeFieldsWithoutExposeAnnotation()
@@ -409,7 +408,7 @@ public class SaveInfo {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Individuo.class, new gsonAdapterIndividuo())
                 .registerTypeAdapter(Cola.class, new gsonAdapterCola())
-                .registerTypeAdapter(Acción.class, new gsonAdapterAccion())
+                .registerTypeAdapter(Accion.class, new gsonAdapterAccion())
                 .registerTypeAdapter(ArbolBinario.class, new gsonAdapterArbolBinario())
                 .registerTypeAdapter(ElementoArbol.class, new gsonAdapterElementoArbol())
                 .excludeFieldsWithoutExposeAnnotation()
